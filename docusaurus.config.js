@@ -57,7 +57,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'OtterShell',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -71,7 +71,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/belennazareth/ottershell',
             label: 'GitHub',
             position: 'right',
           },
