@@ -51,11 +51,11 @@ export default {
           "type": "doc",
           "docId": "intro",
           "position": "left",
-          "label": "Tutorial"
+          "label": "Blog"
         },
         {
           "to": "/blog",
-          "label": "Blog",
+          "label": "Contacto",
           "position": "left"
         },
         {

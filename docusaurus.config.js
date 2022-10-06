@@ -67,9 +67,9 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Blog',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: 'Contacto', position: 'left'},
           {
             href: 'https://github.com/belennazareth/ottershell',
             label: 'GitHub',
