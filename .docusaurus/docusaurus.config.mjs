@@ -70,46 +70,29 @@ export default {
       "style": "dark",
       "links": [
         {
-          "title": "Docs",
+          "title": "Blog",
           "items": [
             {
-              "label": "Tutorial",
+              "label": "Presentación",
               "to": "/docs/intro"
             }
           ]
         },
         {
-          "title": "Community",
+          "title": "Otters",
           "items": [
             {
-              "label": "Stack Overflow",
-              "href": "https://stackoverflow.com/questions/tagged/docusaurus"
-            },
-            {
-              "label": "Discord",
-              "href": "https://discordapp.com/invite/docusaurus"
-            },
-            {
-              "label": "Twitter",
-              "href": "https://twitter.com/docusaurus"
-            }
-          ]
-        },
-        {
-          "title": "More",
-          "items": [
-            {
-              "label": "Blog",
+              "label": "Contacto",
               "to": "/blog"
             },
             {
               "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
+              "href": "https://github.com/belennazareth"
             }
           ]
         }
       ],
-      "copyright": "Copyright © 2022 My Project, Inc. Built with Docusaurus."
+      "copyright": " Belén Nazareth Durán Meléndez <br /> Copyright © 2022 My Project, Inc. Built with Docusaurus."
     },
     "prism": {
       "theme": {
