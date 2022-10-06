@@ -1,0 +1,15 @@
+{
+  "title": "Extras",
+  "slug": "/category/extras",
+  "permalink": "/docs/category/extras",
+  "navigation": {
+    "previous": {
+      "title": "Congratulations!",
+      "permalink": "/docs/Tasks/congratulations"
+    },
+    "next": {
+      "title": "Manage Docs Versions",
+      "permalink": "/docs/Extras/manage-docs-versions"
+    }
+  }
+}

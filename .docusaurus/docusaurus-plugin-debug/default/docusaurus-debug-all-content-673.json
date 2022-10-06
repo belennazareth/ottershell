@@ -20,9 +20,59 @@
           "contentPathLocalized": "/home/nazare/github/ottershell/i18n/en/docusaurus-plugin-content-docs/current",
           "docs": [
             {
+              "unversionedId": "Extras/manage-docs-versions",
+              "id": "Extras/manage-docs-versions",
+              "title": "Manage Docs Versions",
+              "description": "Docusaurus can manage multiple versions of your docs.",
+              "source": "@site/docs/Extras/manage-docs-versions.md",
+              "sourceDirName": "Extras",
+              "slug": "/Extras/manage-docs-versions",
+              "permalink": "/docs/Extras/manage-docs-versions",
+              "draft": false,
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Extras/manage-docs-versions.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Extras",
+                "permalink": "/docs/category/extras"
+              },
+              "next": {
+                "title": "Translate your site",
+                "permalink": "/docs/Extras/translate-your-site"
+              }
+            },
+            {
+              "unversionedId": "Extras/translate-your-site",
+              "id": "Extras/translate-your-site",
+              "title": "Translate your site",
+              "description": "Let's translate docs/intro.md to French.",
+              "source": "@site/docs/Extras/translate-your-site.md",
+              "sourceDirName": "Extras",
+              "slug": "/Extras/translate-your-site",
+              "permalink": "/docs/Extras/translate-your-site",
+              "draft": false,
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Extras/translate-your-site.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Manage Docs Versions",
+                "permalink": "/docs/Extras/manage-docs-versions"
+              }
+            },
+            {
               "unversionedId": "intro",
               "id": "intro",
-              "title": "Tutorial Intro",
+              "title": "Presentación",
               "description": "Let's discover Docusaurus in less than 5 minutes.",
               "source": "@site/docs/intro.md",
               "sourceDirName": ".",
@@ -38,21 +88,21 @@
               },
               "sidebar": "tutorialSidebar",
               "next": {
-                "title": "Tutorial - Basics",
-                "permalink": "/docs/category/tutorial---basics"
+                "title": "Tasks",
+                "permalink": "/docs/category/tasks"
               }
             },
             {
-              "unversionedId": "tutorial-basics/congratulations",
-              "id": "tutorial-basics/congratulations",
+              "unversionedId": "Tasks/congratulations",
+              "id": "Tasks/congratulations",
               "title": "Congratulations!",
               "description": "You have just learned the basics of Docusaurus and made some changes to the initial template.",
-              "source": "@site/docs/tutorial-basics/congratulations.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/congratulations",
-              "permalink": "/docs/tutorial-basics/congratulations",
+              "source": "@site/docs/Tasks/congratulations.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/congratulations",
+              "permalink": "/docs/Tasks/congratulations",
               "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-basics/congratulations.md",
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/congratulations.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 6,
@@ -62,24 +112,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Deploy your site",
-                "permalink": "/docs/tutorial-basics/deploy-your-site"
+                "permalink": "/docs/Tasks/deploy-your-site"
               },
               "next": {
-                "title": "Tutorial - Extras",
-                "permalink": "/docs/category/tutorial---extras"
+                "title": "Extras",
+                "permalink": "/docs/category/extras"
               }
             },
             {
-              "unversionedId": "tutorial-basics/create-a-blog-post",
-              "id": "tutorial-basics/create-a-blog-post",
+              "unversionedId": "Tasks/create-a-blog-post",
+              "id": "Tasks/create-a-blog-post",
               "title": "Create a Blog Post",
               "description": "Docusaurus creates a page for each blog post, but also a blog index page, a tag system, an RSS feed...",
-              "source": "@site/docs/tutorial-basics/create-a-blog-post.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/create-a-blog-post",
-              "permalink": "/docs/tutorial-basics/create-a-blog-post",
+              "source": "@site/docs/Tasks/create-a-blog-post.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/create-a-blog-post",
+              "permalink": "/docs/Tasks/create-a-blog-post",
               "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-basics/create-a-blog-post.md",
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/create-a-blog-post.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -89,24 +139,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Create a Document",
-                "permalink": "/docs/tutorial-basics/create-a-document"
+                "permalink": "/docs/Tasks/create-a-document"
               },
               "next": {
                 "title": "Markdown Features",
-                "permalink": "/docs/tutorial-basics/markdown-features"
+                "permalink": "/docs/Tasks/markdown-features"
               }
             },
             {
-              "unversionedId": "tutorial-basics/create-a-document",
-              "id": "tutorial-basics/create-a-document",
+              "unversionedId": "Tasks/create-a-document",
+              "id": "Tasks/create-a-document",
               "title": "Create a Document",
               "description": "Documents are groups of pages connected through:",
-              "source": "@site/docs/tutorial-basics/create-a-document.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/create-a-document",
-              "permalink": "/docs/tutorial-basics/create-a-document",
+              "source": "@site/docs/Tasks/create-a-document.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/create-a-document",
+              "permalink": "/docs/Tasks/create-a-document",
               "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-basics/create-a-document.md",
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/create-a-document.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -116,24 +166,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Create a Page",
-                "permalink": "/docs/tutorial-basics/create-a-page"
+                "permalink": "/docs/Tasks/create-a-page"
               },
               "next": {
                 "title": "Create a Blog Post",
-                "permalink": "/docs/tutorial-basics/create-a-blog-post"
+                "permalink": "/docs/Tasks/create-a-blog-post"
               }
             },
             {
-              "unversionedId": "tutorial-basics/create-a-page",
-              "id": "tutorial-basics/create-a-page",
+              "unversionedId": "Tasks/create-a-page",
+              "id": "Tasks/create-a-page",
               "title": "Create a Page",
               "description": "Add Markdown or React files to src/pages to create a standalone page:",
-              "source": "@site/docs/tutorial-basics/create-a-page.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/create-a-page",
-              "permalink": "/docs/tutorial-basics/create-a-page",
+              "source": "@site/docs/Tasks/create-a-page.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/create-a-page",
+              "permalink": "/docs/Tasks/create-a-page",
               "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-basics/create-a-page.md",
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/create-a-page.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -142,25 +192,25 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Tutorial - Basics",
-                "permalink": "/docs/category/tutorial---basics"
+                "title": "Tasks",
+                "permalink": "/docs/category/tasks"
               },
               "next": {
                 "title": "Create a Document",
-                "permalink": "/docs/tutorial-basics/create-a-document"
+                "permalink": "/docs/Tasks/create-a-document"
               }
             },
             {
-              "unversionedId": "tutorial-basics/deploy-your-site",
-              "id": "tutorial-basics/deploy-your-site",
+              "unversionedId": "Tasks/deploy-your-site",
+              "id": "Tasks/deploy-your-site",
               "title": "Deploy your site",
               "description": "Docusaurus is a static-site-generator (also called Jamstack).",
-              "source": "@site/docs/tutorial-basics/deploy-your-site.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/deploy-your-site",
-              "permalink": "/docs/tutorial-basics/deploy-your-site",
+              "source": "@site/docs/Tasks/deploy-your-site.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/deploy-your-site",
+              "permalink": "/docs/Tasks/deploy-your-site",
               "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-basics/deploy-your-site.md",
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/deploy-your-site.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 5,
@@ -170,24 +220,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Markdown Features",
-                "permalink": "/docs/tutorial-basics/markdown-features"
+                "permalink": "/docs/Tasks/markdown-features"
               },
               "next": {
                 "title": "Congratulations!",
-                "permalink": "/docs/tutorial-basics/congratulations"
+                "permalink": "/docs/Tasks/congratulations"
               }
             },
             {
-              "unversionedId": "tutorial-basics/markdown-features",
-              "id": "tutorial-basics/markdown-features",
+              "unversionedId": "Tasks/markdown-features",
+              "id": "Tasks/markdown-features",
               "title": "Markdown Features",
               "description": "Docusaurus supports Markdown and a few additional features.",
-              "source": "@site/docs/tutorial-basics/markdown-features.mdx",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/markdown-features",
-              "permalink": "/docs/tutorial-basics/markdown-features",
+              "source": "@site/docs/Tasks/markdown-features.mdx",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/markdown-features",
+              "permalink": "/docs/Tasks/markdown-features",
               "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-basics/markdown-features.mdx",
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/markdown-features.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 4,
@@ -197,61 +247,11 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Create a Blog Post",
-                "permalink": "/docs/tutorial-basics/create-a-blog-post"
+                "permalink": "/docs/Tasks/create-a-blog-post"
               },
               "next": {
                 "title": "Deploy your site",
-                "permalink": "/docs/tutorial-basics/deploy-your-site"
-              }
-            },
-            {
-              "unversionedId": "tutorial-extras/manage-docs-versions",
-              "id": "tutorial-extras/manage-docs-versions",
-              "title": "Manage Docs Versions",
-              "description": "Docusaurus can manage multiple versions of your docs.",
-              "source": "@site/docs/tutorial-extras/manage-docs-versions.md",
-              "sourceDirName": "tutorial-extras",
-              "slug": "/tutorial-extras/manage-docs-versions",
-              "permalink": "/docs/tutorial-extras/manage-docs-versions",
-              "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-extras/manage-docs-versions.md",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "sidebar_position": 1
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Tutorial - Extras",
-                "permalink": "/docs/category/tutorial---extras"
-              },
-              "next": {
-                "title": "Translate your site",
-                "permalink": "/docs/tutorial-extras/translate-your-site"
-              }
-            },
-            {
-              "unversionedId": "tutorial-extras/translate-your-site",
-              "id": "tutorial-extras/translate-your-site",
-              "title": "Translate your site",
-              "description": "Let's translate docs/intro.md to French.",
-              "source": "@site/docs/tutorial-extras/translate-your-site.md",
-              "sourceDirName": "tutorial-extras",
-              "slug": "/tutorial-extras/translate-your-site",
-              "permalink": "/docs/tutorial-extras/translate-your-site",
-              "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/tutorial-extras/translate-your-site.md",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 2,
-              "frontMatter": {
-                "sidebar_position": 2
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Manage Docs Versions",
-                "permalink": "/docs/tutorial-extras/manage-docs-versions"
+                "permalink": "/docs/Tasks/deploy-your-site"
               }
             }
           ],
@@ -264,61 +264,61 @@
               },
               {
                 "type": "category",
-                "label": "Tutorial - Basics",
+                "label": "Tasks",
                 "collapsible": true,
                 "collapsed": true,
                 "items": [
                   {
                     "type": "doc",
-                    "id": "tutorial-basics/create-a-page"
+                    "id": "Tasks/create-a-page"
                   },
                   {
                     "type": "doc",
-                    "id": "tutorial-basics/create-a-document"
+                    "id": "Tasks/create-a-document"
                   },
                   {
                     "type": "doc",
-                    "id": "tutorial-basics/create-a-blog-post"
+                    "id": "Tasks/create-a-blog-post"
                   },
                   {
                     "type": "doc",
-                    "id": "tutorial-basics/markdown-features"
+                    "id": "Tasks/markdown-features"
                   },
                   {
                     "type": "doc",
-                    "id": "tutorial-basics/deploy-your-site"
+                    "id": "Tasks/deploy-your-site"
                   },
                   {
                     "type": "doc",
-                    "id": "tutorial-basics/congratulations"
+                    "id": "Tasks/congratulations"
                   }
                 ],
                 "link": {
                   "type": "generated-index",
                   "description": "5 minutes to learn the most important Docusaurus concepts.",
-                  "slug": "/category/tutorial---basics",
-                  "permalink": "/docs/category/tutorial---basics"
+                  "slug": "/category/tasks",
+                  "permalink": "/docs/category/tasks"
                 }
               },
               {
                 "type": "category",
-                "label": "Tutorial - Extras",
+                "label": "Extras",
                 "collapsible": true,
                 "collapsed": true,
                 "items": [
                   {
                     "type": "doc",
-                    "id": "tutorial-extras/manage-docs-versions"
+                    "id": "Extras/manage-docs-versions"
                   },
                   {
                     "type": "doc",
-                    "id": "tutorial-extras/translate-your-site"
+                    "id": "Extras/translate-your-site"
                   }
                 ],
                 "link": {
                   "type": "generated-index",
-                  "slug": "/category/tutorial---extras",
-                  "permalink": "/docs/category/tutorial---extras"
+                  "slug": "/category/extras",
+                  "permalink": "/docs/category/extras"
                 }
               }
             ]

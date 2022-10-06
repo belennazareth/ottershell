@@ -1,0 +1,27 @@
+{
+  "unversionedId": "ASIR/deploy-your-site",
+  "id": "ASIR/deploy-your-site",
+  "title": "Deploy your site",
+  "description": "Docusaurus is a static-site-generator (also called Jamstack).",
+  "source": "@site/docs/ASIR/deploy-your-site.md",
+  "sourceDirName": "ASIR",
+  "slug": "/ASIR/deploy-your-site",
+  "permalink": "/docs/ASIR/deploy-your-site",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/ASIR/deploy-your-site.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Markdown Features",
+    "permalink": "/docs/ASIR/markdown-features"
+  },
+  "next": {
+    "title": "Congratulations!",
+    "permalink": "/docs/ASIR/congratulations"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Tasks",
+  "description": "5 minutes to learn the most important Docusaurus concepts.",
+  "slug": "/category/tasks",
+  "permalink": "/docs/category/tasks",
+  "navigation": {
+    "previous": {
+      "title": "Presentación",
+      "permalink": "/docs/intro"
+    },
+    "next": {
+      "title": "Create a Page",
+      "permalink": "/docs/Tasks/create-a-page"
+    }
+  }
+}

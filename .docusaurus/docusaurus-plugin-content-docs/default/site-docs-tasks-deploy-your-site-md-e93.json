@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/deploy-your-site",
+  "id": "Tasks/deploy-your-site",
+  "title": "Deploy your site",
+  "description": "Docusaurus is a static-site-generator (also called Jamstack).",
+  "source": "@site/docs/Tasks/deploy-your-site.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/deploy-your-site",
+  "permalink": "/docs/Tasks/deploy-your-site",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/deploy-your-site.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  },
+  "next": {
+    "title": "Congratulations!",
+    "permalink": "/docs/Tasks/congratulations"
+  }
+}

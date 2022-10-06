@@ -1,0 +1,27 @@
+{
+  "unversionedId": "ASIR/congratulations",
+  "id": "ASIR/congratulations",
+  "title": "Congratulations!",
+  "description": "You have just learned the basics of Docusaurus and made some changes to the initial template.",
+  "source": "@site/docs/ASIR/congratulations.md",
+  "sourceDirName": "ASIR",
+  "slug": "/ASIR/congratulations",
+  "permalink": "/docs/ASIR/congratulations",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/ASIR/congratulations.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploy your site",
+    "permalink": "/docs/ASIR/deploy-your-site"
+  },
+  "next": {
+    "title": "Tutorial - Extras",
+    "permalink": "/docs/category/tutorial---extras"
+  }
+}

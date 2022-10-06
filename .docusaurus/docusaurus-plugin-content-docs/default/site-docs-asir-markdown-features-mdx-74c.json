@@ -1,0 +1,27 @@
+{
+  "unversionedId": "ASIR/markdown-features",
+  "id": "ASIR/markdown-features",
+  "title": "Markdown Features",
+  "description": "Docusaurus supports Markdown and a few additional features.",
+  "source": "@site/docs/ASIR/markdown-features.mdx",
+  "sourceDirName": "ASIR",
+  "slug": "/ASIR/markdown-features",
+  "permalink": "/docs/ASIR/markdown-features",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/ASIR/markdown-features.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Create a Blog Post",
+    "permalink": "/docs/ASIR/create-a-blog-post"
+  },
+  "next": {
+    "title": "Deploy your site",
+    "permalink": "/docs/ASIR/deploy-your-site"
+  }
+}

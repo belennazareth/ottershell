@@ -1,0 +1,23 @@
+{
+  "unversionedId": "Extras/translate-your-site",
+  "id": "Extras/translate-your-site",
+  "title": "Translate your site",
+  "description": "Let's translate docs/intro.md to French.",
+  "source": "@site/docs/Extras/translate-your-site.md",
+  "sourceDirName": "Extras",
+  "slug": "/Extras/translate-your-site",
+  "permalink": "/docs/Extras/translate-your-site",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Extras/translate-your-site.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Manage Docs Versions",
+    "permalink": "/docs/Extras/manage-docs-versions"
+  }
+}

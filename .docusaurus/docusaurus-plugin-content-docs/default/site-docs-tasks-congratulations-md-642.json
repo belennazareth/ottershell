@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/congratulations",
+  "id": "Tasks/congratulations",
+  "title": "Congratulations!",
+  "description": "You have just learned the basics of Docusaurus and made some changes to the initial template.",
+  "source": "@site/docs/Tasks/congratulations.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/congratulations",
+  "permalink": "/docs/Tasks/congratulations",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/congratulations.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploy your site",
+    "permalink": "/docs/Tasks/deploy-your-site"
+  },
+  "next": {
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
+  }
+}

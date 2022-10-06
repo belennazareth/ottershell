@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Extras/manage-docs-versions",
+  "id": "Extras/manage-docs-versions",
+  "title": "Manage Docs Versions",
+  "description": "Docusaurus can manage multiple versions of your docs.",
+  "source": "@site/docs/Extras/manage-docs-versions.md",
+  "sourceDirName": "Extras",
+  "slug": "/Extras/manage-docs-versions",
+  "permalink": "/docs/Extras/manage-docs-versions",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Extras/manage-docs-versions.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
+  },
+  "next": {
+    "title": "Translate your site",
+    "permalink": "/docs/Extras/translate-your-site"
+  }
+}
