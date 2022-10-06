@@ -4,32 +4,30 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Contenido propio',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Se trata de una página personal donde la documentación aportada es siempre original.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Trabaja conmigo',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Siempre será agradecida cualquier aportación a este blog, ya sea por correción
+        o por nuevos contenidos o extensiones. Siempre puedes contactar y sugerir lo que quieras.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Aprendizaje continuo',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        "El saber no ocupa lugar ni tiene edad"
       </>
     ),
   },
