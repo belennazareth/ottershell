@@ -79,6 +79,19 @@ export default {
           ]
         },
         {
+          "title": "Community",
+          "items": [
+            {
+              "label": "Stack Overflow",
+              "href": "https://stackoverflow.com/questions/tagged/docusaurus"
+            },
+            {
+              "label": "Twitter",
+              "href": "https://twitter.com/docusaurus"
+            }
+          ]
+        },
+        {
           "title": "Otters",
           "items": [
             {
