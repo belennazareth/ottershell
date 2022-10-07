@@ -6,7 +6,7 @@
 export default {
   "title": "OtterShell",
   "tagline": "",
-  "url": "https://your-docusaurus-test-site.com",
+  "url": "https://ottershell.vercel.app/",
   "baseUrl": "/",
   "onBrokenLinks": "throw",
   "onBrokenMarkdownLinks": "warn",

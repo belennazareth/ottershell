@@ -1,0 +1,23 @@
+{
+  "unversionedId": "intro",
+  "id": "intro",
+  "title": "Sobre mí",
+  "description": "Hola! 😊",
+  "source": "@site/docs/intro.mdx",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/docs/intro",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/intro.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Tasks",
+    "permalink": "/docs/category/tasks"
+  }
+}

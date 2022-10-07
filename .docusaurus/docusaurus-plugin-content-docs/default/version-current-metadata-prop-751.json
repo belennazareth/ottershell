@@ -11,7 +11,7 @@
     "tutorialSidebar": [
       {
         "type": "link",
-        "label": "Presentación",
+        "label": "Sobre mí",
         "href": "/docs/intro",
         "docId": "intro"
       },
@@ -98,8 +98,8 @@
     },
     "intro": {
       "id": "intro",
-      "title": "Presentación",
-      "description": "Let's discover Docusaurus in less than 5 minutes.",
+      "title": "Sobre mí",
+      "description": "Hola! 😊",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/congratulations": {
