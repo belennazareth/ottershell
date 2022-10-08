@@ -2,42 +2,24 @@
 sidebar_position: 1
 ---
 
-# Create a Page
+# Taller 1: Introducción a git y GitHub
 
-Add **Markdown or React** files to `src/pages` to create a **standalone page**:
+1. Una captura de pantalla donde se vea que has creado el repositorio.
 
-- `src/pages/index.js` → `localhost:3000/`
-- `src/pages/foo.md` → `localhost:3000/foo`
-- `src/pages/foo/bar.js` → `localhost:3000/foo/bar`
+![Repo](/static/img/IAW/taller1IAW.png)
 
-## Create your first React Page
+2. El contenido del fichero .git/config para que se vea que has clonado el repositorio con la URL ssh.
 
-Create a file at `src/pages/my-react-page.js`:
+![Repo](/static/img/IAW/taller1IAW-1.png)
 
-```jsx title="src/pages/my-react-page.js"
-import React from 'react';
-import Layout from '@theme/Layout';
+3. La salida de la instrucción git log para ver los commits que has realizado (debe aparecer como autor tu nombre completo).
 
-export default function MyReactPage() {
-  return (
-    <Layout>
-      <h1>My React page</h1>
-      <p>This is a React page</p>
-    </Layout>
-  );
-}
-```
+![Repo](/static/img/IAW/taller1IAW-2.png)
 
-A new page is now available at [http://localhost:3000/my-react-page](http://localhost:3000/my-react-page).
+4. Buscar información para crear un nuevo repositorio llamado prueba2_tu_nombre. en esta ocasión, crea primero el repositorio local (usando git init)
+y luego busca información para sincronizarlo y crear el repositorio remoto en GitHub. Comenta los pasos que has realizado y manda alguna prueba
+de funcionamiento.
 
-## Create your first Markdown Page
-
-Create a file at `src/pages/my-markdown-page.md`:
-
-```mdx title="src/pages/my-markdown-page.md"
-# My Markdown page
-
-This is a Markdown page
-```
-
-A new page is now available at [http://localhost:3000/my-markdown-page](http://localhost:3000/my-markdown-page).
+    Para realizar este apartado primero hay que crear un repositorio en GitHub, después desde la terminal se crea un repositorio en local el cual será
+    vinculado al creado en GitHub.
+    Para vincular los repositorios, desde línea de comando usamos lo siguiente:
