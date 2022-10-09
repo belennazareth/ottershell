@@ -31,11 +31,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Tasks/create-a-blog-post",
-              "path": "/docs/Tasks/create-a-blog-post",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "Tasks/deploy-your-site",
               "path": "/docs/Tasks/deploy-your-site",
               "sidebar": "tutorialSidebar"
@@ -53,6 +48,11 @@
             {
               "id": "Tasks/markdown-features",
               "path": "/docs/Tasks/markdown-features",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/ramas_uniones",
+              "path": "/docs/Tasks/ramas_uniones",
               "sidebar": "tutorialSidebar"
             },
             {

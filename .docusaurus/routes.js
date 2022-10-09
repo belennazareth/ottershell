@@ -99,7 +99,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '58c'),
+    component: ComponentCreator('/docs', '087'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -138,12 +138,6 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
-        path: '/docs/Tasks/create-a-blog-post',
-        component: ComponentCreator('/docs/Tasks/create-a-blog-post', '665'),
-        exact: true,
-        sidebar: "tutorialSidebar"
-      },
-      {
         path: '/docs/Tasks/deploy-your-site',
         component: ComponentCreator('/docs/Tasks/deploy-your-site', '184'),
         exact: true,
@@ -164,6 +158,12 @@ export default [
       {
         path: '/docs/Tasks/markdown-features',
         component: ComponentCreator('/docs/Tasks/markdown-features', 'a58'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/ramas_uniones',
+        component: ComponentCreator('/docs/Tasks/ramas_uniones', '260'),
         exact: true,
         sidebar: "tutorialSidebar"
       }

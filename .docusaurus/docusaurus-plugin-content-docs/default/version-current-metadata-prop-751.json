@@ -36,8 +36,8 @@
           {
             "type": "link",
             "label": "Taller 3: Git. Trabajando con ramas y uniones",
-            "href": "/docs/Tasks/create-a-blog-post",
-            "docId": "Tasks/create-a-blog-post"
+            "href": "/docs/Tasks/ramas_uniones",
+            "docId": "Tasks/ramas_uniones"
           },
           {
             "type": "link",
@@ -108,12 +108,6 @@
       "description": "You have just learned the basics of Docusaurus and made some changes to the initial template.",
       "sidebar": "tutorialSidebar"
     },
-    "Tasks/create-a-blog-post": {
-      "id": "Tasks/create-a-blog-post",
-      "title": "Taller 3: Git. Trabajando con ramas y uniones",
-      "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
-      "sidebar": "tutorialSidebar"
-    },
     "Tasks/deploy-your-site": {
       "id": "Tasks/deploy-your-site",
       "title": "Deploy your site",
@@ -136,6 +130,12 @@
       "id": "Tasks/markdown-features",
       "title": "Markdown Features",
       "description": "Docusaurus supports Markdown and a few additional features.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/ramas_uniones": {
+      "id": "Tasks/ramas_uniones",
+      "title": "Taller 3: Git. Trabajando con ramas y uniones",
+      "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
       "sidebar": "tutorialSidebar"
     }
   }

@@ -186,7 +186,7 @@
     },
     "content": "content---markdown-page-393-028"
   },
-  "/docs-58c": {
+  "/docs-087": {
     "__comp": "__comp---theme-doc-page-1-be-9be",
     "__context": {
       "plugin": "plugin---docsb-21-446"
@@ -217,10 +217,6 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tasks-congratulations-642-62a"
   },
-  "/docs/Tasks/create-a-blog-post-665": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-tasks-create-a-blog-postb-61-c64"
-  },
   "/docs/Tasks/deploy-your-site-184": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tasks-deploy-your-sitee-93-a34"
@@ -236,6 +232,10 @@
   "/docs/Tasks/markdown-features-a58": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-tasks-markdown-featurescba-e14"
+  },
+  "/docs/Tasks/ramas_uniones-260": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tasks-ramas-unionesc-9-e-d1e"
   },
   "/-19f": {
     "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",

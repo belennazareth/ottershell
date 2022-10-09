@@ -120,33 +120,6 @@
               }
             },
             {
-              "unversionedId": "Tasks/create-a-blog-post",
-              "id": "Tasks/create-a-blog-post",
-              "title": "Taller 3: Git. Trabajando con ramas y uniones",
-              "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
-              "source": "@site/docs/Tasks/create-a-blog-post.md",
-              "sourceDirName": "Tasks",
-              "slug": "/Tasks/create-a-blog-post",
-              "permalink": "/docs/Tasks/create-a-blog-post",
-              "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/create-a-blog-post.md",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 3,
-              "frontMatter": {
-                "sidebar_position": 3
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Taller 2: Introducción a Markdown",
-                "permalink": "/docs/Tasks/markdown"
-              },
-              "next": {
-                "title": "Markdown Features",
-                "permalink": "/docs/Tasks/markdown-features"
-              }
-            },
-            {
               "unversionedId": "Tasks/deploy-your-site",
               "id": "Tasks/deploy-your-site",
               "title": "Deploy your site",
@@ -224,7 +197,7 @@
               },
               "next": {
                 "title": "Taller 3: Git. Trabajando con ramas y uniones",
-                "permalink": "/docs/Tasks/create-a-blog-post"
+                "permalink": "/docs/Tasks/ramas_uniones"
               }
             },
             {
@@ -247,11 +220,38 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Taller 3: Git. Trabajando con ramas y uniones",
-                "permalink": "/docs/Tasks/create-a-blog-post"
+                "permalink": "/docs/Tasks/ramas_uniones"
               },
               "next": {
                 "title": "Deploy your site",
                 "permalink": "/docs/Tasks/deploy-your-site"
+              }
+            },
+            {
+              "unversionedId": "Tasks/ramas_uniones",
+              "id": "Tasks/ramas_uniones",
+              "title": "Taller 3: Git. Trabajando con ramas y uniones",
+              "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
+              "source": "@site/docs/Tasks/ramas_uniones.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/ramas_uniones",
+              "permalink": "/docs/Tasks/ramas_uniones",
+              "draft": false,
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/ramas_uniones.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Taller 2: Introducción a Markdown",
+                "permalink": "/docs/Tasks/markdown"
+              },
+              "next": {
+                "title": "Markdown Features",
+                "permalink": "/docs/Tasks/markdown-features"
               }
             }
           ],
@@ -278,7 +278,7 @@
                   },
                   {
                     "type": "doc",
-                    "id": "Tasks/create-a-blog-post"
+                    "id": "Tasks/ramas_uniones"
                   },
                   {
                     "type": "doc",
