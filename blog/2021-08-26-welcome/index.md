@@ -1,7 +1,7 @@
 ---
 slug: Contacto
 title: Contacto
-authors: [Nazareth]
+authors: [nazareth]
 tags: [Linkedin, GitHub, gmail, contacto]
 ---
 
