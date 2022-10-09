@@ -2,6 +2,6 @@
 sidebar_position: 1
 ---
 
-# Proximamente... 
+# Próximamente... 
 
 ![otter](/img/otter_pin.png)
