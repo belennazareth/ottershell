@@ -1,8 +1,8 @@
 {
   "unversionedId": "Tasks/create-a-blog-post",
   "id": "Tasks/create-a-blog-post",
-  "title": "Create a Blog Post",
-  "description": "Docusaurus creates a page for each blog post, but also a blog index page, a tag system, an RSS feed...",
+  "title": "Taller 3: Git. Trabajando con ramas y uniones",
+  "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
   "source": "@site/docs/Tasks/create-a-blog-post.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/create-a-blog-post",

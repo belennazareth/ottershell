@@ -122,8 +122,8 @@
             {
               "unversionedId": "Tasks/create-a-blog-post",
               "id": "Tasks/create-a-blog-post",
-              "title": "Create a Blog Post",
-              "description": "Docusaurus creates a page for each blog post, but also a blog index page, a tag system, an RSS feed...",
+              "title": "Taller 3: Git. Trabajando con ramas y uniones",
+              "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
               "source": "@site/docs/Tasks/create-a-blog-post.md",
               "sourceDirName": "Tasks",
               "slug": "/Tasks/create-a-blog-post",
@@ -138,66 +138,12 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Create a Document",
-                "permalink": "/docs/Tasks/create-a-document"
+                "title": "Taller 2: Introducción a Markdown",
+                "permalink": "/docs/Tasks/markdown"
               },
               "next": {
                 "title": "Markdown Features",
                 "permalink": "/docs/Tasks/markdown-features"
-              }
-            },
-            {
-              "unversionedId": "Tasks/create-a-document",
-              "id": "Tasks/create-a-document",
-              "title": "Create a Document",
-              "description": "Documents are groups of pages connected through:",
-              "source": "@site/docs/Tasks/create-a-document.md",
-              "sourceDirName": "Tasks",
-              "slug": "/Tasks/create-a-document",
-              "permalink": "/docs/Tasks/create-a-document",
-              "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/create-a-document.md",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 2,
-              "frontMatter": {
-                "sidebar_position": 2
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Create a Page",
-                "permalink": "/docs/Tasks/create-a-page"
-              },
-              "next": {
-                "title": "Create a Blog Post",
-                "permalink": "/docs/Tasks/create-a-blog-post"
-              }
-            },
-            {
-              "unversionedId": "Tasks/create-a-page",
-              "id": "Tasks/create-a-page",
-              "title": "Create a Page",
-              "description": "Add Markdown or React files to src/pages to create a standalone page:",
-              "source": "@site/docs/Tasks/create-a-page.md",
-              "sourceDirName": "Tasks",
-              "slug": "/Tasks/create-a-page",
-              "permalink": "/docs/Tasks/create-a-page",
-              "draft": false,
-              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/create-a-page.md",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "sidebar_position": 1
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Tasks",
-                "permalink": "/docs/category/tasks"
-              },
-              "next": {
-                "title": "Create a Document",
-                "permalink": "/docs/Tasks/create-a-document"
               }
             },
             {
@@ -228,6 +174,60 @@
               }
             },
             {
+              "unversionedId": "Tasks/intro_git",
+              "id": "Tasks/intro_git",
+              "title": "Taller 1: Introducción a git y GitHub",
+              "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
+              "source": "@site/docs/Tasks/intro_git.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/intro_git",
+              "permalink": "/docs/Tasks/intro_git",
+              "draft": false,
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/intro_git.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Tasks",
+                "permalink": "/docs/category/tasks"
+              },
+              "next": {
+                "title": "Taller 2: Introducción a Markdown",
+                "permalink": "/docs/Tasks/markdown"
+              }
+            },
+            {
+              "unversionedId": "Tasks/markdown",
+              "id": "Tasks/markdown",
+              "title": "Taller 2: Introducción a Markdown",
+              "description": "IMPLANTACIÓN DE APLICACIONES WEB (2022-2023)",
+              "source": "@site/docs/Tasks/markdown.md",
+              "sourceDirName": "Tasks",
+              "slug": "/Tasks/markdown",
+              "permalink": "/docs/Tasks/markdown",
+              "draft": false,
+              "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/markdown.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Taller 1: Introducción a git y GitHub",
+                "permalink": "/docs/Tasks/intro_git"
+              },
+              "next": {
+                "title": "Taller 3: Git. Trabajando con ramas y uniones",
+                "permalink": "/docs/Tasks/create-a-blog-post"
+              }
+            },
+            {
               "unversionedId": "Tasks/markdown-features",
               "id": "Tasks/markdown-features",
               "title": "Markdown Features",
@@ -246,7 +246,7 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Create a Blog Post",
+                "title": "Taller 3: Git. Trabajando con ramas y uniones",
                 "permalink": "/docs/Tasks/create-a-blog-post"
               },
               "next": {
@@ -270,11 +270,11 @@
                 "items": [
                   {
                     "type": "doc",
-                    "id": "Tasks/create-a-page"
+                    "id": "Tasks/intro_git"
                   },
                   {
                     "type": "doc",
-                    "id": "Tasks/create-a-document"
+                    "id": "Tasks/markdown"
                   },
                   {
                     "type": "doc",
@@ -295,7 +295,7 @@
                 ],
                 "link": {
                   "type": "generated-index",
-                  "description": "5 minutes to learn the most important Docusaurus concepts.",
+                  "description": " ",
                   "slug": "/category/tasks",
                   "permalink": "/docs/category/tasks"
                 }
