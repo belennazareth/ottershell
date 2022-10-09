@@ -1,3 +1,8 @@
 #! /usr/bin/bash
 
-npm run build
+if [[ npm run build = true ]];
+then
+	vercel --prod
+else
+	echo "Error de compilación"
+fi
