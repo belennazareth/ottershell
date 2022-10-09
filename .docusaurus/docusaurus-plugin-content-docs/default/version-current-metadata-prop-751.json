@@ -29,9 +29,9 @@
           },
           {
             "type": "link",
-            "label": "Create a Document",
-            "href": "/docs/Tasks/create-a-document",
-            "docId": "Tasks/create-a-document"
+            "label": "Taller 2: Introducción a Markdown",
+            "href": "/docs/Tasks/markdown",
+            "docId": "Tasks/markdown"
           },
           {
             "type": "link",
@@ -114,12 +114,6 @@
       "description": "Docusaurus creates a page for each blog post, but also a blog index page, a tag system, an RSS feed...",
       "sidebar": "tutorialSidebar"
     },
-    "Tasks/create-a-document": {
-      "id": "Tasks/create-a-document",
-      "title": "Create a Document",
-      "description": "Documents are groups of pages connected through:",
-      "sidebar": "tutorialSidebar"
-    },
     "Tasks/deploy-your-site": {
       "id": "Tasks/deploy-your-site",
       "title": "Deploy your site",
@@ -130,6 +124,12 @@
       "id": "Tasks/intro_git",
       "title": "Taller 1: Introducción a git y GitHub",
       "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/markdown": {
+      "id": "Tasks/markdown",
+      "title": "Taller 2: Introducción a Markdown",
+      "description": "IMPLANTACIÓN DE APLICACIONES WEB (2022-2023)",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/markdown-features": {

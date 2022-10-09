@@ -143,7 +143,7 @@
     },
     "content": "393be207"
   },
-  "/docs-501": {
+  "/docs-58c": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -178,10 +178,6 @@
     "__comp": "17896441",
     "content": "b61cc58e"
   },
-  "/docs/Tasks/create-a-document-4e6": {
-    "__comp": "17896441",
-    "content": "7fcc5ae6"
-  },
   "/docs/Tasks/deploy-your-site-184": {
     "__comp": "17896441",
     "content": "e93980ec"
@@ -189,6 +185,10 @@
   "/docs/Tasks/intro_git-221": {
     "__comp": "17896441",
     "content": "5d56c66f"
+  },
+  "/docs/Tasks/markdown-ebc": {
+    "__comp": "17896441",
+    "content": "596b171e"
   },
   "/docs/Tasks/markdown-features-a58": {
     "__comp": "17896441",

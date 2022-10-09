@@ -64,7 +64,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '501'),
+    component: ComponentCreator('/docs', '58c'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -109,12 +109,6 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
-        path: '/docs/Tasks/create-a-document',
-        component: ComponentCreator('/docs/Tasks/create-a-document', '4e6'),
-        exact: true,
-        sidebar: "tutorialSidebar"
-      },
-      {
         path: '/docs/Tasks/deploy-your-site',
         component: ComponentCreator('/docs/Tasks/deploy-your-site', '184'),
         exact: true,
@@ -123,6 +117,12 @@ export default [
       {
         path: '/docs/Tasks/intro_git',
         component: ComponentCreator('/docs/Tasks/intro_git', '221'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/markdown',
+        component: ComponentCreator('/docs/Tasks/markdown', 'ebc'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

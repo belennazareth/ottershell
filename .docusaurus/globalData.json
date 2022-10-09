@@ -36,11 +36,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Tasks/create-a-document",
-              "path": "/docs/Tasks/create-a-document",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "Tasks/deploy-your-site",
               "path": "/docs/Tasks/deploy-your-site",
               "sidebar": "tutorialSidebar"
@@ -48,6 +43,11 @@
             {
               "id": "Tasks/intro_git",
               "path": "/docs/Tasks/intro_git",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/markdown",
+              "path": "/docs/Tasks/markdown",
               "sidebar": "tutorialSidebar"
             },
             {
