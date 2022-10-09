@@ -23,3 +23,16 @@ de funcionamiento.
     Para realizar este apartado primero hay que crear un repositorio en GitHub, después desde la terminal se crea un repositorio en local el cual será
     vinculado al creado en GitHub.
     Para vincular los repositorios, desde línea de comando usamos lo siguiente:
+
+    ```
+    git init
+    git add .
+    git commit -m "<commit>"
+    git remote add origin git@github.com:<nombre de usuario>/<nombre del repositorio>.git
+    git push -u origin master
+    ```
+    Un ejemplo de su funcionamiento sería:
+
+![Repo](/static/img/IAW/taller1IAW-3.png)
+
+![Repo](/static/img/IAW/taller1IAW-4.png)
