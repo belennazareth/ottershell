@@ -1,58 +1,51 @@
 {
-  "permalink": "/blog/welcome",
+  "permalink": "/blog/Contacto",
   "editUrl": "https://github.com/belennazareth/ottershell/blog/2021-08-26-welcome/index.md",
   "source": "@site/blog/2021-08-26-welcome/index.md",
-  "title": "Welcome",
-  "description": "Docusaurus blogging features are powered by the blog plugin.",
+  "title": "Contacto",
+  "description": "Linkedin",
   "date": "2021-08-26T00:00:00.000Z",
   "formattedDate": "August 26, 2021",
   "tags": [
     {
-      "label": "facebook",
-      "permalink": "/blog/tags/facebook"
+      "label": "Linkedin",
+      "permalink": "/blog/tags/linkedin"
     },
     {
-      "label": "hello",
-      "permalink": "/blog/tags/hello"
+      "label": "GitHub",
+      "permalink": "/blog/tags/git-hub"
     },
     {
-      "label": "docusaurus",
-      "permalink": "/blog/tags/docusaurus"
+      "label": "gmail",
+      "permalink": "/blog/tags/gmail"
+    },
+    {
+      "label": "contacto",
+      "permalink": "/blog/tags/contacto"
     }
   ],
-  "readingTime": 0.405,
+  "readingTime": 0.045,
   "hasTruncateMarker": false,
   "authors": [
     {
-      "name": "Sébastien Lorber",
-      "title": "Docusaurus maintainer",
-      "url": "https://sebastienlorber.com",
-      "imageURL": "https://github.com/slorber.png",
-      "key": "slorber"
-    },
-    {
-      "name": "Yangshun Tay",
-      "title": "Front End Engineer @ Facebook",
-      "url": "https://github.com/yangshun",
-      "imageURL": "https://github.com/yangshun.png",
-      "key": "yangshun"
+      "name": "Belén Nazareth Durán Meléndez",
+      "title": "Estudiante de ASIR",
+      "url": "https://github.com/belennazareth",
+      "imageURL": "https://avatars.githubusercontent.com/u/95573796?v=4",
+      "key": "nazareth"
     }
   ],
   "frontMatter": {
-    "slug": "welcome",
-    "title": "Welcome",
+    "slug": "Contacto",
+    "title": "Contacto",
     "authors": [
-      "slorber",
-      "yangshun"
+      "nazareth"
     ],
     "tags": [
-      "facebook",
-      "hello",
-      "docusaurus"
+      "Linkedin",
+      "GitHub",
+      "gmail",
+      "contacto"
     ]
-  },
-  "nextItem": {
-    "title": "MDX Blog Post",
-    "permalink": "/blog/mdx-blog-post"
   }
 }
