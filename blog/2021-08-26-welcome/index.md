@@ -1,25 +1,18 @@
 ---
-slug: welcome
-title: Welcome
-authors: [slorber, yangshun]
-tags: [facebook, hello, docusaurus]
+slug: Contacto
+title: Contacto
+authors: [Nazareth]
+tags: [Linkedin, GitHub, gmail, contacto]
 ---
 
-[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
+## **Linkedin**
 
-Simply add Markdown files (or folders) to the `blog` directory.
+[Linkedin](https://www.linkedin.com/in/bel%C3%A9n-nazareth-dur%C3%A1n-mel%C3%A9ndez-6503111aa/)
 
-Regular blog authors can be added to `authors.yml`.
+## **GitHub**
 
-The blog post date can be extracted from filenames, such as:
+[Github](https://github.com/belennazareth)
 
-- `2019-05-30-welcome.md`
-- `2019-05-30-welcome/index.md`
+## **Gmail**
 
-A blog post folder can be convenient to co-locate blog post images:
-
-![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)
-
-The blog supports tags as well!
-
-**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config.
+belennazareth29@gmail.com
