@@ -20,9 +20,7 @@ sidebar_position: 1
 y luego busca información para sincronizarlo y crear el repositorio remoto en GitHub. Comenta los pasos que has realizado y manda alguna prueba
 de funcionamiento.
 
-    Para realizar este apartado primero hay que crear un repositorio en GitHub, después desde la terminal se crea un repositorio en local el cual será
-    vinculado al creado en GitHub.
-    Para vincular los repositorios, desde línea de comando usamos lo siguiente:
+Para realizar este apartado primero hay que crear un repositorio en GitHub, después desde la terminal se crea un repositorio en local el cual será vinculado al creado en GitHub. Para vincular los repositorios, desde línea de comando usamos lo siguiente:
 
         ```
         git init
@@ -31,7 +29,8 @@ de funcionamiento.
         git remote add origin git@github.com:<nombre de usuario>/<nombre del repositorio>.git
         git push -u origin master
         ```
-    Un ejemplo de su funcionamiento sería:
+
+Un ejemplo de su funcionamiento sería:
 
 ![Repo](/img/IAW/taller1IAW-3.png)
 
