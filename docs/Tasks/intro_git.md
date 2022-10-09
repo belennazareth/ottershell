@@ -24,13 +24,13 @@ de funcionamiento.
     vinculado al creado en GitHub.
     Para vincular los repositorios, desde línea de comando usamos lo siguiente:
 
-    ```
-    git init
-    git add .
-    git commit -m "<commit>"
-    git remote add origin git@github.com:<nombre de usuario>/<nombre del repositorio>.git
-    git push -u origin master
-    ```
+        ```
+        git init
+        git add .
+        git commit -m "<commit>"
+        git remote add origin git@github.com:<nombre de usuario>/<nombre del repositorio>.git
+        git push -u origin master
+        ```
     Un ejemplo de su funcionamiento sería:
 
 ![Repo](/img/IAW/taller1IAW-3.png)
