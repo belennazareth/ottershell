@@ -28,3 +28,12 @@ git branch -d primera
 
 **4.** Crea una rama que se llame segunda, y modifica un fichero en ella para producir un conflicto al unirlo a la rama principal. Entrega el contenido del
 fichero donde se ha producido el conflicto.
+
+![Term](/img/IAW/taller3IAW-4.png)
+
+**5.** Soluciona el conflicto que has creado en el punto anterior y sincroniza la rama segunda en el remoto. Entrega una captura de pantalla donde se
+vea que se ha creado la rama en el repositorio de GitHub.
+
+![Term](/img/IAW/taller3IAW-5.png)
+![Term](/img/IAW/taller3IAW-6.png)
+
