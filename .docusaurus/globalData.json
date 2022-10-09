@@ -11,28 +11,13 @@
           "mainDocId": "intro",
           "docs": [
             {
-              "id": "Extras/manage-docs-versions",
-              "path": "/docs/Extras/manage-docs-versions",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Extras/translate-your-site",
-              "path": "/docs/Extras/translate-your-site",
+              "id": "Extras/proximamente",
+              "path": "/docs/Extras/proximamente",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "intro",
               "path": "/docs/intro",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Tasks/congratulations",
-              "path": "/docs/Tasks/congratulations",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Tasks/deploy-your-site",
-              "path": "/docs/Tasks/deploy-your-site",
               "sidebar": "tutorialSidebar"
             },
             {

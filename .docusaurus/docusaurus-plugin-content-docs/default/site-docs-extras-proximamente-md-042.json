@@ -1,0 +1,23 @@
+{
+  "unversionedId": "Extras/proximamente",
+  "id": "Extras/proximamente",
+  "title": "Próximamente...",
+  "description": "otter",
+  "source": "@site/docs/Extras/proximamente.md",
+  "sourceDirName": "Extras",
+  "slug": "/Extras/proximamente",
+  "permalink": "/docs/Extras/proximamente",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Extras/proximamente.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
+  }
+}

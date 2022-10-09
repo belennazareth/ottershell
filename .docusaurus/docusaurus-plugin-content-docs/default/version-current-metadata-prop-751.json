@@ -44,18 +44,6 @@
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
-          },
-          {
-            "type": "link",
-            "label": "Deploy your site",
-            "href": "/docs/Tasks/deploy-your-site",
-            "docId": "Tasks/deploy-your-site"
-          },
-          {
-            "type": "link",
-            "label": "Congratulations!",
-            "href": "/docs/Tasks/congratulations",
-            "docId": "Tasks/congratulations"
           }
         ],
         "href": "/docs/category/tasks"
@@ -68,15 +56,9 @@
         "items": [
           {
             "type": "link",
-            "label": "Manage Docs Versions",
-            "href": "/docs/Extras/manage-docs-versions",
-            "docId": "Extras/manage-docs-versions"
-          },
-          {
-            "type": "link",
-            "label": "Translate your site",
-            "href": "/docs/Extras/translate-your-site",
-            "docId": "Extras/translate-your-site"
+            "label": "Próximamente...",
+            "href": "/docs/Extras/proximamente",
+            "docId": "Extras/proximamente"
           }
         ],
         "href": "/docs/category/extras"
@@ -84,34 +66,16 @@
     ]
   },
   "docs": {
-    "Extras/manage-docs-versions": {
-      "id": "Extras/manage-docs-versions",
-      "title": "Manage Docs Versions",
-      "description": "Docusaurus can manage multiple versions of your docs.",
-      "sidebar": "tutorialSidebar"
-    },
-    "Extras/translate-your-site": {
-      "id": "Extras/translate-your-site",
-      "title": "Translate your site",
-      "description": "Let's translate docs/intro.md to French.",
+    "Extras/proximamente": {
+      "id": "Extras/proximamente",
+      "title": "Próximamente...",
+      "description": "otter",
       "sidebar": "tutorialSidebar"
     },
     "intro": {
       "id": "intro",
       "title": "Sobre mí",
       "description": "Hola! 😊",
-      "sidebar": "tutorialSidebar"
-    },
-    "Tasks/congratulations": {
-      "id": "Tasks/congratulations",
-      "title": "Congratulations!",
-      "description": "You have just learned the basics of Docusaurus and made some changes to the initial template.",
-      "sidebar": "tutorialSidebar"
-    },
-    "Tasks/deploy-your-site": {
-      "id": "Tasks/deploy-your-site",
-      "title": "Deploy your site",
-      "description": "Docusaurus is a static-site-generator (also called Jamstack).",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/intro_git": {
