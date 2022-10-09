@@ -2,4 +2,4 @@
 
 npm run build 
 git commit -am "build"
-vercerl --prod
+vercel --prod
