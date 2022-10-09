@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/intro_git",
+  "id": "Tasks/intro_git",
+  "title": "Taller 1: Introducción a git y GitHub",
+  "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
+  "source": "@site/docs/Tasks/intro_git.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/intro_git",
+  "permalink": "/docs/Tasks/intro_git",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/intro_git.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tasks",
+    "permalink": "/docs/category/tasks"
+  },
+  "next": {
+    "title": "Create a Document",
+    "permalink": "/docs/Tasks/create-a-document"
+  }
+}

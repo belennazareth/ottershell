@@ -23,9 +23,9 @@
         "items": [
           {
             "type": "link",
-            "label": "Create a Page",
-            "href": "/docs/Tasks/create-a-page",
-            "docId": "Tasks/create-a-page"
+            "label": "Taller 1: Introducción a git y GitHub",
+            "href": "/docs/Tasks/intro_git",
+            "docId": "Tasks/intro_git"
           },
           {
             "type": "link",
@@ -120,16 +120,16 @@
       "description": "Documents are groups of pages connected through:",
       "sidebar": "tutorialSidebar"
     },
-    "Tasks/create-a-page": {
-      "id": "Tasks/create-a-page",
-      "title": "Create a Page",
-      "description": "Add Markdown or React files to src/pages to create a standalone page:",
-      "sidebar": "tutorialSidebar"
-    },
     "Tasks/deploy-your-site": {
       "id": "Tasks/deploy-your-site",
       "title": "Deploy your site",
       "description": "Docusaurus is a static-site-generator (also called Jamstack).",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/intro_git": {
+      "id": "Tasks/intro_git",
+      "title": "Taller 1: Introducción a git y GitHub",
+      "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/markdown-features": {

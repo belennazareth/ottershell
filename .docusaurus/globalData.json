@@ -41,13 +41,13 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Tasks/create-a-page",
-              "path": "/docs/Tasks/create-a-page",
+              "id": "Tasks/deploy-your-site",
+              "path": "/docs/Tasks/deploy-your-site",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Tasks/deploy-your-site",
-              "path": "/docs/Tasks/deploy-your-site",
+              "id": "Tasks/intro_git",
+              "path": "/docs/Tasks/intro_git",
               "sidebar": "tutorialSidebar"
             },
             {
