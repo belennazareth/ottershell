@@ -1,0 +1,23 @@
+{
+  "unversionedId": "Extras/prueba1_IAW",
+  "id": "Extras/prueba1_IAW",
+  "title": "Prueba: Introducción a la implantación de aplicaciones web",
+  "description": "Belén Nazareth Durán Meléndez",
+  "source": "@site/docs/Extras/prueba1_IAW.md",
+  "sourceDirName": "Extras",
+  "slug": "/Extras/prueba1_IAW",
+  "permalink": "/docs/Extras/prueba1_IAW",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Extras/prueba1_IAW.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Próximamente...",
+    "permalink": "/docs/Extras/proximamente"
+  }
+}

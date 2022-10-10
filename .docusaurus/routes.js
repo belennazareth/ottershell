@@ -3,6 +3,41 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
+    path: '/__docusaurus/debug',
+    component: ComponentCreator('/__docusaurus/debug', 'a1a'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/config',
+    component: ComponentCreator('/__docusaurus/debug/config', 'e56'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/content',
+    component: ComponentCreator('/__docusaurus/debug/content', '741'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/globalData',
+    component: ComponentCreator('/__docusaurus/debug/globalData', '8f2'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/metadata',
+    component: ComponentCreator('/__docusaurus/debug/metadata', '38b'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/registry',
+    component: ComponentCreator('/__docusaurus/debug/registry', '54f'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/routes',
+    component: ComponentCreator('/__docusaurus/debug/routes', 'fc4'),
+    exact: true
+  },
+  {
     path: '/blog',
     component: ComponentCreator('/blog', '94e'),
     exact: true
@@ -49,7 +84,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '766'),
+    component: ComponentCreator('/docs', 'e36'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -66,6 +101,12 @@ export default [
       {
         path: '/docs/Extras/proximamente',
         component: ComponentCreator('/docs/Extras/proximamente', 'b0b'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Extras/prueba1_IAW',
+        component: ComponentCreator('/docs/Extras/prueba1_IAW', '18c'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

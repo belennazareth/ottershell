@@ -19,5 +19,9 @@
   "previous": {
     "title": "Extras",
     "permalink": "/docs/category/extras"
+  },
+  "next": {
+    "title": "Prueba: Introducción a la implantación de aplicaciones web",
+    "permalink": "/docs/Extras/prueba1_IAW"
   }
 }
