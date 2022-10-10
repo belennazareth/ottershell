@@ -31,7 +31,7 @@ export default {
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/belennazareth/ottershell"
+          "editUrl": "https://github.com/belennazareth/ottershell/blob/main/"
         },
         "theme": {
           "customCss": "/home/nazare/github/ottershell/src/css/custom.css"
