@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/makefile_aso",
+  "id": "Tasks/makefile_aso",
+  "title": "Compilación de un programa en C utilizando un Makefile.",
+  "description": "",
+  "source": "@site/docs/Tasks/makefile_aso.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/makefile_aso",
+  "permalink": "/docs/Tasks/makefile_aso",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/makefile_aso.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Taller 3: Git. Trabajando con ramas y uniones",
+    "permalink": "/docs/Tasks/ramas_uniones"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
