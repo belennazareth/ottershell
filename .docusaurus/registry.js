@@ -36,5 +36,6 @@ export default {
   'ccc49370': [() => import(/* webpackChunkName: 'ccc49370' */ '@theme/BlogPostPage'), '@theme/BlogPostPage', require.resolveWeak('@theme/BlogPostPage')],
   'd9f32620': [() => import(/* webpackChunkName: 'd9f32620' */ '@site/blog/2021-08-26-welcome/index.md'), '@site/blog/2021-08-26-welcome/index.md', require.resolveWeak('@site/blog/2021-08-26-welcome/index.md')],
   'db5c031a': [() => import(/* webpackChunkName: 'db5c031a' */ '~blog/default/blog-tags-linkedin-40d-list.json'), '~blog/default/blog-tags-linkedin-40d-list.json', require.resolveWeak('~blog/default/blog-tags-linkedin-40d-list.json')],
+  'e8d71a07': [() => import(/* webpackChunkName: 'e8d71a07' */ '@site/docs/Tasks/makefile_aso.md'), '@site/docs/Tasks/makefile_aso.md', require.resolveWeak('@site/docs/Tasks/makefile_aso.md')],
   'f8409a7e': [() => import(/* webpackChunkName: 'f8409a7e' */ '@site/docs/intro.mdx'), '@site/docs/intro.mdx', require.resolveWeak('@site/docs/intro.mdx')],
   'ff917fbd': [() => import(/* webpackChunkName: 'ff917fbd' */ '~blog/default/blog-tags-git-hub-bf3.json'), '~blog/default/blog-tags-git-hub-bf3.json', require.resolveWeak('~blog/default/blog-tags-git-hub-bf3.json')],};

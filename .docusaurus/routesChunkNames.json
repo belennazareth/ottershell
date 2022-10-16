@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-e36": {
+  "/docs-798": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -128,6 +128,10 @@
   "/docs/Tasks/intro_git-221": {
     "__comp": "17896441",
     "content": "5d56c66f"
+  },
+  "/docs/Tasks/makefile_aso-e40": {
+    "__comp": "17896441",
+    "content": "e8d71a07"
   },
   "/docs/Tasks/markdown-ebc": {
     "__comp": "17896441",

@@ -41,6 +41,12 @@
           },
           {
             "type": "link",
+            "label": "Compilación de un programa en C utilizando un Makefile.",
+            "href": "/docs/Tasks/makefile_aso",
+            "docId": "Tasks/makefile_aso"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -94,6 +100,12 @@
       "id": "Tasks/intro_git",
       "title": "Taller 1: Introducción a git y GitHub",
       "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/makefile_aso": {
+      "id": "Tasks/makefile_aso",
+      "title": "Compilación de un programa en C utilizando un Makefile.",
+      "description": "",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/markdown": {

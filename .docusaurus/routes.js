@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'e36'),
+    component: ComponentCreator('/docs', '798'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -84,6 +84,12 @@ export default [
       {
         path: '/docs/Tasks/intro_git',
         component: ComponentCreator('/docs/Tasks/intro_git', '221'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/makefile_aso',
+        component: ComponentCreator('/docs/Tasks/makefile_aso', 'e40'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
