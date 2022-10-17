@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/makefile_aso",
   "id": "Tasks/makefile_aso",
   "title": "Compilación de un programa en C utilizando un Makefile.",
-  "description": "",
+  "description": "Introducción",
   "source": "@site/docs/Tasks/makefile_aso.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/makefile_aso",
