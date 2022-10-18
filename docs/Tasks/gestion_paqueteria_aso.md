@@ -80,7 +80,7 @@ Prepara una máquina virtual con Debian bullseye, realizar las siguientes accion
 
 Que cometidos tienen:
 
-1. /var/lib/apt/lists/
-2. /var/lib/dpkg/available
-3. /var/lib/dpkg/status
-4. /var/cache/apt/archives/
+    1. /var/lib/apt/lists/
+    2. /var/lib/dpkg/available
+    3. /var/lib/dpkg/status
+    4. /var/cache/apt/archives/
