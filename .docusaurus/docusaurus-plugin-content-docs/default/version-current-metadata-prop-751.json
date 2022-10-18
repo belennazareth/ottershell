@@ -47,6 +47,12 @@
           },
           {
             "type": "link",
+            "label": "Ejercicios gestión de paquetería",
+            "href": "/docs/Tasks/gestion_paqueteria_aso",
+            "docId": "Tasks/gestion_paqueteria_aso"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -94,6 +100,12 @@
       "id": "intro",
       "title": "Sobre mí",
       "description": "Hola! 😊",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/gestion_paqueteria_aso": {
+      "id": "Tasks/gestion_paqueteria_aso",
+      "title": "Ejercicios gestión de paquetería",
+      "description": "Trabajo con apt, aptitude, dpkg",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/intro_git": {

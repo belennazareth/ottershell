@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '798'),
+    component: ComponentCreator('/docs', '428'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -82,6 +82,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/gestion_paqueteria_aso',
+        component: ComponentCreator('/docs/Tasks/gestion_paqueteria_aso', 'b86'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/intro_git',
         component: ComponentCreator('/docs/Tasks/intro_git', '221'),
         exact: true,
@@ -101,7 +107,7 @@ export default [
       },
       {
         path: '/docs/Tasks/markdown-features',
-        component: ComponentCreator('/docs/Tasks/markdown-features', 'a58'),
+        component: ComponentCreator('/docs/Tasks/markdown-features', '4e3'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

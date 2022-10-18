@@ -26,6 +26,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/gestion_paqueteria_aso",
+              "path": "/docs/Tasks/gestion_paqueteria_aso",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/intro_git",
               "path": "/docs/Tasks/intro_git",
               "sidebar": "tutorialSidebar"
