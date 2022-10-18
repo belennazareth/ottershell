@@ -155,7 +155,7 @@ Si realizamos un `tree` del directorio vemos:
 
 Y de este modo se ve una demostración de ejecución del binario:
 
-![Term](/img/ASO/recording-2022-10-17-13-50-13.gif)
+![Term](/img/ASO/recording-2022-10-18-09-46-53.gif)
 
 ## Añadir al PATH
 
@@ -182,7 +182,7 @@ PATH="[$PATH]:[Ruta del binario]"
 export PATH
 ```
 
-# Desinstalación del programa
+## Desinstalación del programa
 
 Para realizar la desinstalación del paquete únicamente debemos ejecutar desde `src` el comando:
 
