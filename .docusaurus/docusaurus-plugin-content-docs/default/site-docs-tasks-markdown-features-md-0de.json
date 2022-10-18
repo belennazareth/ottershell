@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/markdown-features",
+  "id": "Tasks/markdown-features",
+  "title": "Markdown Features",
+  "description": "Docusaurus supports Markdown and a few additional features.",
+  "source": "@site/docs/Tasks/markdown-features.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/markdown-features",
+  "permalink": "/docs/Tasks/markdown-features",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/markdown-features.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ejercicios gestión de paquetería",
+    "permalink": "/docs/Tasks/gestion_paqueteria_aso"
+  },
+  "next": {
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
+  }
+}

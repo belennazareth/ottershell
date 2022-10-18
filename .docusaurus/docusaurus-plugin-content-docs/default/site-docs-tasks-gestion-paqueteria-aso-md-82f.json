@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/gestion_paqueteria_aso",
+  "id": "Tasks/gestion_paqueteria_aso",
+  "title": "Ejercicios gestión de paquetería",
+  "description": "Trabajo con apt, aptitude, dpkg",
+  "source": "@site/docs/Tasks/gestion_paqueteria_aso.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/gestion_paqueteria_aso",
+  "permalink": "/docs/Tasks/gestion_paqueteria_aso",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/docs/Tasks/gestion_paqueteria_aso.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Compilación de un programa en C utilizando un Makefile.",
+    "permalink": "/docs/Tasks/makefile_aso"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

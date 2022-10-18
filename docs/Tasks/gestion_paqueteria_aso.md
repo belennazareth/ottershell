@@ -48,37 +48,39 @@ Prepara una máquina virtual con Debian bullseye, realizar las siguientes accion
 
 ## Trabajo con ficheros .deb
 
-Descarga un paquete sin instalarlo, es decir, descarga el fichero .deb correspondiente. Indica diferentes formas de hacerlo.
+1. Descarga un paquete sin instalarlo, es decir, descarga el fichero .deb correspondiente. Indica diferentes formas de hacerlo.
 
-¿Cómo puedes ver el contenido, que no extraerlo, de lo que se instalará en el sistema de un paquete deb?
+2. ¿Cómo puedes ver el contenido, que no extraerlo, de lo que se instalará en el sistema de un paquete deb?
 
-Sobre el fichero .deb descargado, utiliza el comando ar. ar permite extraer el contenido de una paquete deb. Indica el procedimiento para visualizar con ar el contenido del paquete deb. Con el paquete que has descargado y utilizando el comando ar, descomprime el paquete. ¿Qué información dispones después de la extracción?. Indica la finalidad de lo extraído.
+3. Sobre el fichero .deb descargado, utiliza el comando ar. ar permite extraer el contenido de una paquete deb. Indica el procedimiento para visualizar con ar el contenido del paquete deb. Con el paquete que has descargado y utilizando el comando ar, descomprime el paquete. ¿Qué información dispones después de la extracción?. Indica la finalidad de lo extraído.
 
-Indica el procedimiento para descomprimir lo extraído por ar del punto anterior. ¿Qué información contiene?
+4. Indica el procedimiento para descomprimir lo extraído por ar del punto anterior. ¿Qué información contiene?
 
-Trabajo con repositorios
-Añade a tu fichero sources.list los repositorios de bullseye-backports y sid.
+## Trabajo con repositorios
 
-Configura el sistema APT para que los paquetes de debian bullseye tengan mayor prioridad y por tanto sean los que se instalen por defecto.
+1. Añade a tu fichero sources.list los repositorios de bullseye-backports y sid.
 
-Configura el sistema APT para que los paquetes de bullseye-backports tengan mayor prioridad que los de unstable.
+2. Configura el sistema APT para que los paquetes de debian bullseye tengan mayor prioridad y por tanto sean los que se instalen por defecto.
 
-¿Cómo añades la posibilidad de descargar paquetería de la arquitectura i386 en tu sistema. ¿Que comando has empleado?. Lista arquitecturas no nativas. ¿Cómo procederías para desechar la posibilidad de descargar paquetería de la arquitectura i386?
+3. Configura el sistema APT para que los paquetes de bullseye-backports tengan mayor prioridad que los de unstable.
 
-Si quisieras descargar un paquete, ¿cómo puedes saber todas las versiones disponible de dicho paquete?
+4. ¿Cómo añades la posibilidad de descargar paquetería de la arquitectura i386 en tu sistema. ¿Que comando has empleado?. Lista arquitecturas no nativas. ¿Cómo procederías para desechar la posibilidad de descargar paquetería de la arquitectura i386?
 
-Indica el procedimiento para descargar un paquete del repositorio stable.
+5. Si quisieras descargar un paquete, ¿cómo puedes saber todas las versiones disponible de dicho paquete?
 
-Indica el procedimiento para descargar un paquete del repositorio de buster-backports.
+6. Indica el procedimiento para descargar un paquete del repositorio stable.
 
-Indica el procedimiento para descargar un paquete del repositorio de sid.
+7. Indica el procedimiento para descargar un paquete del repositorio de buster-backports.
 
-Indica el procedimiento para descargar un paquete de arquitectura i386.
+8. Indica el procedimiento para descargar un paquete del repositorio de sid.
 
-Trabajo con directorios
+9. Indica el procedimiento para descargar un paquete de arquitectura i386.
+
+## Trabajo con directorios
+
 Que cometidos tienen:
 
-/var/lib/apt/lists/
-/var/lib/dpkg/available
-/var/lib/dpkg/status
-/var/cache/apt/archives/
+1. /var/lib/apt/lists/
+2. /var/lib/dpkg/available
+3. /var/lib/dpkg/status
+4. /var/cache/apt/archives/
