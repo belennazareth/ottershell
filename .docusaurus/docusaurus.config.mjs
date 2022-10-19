@@ -27,7 +27,7 @@ export default {
       {
         "docs": {
           "sidebarPath": "/home/nazare/github/ottershell/sidebars.js",
-          "editUrl": "https://github.com/belennazareth/ottershell"
+          "editUrl": "https://github.com/belennazareth/ottershell/blob/main/"
         },
         "blog": {
           "showReadingTime": true,
