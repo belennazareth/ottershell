@@ -10,6 +10,8 @@ Prepara una máquina virtual con Debian bullseye, realizar las siguientes accion
 
 1. Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.
 
+
+
 2. Lista la relación de paquetes que pueden ser actualizados. ¿Qué información puedes sacar a tenor de lo mostrado en el listado?.
 
 3. Indica la versión instalada, candidata así como la prioridad del paquete openssh-client.
