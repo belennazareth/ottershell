@@ -10,7 +10,7 @@ Prepara una máquina virtual con Debian bullseye, realizar las siguientes accion
 
 1. Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.
 
-
+    * apt update: 
 
 2. Lista la relación de paquetes que pueden ser actualizados. ¿Qué información puedes sacar a tenor de lo mostrado en el listado?.
 
