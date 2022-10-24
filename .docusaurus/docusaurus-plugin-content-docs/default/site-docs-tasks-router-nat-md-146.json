@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/router_nat",
+  "id": "Tasks/router_nat",
+  "title": "Práctica: Creación y configuración de un escenario router-nat",
+  "description": "1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.",
+  "source": "@site/docs/Tasks/router_nat.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/router_nat",
+  "permalink": "/docs/Tasks/router_nat",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/router_nat.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ejercicios gestión de paquetería",
+    "permalink": "/docs/Tasks/gestion_paqueteria_aso"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
