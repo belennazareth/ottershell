@@ -3,6 +3,7 @@ export default {
   '042f6544': [() => import(/* webpackChunkName: '042f6544' */ '@site/docs/Extras/proximamente.md'), '@site/docs/Extras/proximamente.md', require.resolveWeak('@site/docs/Extras/proximamente.md')],
   '06fea3ab': [() => import(/* webpackChunkName: '06fea3ab' */ '@site/docs/Extras/prueba1_IAW.md'), '@site/docs/Extras/prueba1_IAW.md', require.resolveWeak('@site/docs/Extras/prueba1_IAW.md')],
   '0de80381': [() => import(/* webpackChunkName: '0de80381' */ '@site/docs/Tasks/markdown-features.md'), '@site/docs/Tasks/markdown-features.md', require.resolveWeak('@site/docs/Tasks/markdown-features.md')],
+  '14682d54': [() => import(/* webpackChunkName: '14682d54' */ '@site/docs/Tasks/router_nat.md'), '@site/docs/Tasks/router_nat.md', require.resolveWeak('@site/docs/Tasks/router_nat.md')],
   '14eb3368': [() => import(/* webpackChunkName: '14eb3368' */ '@theme/DocCategoryGeneratedIndexPage'), '@theme/DocCategoryGeneratedIndexPage', require.resolveWeak('@theme/DocCategoryGeneratedIndexPage')],
   '17896441': [() => import(/* webpackChunkName: '17896441' */ '@theme/DocItem'), '@theme/DocItem', require.resolveWeak('@theme/DocItem')],
   '1a6360f0': [() => import(/* webpackChunkName: '1a6360f0' */ '~blog/default/blog-tags-contacto-980-list.json'), '~blog/default/blog-tags-contacto-980-list.json', require.resolveWeak('~blog/default/blog-tags-contacto-980-list.json')],

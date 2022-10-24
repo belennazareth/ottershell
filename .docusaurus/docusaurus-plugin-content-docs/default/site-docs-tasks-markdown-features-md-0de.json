@@ -11,14 +11,14 @@
   "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/markdown-features.md",
   "tags": [],
   "version": "current",
-  "sidebarPosition": 6,
+  "sidebarPosition": 7,
   "frontMatter": {
-    "sidebar_position": 6
+    "sidebar_position": 7
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Ejercicios gestión de paquetería",
-    "permalink": "/docs/Tasks/gestion_paqueteria_aso"
+    "title": "Práctica: Creación y configuración de un escenario router-nat",
+    "permalink": "/docs/Tasks/router_nat"
   },
   "next": {
     "title": "Extras",

@@ -53,6 +53,12 @@
           },
           {
             "type": "link",
+            "label": "Práctica: Creación y configuración de un escenario router-nat",
+            "href": "/docs/Tasks/router_nat",
+            "docId": "Tasks/router_nat"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -136,6 +142,12 @@
       "id": "Tasks/ramas_uniones",
       "title": "Taller 3: Git. Trabajando con ramas y uniones",
       "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/router_nat": {
+      "id": "Tasks/router_nat",
+      "title": "Práctica: Creación y configuración de un escenario router-nat",
+      "description": "1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.",
       "sidebar": "tutorialSidebar"
     }
   }
