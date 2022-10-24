@@ -27,12 +27,3 @@ sidebar_position: 6
 
 ![Term](/img/SRI/practicaSRI-7.png)
 
-6. Estudia la forma de integrar la receta ansible en vagrant, de tal manera que una vez se cree el escenario se ejecuta la configuración.
-
-Si se introduce la siguiente línea en el fichero Vagrantfile se ejecutará Ansible en Vagrant una vez se haya realizado la creación del escenario:
-
-```
-config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "playbook.yml"
-  end
-```
