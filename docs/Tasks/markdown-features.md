@@ -1,8 +1,9 @@
 ---
-sidebar_position: 7
+sidebar_position: 12
 ---
 
 # Markdown Features
+
 
 Docusaurus supports **[Markdown](https://daringfireball.net/projects/markdown/syntax)** and a few **additional features**.
 

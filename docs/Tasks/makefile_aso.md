@@ -6,6 +6,7 @@ sidebar_position: 4
 
 ## Introducción
 
+
 En esta entrada se ha elegido el programa escrito en C `vim` con el que estaremos trabajando para la creación de un fichero Makefile que compile en C. 
 
 `Make` es una utilidad que comprueba que archivos de código deben ser recompilados, para ejecutar este comando es necesario tener un fichero `Makefile` el cual indica a `Make` como debe recompilar. Se puede presentar con los siguientes nombres:

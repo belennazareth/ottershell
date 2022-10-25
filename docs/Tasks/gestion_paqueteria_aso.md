@@ -6,6 +6,7 @@ sidebar_position: 5
 
 ## Trabajo con apt, aptitude, dpkg
 
+
 Prepara una máquina virtual con Debian bullseye, realizar las siguientes acciones:
 
 1. Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.

@@ -5,6 +5,7 @@ sidebar_position: 2
 # Taller 2: Introducción a Markdown
 ## IMPLANTACIÓN DE APLICACIONES WEB (2022-2023)
 
+
 **Markdown** es un lenguaje simple que se utiliza para crear texto enriquecido (por ejemplo, HTML) con un editor de texto sin formato. Te permite darle un formato básico al texto, utilizando símbolos conocidos y accesibles en todos los teclados. El tamaño de fuente, el color y otras opciones más avanzadas no están disponibles con Markdown.
 
 Con este editor podemos poner palabras en **negrita**, *cursiva* o también `como código` o lineas de código más largas como:

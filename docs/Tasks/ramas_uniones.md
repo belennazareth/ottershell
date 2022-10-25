@@ -4,6 +4,7 @@ sidebar_position: 3
 
 # Taller 3: Git. Trabajando con ramas y uniones
 
+
 **1.** Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.
 
 ```

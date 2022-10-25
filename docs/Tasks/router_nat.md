@@ -4,6 +4,7 @@ sidebar_position: 6
 
 # Práctica: Creación y configuración de un escenario router-nat
 
+
 1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.
 
 [Repositorio](https://github.com/belennazareth/vagrant_ansible)
