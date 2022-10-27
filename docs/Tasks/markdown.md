@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Taller 2: Introducción a Markdown
+# Introducción a Markdown
 ## IMPLANTACIÓN DE APLICACIONES WEB (2022-2023)
 
 

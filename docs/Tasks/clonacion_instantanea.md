@@ -2,6 +2,8 @@
 sidebar_position: 7
 ---
 
+# Clonación e instantáneas de máquinas virtuales
+
 1. Indica la instrucción virt-clone que has usado para clonar la máquina. ¿Qué cambios has hecho en la nueva máquina para que no sea igual a la original?
 
 

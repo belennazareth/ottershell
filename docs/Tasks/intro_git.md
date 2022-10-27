@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Taller 1: Introducción a git y GitHub
+# Introducción a git y GitHub
 
 
 **1.** Una captura de pantalla donde se vea que has creado el repositorio.
