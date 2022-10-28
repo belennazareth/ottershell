@@ -23,19 +23,19 @@
         "items": [
           {
             "type": "link",
-            "label": "Taller 1: Introducción a git y GitHub",
+            "label": "Introducción a git y GitHub",
             "href": "/docs/Tasks/intro_git",
             "docId": "Tasks/intro_git"
           },
           {
             "type": "link",
-            "label": "Taller 2: Introducción a Markdown",
+            "label": "Introducción a Markdown",
             "href": "/docs/Tasks/markdown",
             "docId": "Tasks/markdown"
           },
           {
             "type": "link",
-            "label": "Taller 3: Git. Trabajando con ramas y uniones",
+            "label": "Git. Trabajando con ramas y uniones",
             "href": "/docs/Tasks/ramas_uniones",
             "docId": "Tasks/ramas_uniones"
           },
@@ -53,9 +53,27 @@
           },
           {
             "type": "link",
-            "label": "Práctica: Creación y configuración de un escenario router-nat",
+            "label": "Creación y configuración de un escenario router-nat",
             "href": "/docs/Tasks/router_nat",
             "docId": "Tasks/router_nat"
+          },
+          {
+            "type": "link",
+            "label": "Clonación e instantáneas de máquinas virtuales",
+            "href": "/docs/Tasks/clonacion_instantanea",
+            "docId": "Tasks/clonacion_instantanea"
+          },
+          {
+            "type": "link",
+            "label": "Instalación de un servidor LAMP",
+            "href": "/docs/Tasks/servidor_lamp",
+            "docId": "Tasks/servidor_lamp"
+          },
+          {
+            "type": "link",
+            "label": "Peticiones HTTP",
+            "href": "/docs/Tasks/peticion_http",
+            "docId": "Tasks/peticion_http"
           },
           {
             "type": "link",
@@ -108,6 +126,12 @@
       "description": "Hola! 😊",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/clonacion_instantanea": {
+      "id": "Tasks/clonacion_instantanea",
+      "title": "Clonación e instantáneas de máquinas virtuales",
+      "description": "1. Indica la instrucción virt-clone que has usado para clonar la máquina. ¿Qué cambios has hecho en la nueva máquina para que no sea igual a la original?",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/gestion_paqueteria_aso": {
       "id": "Tasks/gestion_paqueteria_aso",
       "title": "Ejercicios gestión de paquetería",
@@ -116,7 +140,7 @@
     },
     "Tasks/intro_git": {
       "id": "Tasks/intro_git",
-      "title": "Taller 1: Introducción a git y GitHub",
+      "title": "Introducción a git y GitHub",
       "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
       "sidebar": "tutorialSidebar"
     },
@@ -128,7 +152,7 @@
     },
     "Tasks/markdown": {
       "id": "Tasks/markdown",
-      "title": "Taller 2: Introducción a Markdown",
+      "title": "Introducción a Markdown",
       "description": "IMPLANTACIÓN DE APLICACIONES WEB (2022-2023)",
       "sidebar": "tutorialSidebar"
     },
@@ -138,16 +162,28 @@
       "description": "Docusaurus supports Markdown and a few additional features.",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/peticion_http": {
+      "id": "Tasks/peticion_http",
+      "title": "Peticiones HTTP",
+      "description": "1. Prueba de funcionamiento de cada uno de los ejercicios.",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/ramas_uniones": {
       "id": "Tasks/ramas_uniones",
-      "title": "Taller 3: Git. Trabajando con ramas y uniones",
+      "title": "Git. Trabajando con ramas y uniones",
       "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/router_nat": {
       "id": "Tasks/router_nat",
-      "title": "Práctica: Creación y configuración de un escenario router-nat",
+      "title": "Creación y configuración de un escenario router-nat",
       "description": "1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/servidor_lamp": {
+      "id": "Tasks/servidor_lamp",
+      "title": "Instalación de un servidor LAMP",
+      "description": "1. Una captura de pantalla donde se vea la configuración de la resolución estática.",
       "sidebar": "tutorialSidebar"
     }
   }

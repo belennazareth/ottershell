@@ -1,7 +1,7 @@
 {
   "unversionedId": "Tasks/intro_git",
   "id": "Tasks/intro_git",
-  "title": "Taller 1: Introducción a git y GitHub",
+  "title": "Introducción a git y GitHub",
   "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
   "source": "@site/docs/Tasks/intro_git.md",
   "sourceDirName": "Tasks",
@@ -21,7 +21,7 @@
     "permalink": "/docs/category/tasks"
   },
   "next": {
-    "title": "Taller 2: Introducción a Markdown",
+    "title": "Introducción a Markdown",
     "permalink": "/docs/Tasks/markdown"
   }
 }

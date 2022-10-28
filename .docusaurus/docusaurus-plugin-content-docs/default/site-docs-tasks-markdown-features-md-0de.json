@@ -11,14 +11,14 @@
   "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/markdown-features.md",
   "tags": [],
   "version": "current",
-  "sidebarPosition": 7,
+  "sidebarPosition": 12,
   "frontMatter": {
-    "sidebar_position": 7
+    "sidebar_position": 12
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Práctica: Creación y configuración de un escenario router-nat",
-    "permalink": "/docs/Tasks/router_nat"
+    "title": "Peticiones HTTP",
+    "permalink": "/docs/Tasks/peticion_http"
   },
   "next": {
     "title": "Extras",

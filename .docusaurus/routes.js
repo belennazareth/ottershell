@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '923'),
+    component: ComponentCreator('/docs', '681'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -78,6 +78,12 @@ export default [
       {
         path: '/docs/intro',
         component: ComponentCreator('/docs/intro', '99a'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/clonacion_instantanea',
+        component: ComponentCreator('/docs/Tasks/clonacion_instantanea', '211'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
@@ -112,6 +118,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/peticion_http',
+        component: ComponentCreator('/docs/Tasks/peticion_http', '71d'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/ramas_uniones',
         component: ComponentCreator('/docs/Tasks/ramas_uniones', '260'),
         exact: true,
@@ -120,6 +132,12 @@ export default [
       {
         path: '/docs/Tasks/router_nat',
         component: ComponentCreator('/docs/Tasks/router_nat', 'bbb'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/servidor_lamp',
+        component: ComponentCreator('/docs/Tasks/servidor_lamp', 'fb8'),
         exact: true,
         sidebar: "tutorialSidebar"
       }

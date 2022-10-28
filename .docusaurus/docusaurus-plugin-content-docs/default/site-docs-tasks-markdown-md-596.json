@@ -1,7 +1,7 @@
 {
   "unversionedId": "Tasks/markdown",
   "id": "Tasks/markdown",
-  "title": "Taller 2: Introducción a Markdown",
+  "title": "Introducción a Markdown",
   "description": "IMPLANTACIÓN DE APLICACIONES WEB (2022-2023)",
   "source": "@site/docs/Tasks/markdown.md",
   "sourceDirName": "Tasks",
@@ -17,11 +17,11 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Taller 1: Introducción a git y GitHub",
+    "title": "Introducción a git y GitHub",
     "permalink": "/docs/Tasks/intro_git"
   },
   "next": {
-    "title": "Taller 3: Git. Trabajando con ramas y uniones",
+    "title": "Git. Trabajando con ramas y uniones",
     "permalink": "/docs/Tasks/ramas_uniones"
   }
 }

@@ -26,6 +26,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/clonacion_instantanea",
+              "path": "/docs/Tasks/clonacion_instantanea",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/gestion_paqueteria_aso",
               "path": "/docs/Tasks/gestion_paqueteria_aso",
               "sidebar": "tutorialSidebar"
@@ -51,6 +56,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/peticion_http",
+              "path": "/docs/Tasks/peticion_http",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/ramas_uniones",
               "path": "/docs/Tasks/ramas_uniones",
               "sidebar": "tutorialSidebar"
@@ -58,6 +68,11 @@
             {
               "id": "Tasks/router_nat",
               "path": "/docs/Tasks/router_nat",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/servidor_lamp",
+              "path": "/docs/Tasks/servidor_lamp",
               "sidebar": "tutorialSidebar"
             },
             {
