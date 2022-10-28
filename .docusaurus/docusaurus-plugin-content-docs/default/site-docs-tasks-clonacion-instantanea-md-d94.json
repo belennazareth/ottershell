@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/clonacion_instantanea",
+  "id": "Tasks/clonacion_instantanea",
+  "title": "Clonación e instantáneas de máquinas virtuales",
+  "description": "1. Indica la instrucción virt-clone que has usado para clonar la máquina. ¿Qué cambios has hecho en la nueva máquina para que no sea igual a la original?",
+  "source": "@site/docs/Tasks/clonacion_instantanea.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/clonacion_instantanea",
+  "permalink": "/docs/Tasks/clonacion_instantanea",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/clonacion_instantanea.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creación y configuración de un escenario router-nat",
+    "permalink": "/docs/Tasks/router_nat"
+  },
+  "next": {
+    "title": "Instalación de un servidor LAMP",
+    "permalink": "/docs/Tasks/servidor_lamp"
+  }
+}

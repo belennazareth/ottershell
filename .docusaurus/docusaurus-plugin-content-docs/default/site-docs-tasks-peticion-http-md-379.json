@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/peticion_http",
+  "id": "Tasks/peticion_http",
+  "title": "Peticiones HTTP",
+  "description": "1. Prueba de funcionamiento de cada uno de los ejercicios.",
+  "source": "@site/docs/Tasks/peticion_http.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/peticion_http",
+  "permalink": "/docs/Tasks/peticion_http",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/peticion_http.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "sidebar_position": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación de un servidor LAMP",
+    "permalink": "/docs/Tasks/servidor_lamp"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

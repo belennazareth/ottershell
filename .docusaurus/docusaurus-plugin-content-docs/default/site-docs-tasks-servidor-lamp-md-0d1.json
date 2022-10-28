@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/servidor_lamp",
+  "id": "Tasks/servidor_lamp",
+  "title": "Instalación de un servidor LAMP",
+  "description": "1. Una captura de pantalla donde se vea la configuración de la resolución estática.",
+  "source": "@site/docs/Tasks/servidor_lamp.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/servidor_lamp",
+  "permalink": "/docs/Tasks/servidor_lamp",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/servidor_lamp.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "sidebar_position": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Clonación e instantáneas de máquinas virtuales",
+    "permalink": "/docs/Tasks/clonacion_instantanea"
+  },
+  "next": {
+    "title": "Peticiones HTTP",
+    "permalink": "/docs/Tasks/peticion_http"
+  }
+}
