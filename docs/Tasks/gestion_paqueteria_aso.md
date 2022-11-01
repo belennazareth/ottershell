@@ -30,10 +30,7 @@ Para esto se ha usado el comando **apt policy**:
 
 4. ¿Cómo puedes sacar información de un paquete oficial instalado o que no este instalado?
 
-Hay dos posibles opciones:
-
-  * **dpkg -s**: aporta información si el paquete se encuentra instalado.
-  * **apt show**: detalla la información de paquetes pudiendo estar este instalado o no.
+**apt show**: detalla la información de paquetes pudiendo estar este instalado o no.
 
 Un ejemplo sería:
 
@@ -45,17 +42,32 @@ Para ver toda la información de este paquete se puede usar **apt-cache showpkg*
 
 6. Saca toda la información que puedas del paquete openssh-client candidato a actualizar en tu máquina.
 
-Se puede
+Para sacar toda la información se he usado el comando **aptitude show** donde vemos:
+
+![Repo](/img/ASO/paqueteriaASO-4.png)
 
 7. Lista todo el contenido referente al paquete openssh-client actual de tu máquina. Utiliza para ello tanto dpkg como apt.
 
+* `dpkg -L openssh-client`
+
+* `apt-file list openssh-client`
+
 8. Listar el contenido de un paquete sin la necesidad de instalarlo o descargarlo.
+
+* `apt-file list`
 
 9. Simula la instalación del paquete openssh-client.
 
+* `apt-get install -s openssh-client`
+![Repo](/img/ASO/paqueteriaASO-5.png)
+
 10. ¿Qué comando te informa de los posible bugs que presente un determinado paquete?
 
+* `apt-listbugs -s all list`
+
 11. Después de realizar un apt update && apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs.
+
+
 
 12. ¿Cómo encontrarías qué paquetes dependen de un paquete específico.
 
