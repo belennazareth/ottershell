@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/peticion_http",
   "id": "Tasks/peticion_http",
   "title": "Peticiones HTTP",
-  "description": "1. Prueba de funcionamiento de cada uno de los ejercicios.",
+  "description": "Con la herramienta curl podemos realizar peticiones HTTP según lo que queramos ver:",
   "source": "@site/docs/Tasks/peticion_http.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/peticion_http",

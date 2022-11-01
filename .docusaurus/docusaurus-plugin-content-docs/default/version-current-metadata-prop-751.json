@@ -165,7 +165,7 @@
     "Tasks/peticion_http": {
       "id": "Tasks/peticion_http",
       "title": "Peticiones HTTP",
-      "description": "1. Prueba de funcionamiento de cada uno de los ejercicios.",
+      "description": "Con la herramienta curl podemos realizar peticiones HTTP según lo que queramos ver:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/ramas_uniones": {
