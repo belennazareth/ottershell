@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkotter_shell=self.webpackChunkotter_shell||[]).push([[535],{5641:t=>{t.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Contacto","permalink":"/blog/Contacto"}]}')}}]);
