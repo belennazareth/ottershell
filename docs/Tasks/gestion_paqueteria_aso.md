@@ -11,17 +11,41 @@ Prepara una máquina virtual con Debian bullseye, realizar las siguientes accion
 
 1. Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.
 
-    * apt update: 
+    * apt update: se ejecuta como superusuario, conseguimos actualizar la paquetería disponible además de las versiones, la información que usa se encuentra en el fichero **/etc/apt/sources.list**.
+
+    * apt upgrade: se ejecuta una vez se actualizan los repositorios e instala y actualiza versiones de los paquetes ya instalados.
 
 2. Lista la relación de paquetes que pueden ser actualizados. ¿Qué información puedes sacar a tenor de lo mostrado en el listado?.
 
+Para poder listar los paquetes actualizables se usa el comando **apt list --upgradable**.
+Con esto podemos ver el paquete que tiene una versión actualizada en el repositorio y la arquitectura del sistema:
+
+![Repo](/img/ASO/paqueteriaASO.png)
+
 3. Indica la versión instalada, candidata así como la prioridad del paquete openssh-client.
+
+Para esto se ha usado el comando **apt policy**:
+
+![Repo](/img/ASO/paqueteriaASO-2.png)
 
 4. ¿Cómo puedes sacar información de un paquete oficial instalado o que no este instalado?
 
+Hay dos posibles opciones:
+
+  * **dpkg -s**: aporta información si el paquete se encuentra instalado.
+  * **apt show**: detalla la información de paquetes pudiendo estar este instalado o no.
+
+Un ejemplo sería:
+
+![Repo](/img/ASO/paqueteriaASO-3.png)
+
 5. Saca toda la información que puedas del paquete openssh-client que tienes actualmente instalado en tu máquina.
 
+Para ver toda la información de este paquete se puede usar **apt-cache showpkg**, este nos da mucha información de las dependencias inversas, versión, descripciones, dependencias...
+
 6. Saca toda la información que puedas del paquete openssh-client candidato a actualizar en tu máquina.
+
+Se puede
 
 7. Lista todo el contenido referente al paquete openssh-client actual de tu máquina. Utiliza para ello tanto dpkg como apt.
 
