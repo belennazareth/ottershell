@@ -71,6 +71,8 @@ Para sacar toda la información se he usado el comando **aptitude show** donde v
 
 12. ¿Cómo encontrarías qué paquetes dependen de un paquete específico.
 
+
+
 13. ¿Cómo procederías para encontrar el paquete al que pertenece un determinado fichero?
 
 14. ¿Que procedimientos emplearías para liberar la caché en cuanto a descargas de paquetería?

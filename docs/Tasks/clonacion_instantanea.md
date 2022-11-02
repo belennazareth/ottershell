@@ -6,11 +6,14 @@ sidebar_position: 7
 
 1. Indica la instrucción virt-clone que has usado para clonar la máquina. ¿Qué cambios has hecho en la nueva máquina para que no sea igual a la original?
 
+    `virt-clone --connect=qemu:///system --original rumpeltinski --name maquina-clonada --file /var/lib/libvirt/images/maquinaclonada.qcow2`
 
+![Term](/img/HLC/taller5HLC.png)
 
-2. Lista las máquinas que tienes creada, donde se vea la plantilla que has creado. Pon una captura donde se vea que nos da un error al intentar iniciarla.
+2. Lista las máquinas que tienes creadas, donde se vea la plantilla que has creado. Pon una captura donde se vea que nos da un error al intentar iniciarla.
 
-
+![Term](/img/HLC/taller5HLC-2.png)
+![Term](/img/HLC/taller5HLC-3.png)
 
 3. Una vez creada la máquina clone-full, una captura de pantalla donde se vea la dirección IP que ha tomado.  Otra captura donde se vea el acceso por SSH.
 
