@@ -71,14 +71,14 @@ Con esto se ejecuta una búsqueda con `find` filtada por todos los terminados en
 
 Con el comando `sudo dmesg` y el parámetro `-w` se puede ver de forma dinámica los mensajes de diagnóstico, como podemos ver en la siguiente imagen aparece la detección de un USB y toda la información recopilada de las características del dispositivo USB:
 
-![Term](/img/ASO/mosulosASO.png)
+![Term](/img/ASO/modulosASO.png)
 
 
 4. Elimina el módulo correspondiente a algún dispotivo no esencial y comprueba qué ocurre. Vuelve a cargarlo.
 
 En mi caso he elegido el módulo correspondiente al wifi, para poder saber la etiqueta del módulo he realizado un `dmesg -wH` obteniendo:
 
-![Term](/img/ASO/mosulosASO-2.png)
+![Term](/img/ASO/modulosASO-2.png)
 
 Para deshabilitar el módulo wifi:
 
@@ -86,11 +86,11 @@ Para deshabilitar el módulo wifi:
 
 Como podemos comprobar con el comando `dmesg` se ha realizado correctamente:
 
-![Term](/img/ASO/mosulosASO-3.png)
+![Term](/img/ASO/modulosASO-3.png)
 
 Y aquí lo comprobamos gráficamente:
 
-![Term](/img/ASO/mosulosASO-4.png)
+![Term](/img/ASO/modulosASO-4.png)
 
 A continuación, para volver a activarlo:
 
@@ -98,15 +98,15 @@ A continuación, para volver a activarlo:
 
 La salida de `dmesg`:
 
-![Term](/img/ASO/mosulosASO-5.png)
+![Term](/img/ASO/modulosASO-5.png)
 
 Activación y conexión a la red wifi:
 
-![Term](/img/ASO/mosulosASO-6.png)
+![Term](/img/ASO/modulosASO-6.png)
 
 Comprobación en el entorno gráfico:
 
-![Term](/img/ASO/mosulosASO-7.png)
+![Term](/img/ASO/modulosASO-7.png)
 
 
 5. Selecciona un módulo que esté en uso en tu equipo y configura el arranque para que no se cargue automáticamente.
