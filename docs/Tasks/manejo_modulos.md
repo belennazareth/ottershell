@@ -4,6 +4,7 @@ sidebar_position: 7
 
 # Ejercicios de manejo de módulos
 
+
 1. Comprueba los módulos cargados en tu equipo.
 
 Los módulos del kernel se almacenan en el fichero `/lib/modules/[versión]` con la terminación `.ko` (kernel object), se pueden ver con el comando ` ls -R /lib/modules/$(uname -r)`, donde `uname -r` hace la función de variable que nos muestra la versión de kernel de nuestro sistema. 
@@ -56,6 +57,7 @@ rfkill                 32768  8 bluetooth,ideapad_laptop,cfg80211
 
 ```
 
+
 2. Cuenta el número de módulos disponibles en el núcleo que estás usando.
 
 Para contar el número de módulos disponibles se usa el comando:
@@ -64,14 +66,47 @@ Para contar el número de módulos disponibles se usa el comando:
 
 Con esto se ejecuta una búsqueda con `find` filtada por todos los terminados en `.ko` contándolo con `wc`.
 
+
 3. Conecta un lápiz USB y observa la salida de la instrucción sudo dmesg.
 
 Con el comando `sudo dmesg` y el parámetro `-w` se puede ver de forma dinámica los mensajes de diagnóstico, como podemos ver en la siguiente imagen aparece la detección de un USB y toda la información recopilada de las características del dispositivo USB:
 
 ![Term](/img/ASO/mosulosASO.png)
 
+
 4. Elimina el módulo correspondiente a algún dispotivo no esencial y comprueba qué ocurre. Vuelve a cargarlo.
 
+En mi caso he elegido el módulo correspondiente al wifi, para poder saber la etiqueta del módulo he realizado un `dmesg -wH` obteniendo:
+
+![Term](/img/ASO/mosulosASO-2.png)
+
+Para deshabilitar el módulo wifi:
+
+```sudo modprobe -r rtw88_8822ce```
+
+Como podemos comprobar con el comando `dmesg` se ha realizado correctamente:
+
+![Term](/img/ASO/mosulosASO-3.png)
+
+Y aquí lo comprobamos gráficamente:
+
+![Term](/img/ASO/mosulosASO-4.png)
+
+A continuación, para volver a activarlo:
+
+```sudo modprobe rtw88_8822ce```
+
+La salida de `dmesg`:
+
+![Term](/img/ASO/mosulosASO-5.png)
+
+Activación y conexión a la red wifi:
+
+![Term](/img/ASO/mosulosASO-6.png)
+
+Comprobación en el entorno gráfico:
+
+![Term](/img/ASO/mosulosASO-7.png)
 
 
 5. Selecciona un módulo que esté en uso en tu equipo y configura el arranque para que no se cargue automáticamente.
