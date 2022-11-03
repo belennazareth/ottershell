@@ -5,7 +5,7 @@ sidebar_position: 7
 # Ejercicios de manejo de módulos
 
 
-1. Comprueba los módulos cargados en tu equipo.
+## 1. Comprueba los módulos cargados en tu equipo.
 
 Los módulos del kernel se almacenan en el fichero `/lib/modules/[versión]` con la terminación `.ko` (kernel object), se pueden ver con el comando ` ls -R /lib/modules/$(uname -r)`, donde `uname -r` hace la función de variable que nos muestra la versión de kernel de nuestro sistema. 
 Sin embargo, para comprobar los módulos **cargados** en el equipo podemos visualizar el fichero `/proc/modules` (fichero que usa `lsmod`) donde aparece la información dividida en tres columnas:
@@ -58,7 +58,7 @@ rfkill                 32768  8 bluetooth,ideapad_laptop,cfg80211
 ```
 
 
-2. Cuenta el número de módulos disponibles en el núcleo que estás usando.
+## 2. Cuenta el número de módulos disponibles en el núcleo que estás usando.
 
 Para contar el número de módulos disponibles se usa el comando:
 
@@ -67,14 +67,14 @@ Para contar el número de módulos disponibles se usa el comando:
 Con esto se ejecuta una búsqueda con `find` filtada por todos los terminados en `.ko` contándolo con `wc`.
 
 
-3. Conecta un lápiz USB y observa la salida de la instrucción sudo dmesg.
+## 3. Conecta un lápiz USB y observa la salida de la instrucción sudo dmesg.
 
 Con el comando `sudo dmesg` y el parámetro `-w` se puede ver de forma dinámica los mensajes de diagnóstico, como podemos ver en la siguiente imagen aparece la detección de un USB y toda la información recopilada de las características del dispositivo USB:
 
 ![Term](/img/ASO/modulosASO.png)
 
 
-4. Elimina el módulo correspondiente a algún dispotivo no esencial y comprueba qué ocurre. Vuelve a cargarlo.
+## 4. Elimina el módulo correspondiente a algún dispotivo no esencial y comprueba qué ocurre. Vuelve a cargarlo.
 
 En mi caso he elegido el módulo correspondiente al wifi, para poder saber la etiqueta del módulo he realizado un `dmesg -wH` obteniendo:
 
@@ -109,10 +109,10 @@ Comprobación en el entorno gráfico:
 ![Term](/img/ASO/modulosASO-7.png)
 
 
-5. Selecciona un módulo que esté en uso en tu equipo y configura el arranque para que no se cargue automáticamente.
+## 5. Selecciona un módulo que esté en uso en tu equipo y configura el arranque para que no se cargue automáticamente.
 
 
 
-6. Carga el módulo loop, obtén información de qué es y para qué sirve. Lista el contenido de /sys/modules/loop/parameters y configura el equipo para que se puedan cargar como máximo 12 dispositvos loop la próxima vez que se arranque.
+## 6. Carga el módulo loop, obtén información de qué es y para qué sirve. Lista el contenido de /sys/modules/loop/parameters y configura el equipo para que se puedan cargar como máximo 12 dispositvos loop la próxima vez que se arranque.
 
 
