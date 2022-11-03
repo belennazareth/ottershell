@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/manejo_modulos",
+  "id": "Tasks/manejo_modulos",
+  "title": "Ejercicios de manejo de módulos",
+  "description": "1. Comprueba los módulos cargados en tu equipo.",
+  "source": "@site/docs/Tasks/manejo_modulos.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/manejo_modulos",
+  "permalink": "/docs/Tasks/manejo_modulos",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/manejo_modulos.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Clonación e instantáneas de máquinas virtuales",
+    "permalink": "/docs/Tasks/clonacion_instantanea"
+  },
+  "next": {
+    "title": "Instalación de un servidor LAMP",
+    "permalink": "/docs/Tasks/servidor_lamp"
+  }
+}
