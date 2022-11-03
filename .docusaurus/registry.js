@@ -10,6 +10,7 @@ export default {
   '1a6360f0': [() => import(/* webpackChunkName: '1a6360f0' */ '~blog/default/blog-tags-contacto-980-list.json'), '~blog/default/blog-tags-contacto-980-list.json', require.resolveWeak('~blog/default/blog-tags-contacto-980-list.json')],
   '1be78505': [() => import(/* webpackChunkName: '1be78505' */ '@theme/DocPage'), '@theme/DocPage', require.resolveWeak('@theme/DocPage')],
   '1f391b9e': [() => import(/* webpackChunkName: '1f391b9e' */ '@theme/MDXPage'), '@theme/MDXPage', require.resolveWeak('@theme/MDXPage')],
+  '1f5bd34a': [() => import(/* webpackChunkName: '1f5bd34a' */ '@site/docs/Tasks/manejo_modulos.md'), '@site/docs/Tasks/manejo_modulos.md', require.resolveWeak('@site/docs/Tasks/manejo_modulos.md')],
   '2455c74e': [() => import(/* webpackChunkName: '2455c74e' */ '~blog/default/blog-tags-git-hub-bf3-list.json'), '~blog/default/blog-tags-git-hub-bf3-list.json', require.resolveWeak('~blog/default/blog-tags-git-hub-bf3-list.json')],
   '2e872b27': [() => import(/* webpackChunkName: '2e872b27' */ '~blog/default/blog-tags-contacto-980.json'), '~blog/default/blog-tags-contacto-980.json', require.resolveWeak('~blog/default/blog-tags-contacto-980.json')],
   '379ad948': [() => import(/* webpackChunkName: '379ad948' */ '@site/docs/Tasks/peticion_http.md'), '@site/docs/Tasks/peticion_http.md', require.resolveWeak('@site/docs/Tasks/peticion_http.md')],

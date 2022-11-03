@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Clonación e instantáneas de máquinas virtuales",
-    "permalink": "/docs/Tasks/clonacion_instantanea"
+    "title": "Ejercicios de manejo de módulos",
+    "permalink": "/docs/Tasks/manejo_modulos"
   },
   "next": {
     "title": "Peticiones HTTP",

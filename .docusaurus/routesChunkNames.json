@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-681": {
+  "/docs-875": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -140,6 +140,10 @@
   "/docs/Tasks/makefile_aso-e40": {
     "__comp": "17896441",
     "content": "e8d71a07"
+  },
+  "/docs/Tasks/manejo_modulos-bff": {
+    "__comp": "17896441",
+    "content": "1f5bd34a"
   },
   "/docs/Tasks/markdown-ebc": {
     "__comp": "17896441",

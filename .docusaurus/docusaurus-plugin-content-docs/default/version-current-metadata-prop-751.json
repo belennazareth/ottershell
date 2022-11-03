@@ -65,6 +65,12 @@
           },
           {
             "type": "link",
+            "label": "Ejercicios de manejo de módulos",
+            "href": "/docs/Tasks/manejo_modulos",
+            "docId": "Tasks/manejo_modulos"
+          },
+          {
+            "type": "link",
             "label": "Instalación de un servidor LAMP",
             "href": "/docs/Tasks/servidor_lamp",
             "docId": "Tasks/servidor_lamp"
@@ -148,6 +154,12 @@
       "id": "Tasks/makefile_aso",
       "title": "Compilación de un programa en C utilizando un Makefile.",
       "description": "Introducción",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/manejo_modulos": {
+      "id": "Tasks/manejo_modulos",
+      "title": "Ejercicios de manejo de módulos",
+      "description": "1. Comprueba los módulos cargados en tu equipo.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/markdown": {
