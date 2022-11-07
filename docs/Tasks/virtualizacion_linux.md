@@ -24,7 +24,7 @@ sidebar_position: 10
 
 
 
-## 6. Al finalizar el script: Pantalalzos para comprobar:
+## 6. Al finalizar el script: Pantallazos para comprobar:
 
 ### - Que la máquina tiene montado un disco en el directorio /var/www/html.
 
