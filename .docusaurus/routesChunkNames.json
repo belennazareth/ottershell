@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-875": {
+  "/docs-a20": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -168,6 +168,14 @@
   "/docs/Tasks/servidor_lamp-fb8": {
     "__comp": "17896441",
     "content": "0d16f3b7"
+  },
+  "/docs/Tasks/virtualhosting_apache-4ef": {
+    "__comp": "17896441",
+    "content": "b527b7e7"
+  },
+  "/docs/Tasks/virtualizacion_linux-3d7": {
+    "__comp": "17896441",
+    "content": "147aa350"
   },
   "/-19f": {
     "__comp": "c4f5d8e4",

@@ -81,6 +81,16 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/virtualhosting_apache",
+              "path": "/docs/Tasks/virtualhosting_apache",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/virtualizacion_linux",
+              "path": "/docs/Tasks/virtualizacion_linux",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "/category/tasks",
               "path": "/docs/category/tasks",
               "sidebar": "tutorialSidebar"

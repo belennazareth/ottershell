@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '875'),
+    component: ComponentCreator('/docs', 'a20'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -144,6 +144,18 @@ export default [
       {
         path: '/docs/Tasks/servidor_lamp',
         component: ComponentCreator('/docs/Tasks/servidor_lamp', 'fb8'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/virtualhosting_apache',
+        component: ComponentCreator('/docs/Tasks/virtualhosting_apache', '4ef'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/virtualizacion_linux',
+        component: ComponentCreator('/docs/Tasks/virtualizacion_linux', '3d7'),
         exact: true,
         sidebar: "tutorialSidebar"
       }

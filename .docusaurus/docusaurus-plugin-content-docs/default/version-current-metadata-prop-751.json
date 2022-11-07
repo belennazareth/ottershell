@@ -83,6 +83,18 @@
           },
           {
             "type": "link",
+            "label": "Virtualización en Linux",
+            "href": "/docs/Tasks/virtualizacion_linux",
+            "docId": "Tasks/virtualizacion_linux"
+          },
+          {
+            "type": "link",
+            "label": "VirtualHosting con Apache",
+            "href": "/docs/Tasks/virtualhosting_apache",
+            "docId": "Tasks/virtualhosting_apache"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -196,6 +208,18 @@
       "id": "Tasks/servidor_lamp",
       "title": "Instalación de un servidor LAMP",
       "description": "1. Una captura de pantalla donde se vea la configuración de la resolución estática.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/virtualhosting_apache": {
+      "id": "Tasks/virtualhosting_apache",
+      "title": "VirtualHosting con Apache",
+      "description": "1. Lista los ficheros que se encuentran en el directorio /etc/apache2/sites-enabled.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/virtualizacion_linux": {
+      "id": "Tasks/virtualizacion_linux",
+      "title": "Virtualización en Linux",
+      "description": "1. Entrega la URL del repositorio GitHub donde has alojado el proyecto.",
       "sidebar": "tutorialSidebar"
     }
   }
