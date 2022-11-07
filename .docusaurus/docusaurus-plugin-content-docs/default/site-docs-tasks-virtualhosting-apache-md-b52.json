@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/virtualhosting_apache",
+  "id": "Tasks/virtualhosting_apache",
+  "title": "VirtualHosting con Apache",
+  "description": "1. Lista los ficheros que se encuentran en el directorio /etc/apache2/sites-enabled.",
+  "source": "@site/docs/Tasks/virtualhosting_apache.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/virtualhosting_apache",
+  "permalink": "/docs/Tasks/virtualhosting_apache",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/virtualhosting_apache.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 11,
+  "frontMatter": {
+    "sidebar_position": 11
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Virtualización en Linux",
+    "permalink": "/docs/Tasks/virtualizacion_linux"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

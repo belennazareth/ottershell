@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/virtualizacion_linux",
+  "id": "Tasks/virtualizacion_linux",
+  "title": "Virtualización en Linux",
+  "description": "1. Entrega la URL del repositorio GitHub donde has alojado el proyecto.",
+  "source": "@site/docs/Tasks/virtualizacion_linux.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/virtualizacion_linux",
+  "permalink": "/docs/Tasks/virtualizacion_linux",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/virtualizacion_linux.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "sidebar_position": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Peticiones HTTP",
+    "permalink": "/docs/Tasks/peticion_http"
+  },
+  "next": {
+    "title": "VirtualHosting con Apache",
+    "permalink": "/docs/Tasks/virtualhosting_apache"
+  }
+}
