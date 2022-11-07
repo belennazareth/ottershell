@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkotter_shell=self.webpackChunkotter_shell||[]).push([[1713],{3457:l=>{l.exports=JSON.parse('[{"label":"Linkedin","permalink":"/blog/tags/linkedin","count":1},{"label":"GitHub","permalink":"/blog/tags/git-hub","count":1},{"label":"gmail","permalink":"/blog/tags/gmail","count":1},{"label":"contacto","permalink":"/blog/tags/contacto","count":1}]')}}]);
