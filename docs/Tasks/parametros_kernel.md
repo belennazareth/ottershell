@@ -23,7 +23,7 @@ Para deshabilitar `apparmor` podemos seguir dos procedimientos diferentes:
 
 Al reiniciar la máquina, si comprobamos el estado de `apparmor` se puede ver:
 
-![Term](/img/ASO/parmkernelASO.png.png)
+![Term](/img/ASO/parmkernelASO.png)
 
 ### 2. Deshabilita si es posible el Kernel Mode Setting (KSM) de la tarjeta gráfica.
 

@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/parametros_kernel",
+  "id": "Tasks/parametros_kernel",
+  "title": "Ejercicios de modificación de parámetros del kérnel",
+  "description": "1. Deshabilita apparmor en el arranque.",
+  "source": "@site/docs/Tasks/parametros_kernel.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/parametros_kernel",
+  "permalink": "/docs/Tasks/parametros_kernel",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/parametros_kernel.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 12,
+  "frontMatter": {
+    "sidebar_position": 12
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "VirtualHosting con Apache",
+    "permalink": "/docs/Tasks/virtualhosting_apache"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
