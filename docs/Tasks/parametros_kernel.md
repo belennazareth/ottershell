@@ -14,7 +14,7 @@ La información de este paquete se guardan en `/etc/apparmor.d`.
 Para deshabilitar `apparmor` podemos seguir dos procedimientos diferentes:
 
 * Editar el fichero `/etc/default/grub` añadiendo la línea:
-    
+
         GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CDMLINE_LINUX_DEFAULT apparmor=0"
 
 * Con el comando `systemctl` deshabilitando desde la línea de comandos:
@@ -35,10 +35,16 @@ Al reiniciar la máquina, si comprobamos el estado de `apparmor` se puede ver:
 Para cambiar provisionalmente se puede usar el comando `sysctl vm.swappiness=10`, esto hará que de forma temporal se use `swappiness` cuando se esté usando más de un 90% de la RAM.
 Los valores son inversos por lo que hay que tener cuidado al modificarlo, de tal manera que si dejamos la swappiness en un valor muy bajo se utilizará únicamente cuando nuestra memoria RAM esté a punto de agotarse, como es nuestro caso. Si se establece la swappiness en valores superiores se irá incrementando el uso de la memoria virtual, por ejemplo en caso de usar 100 la memoria virtual se usará todo el tiempo.
 
+![Term](/img/ASO/parmkernelASO-2.png)
+
+Para que se ejecuten los cambios no es neccesario el reinicio, se aplican de inmediato. Si se reinicia la máquina volverá a su valor por defecto, 60.
+
 
 ### 4. Haz que el cambio de la swappiness sea permanente.
 
+Para que sea permanente será necesario editar el fichero `/etc/sysctl.conf` añadiendo la línea: 
 
+    vm.swappiness=10
 
 ### 5. Muestra el valor del bit de forward para IPv6.
 
