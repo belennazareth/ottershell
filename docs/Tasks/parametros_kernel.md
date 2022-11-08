@@ -25,12 +25,15 @@ Al reiniciar la máquina, si comprobamos el estado de `apparmor` se puede ver:
 
 ![Term](/img/ASO/parmkernelASO.png)
 
+
 ### 2. Deshabilita si es posible el Kernel Mode Setting (KSM) de la tarjeta gráfica.
 
 
 
 ### 3. Cambia provisionalmente la swappiness para que la swap de tu equipo se active cuando se use más de un 90% de la RAM.
 
+Para cambiar provisionalmente se puede usar el comando `sysctl vm.swappiness=10`, esto hará que de forma temporal se use `swappiness` cuando se esté usando más de un 90% de la RAM.
+Los valores son inversos por lo que hay que tener cuidado al modificarlo, de tal manera que si dejamos la swappiness en un valor muy bajo se utilizará únicamente cuando nuestra memoria RAM esté a punto de agotarse, como es nuestro caso. Si se establece la swappiness en valores superiores se irá incrementando el uso de la memoria virtual, por ejemplo en caso de usar 100 la memoria virtual se usará todo el tiempo.
 
 
 ### 4. Haz que el cambio de la swappiness sea permanente.
