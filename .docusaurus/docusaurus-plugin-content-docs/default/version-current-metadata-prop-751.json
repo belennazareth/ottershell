@@ -95,6 +95,12 @@
           },
           {
             "type": "link",
+            "label": "Ejercicios de modificación de parámetros del kérnel",
+            "href": "/docs/Tasks/parametros_kernel",
+            "docId": "Tasks/parametros_kernel"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -184,6 +190,12 @@
       "id": "Tasks/markdown-features",
       "title": "Markdown Features",
       "description": "Docusaurus supports Markdown and a few additional features.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/parametros_kernel": {
+      "id": "Tasks/parametros_kernel",
+      "title": "Ejercicios de modificación de parámetros del kérnel",
+      "description": "1. Deshabilita apparmor en el arranque.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/peticion_http": {

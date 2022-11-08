@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'a20'),
+    component: ComponentCreator('/docs', '42f'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -120,6 +120,12 @@ export default [
       {
         path: '/docs/Tasks/markdown-features',
         component: ComponentCreator('/docs/Tasks/markdown-features', '4e3'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/parametros_kernel',
+        component: ComponentCreator('/docs/Tasks/parametros_kernel', 'f29'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

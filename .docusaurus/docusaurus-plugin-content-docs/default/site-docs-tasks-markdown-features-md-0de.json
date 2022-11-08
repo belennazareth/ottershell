@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "VirtualHosting con Apache",
-    "permalink": "/docs/Tasks/virtualhosting_apache"
+    "title": "Ejercicios de modificación de parámetros del kérnel",
+    "permalink": "/docs/Tasks/parametros_kernel"
   },
   "next": {
     "title": "Extras",

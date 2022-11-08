@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-a20": {
+  "/docs-42f": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -152,6 +152,10 @@
   "/docs/Tasks/markdown-features-4e3": {
     "__comp": "17896441",
     "content": "0de80381"
+  },
+  "/docs/Tasks/parametros_kernel-f29": {
+    "__comp": "17896441",
+    "content": "d41f5ee1"
   },
   "/docs/Tasks/peticion_http-71d": {
     "__comp": "17896441",

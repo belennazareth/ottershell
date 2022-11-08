@@ -61,6 +61,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/parametros_kernel",
+              "path": "/docs/Tasks/parametros_kernel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/peticion_http",
               "path": "/docs/Tasks/peticion_http",
               "sidebar": "tutorialSidebar"
