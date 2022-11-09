@@ -46,10 +46,29 @@ Para que sea permanente será necesario editar el fichero `/etc/sysctl.conf` añ
 
     vm.swappiness=10
 
+
 ### 5. Muestra el valor del bit de forward para IPv6.
 
+Para mostrarlo se usa el comando `sysctl` de la siguiente manera:
+
+        sudo sysctl -a | grep net.ipv6.conf.all.forwarding
+
+![Term](/img/ASO/parmkernelASO-3.png)
 
 
 ### 6. Deshabilita completamente las Magic Sysrq en el arranque y vuelve a habilitarlas después de reiniciar.
 
+**Magic Sysrq** es una combinación de teclas que puede presionar a la que el núcleo responderá independientemente de lo que esté haciendo, a menos que esté completamente bloqueado, realizando un reinicio del sistema.
+
+Para saber si se encuentra activo podemos ver el fichero `/proc/sys/kernel/sysrq`, en este podremos ver alguno de los siguientes valores, entre otros:
+
+* 0 → deshabilitar sysrq por completo
+
+* 1 → habilitar todas las funciones de sysrq
+
+* 438 → permite todas las funciones excepto la posibilidad de enviar señales a procesos.
+
+Para deshabilitarla realizamos el siguiente comando:
+
+        echo 0 >/proc/sys/kernel/sysrq
 
