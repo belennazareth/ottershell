@@ -49,17 +49,20 @@ Para realizar una petición para seguir la redirección:
 ![Term](/img/SRI+HLC/taller1SRI3-4.png)
 
 En total se han realizado 39 peticiones para mostrar la página.
-Las cabeceras más importantes son:
 
-* 
+![Term](/img/SRI+HLC/taller1SRI3-5.png)
+
 
 4. Obtén la información del cuerpo de la respuesta de la URL: https://dit.gonzalonazareno.org/gestiona/.
 
+![Term](/img/SRI+HLC/taller1SRI3-6.png)
 
 
 5. Usando el método GET manda tu nombre a la página http://www2.gonzalonazareno.org/josedom/resultado.php.
 
+![Term](/img/SRI+HLC/taller1SRI3-7.png)
 
 
 6. Usando el método POST (que envía el contenido en el cuerpo) manda tu nombre a la misma página.
 
+![Term](/img/SRI+HLC/taller1SRI3-8.png)
