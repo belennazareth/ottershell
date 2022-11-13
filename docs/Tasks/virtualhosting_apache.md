@@ -22,3 +22,4 @@ sidebar_position: 11
 Para poder realizar el mismo procedimiento con `/srv/www` hay que editar el fichero `/etc/apache2/apache2.conf` añadiendo `<Directory /srv/www/>` de tal manera que quede:
 
 ![Term](/img/IAW/taller2IAW2-5.png)
+
