@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/cliente_vpn",
+  "id": "Tasks/cliente_vpn",
+  "title": "Configuración del cliente VPN",
+  "description": "1. Desde casa, una vez configurado e iniciado el cliente OpenVPN: la IP del interfaz tun0, la ruta que nos permite acceder a la red 172.22.0.0/16 y un ping a la puerta de enlace, a macaco, a la dirección 172.22.0.1.",
+  "source": "@site/docs/Tasks/cliente_vpn.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/cliente_vpn",
+  "permalink": "/docs/Tasks/cliente_vpn",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/cliente_vpn.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "sidebar_position": 13
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ejercicios de modificación de parámetros del kérnel",
+    "permalink": "/docs/Tasks/parametros_kernel"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
