@@ -26,6 +26,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/cliente_vpn",
+              "path": "/docs/Tasks/cliente_vpn",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/clonacion_instantanea",
               "path": "/docs/Tasks/clonacion_instantanea",
               "sidebar": "tutorialSidebar"

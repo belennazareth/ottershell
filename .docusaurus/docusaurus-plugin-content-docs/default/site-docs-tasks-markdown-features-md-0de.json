@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Ejercicios de modificación de parámetros del kérnel",
-    "permalink": "/docs/Tasks/parametros_kernel"
+    "title": "Configuración del cliente VPN",
+    "permalink": "/docs/Tasks/cliente_vpn"
   },
   "next": {
     "title": "Extras",

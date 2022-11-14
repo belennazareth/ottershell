@@ -101,6 +101,12 @@
           },
           {
             "type": "link",
+            "label": "Configuración del cliente VPN",
+            "href": "/docs/Tasks/cliente_vpn",
+            "docId": "Tasks/cliente_vpn"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -148,6 +154,12 @@
       "id": "intro",
       "title": "Sobre mí",
       "description": "Hola! 😊",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/cliente_vpn": {
+      "id": "Tasks/cliente_vpn",
+      "title": "Configuración del cliente VPN",
+      "description": "1. Desde casa, una vez configurado e iniciado el cliente OpenVPN: la IP del interfaz tun0, la ruta que nos permite acceder a la red 172.22.0.0/16 y un ping a la puerta de enlace, a macaco, a la dirección 172.22.0.1.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/clonacion_instantanea": {

@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '42f'),
+    component: ComponentCreator('/docs', 'a14'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -78,6 +78,12 @@ export default [
       {
         path: '/docs/intro',
         component: ComponentCreator('/docs/intro', '99a'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/cliente_vpn',
+        component: ComponentCreator('/docs/Tasks/cliente_vpn', '817'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
