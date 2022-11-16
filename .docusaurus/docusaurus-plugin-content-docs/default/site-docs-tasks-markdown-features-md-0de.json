@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Configuración del cliente VPN",
-    "permalink": "/docs/Tasks/cliente_vpn"
+    "title": "Gestión de redes en OpenStack",
+    "permalink": "/docs/Tasks/redes_openstack"
   },
   "next": {
     "title": "Extras",

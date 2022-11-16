@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-a14": {
+  "/docs-8d5": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -157,6 +157,10 @@
     "__comp": "17896441",
     "content": "0de80381"
   },
+  "/docs/Tasks/nginx_php-77d": {
+    "__comp": "17896441",
+    "content": "a168c652"
+  },
   "/docs/Tasks/parametros_kernel-f29": {
     "__comp": "17896441",
     "content": "d41f5ee1"
@@ -168,6 +172,10 @@
   "/docs/Tasks/ramas_uniones-260": {
     "__comp": "17896441",
     "content": "c9e876c3"
+  },
+  "/docs/Tasks/redes_openstack-b54": {
+    "__comp": "17896441",
+    "content": "f07f6973"
   },
   "/docs/Tasks/router_nat-bbb": {
     "__comp": "17896441",

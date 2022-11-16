@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'a14'),
+    component: ComponentCreator('/docs', '8d5'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -130,6 +130,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/nginx_php',
+        component: ComponentCreator('/docs/Tasks/nginx_php', '77d'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/parametros_kernel',
         component: ComponentCreator('/docs/Tasks/parametros_kernel', 'f29'),
         exact: true,
@@ -144,6 +150,12 @@ export default [
       {
         path: '/docs/Tasks/ramas_uniones',
         component: ComponentCreator('/docs/Tasks/ramas_uniones', '260'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/redes_openstack',
+        component: ComponentCreator('/docs/Tasks/redes_openstack', 'b54'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

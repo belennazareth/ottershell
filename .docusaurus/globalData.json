@@ -66,6 +66,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/nginx_php",
+              "path": "/docs/Tasks/nginx_php",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/parametros_kernel",
               "path": "/docs/Tasks/parametros_kernel",
               "sidebar": "tutorialSidebar"
@@ -78,6 +83,11 @@
             {
               "id": "Tasks/ramas_uniones",
               "path": "/docs/Tasks/ramas_uniones",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/redes_openstack",
+              "path": "/docs/Tasks/redes_openstack",
               "sidebar": "tutorialSidebar"
             },
             {
