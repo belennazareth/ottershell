@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/compilacion_kernel",
+  "id": "Tasks/compilacion_kernel",
+  "title": "Compilación de un Kernel linux a medida",
+  "description": "Para empezar a compilar el kernel debemos crear un directorio donde trabajaremos, y además, saber cual es la versión de nuestra máquina.",
+  "source": "@site/docs/Tasks/compilacion_kernel.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/compilacion_kernel",
+  "permalink": "/docs/Tasks/compilacion_kernel",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/compilacion_kernel.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 14,
+  "frontMatter": {
+    "sidebar_position": 14
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuración del cliente VPN",
+    "permalink": "/docs/Tasks/cliente_vpn"
+  },
+  "next": {
+    "title": "Instalación de nginx con PHP",
+    "permalink": "/docs/Tasks/nginx_php"
+  }
+}
