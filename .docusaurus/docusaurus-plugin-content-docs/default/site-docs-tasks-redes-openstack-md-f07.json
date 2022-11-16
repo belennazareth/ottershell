@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/redes_openstack",
+  "id": "Tasks/redes_openstack",
+  "title": "Gestión de redes en OpenStack",
+  "description": "1. Los comandos OSC para crear la red red-externa.",
+  "source": "@site/docs/Tasks/redes_openstack.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/redes_openstack",
+  "permalink": "/docs/Tasks/redes_openstack",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/redes_openstack.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 14,
+  "frontMatter": {
+    "sidebar_position": 14
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación de nginx con PHP",
+    "permalink": "/docs/Tasks/nginx_php"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

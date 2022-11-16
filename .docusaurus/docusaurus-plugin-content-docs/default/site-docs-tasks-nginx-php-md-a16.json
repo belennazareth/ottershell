@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/nginx_php",
+  "id": "Tasks/nginx_php",
+  "title": "Instalación de nginx con PHP",
+  "description": "1. Entrega la URL del repositorio GitHub donde has alojado la práctica.",
+  "source": "@site/docs/Tasks/nginx_php.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/nginx_php",
+  "permalink": "/docs/Tasks/nginx_php",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/nginx_php.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 14,
+  "frontMatter": {
+    "sidebar_position": 14
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuración del cliente VPN",
+    "permalink": "/docs/Tasks/cliente_vpn"
+  },
+  "next": {
+    "title": "Gestión de redes en OpenStack",
+    "permalink": "/docs/Tasks/redes_openstack"
+  }
+}
