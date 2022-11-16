@@ -11,31 +11,64 @@ Es necesario instalar la paquetería que contiene el compilador en C, make y her
 
     apt install linux-source build-essentials qtbase5-dev
 
-Una vez lo tenemos todo, dentro del directorio `kernel`, se descomprime el fichero `.tar.xz` del kernel alojado en la ruta `/usr/src` de tal modo que resulta:
+Una vez lo tenemos todo, dentro del directorio `kernel`, se descomprime el fichero `.tar.xz` del kernel descargado de la siguiente [url](https://www.kernel.org/):
 
-    tar xf /usr/src/linux-source-5.10.tar.xz
+    tar xf ~/Descargas/linux-6.0.9.tar.xz
 
 Listamos el contenido del directorio resultado de la compresión:
 
-     nazare@ThousandSunny  ~/kernel/linux-source-5.10$ ls
-        arch     CREDITS        fs       Kbuild   LICENSES     net      security  virt
-        block    crypto         include  Kconfig  MAINTAINERS  README   sound
-        certs    Documentation  init     kernel   Makefile     samples  tools
-        COPYING  drivers        ipc      lib      mm           scripts  usr
+     nazare@ThousandSunny  ~/kernel$ ls linux-6.0.9
+     arch     CREDITS        fs        ipc      lib          mm       scripts   usr
+     block    crypto         include   Kbuild   LICENSES     net      security  virt
+     certs    Documentation  init      Kconfig  MAINTAINERS  README   sound
+     COPYING  drivers        io_uring  kernel   Makefile     samples  tools
+
 
 Podemos comprobar con el comando `du -sh` el tamaño del directorio:
 
-     nazare@ThousandSunny  ~/kernel/linux-source-5.10  du -sh              
-        1,1G	.
+     nazare@ThousandSunny  ~/kernel$ du -sh linux-6.0.9 
+     1,4G	linux-6.0.9
+             
 
 Dentro del directorio podemos usar el comando `make help`, este nos aportará ayuda dando información de las diferentes opciones que se pueden usar en la compilación.
 
-A continuación, copiamos nuestro fichero `/boot/config-5.10.0-19-amd64` el cual hará de fichero de configuración **.config** conteniendo la información sobre los componentes que se van a enlazar de forma estática, dinámica y los que directamente no se van a enlazar:
+Acto seguido realizamos `make oldconfig`, el cual lee o compara el archivo de configuración antiguo. Este nos realizará varias preguntas donde nos dice las opciones que hay por defecto y si queremos o no mantenerlas en el **.config**.
 
-     cp /boot/config-5.10.0-19-amd64 .config
+Después realizaremos `make localyesconfig`, con esto solo configura los módulos en uso en el momento de la creación del fichero de configuración convirtiendo los módulos dinámicos en estáticos. Se pueden comprobar los componentes estáticos y dinámicos con los comandos: 
 
-Acto seguido realizamos `make oldconfig`, el cual lee o compara el archivo de configuración antiguo. Copiando directamente nuestro fichero de configuración evitamos tener que responder a todas las preguntas que lanza el comando, ya que compara trasladando la configuración al nuevo kernel. 
-Con esto ya tendríamos una configuración sobreescrita en el fichero **.config**.
+    egrep '=y' .config | wc -l
 
+    egrep '=m' .config | wc -l
 
+Se realiza una primera compilación de prueba para asegurar su funcionamiento, con esto vemos en este caso la falta de un paquete:
+
+```bash
+ 
+ nazare@ThousandSunny  ~/kernel/linux-6.0.9# time make -j $(nproc) bindeb-pkg
+  SYNC    include/config/auto.conf.cmd
+  UPD     include/config/kernel.release
+sh ./scripts/package/mkdebian
+dpkg-buildpackage -r"fakeroot -u" -a$(cat debian/arch)  -b -nc -uc
+dpkg-buildpackage: información: paquete fuente linux-upstream
+dpkg-buildpackage: información: versión de las fuentes 6.0.9-1
+dpkg-buildpackage: información: distribución de las fuentes bullseye
+dpkg-buildpackage: información: fuentes modificadas por nazare <nazare@ThousandSunny>
+dpkg-buildpackage: información: arquitectura del sistema amd64
+ dpkg-source --before-build .
+dpkg-checkbuilddeps: fallo: Unmet build dependencies: libelf-dev:native
+dpkg-buildpackage: aviso: Las dependencias y conflictos de construcción no están satisfechas, interrumpiendo
+dpkg-buildpackage: aviso: (Use la opción «-d» para anularlo.)
+make[1]: *** [scripts/Makefile.package:83: bindeb-pkg] Error 3
+make: *** [Makefile:1558: bindeb-pkg] Error 2
+make -j $(nproc) bindeb-pkg  1,51s user 0,53s system 99% cpu 2,050 total
+
+```
+
+Por lo que solo habría que instalarlo:
+
+    sudo apt install libelf-dev
+
+Lo siguiente será volver a ejecutar la compilación:
+
+    time make -j $(nproc) bindeb-pkg
 
