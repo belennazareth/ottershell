@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/parametros_kernel"
   },
   "next": {
-    "title": "Instalación de nginx con PHP",
-    "permalink": "/docs/Tasks/nginx_php"
+    "title": "Compilación de un Kernel linux a medida",
+    "permalink": "/docs/Tasks/compilacion_kernel"
   }
 }

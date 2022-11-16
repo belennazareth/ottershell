@@ -107,6 +107,12 @@
           },
           {
             "type": "link",
+            "label": "Compilación de un Kernel linux a medida",
+            "href": "/docs/Tasks/compilacion_kernel",
+            "docId": "Tasks/compilacion_kernel"
+          },
+          {
+            "type": "link",
             "label": "Instalación de nginx con PHP",
             "href": "/docs/Tasks/nginx_php",
             "docId": "Tasks/nginx_php"
@@ -178,6 +184,12 @@
       "id": "Tasks/clonacion_instantanea",
       "title": "Clonación e instantáneas de máquinas virtuales",
       "description": "1. Indica la instrucción virt-clone que has usado para clonar la máquina. ¿Qué cambios has hecho en la nueva máquina para que no sea igual a la original?",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/compilacion_kernel": {
+      "id": "Tasks/compilacion_kernel",
+      "title": "Compilación de un Kernel linux a medida",
+      "description": "Para empezar a compilar el kernel debemos crear un directorio donde trabajaremos, y además, saber cual es la versión de nuestra máquina.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/gestion_paqueteria_aso": {

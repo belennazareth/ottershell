@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '8d5'),
+    component: ComponentCreator('/docs', '0d0'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -90,6 +90,12 @@ export default [
       {
         path: '/docs/Tasks/clonacion_instantanea',
         component: ComponentCreator('/docs/Tasks/clonacion_instantanea', '211'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/compilacion_kernel',
+        component: ComponentCreator('/docs/Tasks/compilacion_kernel', 'bc5'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

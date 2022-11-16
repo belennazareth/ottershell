@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Configuración del cliente VPN",
-    "permalink": "/docs/Tasks/cliente_vpn"
+    "title": "Compilación de un Kernel linux a medida",
+    "permalink": "/docs/Tasks/compilacion_kernel"
   },
   "next": {
     "title": "Gestión de redes en OpenStack",

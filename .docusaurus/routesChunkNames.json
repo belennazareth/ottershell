@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-8d5": {
+  "/docs-0d0": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -132,6 +132,10 @@
   "/docs/Tasks/clonacion_instantanea-211": {
     "__comp": "17896441",
     "content": "d94373a8"
+  },
+  "/docs/Tasks/compilacion_kernel-bc5": {
+    "__comp": "17896441",
+    "content": "eb4abe1b"
   },
   "/docs/Tasks/gestion_paqueteria_aso-b86": {
     "__comp": "17896441",
