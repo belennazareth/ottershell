@@ -40,6 +40,14 @@ Después realizaremos `make localyesconfig`, con esto solo configura los módulo
 
     egrep '=m' .config | wc -l
 
+En principio cuenta con:
+
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=y' .config | wc -l
+    1930
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=m' .config | wc -l
+    3
+
+
 Se realiza una primera compilación de prueba para asegurar su funcionamiento, con esto vemos en este caso la falta de un paquete:
 
 ```bash
@@ -72,3 +80,47 @@ Lo siguiente será volver a ejecutar la compilación:
 
     time make -j $(nproc) bindeb-pkg
 
+Tras realizar la compilación aparecen en el directorio `kernel` los ficheros `.deb` generados, para llevar un orden se edita el **Makefile** añadiendo `EXTRAVERSION = -v1
+`:
+
+```Bash
+nazare@ThousandSunny  ~/kernel# ls -la
+total 24728
+drwxr-xr-x  3 nazare nazare      259 nov 16 23:42 .
+drwxr-xr-x 30 nazare nazare     4096 nov 17 00:20 ..
+-rw-r--r--  1 nazare nazare   203668 nov 16 23:09 1.config
+drwxr-xr-x 26 nazare nazare     4096 nov 17 00:10 linux-6.0.9
+-rw-r--r--  1 nazare nazare  8561460 nov 16 23:42 linux-headers-6.0.9_6.0.9-1_amd64.deb
+-rw-r--r--  1 nazare nazare 15260368 nov 16 23:42 linux-image-6.0.9_6.0.9-1_amd64.deb
+-rw-r--r--  1 nazare nazare  1266496 nov 16 23:42 linux-libc-dev_6.0.9-1_amd64.deb
+-rw-r--r--  1 nazare nazare     5218 nov 16 23:42 linux-upstream_6.0.9-1_amd64.buildinfo
+-rw-r--r--  1 nazare nazare     1774 nov 16 23:42 linux-upstream_6.0.9-1_amd64.changes
+```
+
+Siempre que queramos realizar la instalación se usará el comando:
+
+    sudo dpkg -i linux-image...
+
+Y para desinstalar:
+
+    sudo dpkg -P linux-image...
+
+Hay que eliminarlo del GRUB ejecutando el comando `update grub`.
+
+Tras esta prueba se va a ir editando el fichero **.config**, por lo que va a ser necesario mantener una copia del original la cual se ha guardado en el directorio `kernel`.
+Para editar **.config** se usa el comando `make xconfig` con el que se nos abrirá una ventana como la siguiente donde podremos seleccionar los módulos que queramos dejar estáticos (✓), dinámicos (·) o directamente sin marcar que no se añadirán a la compilación:
+
+![Repo](/img/ASO/compkernelASO-2.png)
+
+Se vuelven a comprobar los módulos:
+
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=y' .config | wc -l
+    1865
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=m' .config | wc -l
+    26
+
+Una vez editado se realiza la compilación y la instalación del nuevo kernel, desde el GRUB seleccionamos el nuevo kernel (aunque por defecto se inicia en la primera opción al encender la máquina). Al entrar, abrimos una terminal y se comprueba la ejecución del comando `lsmod`,  la versión con `uname -r` y el funcionamiento de la red con un `ping`:
+
+![Repo](/img/ASO/compkernelASO.png)
+
+Volvemos a nuestro kernel y en caso de querer seguir reduciendo se vuelve a repetir el proceso. Hay que tener en cuenta que despues de cada compilación hay que realizar un `make clean`.
