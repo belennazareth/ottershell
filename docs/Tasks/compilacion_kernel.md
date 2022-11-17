@@ -124,3 +124,9 @@ Una vez editado se realiza la compilación y la instalación del nuevo kernel, d
 ![Repo](/img/ASO/compkernelASO.png)
 
 Volvemos a nuestro kernel y en caso de querer seguir reduciendo se vuelve a repetir el proceso. Hay que tener en cuenta que despues de cada compilación hay que realizar un `make clean`.
+
+Comprobamos el tamaño del fichero `.deb`:
+
+    nazare@ThousandSunny  ~/kernel# ls -lh | egrep linux-image-6.0.9-v2
+    -rw-r--r--  1 nazare nazare  15M nov 17 02:08 linux-image-6.0.9-v2_6.0.9-v2-4_amd64.deb
+
