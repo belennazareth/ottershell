@@ -42,9 +42,9 @@ Después realizaremos `make localyesconfig`, con esto solo configura los módulo
 
 En principio cuenta con:
 
-    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=y' .config | wc -l
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9$ egrep '=y' .config | wc -l
     1930
-    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=m' .config | wc -l
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9$ egrep '=m' .config | wc -l
     3
 
 
@@ -52,7 +52,7 @@ Se realiza una primera compilación de prueba para asegurar su funcionamiento, c
 
 ```bash
  
- nazare@ThousandSunny  ~/kernel/linux-6.0.9# time make -j $(nproc) bindeb-pkg
+ nazare@ThousandSunny  ~/kernel/linux-6.0.9$ time make -j $(nproc) bindeb-pkg
   SYNC    include/config/auto.conf.cmd
   UPD     include/config/kernel.release
 sh ./scripts/package/mkdebian
@@ -84,7 +84,7 @@ Tras realizar la compilación aparecen en el directorio `kernel` los ficheros `.
 `:
 
 ```Bash
-nazare@ThousandSunny  ~/kernel# ls -la
+nazare@ThousandSunny  ~/kernel$ ls -la
 total 24728
 drwxr-xr-x  3 nazare nazare      259 nov 16 23:42 .
 drwxr-xr-x 30 nazare nazare     4096 nov 17 00:20 ..
@@ -114,9 +114,9 @@ Para editar **.config** se usa el comando `make xconfig` con el que se nos abrir
 
 Se vuelven a comprobar los módulos:
 
-    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=y' .config | wc -l
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9$ egrep '=y' .config | wc -l
     1865
-    nazare@ThousandSunny  ~/kernel/linux-6.0.9# egrep '=m' .config | wc -l
+    nazare@ThousandSunny  ~/kernel/linux-6.0.9$ egrep '=m' .config | wc -l
     26
 
 Una vez editado se realiza la compilación y la instalación del nuevo kernel, desde el GRUB seleccionamos el nuevo kernel (aunque por defecto se inicia en la primera opción al encender la máquina). Al entrar, abrimos una terminal y se comprueba la ejecución del comando `lsmod`,  la versión con `uname -r` y el funcionamiento de la red con un `ping`:
@@ -127,7 +127,7 @@ Volvemos a nuestro kernel y en caso de querer seguir reduciendo se vuelve a repe
 
 Comprobamos el tamaño del fichero `.deb`:
 
-    nazare@ThousandSunny  ~/kernel# ls -lh | egrep linux-image-6.0.9-v2
+    nazare@ThousandSunny  ~/kernel$ ls -lh | egrep linux-image-6.0.9-v2
     -rw-r--r--  1 nazare nazare  15M nov 17 02:08 linux-image-6.0.9-v2_6.0.9-v2-4_amd64.deb
 
 ### Ficheros .config
