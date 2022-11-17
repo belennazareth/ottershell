@@ -130,3 +130,6 @@ Comprobamos el tamaño del fichero `.deb`:
     nazare@ThousandSunny  ~/kernel# ls -lh | egrep linux-image-6.0.9-v2
     -rw-r--r--  1 nazare nazare  15M nov 17 02:08 linux-image-6.0.9-v2_6.0.9-v2-4_amd64.deb
 
+### Ficheros .config
+
+Pincha [aquí](https://github.com/belennazareth/2ASIR/tree/main/ASO/compilacion_kernel) para ver los ficheros **.config**.
