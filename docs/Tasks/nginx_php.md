@@ -51,11 +51,22 @@ Podemos mostrar una página web estática copiando el fichero de construcción d
 
 ## 4. Pantallazo accediendo a www.pagina1.org/principal/documentos (pon algunos ficheros para que se vea la lista).
 
+Se crea el directorio `/srv/doc` con ficheros dentro de ejemplo.
+A `/etc/nginx/sites-available/vhost1.conf` se le añade un alias para poder entrar a los ficheros alojados en `/srv/doc`:
 
+```bash
+        location /principal/documentos {
+        alias /srv/doc;
+        autoindex on;
+    }
+```
 
 ## 5. Pantallazos de la autentificación básica.
 
+
+
 ## 6. Finalmente, configura la receta ansible para desactivar el virtualhost www.pagina2.org. Pasa de nuevo la receta y manda algún prueba de que se ha borrado dicho VirtualHost.
+
 
 
 ### Notas
