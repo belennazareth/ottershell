@@ -64,11 +64,28 @@ A `/etc/nginx/sites-available/vhost1.conf` se le añade un alias para poder entr
 
 ![Term](/img/SRI+HLC/nginxphpSRI-6.png)
 
-Entra [aquí](https://github.com/belennazareth/2ASIR/tree/main/SRI%2BHLC/nginx%2Bphp) para ver los ficheros de `/srv/doc`.
+Entra [aquí](https://github.com/belennazareth/2ASIR/tree/main/SRI%2BHLC/nginx%2Bphp) para ver los ficheros de `/srv/doc` y la copia de `/etc/nginx/sites-available/vhost1.conf`.
+
 
 ## 5. Pantallazos de la autentificación básica.
 
+Para la autentificación básica primero se instala el paquete:
 
+    apt-get install nginx apache2-utils
+
+Se crea el usuario y contraseña:
+
+    htpasswd -c /etc/nginx/.htpasswd totakeke
+
+![Term](/img/SRI+HLC/nginxphpSRI-7.png)
+
+Se añade en `/etc/nginx/sites-available/vhost1.conf`:
+
+    location /secreto {
+            try_files $uri $uri/ =404;
+            auth_basic "contraseñita y eso";
+            auth_basic_user_file /etc/nginx/.htpasswd;
+    }
 
 ## 6. Finalmente, configura la receta ansible para desactivar el virtualhost www.pagina2.org. Pasa de nuevo la receta y manda algún prueba de que se ha borrado dicho VirtualHost.
 
