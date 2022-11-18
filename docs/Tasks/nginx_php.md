@@ -89,6 +89,11 @@ Se añade en `/etc/nginx/sites-available/vhost1.conf`:
             auth_basic_user_file /etc/nginx/.htpasswd;
     }
 
+![Term](/img/SRI+HLC/nginxphpSRI-8.png)
+
+![Term](/img/SRI+HLC/nginxphpSRI-9.png)
+
+
 ## 6. Finalmente, configura la receta ansible para desactivar el virtualhost www.pagina2.org. Pasa de nuevo la receta y manda algún prueba de que se ha borrado dicho VirtualHost.
 
 
