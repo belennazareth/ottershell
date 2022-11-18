@@ -64,6 +64,7 @@ A `/etc/nginx/sites-available/vhost1.conf` se le añade un alias para poder entr
 
 ![Term](/img/SRI+HLC/nginxphpSRI-6.png)
 
+Entra [aquí](https://github.com/belennazareth/2ASIR/tree/main/SRI%2BHLC/nginx%2Bphp) para ver los ficheros de `/srv/doc`.
 
 ## 5. Pantallazos de la autentificación básica.
 
