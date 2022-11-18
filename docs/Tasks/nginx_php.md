@@ -60,6 +60,10 @@ A `/etc/nginx/sites-available/vhost1.conf` se le añade un alias para poder entr
         autoindex on;
     }
 ```
+![Term](/img/SRI+HLC/nginxphpSRI-5.png)
+
+![Term](/img/SRI+HLC/nginxphpSRI-6.png)
+
 
 ## 5. Pantallazos de la autentificación básica.
 
