@@ -94,8 +94,13 @@ Se añade en `/etc/nginx/sites-available/vhost1.conf`:
 ![Term](/img/SRI+HLC/nginxphpSRI-9.png)
 
 
-## 6. Finalmente, configura la receta ansible para desactivar el virtualhost www.pagina2.org. Pasa de nuevo la receta y manda algún prueba de que se ha borrado dicho VirtualHost.
+## 6. Finalmente, configura la receta ansible para desactivar el virtualhost www.pagina2.org. Pasa de nuevo la receta y manda alguna prueba de que se ha borrado dicho VirtualHost.
 
+Para esto se vuelve a realizar el comando `ansible-playbook site.yaml`
+
+![Term](/img/SRI+HLC/nginxphpSRI-10.png)
+
+![Term](/img/SRI+HLC/nginxphpSRI-11.png)
 
 
 ### Notas
