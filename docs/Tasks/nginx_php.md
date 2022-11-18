@@ -79,6 +79,8 @@ Se crea el usuario y contraseña:
 
 ![Term](/img/SRI+HLC/nginxphpSRI-7.png)
 
+Se crea el directorio `/secreto` en `/srv/www/pagina1` con un fichero `index.html`. (igualmente se puede encontrar en este [repositorio](https://github.com/belennazareth/2ASIR/tree/main/SRI%2BHLC/nginx%2Bphp))
+
 Se añade en `/etc/nginx/sites-available/vhost1.conf`:
 
     location /secreto {
