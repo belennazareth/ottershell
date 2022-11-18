@@ -22,6 +22,31 @@ Y si consultamos en la máquina `servidorweb` podemos ver los virtualhosts:
 
 ## 3. Comprobación de que al acceder a www.pagina1.org se produce una redirección. Pantallazo accediendo desde un navegador web.
 
+Para realizar la redirección se edita el fichero `/etc/nginx/sites-available/vhost1.conf` en la máquina **servidorweb** añadiendo:
+
+```bash
+location = / {
+  return 301 /principal;
+}
+```
+
+Además de la línea para `principal`:
+
+```bash
+location /principal {
+    try_files $uri $uri/ /index.html;
+}
+```
+
+Se tiene que crear el directorio `/principal` con un fichero `index.html`, en `/srv/www/pagina1`.
+
+![Term](/img/SRI+HLC/nginxphpSRI-3.png)
+
+Podemos mostrar una página web estática copiando el fichero de construcción de la página en el directorio `/srv/www/pagina1/` poniéndole de nombre `principal`, después será necesario ejecutar el siguiente comando para que cambie las rutas del `index` a `/principal`:
+
+    sed -i 's/"\//"\/principal\//g' index.html
+
+![Term](/img/SRI+HLC/nginxphpSRI-4.png)
 
 
 ## 4. Pantallazo accediendo a www.pagina1.org/principal/documentos (pon algunos ficheros para que se vea la lista).
@@ -31,3 +56,8 @@ Y si consultamos en la máquina `servidorweb` podemos ver los virtualhosts:
 ## 5. Pantallazos de la autentificación básica.
 
 ## 6. Finalmente, configura la receta ansible para desactivar el virtualhost www.pagina2.org. Pasa de nuevo la receta y manda algún prueba de que se ha borrado dicho VirtualHost.
+
+
+### Notas
+
+Para crear un nuevo virtualhost tendremos que crear dentro de `ansible/group_vars/all` un nuevo **vhost** y hay que crear un fichero llamado `index_vhost[numero].html` en `ansible/roles/nginx/files/`.
