@@ -105,7 +105,7 @@ Y para desinstalar:
 
     sudo dpkg -P linux-image...
 
-Hay que eliminarlo del GRUB ejecutando el comando `update grub`.
+Hay que eliminarlo del GRUB ejecutando el comando `update-grub`.
 
 Tras esta prueba se va a ir editando el fichero **.config**, por lo que va a ser necesario mantener una copia del original la cual se ha guardado en el directorio `kernel`.
 Para editar **.config** se usa el comando `make xconfig` con el que se nos abrirá una ventana como la siguiente donde podremos seleccionar los módulos que queramos dejar estáticos (✓), dinámicos (·) o directamente sin marcar que no se añadirán a la compilación:
