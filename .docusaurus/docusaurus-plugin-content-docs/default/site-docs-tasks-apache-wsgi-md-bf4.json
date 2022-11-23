@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Instalación de la aplicación BookMedik",
-    "permalink": "/docs/Tasks/interconexiones"
+    "title": "Escenario en OpenStack",
+    "permalink": "/docs/Tasks/escenario_openstack"
   },
   "next": {
     "title": "Markdown Features",

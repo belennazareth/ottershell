@@ -42,7 +42,6 @@ export default {
   'b2f554cd': [() => import(/* webpackChunkName: 'b2f554cd' */ '~blog/default/blog-archive-80c.json'), '~blog/default/blog-archive-80c.json', require.resolveWeak('~blog/default/blog-archive-80c.json')],
   'b527b7e7': [() => import(/* webpackChunkName: 'b527b7e7' */ '@site/docs/Tasks/virtualhosting_apache.md'), '@site/docs/Tasks/virtualhosting_apache.md', require.resolveWeak('@site/docs/Tasks/virtualhosting_apache.md')],
   'bf46dd46': [() => import(/* webpackChunkName: 'bf46dd46' */ '@site/docs/Tasks/apache_wsgi.md'), '@site/docs/Tasks/apache_wsgi.md', require.resolveWeak('@site/docs/Tasks/apache_wsgi.md')],
-  'c42bc9ca': [() => import(/* webpackChunkName: 'c42bc9ca' */ '@site/docs/Tasks/interconexiones.md'), '@site/docs/Tasks/interconexiones.md', require.resolveWeak('@site/docs/Tasks/interconexiones.md')],
   'c4f5d8e4': [() => import(/* webpackChunkName: 'c4f5d8e4' */ '@site/src/pages/index.js'), '@site/src/pages/index.js', require.resolveWeak('@site/src/pages/index.js')],
   'c9e876c3': [() => import(/* webpackChunkName: 'c9e876c3' */ '@site/docs/Tasks/ramas_uniones.md'), '@site/docs/Tasks/ramas_uniones.md', require.resolveWeak('@site/docs/Tasks/ramas_uniones.md')],
   'ccc49370': [() => import(/* webpackChunkName: 'ccc49370' */ '@theme/BlogPostPage'), '@theme/BlogPostPage', require.resolveWeak('@theme/BlogPostPage')],
@@ -52,6 +51,7 @@ export default {
   'db5c031a': [() => import(/* webpackChunkName: 'db5c031a' */ '~blog/default/blog-tags-linkedin-40d-list.json'), '~blog/default/blog-tags-linkedin-40d-list.json', require.resolveWeak('~blog/default/blog-tags-linkedin-40d-list.json')],
   'e8d71a07': [() => import(/* webpackChunkName: 'e8d71a07' */ '@site/docs/Tasks/makefile_aso.md'), '@site/docs/Tasks/makefile_aso.md', require.resolveWeak('@site/docs/Tasks/makefile_aso.md')],
   'eb4abe1b': [() => import(/* webpackChunkName: 'eb4abe1b' */ '@site/docs/Tasks/compilacion_kernel.md'), '@site/docs/Tasks/compilacion_kernel.md', require.resolveWeak('@site/docs/Tasks/compilacion_kernel.md')],
+  'efa196ad': [() => import(/* webpackChunkName: 'efa196ad' */ '@site/docs/Tasks/bookmedik.md'), '@site/docs/Tasks/bookmedik.md', require.resolveWeak('@site/docs/Tasks/bookmedik.md')],
   'f07f6973': [() => import(/* webpackChunkName: 'f07f6973' */ '@site/docs/Tasks/redes_openstack.md'), '@site/docs/Tasks/redes_openstack.md', require.resolveWeak('@site/docs/Tasks/redes_openstack.md')],
   'f8409a7e': [() => import(/* webpackChunkName: 'f8409a7e' */ '@site/docs/intro.mdx'), '@site/docs/intro.mdx', require.resolveWeak('@site/docs/intro.mdx')],
   'ff917fbd': [() => import(/* webpackChunkName: 'ff917fbd' */ '~blog/default/blog-tags-git-hub-bf3.json'), '~blog/default/blog-tags-git-hub-bf3.json', require.resolveWeak('~blog/default/blog-tags-git-hub-bf3.json')],};

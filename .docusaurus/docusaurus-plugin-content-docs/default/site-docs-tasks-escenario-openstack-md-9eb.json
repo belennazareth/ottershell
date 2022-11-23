@@ -17,11 +17,11 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Gestión de redes en OpenStack",
-    "permalink": "/docs/Tasks/redes_openstack"
+    "title": "Instalación de la aplicación BookMedik",
+    "permalink": "/docs/Tasks/bookmedik"
   },
   "next": {
-    "title": "Instalación de la aplicación BookMedik",
-    "permalink": "/docs/Tasks/interconexiones"
+    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+    "permalink": "/docs/Tasks/apache_wsgi"
   }
 }

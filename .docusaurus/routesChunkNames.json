@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-947": {
+  "/docs-c93": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -129,6 +129,10 @@
     "__comp": "17896441",
     "content": "bf46dd46"
   },
+  "/docs/Tasks/bookmedik-37d": {
+    "__comp": "17896441",
+    "content": "efa196ad"
+  },
   "/docs/Tasks/cliente_vpn-817": {
     "__comp": "17896441",
     "content": "8efe011e"
@@ -148,10 +152,6 @@
   "/docs/Tasks/gestion_paqueteria_aso-b86": {
     "__comp": "17896441",
     "content": "82f28520"
-  },
-  "/docs/Tasks/interconexiones-d23": {
-    "__comp": "17896441",
-    "content": "c42bc9ca"
   },
   "/docs/Tasks/intro_git-221": {
     "__comp": "17896441",

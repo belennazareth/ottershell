@@ -125,15 +125,15 @@
           },
           {
             "type": "link",
-            "label": "Escenario en OpenStack",
-            "href": "/docs/Tasks/escenario_openstack",
-            "docId": "Tasks/escenario_openstack"
+            "label": "Instalación de la aplicación BookMedik",
+            "href": "/docs/Tasks/bookmedik",
+            "docId": "Tasks/bookmedik"
           },
           {
             "type": "link",
-            "label": "Instalación de la aplicación BookMedik",
-            "href": "/docs/Tasks/interconexiones",
-            "docId": "Tasks/interconexiones"
+            "label": "Escenario en OpenStack",
+            "href": "/docs/Tasks/escenario_openstack",
+            "docId": "Tasks/escenario_openstack"
           },
           {
             "type": "link",
@@ -198,6 +198,12 @@
       "description": "1. Entrega la configuración del virtualhost.",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/bookmedik": {
+      "id": "Tasks/bookmedik",
+      "title": "Instalación de la aplicación BookMedik",
+      "description": "1. Entrega la configuración del virtualhost.",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/cliente_vpn": {
       "id": "Tasks/cliente_vpn",
       "title": "Configuración del cliente VPN",
@@ -226,12 +232,6 @@
       "id": "Tasks/gestion_paqueteria_aso",
       "title": "Ejercicios gestión de paquetería",
       "description": "Trabajo con apt, aptitude, dpkg",
-      "sidebar": "tutorialSidebar"
-    },
-    "Tasks/interconexiones": {
-      "id": "Tasks/interconexiones",
-      "title": "Instalación de la aplicación BookMedik",
-      "description": "1. Entrega la configuración del virtualhost.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/intro_git": {

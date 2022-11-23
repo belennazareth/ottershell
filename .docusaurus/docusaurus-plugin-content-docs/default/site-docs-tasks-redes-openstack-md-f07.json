@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/nginx_php"
   },
   "next": {
-    "title": "Escenario en OpenStack",
-    "permalink": "/docs/Tasks/escenario_openstack"
+    "title": "Instalación de la aplicación BookMedik",
+    "permalink": "/docs/Tasks/bookmedik"
   }
 }

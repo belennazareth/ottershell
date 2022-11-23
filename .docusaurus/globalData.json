@@ -31,6 +31,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/bookmedik",
+              "path": "/docs/Tasks/bookmedik",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/cliente_vpn",
               "path": "/docs/Tasks/cliente_vpn",
               "sidebar": "tutorialSidebar"
@@ -53,11 +58,6 @@
             {
               "id": "Tasks/gestion_paqueteria_aso",
               "path": "/docs/Tasks/gestion_paqueteria_aso",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "Tasks/interconexiones",
-              "path": "/docs/Tasks/interconexiones",
               "sidebar": "tutorialSidebar"
             },
             {
