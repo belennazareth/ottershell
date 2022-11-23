@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '0d0'),
+    component: ComponentCreator('/docs', '947'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -82,6 +82,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/apache_wsgi',
+        component: ComponentCreator('/docs/Tasks/apache_wsgi', '83c'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/cliente_vpn',
         component: ComponentCreator('/docs/Tasks/cliente_vpn', '817'),
         exact: true,
@@ -100,8 +106,20 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/escenario_openstack',
+        component: ComponentCreator('/docs/Tasks/escenario_openstack', '6ef'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/gestion_paqueteria_aso',
         component: ComponentCreator('/docs/Tasks/gestion_paqueteria_aso', 'b86'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/interconexiones',
+        component: ComponentCreator('/docs/Tasks/interconexiones', 'd23'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

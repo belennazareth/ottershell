@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Gestión de redes en OpenStack",
-    "permalink": "/docs/Tasks/redes_openstack"
+    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+    "permalink": "/docs/Tasks/apache_wsgi"
   },
   "next": {
     "title": "Extras",

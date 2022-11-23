@@ -125,6 +125,24 @@
           },
           {
             "type": "link",
+            "label": "Escenario en OpenStack",
+            "href": "/docs/Tasks/escenario_openstack",
+            "docId": "Tasks/escenario_openstack"
+          },
+          {
+            "type": "link",
+            "label": "Instalación de la aplicación BookMedik",
+            "href": "/docs/Tasks/interconexiones",
+            "docId": "Tasks/interconexiones"
+          },
+          {
+            "type": "link",
+            "label": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+            "href": "/docs/Tasks/apache_wsgi",
+            "docId": "Tasks/apache_wsgi"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -174,6 +192,12 @@
       "description": "Hola! 😊",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/apache_wsgi": {
+      "id": "Tasks/apache_wsgi",
+      "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+      "description": "1. Entrega la configuración del virtualhost.",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/cliente_vpn": {
       "id": "Tasks/cliente_vpn",
       "title": "Configuración del cliente VPN",
@@ -192,10 +216,22 @@
       "description": "Para empezar a compilar el kernel debemos crear un directorio donde trabajaremos, y además, saber cual es la versión de nuestra máquina.",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/escenario_openstack": {
+      "id": "Tasks/escenario_openstack",
+      "title": "Escenario en OpenStack",
+      "description": "1. Las instrucciones para crear y configurar la máquina1 (alfa).",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/gestion_paqueteria_aso": {
       "id": "Tasks/gestion_paqueteria_aso",
       "title": "Ejercicios gestión de paquetería",
       "description": "Trabajo con apt, aptitude, dpkg",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/interconexiones": {
+      "id": "Tasks/interconexiones",
+      "title": "Instalación de la aplicación BookMedik",
+      "description": "1. Entrega la configuración del virtualhost.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/intro_git": {
