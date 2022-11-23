@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/interconexiones",
+  "id": "Tasks/interconexiones",
+  "title": "Instalación de la aplicación BookMedik",
+  "description": "1. Entrega la configuración del virtualhost.",
+  "source": "@site/docs/Tasks/interconexiones.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/interconexiones",
+  "permalink": "/docs/Tasks/interconexiones",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/interconexiones.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Escenario en OpenStack",
+    "permalink": "/docs/Tasks/escenario_openstack"
+  },
+  "next": {
+    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+    "permalink": "/docs/Tasks/apache_wsgi"
+  }
+}

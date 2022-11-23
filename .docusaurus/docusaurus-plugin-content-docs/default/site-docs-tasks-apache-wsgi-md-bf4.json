@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/apache_wsgi",
+  "id": "Tasks/apache_wsgi",
+  "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+  "description": "1. Entrega la configuración del virtualhost.",
+  "source": "@site/docs/Tasks/apache_wsgi.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/apache_wsgi",
+  "permalink": "/docs/Tasks/apache_wsgi",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/apache_wsgi.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 16,
+  "frontMatter": {
+    "sidebar_position": 16
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación de la aplicación BookMedik",
+    "permalink": "/docs/Tasks/interconexiones"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

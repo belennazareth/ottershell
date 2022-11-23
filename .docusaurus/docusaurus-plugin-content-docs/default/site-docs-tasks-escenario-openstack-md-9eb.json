@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/escenario_openstack",
+  "id": "Tasks/escenario_openstack",
+  "title": "Escenario en OpenStack",
+  "description": "1. Las instrucciones para crear y configurar la máquina1 (alfa).",
+  "source": "@site/docs/Tasks/escenario_openstack.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/escenario_openstack",
+  "permalink": "/docs/Tasks/escenario_openstack",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/escenario_openstack.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gestión de redes en OpenStack",
+    "permalink": "/docs/Tasks/redes_openstack"
+  },
+  "next": {
+    "title": "Instalación de la aplicación BookMedik",
+    "permalink": "/docs/Tasks/interconexiones"
+  }
+}
