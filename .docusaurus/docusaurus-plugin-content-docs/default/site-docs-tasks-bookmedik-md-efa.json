@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/bookmedik",
+  "id": "Tasks/bookmedik",
+  "title": "Instalación de la aplicación BookMedik",
+  "description": "1. Entrega la configuración del virtualhost.",
+  "source": "@site/docs/Tasks/bookmedik.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/bookmedik",
+  "permalink": "/docs/Tasks/bookmedik",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/bookmedik.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gestión de redes en OpenStack",
+    "permalink": "/docs/Tasks/redes_openstack"
+  },
+  "next": {
+    "title": "Escenario en OpenStack",
+    "permalink": "/docs/Tasks/escenario_openstack"
+  }
+}
