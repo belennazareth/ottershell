@@ -27,6 +27,7 @@ sidebar_position: 15
 
 3. Comprueba que las claves se han incluido correctamente en vuestro keyring.
 
+
 ### Tarea 3: Cifrado asimétrico con claves públicas 
 
 1. Cifraremos un archivo cualquiera y lo remitiremos por email a uno de nuestros compañeros que nos proporcionó su clave pública.
