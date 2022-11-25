@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/cifrado_asimetrico",
+  "id": "Tasks/cifrado_asimetrico",
+  "title": "Cifrado asimétrico con gpg y openssl",
+  "description": "Cifrado asimétrico con gpg",
+  "source": "@site/docs/Tasks/cifrado_asimetrico.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/cifrado_asimetrico",
+  "permalink": "/docs/Tasks/cifrado_asimetrico",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/cifrado_asimetrico.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación de la aplicación BookMedik",
+    "permalink": "/docs/Tasks/bookmedik"
+  },
+  "next": {
+    "title": "Escenario en OpenStack",
+    "permalink": "/docs/Tasks/escenario_openstack"
+  }
+}

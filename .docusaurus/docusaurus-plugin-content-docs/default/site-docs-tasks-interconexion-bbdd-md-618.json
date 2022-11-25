@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/interconexion_bbdd",
+  "id": "Tasks/interconexion_bbdd",
+  "title": "Interconexión de Servidores de Bases de Datos",
+  "description": "Descripción de la actividad",
+  "source": "@site/docs/Tasks/interconexion_bbdd.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/interconexion_bbdd",
+  "permalink": "/docs/Tasks/interconexion_bbdd",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/interconexion_bbdd.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Escenario en OpenStack",
+    "permalink": "/docs/Tasks/escenario_openstack"
+  },
+  "next": {
+    "title": "Migración CentOS",
+    "permalink": "/docs/Tasks/migracion_centos"
+  }
+}

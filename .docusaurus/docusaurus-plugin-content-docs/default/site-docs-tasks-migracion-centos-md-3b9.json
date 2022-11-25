@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/migracion_centos",
+  "id": "Tasks/migracion_centos",
+  "title": "Migración CentOS",
+  "description": "Descripción de la actividad",
+  "source": "@site/docs/Tasks/migracion_centos.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/migracion_centos",
+  "permalink": "/docs/Tasks/migracion_centos",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/migracion_centos.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Interconexión de Servidores de Bases de Datos",
+    "permalink": "/docs/Tasks/interconexion_bbdd"
+  },
+  "next": {
+    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+    "permalink": "/docs/Tasks/apache_wsgi"
+  }
+}
