@@ -36,6 +36,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/cifrado_asimetrico",
+              "path": "/docs/Tasks/cifrado_asimetrico",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/cliente_vpn",
               "path": "/docs/Tasks/cliente_vpn",
               "sidebar": "tutorialSidebar"
@@ -61,6 +66,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/interconexion_bbdd",
+              "path": "/docs/Tasks/interconexion_bbdd",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/intro_git",
               "path": "/docs/Tasks/intro_git",
               "sidebar": "tutorialSidebar"
@@ -83,6 +93,11 @@
             {
               "id": "Tasks/markdown-features",
               "path": "/docs/Tasks/markdown-features",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/migracion_centos",
+              "path": "/docs/Tasks/migracion_centos",
               "sidebar": "tutorialSidebar"
             },
             {

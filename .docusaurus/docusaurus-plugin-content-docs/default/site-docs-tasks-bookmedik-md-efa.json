@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/redes_openstack"
   },
   "next": {
-    "title": "Escenario en OpenStack",
-    "permalink": "/docs/Tasks/escenario_openstack"
+    "title": "Cifrado asimétrico con gpg y openssl",
+    "permalink": "/docs/Tasks/cifrado_asimetrico"
   }
 }

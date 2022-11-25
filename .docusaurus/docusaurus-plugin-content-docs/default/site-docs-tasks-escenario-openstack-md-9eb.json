@@ -17,11 +17,11 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Instalación de la aplicación BookMedik",
-    "permalink": "/docs/Tasks/bookmedik"
+    "title": "Cifrado asimétrico con gpg y openssl",
+    "permalink": "/docs/Tasks/cifrado_asimetrico"
   },
   "next": {
-    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-    "permalink": "/docs/Tasks/apache_wsgi"
+    "title": "Interconexión de Servidores de Bases de Datos",
+    "permalink": "/docs/Tasks/interconexion_bbdd"
   }
 }

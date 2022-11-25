@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Escenario en OpenStack",
-    "permalink": "/docs/Tasks/escenario_openstack"
+    "title": "Migración CentOS",
+    "permalink": "/docs/Tasks/migracion_centos"
   },
   "next": {
     "title": "Markdown Features",

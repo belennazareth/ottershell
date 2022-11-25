@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-c93": {
+  "/docs-4ef": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -133,6 +133,10 @@
     "__comp": "17896441",
     "content": "efa196ad"
   },
+  "/docs/Tasks/cifrado_asimetrico-07c": {
+    "__comp": "17896441",
+    "content": "05b8823d"
+  },
   "/docs/Tasks/cliente_vpn-817": {
     "__comp": "17896441",
     "content": "8efe011e"
@@ -153,6 +157,10 @@
     "__comp": "17896441",
     "content": "82f28520"
   },
+  "/docs/Tasks/interconexion_bbdd-60e": {
+    "__comp": "17896441",
+    "content": "6183c210"
+  },
   "/docs/Tasks/intro_git-221": {
     "__comp": "17896441",
     "content": "5d56c66f"
@@ -172,6 +180,10 @@
   "/docs/Tasks/markdown-features-4e3": {
     "__comp": "17896441",
     "content": "0de80381"
+  },
+  "/docs/Tasks/migracion_centos-7c2": {
+    "__comp": "17896441",
+    "content": "3b927334"
   },
   "/docs/Tasks/nginx_php-77d": {
     "__comp": "17896441",

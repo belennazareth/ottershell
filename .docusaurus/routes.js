@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'c93'),
+    component: ComponentCreator('/docs', '4ef'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -94,6 +94,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/cifrado_asimetrico',
+        component: ComponentCreator('/docs/Tasks/cifrado_asimetrico', '07c'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/cliente_vpn',
         component: ComponentCreator('/docs/Tasks/cliente_vpn', '817'),
         exact: true,
@@ -124,6 +130,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/interconexion_bbdd',
+        component: ComponentCreator('/docs/Tasks/interconexion_bbdd', '60e'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/intro_git',
         component: ComponentCreator('/docs/Tasks/intro_git', '221'),
         exact: true,
@@ -150,6 +162,12 @@ export default [
       {
         path: '/docs/Tasks/markdown-features',
         component: ComponentCreator('/docs/Tasks/markdown-features', '4e3'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/migracion_centos',
+        component: ComponentCreator('/docs/Tasks/migracion_centos', '7c2'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
