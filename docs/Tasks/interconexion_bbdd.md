@@ -90,3 +90,14 @@ ORACLE2 =
   )
 ```
 
+Tras esto reiniciamos el servicio usando los comandos:
+
+    lsnrctl stop
+    lsnrctl start
+
+**\* Nota:** Hay que asegurarse de que las bases de datos estén iniciadas en ambas máquinas (entramos en la base datos con `sqlplus / as sysdba` y ejecutamos `startup`) y que se este ejecutando el listener en ambas máquinas (`lsnrctl start`).
+
+Lo siguiente será dar permisos al usuario (con `sysdba`), en este caso se llama `'nazareth'`:
+
+    grant create database link to nazareth;
+
