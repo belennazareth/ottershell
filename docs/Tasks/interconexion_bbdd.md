@@ -16,6 +16,21 @@ Se pide:
 
     • Realizar un enlace entre dos servidores de bases de datos ORACLE, explicando la configuración necesaria en ambos extremos y demostrando su funcionamiento.
       
+
     • Realizar un enlace entre dos servidores de bases de datos Postgres, explicando la configuración necesaria en ambos extremos y demostrando su funcionamiento.
       
+
     • Realizar un enlace entre un servidor ORACLE y otro Postgres o MySQL empleando Heterogeneus Services, explicando la configuración necesaria en ambos extremos y demostrando su funcionamiento.
+
+
+### Interconexión oracle a oracle
+
+Tenemos dos máquinas oracle con usuarios `oracle` desde las que se realizarán las interconexiones:
+
+* Máquina 1:
+
+![Repo](/img/BBDD/interconexion.png)
+
+* Máquina 2:
+
+![Repo](/img/BBDD/interconexion-2.png)
