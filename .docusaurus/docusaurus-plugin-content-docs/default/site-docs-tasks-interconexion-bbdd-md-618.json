@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/escenario_openstack"
   },
   "next": {
-    "title": "Migración CentOS",
-    "permalink": "/docs/Tasks/migracion_centos"
+    "title": "Instalación de un servidor LEMP",
+    "permalink": "/docs/Tasks/lemp"
   }
 }

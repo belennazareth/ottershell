@@ -81,6 +81,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/lemp",
+              "path": "/docs/Tasks/lemp",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/makefile_aso",
               "path": "/docs/Tasks/makefile_aso",
               "sidebar": "tutorialSidebar"

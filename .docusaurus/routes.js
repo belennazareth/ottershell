@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'e9a'),
+    component: ComponentCreator('/docs', 'dd1'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -144,6 +144,12 @@ export default [
       {
         path: '/docs/Tasks/intro_git',
         component: ComponentCreator('/docs/Tasks/intro_git', '221'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/lemp',
+        component: ComponentCreator('/docs/Tasks/lemp', '8ab'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

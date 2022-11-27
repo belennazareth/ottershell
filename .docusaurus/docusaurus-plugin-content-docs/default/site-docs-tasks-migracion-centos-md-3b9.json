@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Interconexión de Servidores de Bases de Datos",
-    "permalink": "/docs/Tasks/interconexion_bbdd"
+    "title": "Instalación de un servidor LEMP",
+    "permalink": "/docs/Tasks/lemp"
   },
   "next": {
     "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",

@@ -155,6 +155,12 @@
           },
           {
             "type": "link",
+            "label": "Instalación de un servidor LEMP",
+            "href": "/docs/Tasks/lemp",
+            "docId": "Tasks/lemp"
+          },
+          {
+            "type": "link",
             "label": "Migración CentOS",
             "href": "/docs/Tasks/migracion_centos",
             "docId": "Tasks/migracion_centos"
@@ -280,6 +286,12 @@
       "id": "Tasks/intro_git",
       "title": "Introducción a git y GitHub",
       "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/lemp": {
+      "id": "Tasks/lemp",
+      "title": "Instalación de un servidor LEMP",
+      "description": "1. Muestra un pantallazo de la salida del fichero info.php donde se vea que se está ejecutando PHP sobre un servidor nginx.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/makefile_aso": {
