@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/apache2_fpm",
+  "id": "Tasks/apache2_fpm",
+  "title": "Configuración Apache2 + fpm+php",
+  "description": "1. Pantallazo donde se compruebe que tienes corriendo en tu servidor procesos PHP-FPM.",
+  "source": "@site/docs/Tasks/apache2_fpm.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/apache2_fpm",
+  "permalink": "/docs/Tasks/apache2_fpm",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/apache2_fpm.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gestión de redes en OpenStack",
+    "permalink": "/docs/Tasks/redes_openstack"
+  },
+  "next": {
+    "title": "Instalación de la aplicación BookMedik",
+    "permalink": "/docs/Tasks/bookmedik"
+  }
+}
