@@ -57,4 +57,5 @@ export default {
   'efa196ad': [() => import(/* webpackChunkName: 'efa196ad' */ '@site/docs/Tasks/bookmedik.md'), '@site/docs/Tasks/bookmedik.md', require.resolveWeak('@site/docs/Tasks/bookmedik.md')],
   'f07f6973': [() => import(/* webpackChunkName: 'f07f6973' */ '@site/docs/Tasks/redes_openstack.md'), '@site/docs/Tasks/redes_openstack.md', require.resolveWeak('@site/docs/Tasks/redes_openstack.md')],
   'f8409a7e': [() => import(/* webpackChunkName: 'f8409a7e' */ '@site/docs/intro.mdx'), '@site/docs/intro.mdx', require.resolveWeak('@site/docs/intro.mdx')],
+  'f99e8129': [() => import(/* webpackChunkName: 'f99e8129' */ '@site/docs/Tasks/apache2_fpm.md'), '@site/docs/Tasks/apache2_fpm.md', require.resolveWeak('@site/docs/Tasks/apache2_fpm.md')],
   'ff917fbd': [() => import(/* webpackChunkName: 'ff917fbd' */ '~blog/default/blog-tags-git-hub-bf3.json'), '~blog/default/blog-tags-git-hub-bf3.json', require.resolveWeak('~blog/default/blog-tags-git-hub-bf3.json')],};

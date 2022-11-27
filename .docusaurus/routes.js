@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '4ef'),
+    component: ComponentCreator('/docs', 'e9a'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -84,6 +84,12 @@ export default [
       {
         path: '/docs/Tasks/apache_wsgi',
         component: ComponentCreator('/docs/Tasks/apache_wsgi', '83c'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/apache2_fpm',
+        component: ComponentCreator('/docs/Tasks/apache2_fpm', 'b47'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

@@ -125,6 +125,12 @@
           },
           {
             "type": "link",
+            "label": "Configuración Apache2 + fpm+php",
+            "href": "/docs/Tasks/apache2_fpm",
+            "docId": "Tasks/apache2_fpm"
+          },
+          {
+            "type": "link",
             "label": "Instalación de la aplicación BookMedik",
             "href": "/docs/Tasks/bookmedik",
             "docId": "Tasks/bookmedik"
@@ -214,6 +220,12 @@
       "id": "Tasks/apache_wsgi",
       "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
       "description": "1. Entrega la configuración del virtualhost.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/apache2_fpm": {
+      "id": "Tasks/apache2_fpm",
+      "title": "Configuración Apache2 + fpm+php",
+      "description": "1. Pantallazo donde se compruebe que tienes corriendo en tu servidor procesos PHP-FPM.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/bookmedik": {

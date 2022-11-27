@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/nginx_php"
   },
   "next": {
-    "title": "Instalación de la aplicación BookMedik",
-    "permalink": "/docs/Tasks/bookmedik"
+    "title": "Configuración Apache2 + fpm+php",
+    "permalink": "/docs/Tasks/apache2_fpm"
   }
 }

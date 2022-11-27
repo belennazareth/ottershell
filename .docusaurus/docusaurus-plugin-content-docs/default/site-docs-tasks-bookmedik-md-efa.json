@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Gestión de redes en OpenStack",
-    "permalink": "/docs/Tasks/redes_openstack"
+    "title": "Configuración Apache2 + fpm+php",
+    "permalink": "/docs/Tasks/apache2_fpm"
   },
   "next": {
     "title": "Cifrado asimétrico con gpg y openssl",
