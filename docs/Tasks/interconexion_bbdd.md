@@ -101,3 +101,11 @@ Lo siguiente será dar permisos al usuario (con `sysdba`), en este caso se llama
 
     grant create database link to nazareth;
 
+Creamos un link o enlace hacia la otra máquina entrando primero a `sqlplus` con el usuario `oracle` y creando la siguiente base de datos:
+
+```bash
+create database link enlaceoracle
+connect to nazareth identified by nazareth
+using 'ORACLE2';
+```
+
