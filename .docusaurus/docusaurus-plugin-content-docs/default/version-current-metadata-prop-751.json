@@ -167,6 +167,12 @@
           },
           {
             "type": "link",
+            "label": "Instalación de WordPress",
+            "href": "/docs/Tasks/wordpress",
+            "docId": "Tasks/wordpress"
+          },
+          {
+            "type": "link",
             "label": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
             "href": "/docs/Tasks/apache_wsgi",
             "docId": "Tasks/apache_wsgi"
@@ -376,6 +382,12 @@
       "id": "Tasks/virtualizacion_linux",
       "title": "Virtualización en Linux",
       "description": "1. Entrega la URL del repositorio GitHub donde has alojado el proyecto.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/wordpress": {
+      "id": "Tasks/wordpress",
+      "title": "Instalación de WordPress",
+      "description": "1. Pantallazo accediendo a WordPress para comprobar que has escrito una entrada del blog.",
       "sidebar": "tutorialSidebar"
     }
   }

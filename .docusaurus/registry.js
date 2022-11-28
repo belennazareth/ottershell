@@ -33,6 +33,7 @@ export default {
   '8efe011e': [() => import(/* webpackChunkName: '8efe011e' */ '@site/docs/Tasks/cliente_vpn.md'), '@site/docs/Tasks/cliente_vpn.md', require.resolveWeak('@site/docs/Tasks/cliente_vpn.md')],
   '91719550': [() => import(/* webpackChunkName: '91719550' */ '~docs/default/category-docs-tutorialsidebar-category-extras-904.json'), '~docs/default/category-docs-tutorialsidebar-category-extras-904.json', require.resolveWeak('~docs/default/category-docs-tutorialsidebar-category-extras-904.json')],
   '935f2afb': [() => import(/* webpackChunkName: '935f2afb' */ '~docs/default/version-current-metadata-prop-751.json'), '~docs/default/version-current-metadata-prop-751.json', require.resolveWeak('~docs/default/version-current-metadata-prop-751.json')],
+  '9dde1a93': [() => import(/* webpackChunkName: '9dde1a93' */ '@site/docs/Tasks/wordpress.md'), '@site/docs/Tasks/wordpress.md', require.resolveWeak('@site/docs/Tasks/wordpress.md')],
   '9e4087bc': [() => import(/* webpackChunkName: '9e4087bc' */ '@theme/BlogArchivePage'), '@theme/BlogArchivePage', require.resolveWeak('@theme/BlogArchivePage')],
   '9ebb1dcc': [() => import(/* webpackChunkName: '9ebb1dcc' */ '@site/docs/Tasks/escenario_openstack.md'), '@site/docs/Tasks/escenario_openstack.md', require.resolveWeak('@site/docs/Tasks/escenario_openstack.md')],
   'a168c652': [() => import(/* webpackChunkName: 'a168c652' */ '@site/docs/Tasks/nginx_php.md'), '@site/docs/Tasks/nginx_php.md', require.resolveWeak('@site/docs/Tasks/nginx_php.md')],

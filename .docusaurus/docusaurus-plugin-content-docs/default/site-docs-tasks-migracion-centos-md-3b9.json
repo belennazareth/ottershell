@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/lemp"
   },
   "next": {
-    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-    "permalink": "/docs/Tasks/apache_wsgi"
+    "title": "Instalación de WordPress",
+    "permalink": "/docs/Tasks/wordpress"
   }
 }

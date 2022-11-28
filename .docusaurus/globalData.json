@@ -156,6 +156,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/wordpress",
+              "path": "/docs/Tasks/wordpress",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "/category/tasks",
               "path": "/docs/category/tasks",
               "sidebar": "tutorialSidebar"

@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Migración CentOS",
-    "permalink": "/docs/Tasks/migracion_centos"
+    "title": "Instalación de WordPress",
+    "permalink": "/docs/Tasks/wordpress"
   },
   "next": {
     "title": "Markdown Features",

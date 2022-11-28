@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'dd1'),
+    component: ComponentCreator('/docs', 'de0'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -234,6 +234,12 @@ export default [
       {
         path: '/docs/Tasks/virtualizacion_linux',
         component: ComponentCreator('/docs/Tasks/virtualizacion_linux', '3d7'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/wordpress',
+        component: ComponentCreator('/docs/Tasks/wordpress', 'b17'),
         exact: true,
         sidebar: "tutorialSidebar"
       }
