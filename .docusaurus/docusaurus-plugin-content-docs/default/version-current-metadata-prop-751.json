@@ -179,6 +179,12 @@
           },
           {
             "type": "link",
+            "label": "Instalación/migración de aplicaciones web PHP",
+            "href": "/docs/Tasks/migracion_php",
+            "docId": "Tasks/migracion_php"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -328,6 +334,12 @@
       "id": "Tasks/migracion_centos",
       "title": "Migración CentOS",
       "description": "Descripción de la actividad",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/migracion_php": {
+      "id": "Tasks/migracion_php",
+      "title": "Instalación/migración de aplicaciones web PHP",
+      "description": "",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/nginx_php": {

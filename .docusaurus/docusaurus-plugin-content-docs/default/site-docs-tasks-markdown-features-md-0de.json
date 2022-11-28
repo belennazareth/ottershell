@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-    "permalink": "/docs/Tasks/apache_wsgi"
+    "title": "Instalación/migración de aplicaciones web PHP",
+    "permalink": "/docs/Tasks/migracion_php"
   },
   "next": {
     "title": "Extras",

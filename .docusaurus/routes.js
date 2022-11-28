@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'de0'),
+    component: ComponentCreator('/docs', '27f'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -180,6 +180,12 @@ export default [
       {
         path: '/docs/Tasks/migracion_centos',
         component: ComponentCreator('/docs/Tasks/migracion_centos', '7c2'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/migracion_php',
+        component: ComponentCreator('/docs/Tasks/migracion_php', '940'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
