@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/lemp",
+  "id": "Tasks/lemp",
+  "title": "Instalación de un servidor LEMP",
+  "description": "1. Muestra un pantallazo de la salida del fichero info.php donde se vea que se está ejecutando PHP sobre un servidor nginx.",
+  "source": "@site/docs/Tasks/lemp.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/lemp",
+  "permalink": "/docs/Tasks/lemp",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/lemp.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Interconexión de Servidores de Bases de Datos",
+    "permalink": "/docs/Tasks/interconexion_bbdd"
+  },
+  "next": {
+    "title": "Migración CentOS",
+    "permalink": "/docs/Tasks/migracion_centos"
+  }
+}
