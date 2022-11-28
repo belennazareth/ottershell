@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/wordpress",
+  "id": "Tasks/wordpress",
+  "title": "Instalación de WordPress",
+  "description": "1. Pantallazo accediendo a WordPress para comprobar que has escrito una entrada del blog.",
+  "source": "@site/docs/Tasks/wordpress.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/wordpress",
+  "permalink": "/docs/Tasks/wordpress",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/wordpress.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migración CentOS",
+    "permalink": "/docs/Tasks/migracion_centos"
+  },
+  "next": {
+    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+    "permalink": "/docs/Tasks/apache_wsgi"
+  }
+}
