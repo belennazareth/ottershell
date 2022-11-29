@@ -27,27 +27,27 @@ Se pide:
 
 Tenemos dos máquinas oracle con usuarios `oracle` desde las que se realizarán las interconexiones:
 
-* Máquina 1 (`debian10`):
+* Máquina 1 (`oracle1`):
 
 ![Repo](/img/BBDD/interconexion.png)
 
-* Máquina 2 (`oraclesito`):
+* Máquina 2 (`oracle2`):
 
 ![Repo](/img/BBDD/interconexion-2.png)
 
-Para poder realizar la interconexión de ambas máquinas se realizarán cambios en el fichero `listener.ora` :
+Para poder realizar la interconexión de ambas máquinas se realizarán cambios en el fichero `listener.ora` del servidor `oracle1`:
 
-    nano /opt/oracle/product/21c/dbhomeXE/network/admin/listener.ora
+    nano /opt/oracle/product/19c/dbhome_1/network/admin/listener.ora
 
-Añadimos las siguientes líneas con las que se permitirán las conexiones hacia otras `IPs`:
+Añadimos las siguientes líneas con las que se permitirán las conexiones hacia la dirección y puerto que vamos a usar:
 
 ```bash
 SID_LIST_LISTENER =
  (SID_LIST =
   (SID_DESC =
-   (GLOBAL_DBNAME = orcl)
-   (ORACLE_HOME = /opt/oracle/product/21c/dbhomeXE)
-   (SID_NAME = orcl)
+   (GLOBAL_DBNAME = ORCLCDB)
+   (ORACLE_HOME = /opt/oracle/product/19c/dbhome_1)
+   (SID_NAME = ORCLCDB)
   )
  )
 
@@ -58,36 +58,36 @@ LISTENER=
     (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1521))
    )
    (ADDRESS_LIST =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = 0.0.0.0)(PORT = 1521))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.122.230)(PORT = 1521))
    )
   )
  )
 ```
 
-A continuación, se crea el fichero `tnsnames.ora` donde se declarará el destino de la conexión desde la máquina `debian10` a `oraclesito`:
+A continuación, se crea el fichero `tnsnames.ora` (en caso de que no exista) para conectarnos con el que nos vamos a enlazar:
 
 ```bash
-LISTENER_ORACLE1 =
-  (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+LISTENER_ORCL =
+ (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
 
-
-ORACLE1 =
-  (DESCRIPTION =
+ORCL =
+ (DESCRIPTION = 
     (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
     (CONNECT_DATA =
-      (SERVER = DEDICATED)
-      (SERVICE_NAME = oracle1)
+        (SERVER = DEDICATED)
+        (SERVICE_NAME = ORCLCDB)
     )
-  )
+ )
 
 ORACLE2 =
-  (DESCRIPTION =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.122.163)(PORT = 1521))
+ (DESCRIPTION =             
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.122.16)(PORT = 1521))
     (CONNECT_DATA =
-      (SERVER = DEDICATED)
-      (SERVICE_NAME = orcl)
+        (SERVER = DEDICATED)
+        (SERVICE_NAME = ORCLCDB)
     )
-  )
+ )
+
 ```
 
 Tras esto reiniciamos el servicio usando los comandos:
@@ -104,8 +104,71 @@ Lo siguiente será dar permisos al usuario (con `sysdba`), en este caso se llama
 Creamos un link o enlace hacia la otra máquina entrando primero a `sqlplus` con el usuario `oracle` y creando la siguiente base de datos:
 
 ```bash
-create database link enlaceoracle
+create database link enlaceoracle3
 connect to nazareth identified by nazareth
-using 'ORACLE2';
+using '192.168.122.16/ORCLCDB';
 ```
 
+Para comprobar que funciona la interconexión se ha realizado una consulta usando el enlace creado anteriormente:
+
+    select ename from EMP@enlaceoracle3;
+
+![Repo](/img/BBDD/interconexion-3.png)
+
+
+### Interconexión postgres a postgres
+
+Para realizar esta interconexión se van a usar dos máquinas con postgresql instalado.
+
+* Máquina 1 (`postgres1`):
+
+![Repo](/img/BBDD/interconexion-4.png)
+
+* Máquina 2 (`postgres2`):
+
+![Repo](/img/BBDD/interconexion-5.png)
+
+
+Entrando con el usuario postgres (`su postgres`; psql), se han creado en ambas máquinas una base de datos, `inter` para la máquina 1 e `inter2` para la máquina 2. Además de un usuario para cada una.
+
+    create database inter;
+    create user nazareth with password 'nazareth';
+    grant all privileges on database inter to nazareth;
+
+    create database inter2;
+    create user nazareth with password 'nazareth';
+    grant all privileges on database inter2 to nazareth;
+
+Después, entrando con el usuario postgres se ha entrado en la base de datos creando la extensión dblink:
+
+![Repo](/img/BBDD/interconexion-6.png)
+
+Editamos el fichero de configuración de `postgres2`:
+
+      /etc/postgresql/13/main/postgresql.conf 
+
+Y descomentamos la línea añadiendo la ip del `postgres1`:
+
+    listen_addresses = '192.168.122.230, localhost'
+
+
+En `postgres1` y `postgres2` añadimos un nuevo registro de autentificación en el fichero:
+
+    /etc/postgresql/13/main/pg_hba.conf 
+
+Agregamos la línea:
+
+```bashrc
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+host    all             all             192.168.122.9/24        md5 #en postgres1
+host    all             all             192.168.122.142/24        md5 #en postgres2
+```
+
+Después de hacer cada cambio hay que reiniciar el servicio postgresql para que se ejecuten los cambios.
+
+Por último, entramos en la base de datos `inter` y ejecutamos una consulta para comprobar que funciona el enlace:
+
+    select * from dblink('dbname=inter2 host=192.168.122.9 user=nazareth password=nazareth', 'select * from dept') as dept (deptno integer, dname text, loc text);
+
+![Repo](/img/BBDD/interconexion-7.png)
