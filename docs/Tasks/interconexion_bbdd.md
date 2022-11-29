@@ -158,7 +158,7 @@ En `postgres1` y `postgres2` añadimos un nuevo registro de autentificación en 
 
 Agregamos la línea:
 
-```bashrc
+```bash
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 
 host    all             all             192.168.122.9/24        md5 #en postgres1
@@ -172,3 +172,100 @@ Por último, entramos en la base de datos `inter` y ejecutamos una consulta para
     select * from dblink('dbname=inter2 host=192.168.122.9 user=nazareth password=nazareth', 'select * from dept') as dept (deptno integer, dname text, loc text);
 
 ![Repo](/img/BBDD/interconexion-7.png)
+
+
+### Interconexión oracle a postgres
+
+Tenemos dos máquinas:
+
+* Máquina 1, oracle (`oracle1`):
+
+![Repo](/img/BBDD/interconexion.png)
+
+* Máquina 2, postgres (`postgres2`):
+
+![Repo](/img/BBDD/interconexion-5.png)
+
+
+En la máquina postgres configuramos el fichero `/etc/postgresql/13/main/pg_hba.conf ` añadiendo la ip de `oracle`:
+
+```bash
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+host    all             all             192.168.122.230/24        md5
+```
+
+Y también permitiremos la conexión de la máquina `oracle` en el fichero `/etc/postgresql/13/main/postgresql.conf`:
+
+```bash
+listen_addresses  = '192.168.122.230, localhost'
+```
+
+Primero vamos a instalar en la máquina oracle el paquete odbc para permitir el acceso a postgres:
+
+    apt install odbc-postgresql unixodbc
+
+Con esto se creará el fichero `/etc/odbcinst.ini` con contenido:
+
+```bash
+[PostgreSQL ANSI]
+Description=PostgreSQL ODBC driver (ANSI version)
+Driver=psqlodbca.so
+Setup=libodbcpsqlS.so
+Debug=0
+CommLog=1
+UsageCount=1
+
+[PostgreSQL Unicode]
+Description=PostgreSQL ODBC driver (Unicode version)
+Driver=psqlodbcw.so
+Setup=libodbcpsqlS.so
+Debug=0
+CommLog=1
+UsageCount=1
+```
+
+Para comprobar que la configuración este correcta se ejecutará:
+
+    odbcinst -q -d
+
+![Repo](/img/BBDD/interconexion-8.png)
+
+En el fichero `/etc/odbc.ini` añadimos:
+
+```bash
+[PSQLA]
+Debug = 0
+CommLog = 0
+ReadOnly = 1
+Driver = PostgreSQL ANSI
+Servername = 192.168.122.9
+Username = nazareth 
+Password = nazareth
+Port = 5432
+Database = inter2
+Trace = 0
+TraceFile = /tmp/sql.log
+
+[PSQLU]
+Debug = 0
+CommLog = 0
+ReadOnly = 0
+Driver = PostgreSQL Unicode
+Servername = 192.168.122.9
+Username = nazareth
+Password = nazareth
+Port = 5432
+Database = inter2
+Trace = 0
+TraceFile = /tmp/sql.log
+
+[Default]
+Driver = /usr/lib/x86_64-linux-gnu/odbc/liboplodbcS.so
+```
+
+Para comprobar que funciona ejecutamos:
+
+    odbcinst -q -s
+
+![Repo](/img/BBDD/interconexion-9.png)
