@@ -1,0 +1,23 @@
+{
+  "unversionedId": "Extras/ENTRA_AQUI",
+  "id": "Extras/ENTRA_AQUI",
+  "title": "ENTRA_AQUI",
+  "description": "Examen",
+  "source": "@site/docs/Extras/ENTRA_AQUI.md",
+  "sourceDirName": "Extras",
+  "slug": "/Extras/ENTRA_AQUI",
+  "permalink": "/docs/Extras/ENTRA_AQUI",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Extras/ENTRA_AQUI.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Próximamente...",
+    "permalink": "/docs/Extras/proximamente"
+  }
+}
