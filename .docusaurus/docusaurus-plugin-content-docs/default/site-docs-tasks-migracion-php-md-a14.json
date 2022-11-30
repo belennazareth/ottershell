@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/migracion_php",
   "id": "Tasks/migracion_php",
   "title": "Instalación/migración de aplicaciones web PHP",
-  "description": "",
+  "description": "Escenario",
   "source": "@site/docs/Tasks/migracion_php.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/migracion_php",
