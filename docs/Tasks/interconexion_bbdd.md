@@ -329,7 +329,7 @@ Asignamos privilegios al usuario `'nazareth'` de oracle:
 Y creamos el link en el usuario nazareth:
 
 ```bash
-CREATE PUBLIC DATABASE LINK enlacepostgres2
+CREATE DATABASE LINK enlacepostgres
 CONNECT TO "nazareth"
 IDENTIFIED BY "nazareth"
 USING 'PSQLU';
