@@ -11,13 +11,13 @@
           "mainDocId": "intro",
           "docs": [
             {
-              "id": "Extras/proximamente",
-              "path": "/docs/Extras/proximamente",
+              "id": "Extras/ENTRA_AQUI",
+              "path": "/docs/Extras/ENTRA_AQUI",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Extras/prueba1_IAW",
-              "path": "/docs/Extras/prueba1_IAW",
+              "id": "Extras/proximamente",
+              "path": "/docs/Extras/proximamente",
               "sidebar": "tutorialSidebar"
             },
             {

@@ -206,9 +206,9 @@
           },
           {
             "type": "link",
-            "label": "Prueba: Introducción a la implantación de aplicaciones web",
-            "href": "/docs/Extras/prueba1_IAW",
-            "docId": "Extras/prueba1_IAW"
+            "label": "ENTRA_AQUI",
+            "href": "/docs/Extras/ENTRA_AQUI",
+            "docId": "Extras/ENTRA_AQUI"
           }
         ],
         "href": "/docs/category/extras"
@@ -216,16 +216,16 @@
     ]
   },
   "docs": {
+    "Extras/ENTRA_AQUI": {
+      "id": "Extras/ENTRA_AQUI",
+      "title": "ENTRA_AQUI",
+      "description": "Examen",
+      "sidebar": "tutorialSidebar"
+    },
     "Extras/proximamente": {
       "id": "Extras/proximamente",
       "title": "Próximamente...",
       "description": "otter",
-      "sidebar": "tutorialSidebar"
-    },
-    "Extras/prueba1_IAW": {
-      "id": "Extras/prueba1_IAW",
-      "title": "Prueba: Introducción a la implantación de aplicaciones web",
-      "description": "Belén Nazareth Durán Meléndez",
       "sidebar": "tutorialSidebar"
     },
     "intro": {

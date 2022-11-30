@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '27f'),
+    component: ComponentCreator('/docs', 'b3e'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -64,14 +64,14 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
-        path: '/docs/Extras/proximamente',
-        component: ComponentCreator('/docs/Extras/proximamente', 'b0b'),
+        path: '/docs/Extras/ENTRA_AQUI',
+        component: ComponentCreator('/docs/Extras/ENTRA_AQUI', 'f91'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
       {
-        path: '/docs/Extras/prueba1_IAW',
-        component: ComponentCreator('/docs/Extras/prueba1_IAW', '18c'),
+        path: '/docs/Extras/proximamente',
+        component: ComponentCreator('/docs/Extras/proximamente', 'b0b'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
