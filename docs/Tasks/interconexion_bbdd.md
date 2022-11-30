@@ -269,3 +269,68 @@ Para comprobar que funciona ejecutamos:
     odbcinst -q -s
 
 ![Repo](/img/BBDD/interconexion-9.png)
+
+Comprobamos la conexión al servidor postgres:
+
+    isql -v PSQLU
+
+
+![Repo](/img/BBDD/interconexion-10.png)
+
+
+Ahora vamos a configurar el servicio de Heterogeneus Services para hacer un link en la base de datos de oracle, para ello creamos el fichero `/opt/oracle/product/19c/dbhome_1/hs/admin/initPSQLU.ora` añadiendo:
+
+```bash
+HS_FDS_CONNECT_INFO = PSQLU
+HS_FDS_TRACE_LEVEL = Debug
+HS_FDS_SHAREABLE_NAME = /usr/lib/x86_64-linux-gnu/odbc/psqlodbcw.so
+HS_LANGUAGE = AMERICAN_AMERICA.WE8ISO8859P1
+set ODBCINI=/etc/odbc.ini
+```
+
+A continuación, modificamos el fichero listener de oracle:
+
+```bash
+SID_LIST_LISTENER =
+ (SID_LIST =
+  (SID_DESC =
+   (GLOBAL_DBNAME = ORCLCDB)
+   (ORACLE_HOME = /opt/oracle/product/19c/dbhome_1)
+   (SID_NAME = ORCLCDB)
+  )
+  (SID_DESC =
+    (SID_NAME = PSQLU)
+    (PROGRAM = dg4odbc)
+    (ORACLE_HOME = /opt/oracle/product/19c/dbhome_1)
+  )
+ )
+```
+
+Y en el fichero tnsnames añadimos:
+
+```bash
+PSQLU =
+ (DESCRIPTION=
+ (ADDRESS=(PROTOCOL=tcp)(HOST=localhost)(PORT=1521))
+   (CONNECT_DATA=(SID=PSQLU))
+   (HS=OK)
+ )
+ ```
+
+Después reiniciamos ejecutando `lsnrctl stop` y `lsnrctl start`. Veremos que devuelve:
+
+    Service "PSQLU" has 1 instance(s).
+    Instance "PSQLU", status UNKNOWN, has 1 handler(s) for this service...
+
+Asignamos privilegios al usuario `'nazareth'` de oracle:
+
+    GRANT CREATE PUBLIC DATABASE LINK to nazareth
+
+Y creamos el link en el usuario nazareth:
+
+```bash
+CREATE PUBLIC DATABASE LINK enlacepostgres2
+CONNECT TO "nazareth"
+IDENTIFIED BY "nazareth"
+USING 'PSQLU';
+```
