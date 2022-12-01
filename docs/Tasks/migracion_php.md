@@ -189,7 +189,33 @@ Y creamos un primer post:
 
 ### 4. De la Tarea 1, indica que plugin has instalado.
 
- 
+Se ha instalado el plugin para añadir un calendario y el plugin para añadir vídeos de Youtube.
+Para esto se ha introducido la URL del módulo en el apartado 'ampliar', de este modo se añadirá como otra opción más de ampliación.
+Por ejemplo:
+
+![Term](/img/IAW/migracionPHPIAW2-9.png)
+
+Al aceptar la instalación aparecerá un mensaje parecido al siguiente:
+
+![Term](/img/IAW/migracionPHPIAW2-10.png)
+
+Para poder añadir las extensiones a los artículos o a las páginas entramos en `inicio > Administración > Estructura > Tipos de contenido > [Artículo/Página] > Administrar campos` y entramos en `Añadir un campo`, apareciendo algo similar a:
+
+![Term](/img/IAW/migracionPHPIAW2-11.png)
+
+Se indican el número de valores permitidos y se configuran los valores que va a tomar la extensión en la página o artículo:
+
+![Term](/img/IAW/migracionPHPIAW2-12.png)
+![Term](/img/IAW/migracionPHPIAW2-13.png)
+
+Vemos como aparecen las opciones en la creación del artículo:
+
+![Term](/img/IAW/migracionPHPIAW2-15.png)
+
+Y el resultado:
+
+![Term](/img/IAW/migracionPHPIAW2-16.png)
+
 
 ### 5. De la Tarea 2, una captura de pantalla donde se vea el acceso a la aplicación.
 
