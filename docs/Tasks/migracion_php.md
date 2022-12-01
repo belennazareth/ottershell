@@ -108,14 +108,83 @@ end
 
 ### 1. De la Tarea 1, entrega la configuración del virtualhost.
 
+Antes de esto se ha instalado en el servidor `apache2`, `libapache2-mod-php` y `libapache2-mpm-itk`(este es necesario para poder usar el CMS **drupal**).
+
+Para realizar la configuración del virtualhost se ha creado y modificado el fichero `/etc/apache2/sites-available/drupal.conf` con contenido:
+
+```bash
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/drupal-9.4.8
+        ServerName www.belennazareth.org
+
+        <Directory /var/www/html/drupal-9.4.8/>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+        </Directory>    
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
 
 
 ### 2. De la Tarea 1, la configuración de resolución estática.
 
+En el fichero `/etc/hosts` de nuestra máquina ponemos las siguientes líneas:
+
+```bash
+# drupal
+
+192.168.122.168 www.belennazareth.org
+```
+
+Y en el servidor web también lo modificamos para que pueda acceder a la base de datos mediante resolución estática:
+
+```bash
+# drupal
+
+192.168.0.11 mariadb
+```
 
 
 ### 3. De la Tarea 1, una captura de pantalla donde se vea el acceso a la aplicación.
 
+Primero creamos la base de datos y el usuario para `drupal`:
+
+![Term](/img/IAW/migracionPHPIAW2-2.png)
+
+Accedemos a la página escribiendo las credenciales de la base de datos:
+
+![Term](/img/IAW/migracionPHPIAW2.png)
+
+Instalamos las extensiones php necesarias para el funcionamiento de drupal
+
+    apt install php-common php-mysql php-gmp php-curl php-intl php-mbstring php-xmlrpc php-gd php-xml php-cli php-zip unzip -y
+
+Habilitamos el directorio de translations:
+
+    mkdir sites/default/files/translations
+
+Y damos permisos al servidor web:
+
+    chown -R www-data:www-data /var/www/html/drupal-9.4.8
+
+En la aplicación web configuramos las credenciales hacia la base de datos:
+
+![Term](/img/IAW/migracionPHPIAW2-3.png)
+
+Al terminar la configuración aparecerá la siguiente página:
+
+![Term](/img/IAW/migracionPHPIAW2-4.png)
+
+Y creamos un primer post:
+
+![Term](/img/IAW/migracionPHPIAW2-5.png)
 
 
 ### 4. De la Tarea 1, indica que plugin has instalado.
