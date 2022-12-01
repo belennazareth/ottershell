@@ -114,6 +114,7 @@ Para realizar la configuración del virtualhost se ha creado y modificado el fic
 
 ```bash
 <VirtualHost *:80>
+
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html/drupal-9.4.8
         ServerName www.belennazareth.org
@@ -227,6 +228,7 @@ Creamos el fichero para el virtualhost en `/etc/apache2/sites-available/` como `
 
 ```bash
 <VirtualHost *:80>
+
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html/nextcloud
         ServerName cloud.belennazareth.org
@@ -286,10 +288,33 @@ Se realizará la configuración de un servidor LEMP en la VPS instalando Apache 
     apt install apache2
     apt install mariadb-server
     
+    apt install libapache2-mod-php libapache2-mpm-itk -y
+
     apt install php-common php-mysql php-gmp php-curl php-intl php-mbstring php-xmlrpc php-gd php-xml php-cli php-zip unzip -y
 
     apt install -y php php-gd php-curl php-zip php-dom php-xml php-simplexml php-mbstring
   
+Una vez instalado todo lo anterior se transfieren desde el servidor web los datos de `drupal` y `nextcloud` por scp a la máquina VPS:
+
+    scp drupal-9.4.8 poke@ip:
+    scp nextcloud poke@ip:
+
+Desde el servidor de la base de datos se transfieren los datos de ambas bases de datos (`drupal` y `nextcloud`), ejecutando primero el siguiente comando que guardará en un fichero `.sql` todas las bases de datos:
+
+    mysqldump -u root -p --all-databases > alldb.sql
+
+Después, se transfieren por scp a la máquina VPS:
+
+    scp alldb.sql poke@ip:
+
+Una vez dentro de la VPS se ejecuta el comando de restauración para meter los datos de la máquina anterior:
+
+    mysql -u root -p < alldb.sql
+
+Al copiarse, tal vez, no nos permita la entrada a la base de datos desde el usuario `drupal` o `nextcloud`, para ello recargamos los permisos de la base de datos entrando como root (`mysql -u root -p`) y ejecutando:
+
+    flush privileges;
+
 
 
 ### 7. De la Tarea 3, las URL de acceso a las aplicaciones.
