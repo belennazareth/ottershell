@@ -221,7 +221,7 @@ Y el resultado:
 
 El primer paso será instalar los módulos de PHP exigidos por nextcloud:
 
-     sudo apt-get install -y php php-gd php-curl php-zip php-dom php-xml php-simplexml php-mbstring
+     sudo apt install -y php php-gd php-curl php-zip php-dom php-xml php-simplexml php-mbstring
 
 Creamos el fichero para el virtualhost en `/etc/apache2/sites-available/` como `nextcloud.conf` añadiendo:
 
@@ -276,15 +276,22 @@ Al entrar a la dirección `cloud.belennazareth.org` aparecerá la página de con
 Aparecerá como sugerencia la instalación de varias aplicaciones dentro de nuestro nextcloud, y una vez que termine aparecerá el entorno:
 
 ![Term](/img/IAW/migracionPHPIAW2-18.png)
-
-
-
+![Term](/img/IAW/migracionPHPIAW2-19.png)
 
  
 ### 6. De la Tarea 3, documenta de la forma más precisa posible cada uno de los pasos que has dado para migrar una de las dos aplicaciones.
 
+Se realizará la configuración de un servidor LEMP en la VPS instalando Apache y Mariadb, además de los módulos necesarios para PHP tanto para drupal como para nextcloud:
 
- 
+    apt install apache2
+    apt install mariadb-server
+    
+    apt install php-common php-mysql php-gmp php-curl php-intl php-mbstring php-xmlrpc php-gd php-xml php-cli php-zip unzip -y
+
+    apt install -y php php-gd php-curl php-zip php-dom php-xml php-simplexml php-mbstring
+  
+
+
 ### 7. De la Tarea 3, las URL de acceso a las aplicaciones.
 
 
