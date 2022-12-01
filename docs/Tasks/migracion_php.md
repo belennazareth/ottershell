@@ -219,6 +219,66 @@ Y el resultado:
 
 ### 5. De la Tarea 2, una captura de pantalla donde se vea el acceso a la aplicación.
 
+El primer paso será instalar los módulos de PHP exigidos por nextcloud:
+
+     sudo apt-get install -y php php-gd php-curl php-zip php-dom php-xml php-simplexml php-mbstring
+
+Creamos el fichero para el virtualhost en `/etc/apache2/sites-available/` como `nextcloud.conf` añadiendo:
+
+```bash
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/nextcloud
+        ServerName cloud.belennazareth.org
+
+        <Directory /var/www/html/nextcloud/>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+        </Directory>    
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+```
+
+Cambiamos al usuario `www-data` el directorio `/var/www/html/nextcloud` de forma recursiva:
+
+    chown -R www-data: nextcloud/
+
+Para habilitar la configuración ejecutamos:
+
+    a2ensite nextcloud.conf
+
+Y reiniciamos apache con `systemctl restart apache2`.
+
+En el servidor de base de datos Mariadb creamos una base de datos y un usuario para nextcloud:
+
+```bash
+create database nextcloud;
+create user nextcloud identified by 'nextcloud';
+grant all privileges on nextcloud.* to nextcloud;
+```
+
+Después para poder acceder a la página de forma local añadimos la siguiente línea al fichero local `/etc/hosts`:
+
+```bash
+# nextcloud
+
+192.168.122.168 cloud.belennazareth.org
+```
+
+Al entrar a la dirección `cloud.belennazareth.org` aparecerá la página de configuración de nextcloud:
+
+![Term](/img/IAW/migracionPHPIAW2-17.png)
+
+Aparecerá como sugerencia la instalación de varias aplicaciones dentro de nuestro nextcloud, y una vez que termine aparecerá el entorno:
+
+![Term](/img/IAW/migracionPHPIAW2-18.png)
+
+
+
 
  
 ### 6. De la Tarea 3, documenta de la forma más precisa posible cada uno de los pasos que has dado para migrar una de las dos aplicaciones.
@@ -231,4 +291,12 @@ Y el resultado:
 
 ### 8. Capturas de pantalla donde se demuestre que esta funcionando el cliente de NextCloud.
 
+
+
+
+## Notas
+
+Para permitir que la base de datos (Mariadb) tenga acceso desde cualquier ip se modifica el fichero `/etc/mysql/mariadb.conf.d/50-server.cnf` añadiendo:
+
+    bind-address            = 0.0.0.0
 
