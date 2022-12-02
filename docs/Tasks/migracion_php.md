@@ -283,12 +283,10 @@ Aparecerá como sugerencia la instalación de varias aplicaciones dentro de nues
  
 ### 6. De la Tarea 3, documenta de la forma más precisa posible cada uno de los pasos que has dado para migrar una de las dos aplicaciones.
 
-Se realizará la configuración de un servidor LEMP en la VPS instalando Apache y Mariadb, además de los módulos necesarios para PHP tanto para drupal como para nextcloud:
+Se realizará la configuración de un servidor LEMP en la VPS instalando Nginx y Mariadb, además de los módulos necesarios para PHP tanto para drupal como para nextcloud:
 
-    apt install apache2
+    apt install nginx
     apt install mariadb-server
-    
-    apt install libapache2-mod-php libapache2-mpm-itk -y
 
     apt install php-common php-mysql php-gmp php-curl php-intl php-mbstring php-xmlrpc php-gd php-xml php-cli php-zip unzip -y
 
@@ -315,6 +313,11 @@ Cuando tengamos todo copiado en la VPS pasamos los ficheros `drupal` y `nextclou
     chown www-data: drupal-9.4.8/
     chown www-data: nextcloud/
 
+Para facilitar la asignación de rutas en la configuración del virtualhost se han modificado los nombres de los ficheros:
+
+    mv drupal-9.4.8/ portal
+    mv nextcloud/ cloud
+
 Dentro de la VPS se ejecuta el comando de restauración para meter los datos de la base de datos de la máquina anterior:
 
     mysql -u root -p < alldb.sql
@@ -323,14 +326,12 @@ Al copiarse, tal vez, no nos permita la entrada a la base de datos desde el usua
 
     flush privileges;
 
-Una vez restaurado todo, creamos los virtualhosts para `drupal` y para `nextcloud`:
+Una vez restaurado todo, se crea el fichero de configuración del virtualhost en `/etc/nginx/sites-available/vps.conf`:
 
 ```bash
-# DRUPAL
-
-# NEXTCLOUD
 
 ```
+
 
 
 ### 7. De la Tarea 3, las URL de acceso a las aplicaciones.
