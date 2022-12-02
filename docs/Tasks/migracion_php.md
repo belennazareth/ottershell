@@ -171,7 +171,7 @@ Habilitamos el directorio de translations:
 
     mkdir sites/default/files/translations
 
-Y damos permisos al servidor web:
+Y damos permisos al servidor web cambiando roles:
 
     chown -R www-data:www-data /var/www/html/drupal-9.4.8
 
@@ -307,7 +307,15 @@ Después, se transfieren por scp a la máquina VPS:
 
     scp alldb.sql poke@ip:
 
-Una vez dentro de la VPS se ejecuta el comando de restauración para meter los datos de la máquina anterior:
+Cuando tengamos todo copiado en la VPS pasamos los ficheros `drupal` y `nextcloud` al directorio `/var/www/html` y le asignamos como usuario `www-data` para que puedan acceder a los recursos:
+
+    cp -r drupal-9.4.8/ /var/www/html/
+    cp -r nextcloud/ /var/www/html/
+
+    chown www-data: drupal-9.4.8/
+    chown www-data: nextcloud/
+
+Dentro de la VPS se ejecuta el comando de restauración para meter los datos de la base de datos de la máquina anterior:
 
     mysql -u root -p < alldb.sql
 
@@ -315,6 +323,14 @@ Al copiarse, tal vez, no nos permita la entrada a la base de datos desde el usua
 
     flush privileges;
 
+Una vez restaurado todo, creamos los virtualhosts para `drupal` y para `nextcloud`:
+
+```bash
+# DRUPAL
+
+# NEXTCLOUD
+
+```
 
 
 ### 7. De la Tarea 3, las URL de acceso a las aplicaciones.
