@@ -86,6 +86,7 @@ encrypting the web, EFF news, campaigns, and ways to support digital freedom.
 (Y)es/(N)o: y
 ```
 
+
 * La segunda será que la IP desde la que estoy ejecutando el comando será almacenada en registros púbicos:
 
 ```bash
@@ -98,6 +99,7 @@ Are you OK with your IP being logged?
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 (Y)es/(N)o: y
 ```
+
 
 * Lo siguiente que nos pide es que creemos una entrada en nuestro registro DNS de tipo TXT con los valores que nos da. El mensaje será parecido a:
 
@@ -113,6 +115,95 @@ Before continuing, verify the record is deployed.
 Press Enter to Continue
 
 ```
+
+
+* Por último, al hacer `enter`, comprobará que todo esté correcto y si es así nos dará la ruta en la que se encuentra el certificado:
+
+```bash
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/{dominio}/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/{dominio}/privkey.pem
+   Your cert will expire on 2023-03-03. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+ - Your account credentials have been saved in your Certbot
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Certbot so
+   making regular backups of this folder is ideal.
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+```
+
+Comprobamos que se ha creado el cron, esto hará que el certificado se renueve automáticamente cada 3 meses:
+
+    cat /etc/cron.d/certbot
+
+```bash
+# /etc/cron.d/certbot: crontab entries for the certbot package
+#
+# Upstream recommends attempting renewal twice a day
+#
+# Eventually, this will be an opportunity to validate certificates
+# haven't been revoked, etc.  Renewal will only occur if expiration
+# is within 30 days.
+#
+# Important Note!  This cronjob will NOT be executed if you are
+# running systemd as your init system.  If you are running systemd,
+# the cronjob.timer function takes precedence over this cronjob.  For
+# more details, see the systemd.timer manpage, or use systemctl show
+# certbot.timer.
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+0 */12 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew
+```
+
+En el fichero `/etc/nginx/sites-available` creamos otro fichero, en este caso una copia del que ya teníamos:
+
+    cp vps.conf vps-https.conf
+
+Modificamos el fichero `vps.conf`:
+
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name www.ottershell.es;
+    return 301 https://$host$request_uri;
+}
+```
+
+Modificamos el fichero `vps-https.conf`:
+
+```bash
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name www.ottershell.es;
+    root /var/www/html;
+
+    index index.php index.html index.htm index.nginx-debian.html;
+
+
+    ssl    on;
+    ssl_certificate    /etc/letsencrypt/live/ottershell.es/fullchain.pem;
+    ssl_certificate_key    /etc/letsencrypt/live/ottershell.es/privkey.pem;
+...
+```
+
+Es necesario importar el certificado de Let's Encrypt si usamos google chrome.
 
 ## Entrega
 
