@@ -368,6 +368,50 @@ server {
 }
 ```
 
+También debemos configurar los ficheros de configuración de drupal y nextcloud para que apunte hacia la base de datos local:
+
+```bash
+#Drupal: /var/www/html/portal/sites/default/settings.php
+
+$databases['default']['default'] = array (
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'drupal',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'driver' => 'mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+);
+
+#Nextcloud: /var/www/html/cloud/config/config.php
+
+<?php
+$CONFIG = array (
+  'instanceid' => 'oca96tkwkj38',
+  'passwordsalt' => 'qCqIfJNFhm14oSwHnr56bjqKHIiqTJ',
+  'secret' => 'UwL0SItmMikTLgZhJoEX9n57wNZTtjf7/T/1ReyUtvtNVWKz',
+  'trusted_domains' => 
+  array (
+    0 => 'www.ottershell.es',
+  ),
+  'datadirectory' => '/var/www/html/cloud/data',
+  'dbtype' => 'mysql',
+  'version' => '25.0.1.1',
+  'overwrite.cli.url' => 'http://www.ottershell.es',
+  'dbname' => 'nextcloud',
+  'dbhost' => 'localhost:3306',
+  'dbport' => '',
+  'dbtableprefix' => 'oc_',
+  'mysql.utf8mb4' => true,
+  'dbuser' => 'nextcloud',
+  'dbpassword' => 'nextcloud',
+  'installed' => true,
+);
+
+```
+
 Configuramos el DNS añadiendo una entrada CNAME haciendo que www apunte a mi servidor.
 
 Quedaría una estructura similar a:
