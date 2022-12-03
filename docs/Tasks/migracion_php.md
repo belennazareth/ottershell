@@ -513,7 +513,7 @@ Las URL serán las siguientes:
 
 🐸 www.ottershell.es/cloud
 
-
+ 
 ### 8. Capturas de pantalla donde se demuestre que esta funcionando el cliente de NextCloud.
 
 Primero instalamos nextcloud:
