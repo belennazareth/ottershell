@@ -290,7 +290,7 @@ Se realizará la configuración de un servidor LEMP en la VPS instalando Nginx y
 
     apt install php-common php-mysql php-gmp php-curl php-intl php-mbstring php-xmlrpc php-gd php-xml php-cli php-zip unzip -y
 
-    apt install -y php php-gd php-curl php-zip php-dom php-xml php-simplexml php-mbstring
+    apt install -y php php-gd php-curl php-zip php-dom php-xml php-simplexml php-mbstring php-fpm
   
 Una vez instalado todo lo anterior se transfieren desde el servidor web los datos de `drupal` y `nextcloud` por scp a la máquina VPS:
 
@@ -326,11 +326,56 @@ Al copiarse, tal vez, no nos permita la entrada a la base de datos desde el usua
 
     flush privileges;
 
-Una vez restaurado todo, se crea el fichero de configuración del virtualhost en `/etc/nginx/sites-available/vps.conf`:
+Una vez restaurado todo, se crea el fichero de configuración del virtualhost en `/etc/nginx/sites-available/vps.conf` (como hemos puesto de nombre a los directorios /portal /cloud no es necesario crear un apartado location para cada uno):
 
 ```bash
+server {
+    listen 80;
+    listen [::]:80;
 
+    server_name www.ottershell.es;
+    root /var/www/html;
+
+    index index.php index.html index.htm index.nginx-debian.html;
+
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+    }
+    location = / {
+        return 301 /portal;
+    }
+
+    location /portal {
+        try_files $uri $uri/ =404;
+    }
+
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    }
+
+    location ~ /\.ht {
+         deny all;
+    }
+}
 ```
+
+Configuramos el DNS añadiendo una entrada CNAME haciendo que www apunte a mi servidor.
+
+Quedaría una estructura similar a:
+
+    www.dominio.x
+    CNAME
+    VPS.dominio.x
+
 
 
 
@@ -348,4 +393,18 @@ Una vez restaurado todo, se crea el fichero de configuración del virtualhost en
 Para permitir que la base de datos (Mariadb) tenga acceso desde cualquier ip se modifica el fichero `/etc/mysql/mariadb.conf.d/50-server.cnf` añadiendo:
 
     bind-address            = 0.0.0.0
+
+Para poder acceder a nextcloud es necesario tener instalado la versión `php 7.4` al menos, para ello descargamos la clave GPG y el repositorio PPA:
+
+    sudo apt -y install lsb-release apt-transport-https ca-certificates 
+    sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+
+Actualizamos para que se apliquen los paquetes de la versión `7.4`:
+
+    sudo apt update
+
+    apt install php7.4-common php7.4-mysql php7.4-gmp php7.4-curl php7.4-intl php7.4-mbstring php7.4-xmlrpc php7.4-gd php7.4-xml php7.4-cli php7.4-zip unzip -y
+
+    apt install -y php7.4 php7.4-gd php7.4-curl php7.4-zip php7.4-dom php7.4-xml php7.4-simplexml php7.4-mbstring php7.4-fpm
 
