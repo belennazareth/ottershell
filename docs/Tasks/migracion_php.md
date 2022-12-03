@@ -515,7 +515,19 @@ Las URL serán las siguientes:
 
 ### 8. Capturas de pantalla donde se demuestre que esta funcionando el cliente de NextCloud.
 
+Primero instalamos nextcloud:
 
+    sudo apt install nextcloud-desktop
+
+Y seguimos los pasos que nos irá indicando la aplicación:
+
+![Term](/img/IAW/migracionPHPIAW2-20.png)
+![Term](/img/IAW/migracionPHPIAW2-21.png)
+![Term](/img/IAW/migracionPHPIAW2-22.png)
+
+Como podemos ver el cliente se está ejecutando en local:
+
+![Term](/img/IAW/migracionPHPIAW2-23.png)
 
 
 ## Notas
