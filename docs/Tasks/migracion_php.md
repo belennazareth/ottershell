@@ -530,6 +530,9 @@ server {
             try_files $uri $uri/ /portal/index.php$request_uri;
         }
     }
+    location /admin {
+       return 301 /portal$request_uri;
+    }
 }
 ```
 
