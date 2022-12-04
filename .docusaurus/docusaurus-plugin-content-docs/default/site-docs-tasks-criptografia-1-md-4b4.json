@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/criptografia1",
+  "id": "Tasks/criptografia1",
+  "title": "Cifrado asimétrico con gpg y openssl",
+  "description": "Cifrado asimétrico con gpg",
+  "source": "@site/docs/Tasks/criptografia1.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/criptografia1",
+  "permalink": "/docs/Tasks/criptografia1",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/criptografia1.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 16,
+  "frontMatter": {
+    "sidebar_position": 16
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+    "permalink": "/docs/Tasks/apache_wsgi"
+  },
+  "next": {
+    "title": "Configuración de HTTPS en el VPS",
+    "permalink": "/docs/Tasks/https"
+  }
+}
