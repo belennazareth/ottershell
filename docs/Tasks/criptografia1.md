@@ -63,3 +63,27 @@ sidebar_position: 16
 
 ### Tarea 4: Exportar clave a un servidor público de claves PGP
 
+#### 1. Genera la clave de revocación de tu clave pública para utilizarla en caso de que haya problemas.
+
+
+#### 2. Exporta tu clave pública al servidor pgp.rediris.es
+
+
+
+#### 3. Borra la clave pública de alguno de tus compañeros de clase e impórtala ahora del servidor público de rediris.
+
+
+### Tarea 5: Cifrado asimétrico con openssl
+
+#### 1. Genera un par de claves (pública y privada).
+
+
+#### 2. Envía tu clave pública a un compañero.
+
+
+
+#### 3. Utilizando la clave pública cifra un fichero de texto y envíalo a tu compañero.
+
+
+
+#### 4. Tu compañero te ha mandado un fichero cifrado, muestra el proceso para el descifrado.
