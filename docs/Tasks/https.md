@@ -210,12 +210,13 @@ Es necesario importar el certificado de Let's Encrypt si usamos google chrome.
 
 ### 1. Captura de pantalla para comprobar que el navegador tiene el certificado de Let’s Encrypt.
 
-![Term](/img/IAW/migracionPHPIAW2-20.png)
+![Term](/img/IAW/httpsIAW3.png)
 
 
 ### 2. ¿Qué opción has elegido? ¿Qué pruebas realiza Let’s Encrypt para asegurar que somos los administradores del sitio web al elegir esa opción?
 
 En mi caso he elegido la opción con wildcard. He podido comprobar que Let’s Encrypt, con este tipo de certificación, pide que creemos un registro DNS de tipo TXT en nuestro dominio con un valor proporcionado por el mismo programa.
+
 
 ### 3. Entrega la configuración de nginx (los dos ficheros) para que funcione HTTPS y la redirección.
 
@@ -476,7 +477,17 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 ### 5. Captura de pantalla accediendo a las dos páginas con https. Captura de pantalla con los detalles del certificado.
 
+Entrando en `www.ottershell.es`:
+
+![Term](/img/IAW/httpsIAW3-2.png)
+
+Entrando en `www.ottershell.es/cloud`:
+
+![Term](/img/IAW/httpsIAW3-3.png)
 
 
 ### 6. Captura de pantalla donde se vea el cliente de NextCloud conectado por https.
 
+Entrando en la aplicación, si entramos en `ajustes` podemos comprobar que se ha realizado la redirección **https**:
+
+![Term](/img/IAW/httpsIAW3-4.png)
