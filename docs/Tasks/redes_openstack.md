@@ -23,11 +23,18 @@ sidebar_position: 14
 
 8. Accede desde el exterior con un navegador web al servidor web del cliente.
 
+
 ## Entrega
 
 ### 1. Los comandos OSC para crear la red `red-externa`.
 
+```bash
 openstack network create red-externa
+
+openstack subnet create --network red-externa --dhcp --dns-nameserver 192.168.202.2 --subnet-range 192.168.0.0/24 subred-externa
+```
+
+
 
 ### 2. Los comandos OSC y sus salidas, para visualizar las redes que tienes en tu proyecto y los routers.
 
