@@ -156,7 +156,15 @@ Para  comprobarlo  voy a meter la salida en un fichero txt:
 
 #### 4. Por último, enviaremos el documento cifrado a alguien que no estaba en la lista de destinatarios y comprobaremos que este usuario no podrá descifrar este archivo.
 
+En mi caso, le voy a mandar el documento a Pepin por scp que no está en la lista para comprobar que no puede descifrar el archivo:
 
+```bash
+pepin@debian:~$ gpg -d encriptadito.txt.gpg 
+
+gpg: cifrado con clave RSA, ID A991F86EF11F1E74
+gpg: descifrado fallido: No secret key
+
+```
 
 
 #### 5. Para terminar, indica los comandos necesarios para borrar las claves públicas y privadas que posees.
