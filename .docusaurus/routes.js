@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'b3e'),
+    component: ComponentCreator('/docs', '60f'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -132,6 +132,12 @@ export default [
       {
         path: '/docs/Tasks/gestion_paqueteria_aso',
         component: ComponentCreator('/docs/Tasks/gestion_paqueteria_aso', 'b86'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/https',
+        component: ComponentCreator('/docs/Tasks/https', 'fb6'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

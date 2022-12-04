@@ -51,6 +51,7 @@ export default {
   'c4f5d8e4': [() => import(/* webpackChunkName: 'c4f5d8e4' */ '@site/src/pages/index.js'), '@site/src/pages/index.js', require.resolveWeak('@site/src/pages/index.js')],
   'c9e876c3': [() => import(/* webpackChunkName: 'c9e876c3' */ '@site/docs/Tasks/ramas_uniones.md'), '@site/docs/Tasks/ramas_uniones.md', require.resolveWeak('@site/docs/Tasks/ramas_uniones.md')],
   'ccc49370': [() => import(/* webpackChunkName: 'ccc49370' */ '@theme/BlogPostPage'), '@theme/BlogPostPage', require.resolveWeak('@theme/BlogPostPage')],
+  'd3cdca26': [() => import(/* webpackChunkName: 'd3cdca26' */ '@site/docs/Tasks/https.md'), '@site/docs/Tasks/https.md', require.resolveWeak('@site/docs/Tasks/https.md')],
   'd41f5ee1': [() => import(/* webpackChunkName: 'd41f5ee1' */ '@site/docs/Tasks/parametros_kernel.md'), '@site/docs/Tasks/parametros_kernel.md', require.resolveWeak('@site/docs/Tasks/parametros_kernel.md')],
   'd94373a8': [() => import(/* webpackChunkName: 'd94373a8' */ '@site/docs/Tasks/clonacion_instantanea.md'), '@site/docs/Tasks/clonacion_instantanea.md', require.resolveWeak('@site/docs/Tasks/clonacion_instantanea.md')],
   'd9f32620': [() => import(/* webpackChunkName: 'd9f32620' */ '@site/blog/2021-08-26-welcome/index.md'), '@site/blog/2021-08-26-welcome/index.md', require.resolveWeak('@site/blog/2021-08-26-welcome/index.md')],

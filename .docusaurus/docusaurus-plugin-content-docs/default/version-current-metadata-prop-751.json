@@ -179,6 +179,12 @@
           },
           {
             "type": "link",
+            "label": "Configuración de HTTPS en el VPS",
+            "href": "/docs/Tasks/https",
+            "docId": "Tasks/https"
+          },
+          {
+            "type": "link",
             "label": "Instalación/migración de aplicaciones web PHP",
             "href": "/docs/Tasks/migracion_php",
             "docId": "Tasks/migracion_php"
@@ -286,6 +292,12 @@
       "id": "Tasks/gestion_paqueteria_aso",
       "title": "Ejercicios gestión de paquetería",
       "description": "Trabajo con apt, aptitude, dpkg",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/https": {
+      "id": "Tasks/https",
+      "title": "Configuración de HTTPS en el VPS",
+      "description": "Vamos a configurar el protocolo HTTPS para el acceso a nuestras aplicaciones, para ello tienes que tener en cuenta los siguiente:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/interconexion_bbdd": {

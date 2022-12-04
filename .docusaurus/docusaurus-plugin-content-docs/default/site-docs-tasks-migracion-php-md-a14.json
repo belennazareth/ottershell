@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-    "permalink": "/docs/Tasks/apache_wsgi"
+    "title": "Configuración de HTTPS en el VPS",
+    "permalink": "/docs/Tasks/https"
   },
   "next": {
     "title": "Markdown Features",

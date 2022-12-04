@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/wordpress"
   },
   "next": {
-    "title": "Instalación/migración de aplicaciones web PHP",
-    "permalink": "/docs/Tasks/migracion_php"
+    "title": "Configuración de HTTPS en el VPS",
+    "permalink": "/docs/Tasks/https"
   }
 }

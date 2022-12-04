@@ -71,6 +71,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/https",
+              "path": "/docs/Tasks/https",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/interconexion_bbdd",
               "path": "/docs/Tasks/interconexion_bbdd",
               "sidebar": "tutorialSidebar"
