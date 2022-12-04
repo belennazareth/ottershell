@@ -179,6 +179,12 @@
           },
           {
             "type": "link",
+            "label": "Cifrado asimétrico con gpg y openssl",
+            "href": "/docs/Tasks/criptografia1",
+            "docId": "Tasks/criptografia1"
+          },
+          {
+            "type": "link",
             "label": "Configuración de HTTPS en el VPS",
             "href": "/docs/Tasks/https",
             "docId": "Tasks/https"
@@ -280,6 +286,12 @@
       "id": "Tasks/compilacion_kernel",
       "title": "Compilación de un Kernel linux a medida",
       "description": "Para empezar a compilar el kernel debemos crear un directorio donde trabajaremos, y además, saber cual es la versión de nuestra máquina.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/criptografia1": {
+      "id": "Tasks/criptografia1",
+      "title": "Cifrado asimétrico con gpg y openssl",
+      "description": "Cifrado asimétrico con gpg",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/escenario_openstack": {

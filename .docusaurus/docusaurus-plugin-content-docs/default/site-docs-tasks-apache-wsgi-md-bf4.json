@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/wordpress"
   },
   "next": {
-    "title": "Configuración de HTTPS en el VPS",
-    "permalink": "/docs/Tasks/https"
+    "title": "Cifrado asimétrico con gpg y openssl",
+    "permalink": "/docs/Tasks/criptografia1"
   }
 }

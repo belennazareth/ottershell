@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-    "permalink": "/docs/Tasks/apache_wsgi"
+    "title": "Cifrado asimétrico con gpg y openssl",
+    "permalink": "/docs/Tasks/criptografia1"
   },
   "next": {
     "title": "Instalación/migración de aplicaciones web PHP",
