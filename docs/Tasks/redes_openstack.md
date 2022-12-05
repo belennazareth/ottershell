@@ -9,6 +9,24 @@ sidebar_position: 14
 
 1. Crea una nueva red (llamada red-externa) y una subred con DHCP, DNS el 192.168.202.2 y direccionamiento 192.168.0.0/24. Crea un nuevo router. Conecta la nueva red al router, y el router a red pública.
 
+Para una red:
+
+```bash
+openstack network create red-externa
+
+openstack subnet create --network red-externa --dhcp --dns-nameserver 192.168.202.2 --subnet-range 192.168.0.0/24 subred-externa
+```
+
+Para crear un router:
+
+```bash
+openstack router create routersin
+
+openstack router set routersin --external-gateway ext-net
+openstack router add subnet routersin subred-externa
+```
+
+
 2. Crea una instancia (llamada maquina-router) conectada a la nueva red. Comprueba que la IP fija está en el direccionamiento de la nueva red. ¿Puedes añadirle una IP flotante a la nueva instancia? ¿Por qué?.
 
 3. Crea una nueva red (llamada red-interna) y una subred con DHCP, DNS el 192.168.202.2 y direccionamiento 10.0.100.0/24.
@@ -35,12 +53,43 @@ openstack subnet create --network red-externa --dhcp --dns-nameserver 192.168.20
 ```
 
 
-
 ### 2. Los comandos OSC y sus salidas, para visualizar las redes que tienes en tu proyecto y los routers.
 
+```bash
+(RedLine)  nazare@ThousandSunny  ~$  openstack network list
+
++--------------------------------------+--------------------------+--------------------------------------+
+| ID                                   | Name                     | Subnets                              |
++--------------------------------------+--------------------------+--------------------------------------+
+| 2ebd4d15-00e3-44c6-a9a7-aeebef5f6540 | ext-net                  | fedce2ca-083e-4df8-bf1c-abbf4ab19cd1 |
+| 705f009c-06ec-4b44-82c9-8492713f0a1f | red de nazaret.duran     | c51bfa29-134c-4b8e-b1e0-e409a677cd56 |
+| 98c1cf52-b499-44fc-bcb1-47c1e1fc5872 | Red DMZ de nazaret.duran | 5c49862b-4cf8-4e18-af20-24a348692a10 |
+| fcfaba89-33f9-41f8-9971-72ac95435783 | red-externa              | ca685547-1fe3-41a4-bf5b-ce402f807abd |
++--------------------------------------+--------------------------+--------------------------------------+
+
+(RedLine)  nazare@ThousandSunny  ~$  openstack subnet list
+
++--------------------------------------+----------------+--------------------------------------+----------------+
+| ID                                   | Name           | Network                              | Subnet         |
++--------------------------------------+----------------+--------------------------------------+----------------+
+| 5c49862b-4cf8-4e18-af20-24a348692a10 |                | 98c1cf52-b499-44fc-bcb1-47c1e1fc5872 | 172.16.0.0/16  |
+| c51bfa29-134c-4b8e-b1e0-e409a677cd56 |                | 705f009c-06ec-4b44-82c9-8492713f0a1f | 10.0.0.0/24    |
+| ca685547-1fe3-41a4-bf5b-ce402f807abd | subred-externa | fcfaba89-33f9-41f8-9971-72ac95435783 | 192.168.0.0/24 |
++--------------------------------------+----------------+--------------------------------------+----------------+
+
+(RedLine)  nazare@ThousandSunny  ~$  openstack router list
+
++--------------------------------------+-------------------------+--------+-------+----------------------------------+
+| ID                                   | Name                    | Status | State | Project                          |
++--------------------------------------+-------------------------+--------+-------+----------------------------------+
+| e6dd515b-321f-431d-8a7f-55ce596a142e | routersin               | ACTIVE | UP    | cdb0ff7eeae74b1cbb06e4c476c52889 |
+| f3f45b48-ec65-4b7f-9e8e-f8034bff6b99 | router de nazaret.duran | ACTIVE | UP    | cdb0ff7eeae74b1cbb06e4c476c52889 |
++--------------------------------------+-------------------------+--------+-------+----------------------------------+
+```
 
 
 ### 3. Cuando crees la instancia maquina-router, accede a ella y comprueba la IP fija que ha tomando. Responde: ¿Has podido añadir una IP flotante a esta nueva instancia? Razona la respuesta.
+
 
 
 
@@ -61,5 +110,6 @@ openstack subnet create --network red-externa --dhcp --dns-nameserver 192.168.20
 
 
 ### 8. Comprobación del acceso al servidor web de la maquina-cliente desde el exterior.
+
 
 
