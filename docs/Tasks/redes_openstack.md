@@ -29,6 +29,21 @@ openstack router add subnet routersin subred-externa
 
 2. Crea una instancia (llamada maquina-router) conectada a la nueva red. Comprueba que la IP fija está en el direccionamiento de la nueva red. ¿Puedes añadirle una IP flotante a la nueva instancia? ¿Por qué?.
 
+Para crear la instancia:
+
+```bash
+ openstack server create --flavor m1.mini \
+ --image "Debian 11.0 - Bullseye" \
+ --security-group default \
+ --key-name nazareth_local \
+ --network red-externa \
+ maquina-router
+ 
+ openstack floating ip create ext-net
+ openstack server add floating ip  maquina-router {ip}
+ ```
+
+
 3. Crea una nueva red (llamada red-interna) y una subred con DHCP, DNS el 192.168.202.2 y direccionamiento 10.0.100.0/24.
 
 4. Conecta la instancia maquina-router a la nueva red y asígnale la primera dirección: 10.0.100.1.
