@@ -33,12 +33,16 @@ Para crear la instancia:
 
 ```bash
  openstack server create --flavor m1.mini \
- --image "Debian 11.0 - Bullseye" \
+ --image "Debian 11 Bullseye" \
  --security-group default \
  --key-name nazareth_local \
  --network red-externa \
  maquina-router
- 
+```
+
+Para añadir la IP flotante:
+
+```bash
  openstack floating ip create ext-net
  openstack server add floating ip  maquina-router {ip}
  ```
@@ -105,6 +109,7 @@ openstack subnet create --network red-externa --dhcp --dns-nameserver 192.168.20
 
 ### 3. Cuando crees la instancia maquina-router, accede a ella y comprueba la IP fija que ha tomando. Responde: ¿Has podido añadir una IP flotante a esta nueva instancia? Razona la respuesta.
 
+![Term](/img/SRI/taller2SRI4-3.png)
 
 
 
