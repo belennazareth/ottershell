@@ -118,11 +118,11 @@ openstack subnet create --network red-externa --dhcp --dns-nameserver 192.168.20
 
 Como podemos comprobar se ha accedido a la máquina por la IP flotante que se le ha asignado, y si ejecutamos un `ip a` veremos que la IP fija que ha tomado es de la red:  
 
-![Term](/img/SRI/taller2SRI4-3.png)
+![Term](/img/SRI+HLC/taller2SRI4-3.png)
 
 Sí que se ha podido asignar una IP flotante a la instancia debido a que la red creada está conectada por medio de un router a la red ext-net, la cual es la encargada de proporcionar las IP flotantes y asignarlas.
 
-![Term](/img/SRI/taller2SRI4-4.png)
+![Term](/img/SRI+HLC/taller2SRI4-4.png)
 
 
 ### 4. Comandos OSC para conectar la maquina-router a la red-interna y que tenga la dirección 10.0.100.1.
