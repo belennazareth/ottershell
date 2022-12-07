@@ -393,7 +393,7 @@
     "Tasks/redes_openstack": {
       "id": "Tasks/redes_openstack",
       "title": "Gestión de redes en OpenStack",
-      "description": "1. Los comandos OSC para crear la red red-externa.",
+      "description": "Procedimientos",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/router_nat": {
