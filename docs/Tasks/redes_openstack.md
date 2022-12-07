@@ -53,11 +53,20 @@ Para añadir la IP flotante:
  ```bash
 openstack network create red-interna --internal
 
-openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.202.2 --subnet-range 10.0.100.0/24 subred-interno
+openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.202.2 --subnet-range 10.0.100.0/24 subred-interna
  ```
 
 
 4. Conecta la instancia maquina-router a la nueva red y asígnale la primera dirección: 10.0.100.1.
+
+Para crear un puerto:
+
+```bash
+openstack port create --network red-interna puerto
+
+openstack port create --network red-interna --fixed-ip ip-address=10.0.100.1 puerto
+```
+
 
 5. Crea una instancia llamada maquina-cliente conectada a la red red-interna. Usando puertos de red asígnale la dirección 10.0.100.200. Comprueba que su puerta de enlace es la instancia maquina-router. ¿Puedes asignarle a esta instancia una IP flotante? ¿Por qué?.
 
@@ -145,3 +154,14 @@ Sí que se ha podido asignar una IP flotante a la instancia debido a que la red 
 
 
 
+## Notas
+
+Para poder acceder al entorno:
+
+* Primero ejecutamos el entorno virtual:
+
+    source RedLine/bin/activate
+
+* Luego dentro ejecutamos:
+
+    source Proyecto\ de\ nazaret.duran-openrc.sh
