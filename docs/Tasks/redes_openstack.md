@@ -50,6 +50,13 @@ Para añadir la IP flotante:
 
 3. Crea una nueva red (llamada red-interna) y una subred con DHCP, DNS el 192.168.202.2 y direccionamiento 10.0.100.0/24.
 
+ ```bash
+openstack network create red-interna --internal
+
+openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.202.2 --subnet-range 10.0.100.0/24 subred-interno
+ ```
+
+
 4. Conecta la instancia maquina-router a la nueva red y asígnale la primera dirección: 10.0.100.1.
 
 5. Crea una instancia llamada maquina-cliente conectada a la red red-interna. Usando puertos de red asígnale la dirección 10.0.100.200. Comprueba que su puerta de enlace es la instancia maquina-router. ¿Puedes asignarle a esta instancia una IP flotante? ¿Por qué?.
@@ -109,8 +116,13 @@ openstack subnet create --network red-externa --dhcp --dns-nameserver 192.168.20
 
 ### 3. Cuando crees la instancia maquina-router, accede a ella y comprueba la IP fija que ha tomando. Responde: ¿Has podido añadir una IP flotante a esta nueva instancia? Razona la respuesta.
 
+Como podemos comprobar se ha accedido a la máquina por la IP flotante que se le ha asignado, y si ejecutamos un `ip a` veremos que la IP fija que ha tomado es de la red:  
+
 ![Term](/img/SRI/taller2SRI4-3.png)
 
+Sí que se ha podido asignar una IP flotante a la instancia debido a que la red creada está conectada por medio de un router a la red ext-net, la cual es la encargada de proporcionar las IP flotantes y asignarlas.
+
+![Term](/img/SRI/taller2SRI4-4.png)
 
 
 ### 4. Comandos OSC para conectar la maquina-router a la red-interna y que tenga la dirección 10.0.100.1.
