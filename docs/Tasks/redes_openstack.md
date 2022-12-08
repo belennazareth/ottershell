@@ -59,20 +59,27 @@ openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.20
 
 4. Conecta la instancia maquina-router a la nueva red y asígnale la primera dirección: 10.0.100.1.
 
-Para crear un puerto:
-
-```bash
-openstack port create --network red-interna --fixed-ip ip-address=10.0.100.1 puertesito
-```
-
-Para conectar la instancia `maquina-router`:
-
-```bash
-openstack server add port maquina-router puertesito
-```
-
 
 5. Crea una instancia llamada maquina-cliente conectada a la red red-interna. Usando puertos de red asígnale la dirección 10.0.100.200. Comprueba que su puerta de enlace es la instancia maquina-router. ¿Puedes asignarle a esta instancia una IP flotante? ¿Por qué?.
+
+```bash
+openstack router create routerte
+
+openstack router set routerte --external-gateway ext-net 
+openstack router add subnet routerte subred-interna
+
+openstack port create --network red-interna --fixed-ip ip-address=10.0.100.200 puertete 
+
+openstack server create --flavor m1.mini \
+--image "Debian 11 Bullseye" \
+--security-group default \
+--key-name nazareth_local \
+--port puertete \
+maquina-cliente
+
+openstack floating ip create ext-net
+openstack server add floating ip maquina-cliente {ip}
+```
 
 6. A continuación vamos a configurar la instancia maquina-router para que haga de router-nat. Sin embargo, las restricciones y la seguridad del cortafuegos que tenemos configurado en cada una de las intrefaces de las instancias no van a permitir que funcione de forma adecuada. Por lo tanto, desactiva la seguridad de la interfaz de maquina-router y maquina-cliente conectadas a la red-interna.
 
