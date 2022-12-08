@@ -62,9 +62,13 @@ openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.20
 Para crear un puerto:
 
 ```bash
-openstack port create --network red-interna puerto
+openstack port create --network red-interna --fixed-ip ip-address=10.0.100.1 puertesito
+```
 
-openstack port create --network red-interna --fixed-ip ip-address=10.0.100.1 puerto
+Para conectar la instancia `maquina-router`:
+
+```bash
+openstack server add port maquina-router puertesito
 ```
 
 
@@ -136,6 +140,19 @@ Sí que se ha podido asignar una IP flotante a la instancia debido a que la red 
 
 ### 4. Comandos OSC para conectar la maquina-router a la red-interna y que tenga la dirección 10.0.100.1.
 
+Lo primera será crear un puerto con la dirección que se le quiere asignar a la máquina:
+
+```bash
+openstack port create --network red-interna --fixed-ip ip-address=10.0.100.1 puertesito
+```
+
+Para conectar la instancia `maquina-router` añadimos el puerto creado:
+
+```bash
+openstack server add port maquina-router puertesito
+```
+
+![Term](/img/SRI+HLC/taller2SRI4-5.png)
 
 
 ### 5. Comandos OSC para crear la maquina-cliente con la dirección 10.0.100.200. Responde: ¿Has podido añadir una IP flotante a esta nueva instancia? Razona la respuesta.
