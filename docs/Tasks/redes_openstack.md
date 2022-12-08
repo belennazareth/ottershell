@@ -63,9 +63,11 @@ openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.20
 5. Crea una instancia llamada maquina-cliente conectada a la red red-interna. Usando puertos de red asígnale la dirección 10.0.100.200. Comprueba que su puerta de enlace es la instancia maquina-router. ¿Puedes asignarle a esta instancia una IP flotante? ¿Por qué?.
 
 
-6. A continuación vamos a configurar la instancia maquina-router para que haga de router-nat. Sin embargo, las restricciones y la seguridad del cortafuegos que tenemos configurado en cada una de las intrefaces de las instancias no van a permitir que funcione de forma adecuada. Por lo tanto, desactiva la seguridad de la interfaz de maquina-router y maquina-cliente conectadas a la red-interna.
+6. A continuación vamos a configurar la instancia maquina-router para que haga de router-nat. Sin embargo, las restricciones y la seguridad del cortafuegos que tenemos configurado en cada una de las interfaces de las instancias no van a permitir que funcione de forma adecuada. Por lo tanto, desactiva la seguridad de la interfaz de maquina-router y maquina-cliente conectadas a la red-interna.
+
 
 7. Configura la instancia maquina-router para que funcione como router-nat. Comprueba que el cliente tiene acceso a internet. Instala un servidor web en el cliente.
+
 
 8. Accede desde el exterior con un navegador web al servidor web del cliente.
 
@@ -169,11 +171,21 @@ Como se puede comprobar se ha creado la máquina con `maquina-router` como gatew
 
 ### 6. Comandos OSC para deshabilitar la seguridad de los puertos de la red-interna.
 
+Hay que deshabilitar la seguridad de los puertos de la maquina-router y de maquina-cliente, quitando primero los grupos de seguridad a ambas:
+
+```bash
+openstack server remove security group maquina-router default
+openstack server remove security group maquina-cliente default
+
+openstack port set --disable-port-security puertete
+```
 
 
 ### 7. Comprobación de que la maquina-cliente tiene conexión al exterior.
 
+Primero hay que configurar la instancia maquina-router para que haga de router-nat:
 
+    
 
 ### 8. Comprobación del acceso al servidor web de la maquina-cliente desde el exterior.
 
