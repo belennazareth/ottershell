@@ -62,24 +62,6 @@ openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.20
 
 5. Crea una instancia llamada maquina-cliente conectada a la red red-interna. Usando puertos de red asígnale la dirección 10.0.100.200. Comprueba que su puerta de enlace es la instancia maquina-router. ¿Puedes asignarle a esta instancia una IP flotante? ¿Por qué?.
 
-```bash
-openstack router create routerte
-
-openstack router set routerte --external-gateway ext-net 
-openstack router add subnet routerte subred-interna
-
-openstack port create --network red-interna --fixed-ip ip-address=10.0.100.200 puertete 
-
-openstack server create --flavor m1.mini \
---image "Debian 11 Bullseye" \
---security-group default \
---key-name nazareth_local \
---port puertete \
-maquina-cliente
-
-openstack floating ip create ext-net
-openstack server add floating ip maquina-cliente {ip}
-```
 
 6. A continuación vamos a configurar la instancia maquina-router para que haga de router-nat. Sin embargo, las restricciones y la seguridad del cortafuegos que tenemos configurado en cada una de las intrefaces de las instancias no van a permitir que funcione de forma adecuada. Por lo tanto, desactiva la seguridad de la interfaz de maquina-router y maquina-cliente conectadas a la red-interna.
 
@@ -164,6 +146,25 @@ openstack server add port maquina-router puertesito
 
 ### 5. Comandos OSC para crear la maquina-cliente con la dirección 10.0.100.200. Responde: ¿Has podido añadir una IP flotante a esta nueva instancia? Razona la respuesta.
 
+Para crear la `maquina-cliente`, primero es necesario crear un puerto con el que asignaremos la ip y después creamos la máquina usando la opción `--port` donde se le indica el puerto creado con la ip `10.0.100.200`:
+
+```bash
+openstack port create --network red-interna --fixed-ip ip-address=10.0.100.200 puertete 
+
+openstack server create --flavor m1.mini \
+--image "Debian 11 Bullseye" \
+--security-group default \
+--key-name nazareth_local \
+--port puertete \
+maquina-cliente
+```
+No se ha podido añadir una ip flotante ya que es una red interna y por lo tanto solo se puede acceder a esta por el router haciendo un puente:
+
+    ssh -AJ debian@172.22.201.235 debian@10.0.100.200
+
+Como se puede comprobar se ha creado la máquina con `maquina-router` como gateway:
+
+![Term](/img/SRI+HLC/taller2SRI4-6.png)
 
 
 ### 6. Comandos OSC para deshabilitar la seguridad de los puertos de la red-interna.
