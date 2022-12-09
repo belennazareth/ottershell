@@ -59,6 +59,9 @@ Claves públicas PGP 2020-2021
 ### 3. Envía y recibe varios mensajes con tus compañeros y comprueba el funcionamiento adecuado de GPG
 
 
+### 4. (AÑADIDA) Envíame por correo electrónico un mensaje firmado que solo pueda descifrar yo.
+
+
 
 ## Tarea 3: Integridad de ficheros
 
@@ -135,4 +138,15 @@ Busca información sobre apt secure y responde las siguientes preguntas:
 
 
 ### 6. ¿Qué guardamos y para qué sirve el fichero en el servidor ~/.ssh/authorized_keys?
+
+
+
+## Notas
+
+Dos detalles:
+
+### 1. Añadid vuestra clave pública en la wiki de redmine en el año correcto (Claves públicas PGP 2022-2023) en lugar de a la página que viene en el enunciado.
+
+
+### 2. Añadid a la tarea 2 un último punto consistente en enviarme por correo electrónico un mensaje firmado por vosotros y que solo pueda descifrar yo.
 
