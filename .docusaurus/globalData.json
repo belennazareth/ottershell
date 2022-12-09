@@ -66,6 +66,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/criptografia2",
+              "path": "/docs/Tasks/criptografia2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/escenario_openstack",
               "path": "/docs/Tasks/escenario_openstack",
               "sidebar": "tutorialSidebar"

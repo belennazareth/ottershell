@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Instalación/migración de aplicaciones web PHP",
-    "permalink": "/docs/Tasks/migracion_php"
+    "title": "Criptografía II: Integridad, firmas y autenticación",
+    "permalink": "/docs/Tasks/criptografia2"
   },
   "next": {
     "title": "Extras",

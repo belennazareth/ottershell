@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'b77'),
+    component: ComponentCreator('/docs', '6e5'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -126,6 +126,12 @@ export default [
       {
         path: '/docs/Tasks/criptografia1',
         component: ComponentCreator('/docs/Tasks/criptografia1', 'd61'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/criptografia2',
+        component: ComponentCreator('/docs/Tasks/criptografia2', 'f53'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
