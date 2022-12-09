@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/criptografia2",
+  "id": "Tasks/criptografia2",
+  "title": "Criptografía II: Integridad, firmas y autenticación",
+  "description": "Tarea 1: Firmas electrónicas",
+  "source": "@site/docs/Tasks/criptografia2.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/criptografia2",
+  "permalink": "/docs/Tasks/criptografia2",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/criptografia2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 17,
+  "frontMatter": {
+    "sidebar_position": 17
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación/migración de aplicaciones web PHP",
+    "permalink": "/docs/Tasks/migracion_php"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

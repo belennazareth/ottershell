@@ -8,6 +8,51 @@ sidebar_position: 17
 
 ### 1. Manda un documento y la firma electrónica del mismo a un compañero. Verifica la firma que tu has recibido.
 
+Primero creamos el documento, en este caso un fichero de texto:
+
+```bash
+echo "Poner en un cuenco la harina, la levadura, los huevos, la yema, la leche, la vainilla y la sal.
+
+Amasar muy bien, hasta obtener una masa pegajosa, dejarla reposar unos treinta minutos, tiempo en que habrá subido más o menos el doble.
+
+Añadimos la mantequilla a temperatura ambiente y el azúcar, mezclar muy bien, la masa se hará elástica y costara amasarla.
+
+Toda esta operación de amasado lo podemos hacer con una amasadora industrial que nos facilite la tarea.
+
+Poner la masa en una manga con boquilla ancha, o utilizar una bolsa para congelar a la que se le corta con una tijera una esquina del tamaño que nos convenga.
+
+Ahora con la gofrera caliente (200º-250º), poner una cantidad adecuada en el centro de cada molde y espolvorear con azúcar.
+
+Cerrar la Gofrera y dejar cocinar unos minutos (El punto óptimo se consigue cuando la masa dora pero sin llegar a quemarse)
+
+٩(╬ʘ益ʘ╬)۶" > secreto_nazareth.txt
+```
+
+Y ahora se crea la firma dándole un nombre y asignándole el fichero para mandarlo a los compañeros:
+
+```bash
+gpg --output firma_nazareth.sig --detach-sig secreto_nazareth.txt 
+```
+
+Verificamos la firma recibida:
+
+```bash
+gpg --verify firmarober.sig documento_rober.txt
+```
+
+Obteniendo de salida:
+
+```bash
+nazare@ThousandSunny  ~/Escritorio/SAD/cripto2$ gpg --verify firmarober.sig documento_rober.txt
+
+gpg: Firmado el vie 09 dic 2022 10:47:47 CET
+gpg:                usando RSA clave F06DF10387FDF4D70C904778564EF4B761565E40
+gpg: Firma correcta de "Roberto Rodríguez Márquez <robertorodriguezmarquez98@gmail.com>" [desconocido]
+gpg: ATENCIÓN: ¡Esta clave no está certificada por una firma de confianza!
+gpg:          No hay indicios de que la firma pertenezca al propietario.
+Huellas dactilares de la clave primaria: F06D F103 87FD F4D7 0C90  4778 564E F4B7 6156 5E40
+```
+
 
 ### 2. ¿Qué significa el mensaje que aparece en el momento de verificar la firma?
 
@@ -17,6 +62,8 @@ sidebar_position: 17
  gpg:          No hay indicios de que la firma pertenezca al propietario.
  Huellas dactilares de la clave primaria: E8DD 5DA9 3B88 F08A DA1D  26BF 5141 3DDB 0C99 55FC
 ```
+
+Significa que el usuario no tiene nuestra firma registrada/firmada dejándola como una firma sin confianza, aunque sabemos quien es el usuario.
 
 
 ### 3. Vamos a crear un anillo de confianza entre los miembros de nuestra clase, para ello.
