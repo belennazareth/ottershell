@@ -234,3 +234,9 @@ IMPORTANTE ACORDARSE DE ACTIVAR EL **BIT DE FORWARDING** EN EL ROUTER (maquina-r
     or
 
     nano /proc/sys/net/ipv4/ip_forward
+
+Si da error al hacer `update` en la `maquina-cliente` editamos el fichero `/etc/apt/sources.list` y cambiamos `http://deb.debian.org/debian` por `https://deb.debian.org/debian/` (así con todos) y luego hacemos `update` y `upgrade`:
+
+    sudo nano /etc/apt/sources.list
+    sudo apt update
+    sudo apt upgrade
