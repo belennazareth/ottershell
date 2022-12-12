@@ -309,7 +309,7 @@
     "Tasks/escenario_openstack": {
       "id": "Tasks/escenario_openstack",
       "title": "Escenario en OpenStack",
-      "description": "1. Las instrucciones para crear y configurar la máquina1 (alfa).",
+      "description": "Procedimientos",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/gestion_paqueteria_aso": {
