@@ -50,11 +50,11 @@ Para añadir la IP flotante:
 
 3. Crea una nueva red (llamada red-interna) y una subred con DHCP, DNS el 192.168.202.2 y direccionamiento 10.0.100.0/24.
 
- ```bash
+```bash
 openstack network create red-interna --internal
 
 openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.202.2 --subnet-range 10.0.100.0/24 subred-interna
- ```
+```
 
 
 4. Conecta la instancia maquina-router a la nueva red y asígnale la primera dirección: 10.0.100.1.
@@ -70,6 +70,7 @@ openstack subnet create --network red-interna --dhcp --dns-nameserver 192.168.20
 
 
 8. Accede desde el exterior con un navegador web al servidor web del cliente.
+
 
 
 ## Entrega
