@@ -214,6 +214,8 @@ Y añadimos un archivo html para comprobar que funciona:
 
 Luego accedemos a la máquina-router y hacemos un curl a la ip de la máquina-cliente:
 
+![Term](/img/SRI+HLC/taller2SRI4-9.png)
+
 
 ## Notas
 
