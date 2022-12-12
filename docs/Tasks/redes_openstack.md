@@ -160,6 +160,7 @@ openstack server create --flavor m1.mini \
 --port puertete \
 maquina-cliente
 ```
+
 No se ha podido añadir una ip flotante ya que es una red interna y por lo tanto solo se puede acceder a esta por el router haciendo un puente:
 
     ssh -AJ debian@172.22.201.235 debian@10.0.100.200
@@ -231,7 +232,7 @@ Y luego accedemos desde el navegador:
 
 ## Notas
 
-Para poder acceder al entorno:
+-Para poder acceder al entorno:
 
 * Primero ejecutamos el entorno virtual:
 
@@ -241,7 +242,8 @@ Para poder acceder al entorno:
 
     source Proyecto\ de\ nazaret.duran-openrc.sh
 
-IMPORTANTE ACORDARSE DE ACTIVAR EL **BIT DE FORWARDING** EN EL ROUTER (maquina-router):
+
+-IMPORTANTE ACORDARSE DE ACTIVAR EL **BIT DE FORWARDING** EN EL ROUTER (maquina-router):
 
     sysctl -w net.ipv4.ip_forward=1
     
@@ -249,7 +251,8 @@ IMPORTANTE ACORDARSE DE ACTIVAR EL **BIT DE FORWARDING** EN EL ROUTER (maquina-r
 
     nano /proc/sys/net/ipv4/ip_forward
 
-Si da error al hacer `update` en la `maquina-cliente` editamos el fichero `/etc/apt/sources.list` y cambiamos `http://deb.debian.org/debian` por `https://deb.debian.org/debian/` (así con todos) y luego hacemos `update` y `upgrade`:
+
+-Si da error al hacer `update` en la `maquina-cliente` editamos el fichero `/etc/apt/sources.list` y cambiamos `http://deb.debian.org/debian` por `https://deb.debian.org/debian/` (así con todos) y luego hacemos `update` y `upgrade`:
 
     sudo nano /etc/apt/sources.list
     sudo apt update
