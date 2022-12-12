@@ -193,10 +193,26 @@ Primero hay que configurar la instancia maquina-router para que haga de router-n
 
 ![Term](/img/SRI+HLC/taller2SRI4-7.png)
 
+Para comprobar que la máquina-cliente tiene conexión con el exterior hacemos un traceroute a la ip de google:
+
+    traceroute 8.8.8.8
+
+![Term](/img/SRI+HLC/taller2SRI4-8.png)
 
 
 ### 8. Comprobación del acceso al servidor web de la maquina-cliente desde el exterior.
 
+Montamos el servidor web en la máquina-cliente:
+
+    sudo apt update
+    sudo apt install apache2
+    sudo systemctl start apache2
+
+Y añadimos un archivo html para comprobar que funciona:
+
+    echo "Hola caracola (ʘ‿ʘ)" > /var/www/html/index.html
+
+Luego accedemos a la máquina-router y hacemos un curl a la ip de la máquina-cliente:
 
 
 ## Notas
