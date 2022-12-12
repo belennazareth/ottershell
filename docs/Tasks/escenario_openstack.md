@@ -124,6 +124,7 @@ En maquina1 vamos a crear dos contenedores en un red interna, para ello:
 ### 1. Las instrucciones para crear y configurar la máquina1 (alfa).
 
 
+ 
 
 ### 2. El fichero cloud-config.yaml para crear la máquina1 (alfa).
 
