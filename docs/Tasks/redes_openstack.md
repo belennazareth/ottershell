@@ -178,6 +178,9 @@ openstack server remove security group maquina-router default
 openstack server remove security group maquina-cliente default
 
 openstack port set --disable-port-security puertete
+openstack port set --disable-port-security puertesito
+openstack port set --disable-port-security ccd331c7-2b6e-408e-9f9b-0a3295cd4d1a
+openstack port set --disable-port-security 6055d0d0-f199-4db3-b359-cb27f1d12a37
 ```
 
 
@@ -185,7 +188,12 @@ openstack port set --disable-port-security puertete
 
 Primero hay que configurar la instancia maquina-router para que haga de router-nat:
 
-    
+    iptables -t nat -A POSTROUTING -s 10.0.100.0/24 -o ens3 -j SNAT --to 192.168.0.127
+    iptables -t nat -A PREROUTING -p tcp --dport 80 -i ens8 -j DNAT --to 10.0.100.200:80
+
+![Term](/img/SRI+HLC/taller2SRI4-7.png)
+
+
 
 ### 8. Comprobación del acceso al servidor web de la maquina-cliente desde el exterior.
 
@@ -202,3 +210,11 @@ Para poder acceder al entorno:
 * Luego dentro ejecutamos:
 
     source Proyecto\ de\ nazaret.duran-openrc.sh
+
+IMPORTANTE ACORDARSE DE ACTIVAR EL **BIT DE FORWARDING** EN EL ROUTER (maquina-router):
+
+    sysctl -w net.ipv4.ip_forward=1
+    
+    or
+
+    nano /proc/sys/net/ipv4/ip_forward
