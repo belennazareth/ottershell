@@ -24,6 +24,7 @@ Además el dominio será un subdominio de la forma tunombre.gonzalonazareno.org.
 La creación y configuración (conexión a las redes, creación de volumen, quitarle la seguridad alos puertos, …) de la máquina1 (alfa) la debes hacer con OSC. Lo demás lo puedes hacer con horizon.
 
 
+
 ### Instalación de las instancias de OpenStack
 
 1. Crea una red interna que se llame Red DMZ de tu_usuario, con las siguientes características:
@@ -76,21 +77,29 @@ La creación y configuración (conexión a las redes, creación de volumen, quit
 
 * Comprueba que tiene acceso a internet. Si no tiene acceso a internet, no se han actualizado los paquetes con cloud-init, hazlo posteriormente..
 
+
+
 ### Instalación de los contenedores 
 
 En maquina1 vamos a crear dos contenedores en un red interna, para ello:
 
 1. Crea en máquina1 (alfa) un linux bridge llamado br-intra y asigna una dirección IP estática 192.168.0.1. Esta será la IP de máquina1 (alfa) conectada a este switch virtual y será la puerta de enlace de los contenedores.
 
+
 2. Instala LXC y crea dos contenedores con la distribución Ubuntu 20.04. Estos contenedores serán la máquina3 (charlie) y la máquina4 (delta).
+
 
 3. Configura de forma permanente la regla SNAT para que los contenedores tengan acceso a internet.
 
+
 4. Conecta los contenedores al bridge br-intra y configúralo de forma estática con las siguientes direcciones: máquina3 (charlie) la 192.168.0.2 y máquina4 (delta) la 192.168.0.3.
+
 
 5. Para que la red de OpenStack funcione de forma adecuada las imágenes que usamos tienen configurado la mtu (Unidad máxima de transferencia) a 1450 bytes. Tenemos que adecuar los contenedores a este tamaño de trama. Para ello introduce en la configuración de los contenedores la línea: lxc.net.0.mtu = 1450.
 
+
 6. Configura los contenedores para que se auto inicien al reiniciar la instancia.
+
 
 7. Los contenedores tendrán características parecidas a las instancias anteriormente:
 
