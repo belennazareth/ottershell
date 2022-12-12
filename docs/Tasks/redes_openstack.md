@@ -45,7 +45,7 @@ Para añadir la IP flotante:
 ```bash
  openstack floating ip create ext-net
  openstack server add floating ip  maquina-router {ip}
- ```
+```
 
 
 3. Crea una nueva red (llamada red-interna) y una subred con DHCP, DNS el 192.168.202.2 y direccionamiento 10.0.100.0/24.
