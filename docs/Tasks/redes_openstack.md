@@ -189,7 +189,7 @@ openstack port set --disable-port-security 6055d0d0-f199-4db3-b359-cb27f1d12a37
 Primero hay que configurar la instancia maquina-router para que haga de router-nat:
 
     iptables -t nat -A POSTROUTING -s 10.0.100.0/24 -o ens3 -j SNAT --to 192.168.0.127
-    iptables -t nat -A PREROUTING -p tcp --dport 80 -i ens8 -j DNAT --to 10.0.100.200:80
+    iptables -t nat -A PREROUTING -p tcp --dport 80 -i ens3 -j DNAT --to 10.0.100.200:80
 
 ![Term](/img/SRI+HLC/taller2SRI4-7.png)
 
@@ -210,11 +210,23 @@ Montamos el servidor web en la máquina-cliente:
 
 Y añadimos un archivo html para comprobar que funciona:
 
-    echo "Hola caracola (ʘ‿ʘ)" > /var/www/html/index.html
+    echo "Hola caracola \(= * u * =)/" > /var/www/html/index.html
 
 Luego accedemos a la máquina-router y hacemos un curl a la ip de la máquina-cliente:
 
 ![Term](/img/SRI+HLC/taller2SRI4-9.png)
+
+Para poder entrar a la misma desde nuestra máquina local se edita el fichero `/etc/hosts` y se añade la ip de la `máquina-router` y el nombre que queramos ponerle:
+
+```bash
+# openstack
+172.22.201.235 maquina-cliente.org
+```
+
+Y luego accedemos desde el navegador:
+
+![Term](/img/SRI+HLC/taller2SRI4-10.png)
+
 
 
 ## Notas
