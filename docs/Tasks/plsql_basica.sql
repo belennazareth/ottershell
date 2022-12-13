@@ -39,20 +39,25 @@ INSERT INTO EMP VALUES(7900, 'JAMES', 'CLERK', 7698,TO_DATE('3-DIC-1981', 'DD-MO
 INSERT INTO EMP VALUES(7902, 'FORD', 'ANALYST', 7566,TO_DATE('3-DIC-1981', 'DD-MON-YYYY'), 3000, NULL, 20);
 INSERT INTO EMP VALUES(7934, 'MILLER', 'CLERK', 7782,TO_DATE('23-ENE-1982', 'DD-MON-YYYY'), 1300, NULL, 10);
 
+
+
 --**** Lo primero sera ejecutar el siguiente comando 'set serveroutput on', además de 'startup' para arrancar el servicio de oracle. ****
 
 --1. Hacer un procedimiento que muestre el nombre y el salario del empleado cuyo código es 7782
 
 create or replace procedure mostrar_sal_empleado 
 as
-  v_nombre emp.ename%type;
-  v_sal emp.sal%type;
+    v_nombre emp.ename%type;
+    v_sal emp.sal%type;
+
 begin
+
     select ename, sal into v_nombre, v_sal
     from emp
     where empno = 7782;
     dbms_output.put_line('Nombre: ' || v_nombre);
     dbms_output.put_line('Salario: ' || v_sal);
+
 exception
     when no_data_found then
         dbms_output.put_line('No se ha encontrado el empleado');
@@ -62,10 +67,56 @@ end;
 exec mostrar_sal_empleado;
 
 
-
 --2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre
 
+create or replace procedure mostrar_ename (p_empno emp.empno%type) 
+as 
+    v_nombre emp.ename%type;
+
+begin
+
+    select ename into v_nombre
+    from emp
+    where empno = p_empno;
+    dbms_output.put_line('Nombre: ' || v_nombre);
+
+exception
+    when no_data_found then
+        dbms_output.put_line('No se ha encontrado el empleado');
+end;
+/
+
+exec mostrar_ename(7566);
+
+
+
 --3. Hacer un procedimiento que devuelva los nombres de los tres empleados más antiguos
+
+create or replace procedure emp_mas_antiguos
+as
+    cursor c_emp_antiguos is
+        select ename
+        from emp
+        order by hiredate
+        fetch first 3 rows only;
+
+    v_nombre emp.ename%type;
+
+begin
+
+    for v_nombre in c_emp_antiguos
+    loop
+        dbms_output.put_line(v_nombre);
+    end loop;
+
+exception
+    when no_data_found then
+        dbms_output.put_line('No se ha encontrado el empleado');
+end;
+/
+
+exec emp_mas_antiguos;
+
 
 --4. Hacer un procedimiento que reciba el nombre de un tablespace y muestre los nombres de los usuarios que lo tienen como tablespace por defecto (Vista DBA_USERS)
 
