@@ -117,4 +117,27 @@ exec emp_mas_antiguos;
 
 --4. Hacer un procedimiento que reciba el nombre de un tablespace y muestre los nombres de los usuarios que lo tienen como tablespace por defecto (Vista DBA_USERS)
 
+create or replace procedure usuarios_tablespace (p_tablespace dba_users.default_tablespace%type)
+as
+    cursor c_usuarios_tablespace is
+        select username
+        from dba_users
+        where default_tablespace = p_tablespace;
+
+    v_nombre dba_users.username%type;
+
+begin
+    
+        dbms_output.put_line('Nombres para este tablespace:');
+        for v_nombre in c_usuarios_tablespace 
+        loop
+            dbms_output.put_line(v_nombre.username);
+        end loop;
+
+end;
+/
+
+exec usuarios_tablespace('USERS');
+
+
 --5. Modificar el procedimiento anterior para que haga lo mismo pero devolviendo el número de usuarios que tienen ese tablespace como tablespace por defecto. Nota: Hay que convertir el procedimiento en función
