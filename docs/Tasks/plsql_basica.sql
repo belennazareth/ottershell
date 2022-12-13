@@ -104,14 +104,11 @@ as
 
 begin
 
-    for v_nombre in c_emp_antiguos
+    dbms_output.put_line('Nombres:');
+    for v_nombre in c_emp_antiguos 
     loop
-        dbms_output.put_line(v_nombre);
+        dbms_output.put_line(v_nombre.ename);
     end loop;
-
-exception
-    when no_data_found then
-        dbms_output.put_line('No se ha encontrado el empleado');
 end;
 /
 
