@@ -249,12 +249,44 @@ exec mostrar_codigo_fuente('USUARIOS_TABLESPACE');
 
 ### 8. Hacer un procedimiento llamado mostrar_privilegios_usuario que reciba el nombre de un usuario y muestre sus privilegios de sistema y sus privilegios sobre objetos. (DBA_SYS_PRIVS y DBA_TAB_PRIVS)
 
-parametros: nombre usuario
-sale privilegios
-
 ```sql
-create or replace procedure mostrar_sys_priv #
+create or replace procedure mostrar_privilegios_usuario (p_username dba_sys_privs.grantee%type)
+is
+    cursor c_privilegios is
+        select privilege
+        from dba_sys_privs
+        where grantee = p_username;
+
+    cursor c_privilegios_objetos is
+        select privilege
+        from dba_tab_privs
+        where grantee = p_username;
+
+    v_privilegio dba_sys_privs.privilege%type;
+
+begin
+
+    dbms_output.put_line('Privilegios de sistema:');
+    for v_privilegio in c_privilegios
+    loop
+        dbms_output.put_line(v_privilegio.privilege);
+    end loop;
+
+    dbms_output.put_line('Privilegios sobre objetos:');
+    for v_privilegio in c_privilegios_objetos
+    loop
+        dbms_output.put_line(v_privilegio.privilege);
+    end loop;
+
+end;
+/
+
+exec mostrar_privilegios_usuario('SYSTEM');
 ```
+
+![img](/img/BBDD/plsql-9.png)
+
+
 
 ### 9. Realiza un procedimiento llamado listar_comisiones que nos muestre por pantalla un listado de las comisiones de los empleados agrupados según la localidad donde está ubicado su departamento con el siguiente formato:
 
