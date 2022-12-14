@@ -206,6 +206,12 @@
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
+          },
+          {
+            "type": "link",
+            "label": "plsql_basica",
+            "href": "/docs/Tasks/plsql_basica",
+            "docId": "Tasks/plsql_basica"
           }
         ],
         "href": "/docs/category/tasks"
@@ -394,6 +400,12 @@
       "id": "Tasks/peticion_http",
       "title": "Peticiones HTTP",
       "description": "Con la herramienta curl podemos realizar peticiones HTTP según lo que queramos ver:",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/plsql_basica": {
+      "id": "Tasks/plsql_basica",
+      "title": "plsql_basica",
+      "description": "Según el esquema Scott, hacer los siguientes procedimientos:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/ramas_uniones": {

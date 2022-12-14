@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-6e5": {
+  "/docs-904": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -220,6 +220,10 @@
   "/docs/Tasks/peticion_http-71d": {
     "__comp": "17896441",
     "content": "379ad948"
+  },
+  "/docs/Tasks/plsql_basica-c45": {
+    "__comp": "17896441",
+    "content": "f624d7d3"
   },
   "/docs/Tasks/ramas_uniones-260": {
     "__comp": "17896441",

@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '6e5'),
+    component: ComponentCreator('/docs', '904'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -222,6 +222,12 @@ export default [
       {
         path: '/docs/Tasks/peticion_http',
         component: ComponentCreator('/docs/Tasks/peticion_http', '71d'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/plsql_basica',
+        component: ComponentCreator('/docs/Tasks/plsql_basica', 'c45'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
