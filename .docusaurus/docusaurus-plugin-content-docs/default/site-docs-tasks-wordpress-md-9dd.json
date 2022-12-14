@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Migración CentOS",
-    "permalink": "/docs/Tasks/migracion_centos"
+    "title": "PRIMER BOLETÍN PL/SQL",
+    "permalink": "/docs/Tasks/plsql_basica"
   },
   "next": {
     "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",

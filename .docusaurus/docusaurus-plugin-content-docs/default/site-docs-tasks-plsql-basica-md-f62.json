@@ -1,8 +1,8 @@
 {
   "unversionedId": "Tasks/plsql_basica",
   "id": "Tasks/plsql_basica",
-  "title": "plsql_basica",
-  "description": "Según el esquema Scott, hacer los siguientes procedimientos:",
+  "title": "PRIMER BOLETÍN PL/SQL",
+  "description": "PL/SQL",
   "source": "@site/docs/Tasks/plsql_basica.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/plsql_basica",
@@ -11,14 +11,17 @@
   "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/plsql_basica.md",
   "tags": [],
   "version": "current",
-  "frontMatter": {},
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Migración CentOS",
+    "permalink": "/docs/Tasks/migracion_centos"
   },
   "next": {
-    "title": "Extras",
-    "permalink": "/docs/category/extras"
+    "title": "Instalación de WordPress",
+    "permalink": "/docs/Tasks/wordpress"
   }
 }

@@ -167,6 +167,12 @@
           },
           {
             "type": "link",
+            "label": "PRIMER BOLETÍN PL/SQL",
+            "href": "/docs/Tasks/plsql_basica",
+            "docId": "Tasks/plsql_basica"
+          },
+          {
+            "type": "link",
             "label": "Instalación de WordPress",
             "href": "/docs/Tasks/wordpress",
             "docId": "Tasks/wordpress"
@@ -206,12 +212,6 @@
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
-          },
-          {
-            "type": "link",
-            "label": "plsql_basica",
-            "href": "/docs/Tasks/plsql_basica",
-            "docId": "Tasks/plsql_basica"
           }
         ],
         "href": "/docs/category/tasks"
@@ -404,8 +404,8 @@
     },
     "Tasks/plsql_basica": {
       "id": "Tasks/plsql_basica",
-      "title": "plsql_basica",
-      "description": "Según el esquema Scott, hacer los siguientes procedimientos:",
+      "title": "PRIMER BOLETÍN PL/SQL",
+      "description": "PL/SQL",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/ramas_uniones": {
