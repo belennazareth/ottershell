@@ -338,6 +338,8 @@ El procedimiento debe gestionar adecuadamente las siguientes excepciones:
 
 
 
+
+
 ## PL/PgSQL
 
 Para los siguientes apartados se ha usado **postgresql** creando la siguiente base de datos:
