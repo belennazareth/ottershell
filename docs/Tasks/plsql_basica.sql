@@ -202,8 +202,8 @@ end;
 
 exec mostrar_codigo_fuente('USUARIOS_TABLESPACE');
 
--- * NOTA: El nombre del procedimiento debe ser en mayúsculas, ya que en la vista DBA_SOURCE está en mayúsculas. Si no, no lo encuentra. 
 
+-- * NOTA: El nombre del procedimiento debe ser en mayúsculas, ya que en la vista DBA_SOURCE está en mayúsculas. Si no, no lo encuentra. 
 
 
 --8. Hacer un procedimiento llamado mostrar_privilegios_usuario que reciba el nombre de un usuario y muestre sus privilegios de sistema y sus privilegios sobre objetos. (DBA_SYS_PRIVS y DBA_TAB_PRIVS)
@@ -329,3 +329,21 @@ call mostrar_sal_empleado_pg(7782);
 
 
 --11.2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre usando PL/pgSQL.
+
+
+create or replace procedure mostrar_ename_pg (p_emp_no integer)
+language plpgsql
+as $$
+declare
+
+    v_nombre text;
+
+begin
+    
+        select ename into v_nombre from emp where empno = p_emp_no;
+    
+        raise notice 'El nombre del empleado % es %', p_emp_no, v_nombre;
+
+end; $$;
+
+call mostrar_ename_pg (7566);
