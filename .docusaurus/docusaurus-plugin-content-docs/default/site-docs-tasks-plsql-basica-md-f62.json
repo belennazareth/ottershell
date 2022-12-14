@@ -1,0 +1,24 @@
+{
+  "unversionedId": "Tasks/plsql_basica",
+  "id": "Tasks/plsql_basica",
+  "title": "plsql_basica",
+  "description": "Según el esquema Scott, hacer los siguientes procedimientos:",
+  "source": "@site/docs/Tasks/plsql_basica.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/plsql_basica",
+  "permalink": "/docs/Tasks/plsql_basica",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/plsql_basica.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  },
+  "next": {
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
+  }
+}
