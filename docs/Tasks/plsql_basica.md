@@ -4,6 +4,8 @@ sidebar_position: 15
 
 # PRIMER BOLETÍN PL/SQL
 
+## PL/SQL
+
 Según el esquema Scott, hacer los siguientes procedimientos:
 
 ```sql
@@ -77,6 +79,9 @@ end;
 
 exec mostrar_sal_empleado;
 ```
+![img](/img/BBDD/plsql.png)
+
+
 
 ### 2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre
 
@@ -100,6 +105,9 @@ end;
 
 exec mostrar_ename(7566);
 ```
+
+![img](/img/BBDD/plsql-2.png)
+
 
 
 ### 3. Hacer un procedimiento que devuelva los nombres de los tres empleados más antiguos
@@ -128,6 +136,9 @@ end;
 exec emp_mas_antiguos;
 ```
 
+![img](/img/BBDD/plsql-3.png)
+
+
 
 ### 4. Hacer un procedimiento que reciba el nombre de un tablespace y muestre los nombres de los usuarios que lo tienen como tablespace por defecto (Vista DBA_USERS)
 
@@ -155,6 +166,9 @@ end;
 exec usuarios_tablespace('USERS');
 ```
 
+![img](/img/BBDD/plsql-4.png)
+
+
 
 ### 5. Modificar el procedimiento anterior para que haga lo mismo pero devolviendo el número de usuarios que tienen ese tablespace como tablespace por defecto. Nota: Hay que convertir el procedimiento en función
 
@@ -176,6 +190,9 @@ end;
 select function_usuarios_tablespace('USERS') from dual;
 select function_usuarios_tablespace('SYSTEM') from dual;
 ```
+
+![img](/img/BBDD/plsql-5.png)
+
 
 
 ### 6. Hacer un procedimiento llamado mostrar_usuarios_por_tablespace que muestre por pantalla un listado de los tablespaces existentes con la lista de usuarios de cada uno y el número de los mismos, así: (Vistas DBA_TABLESPACES y DBA_USERS)
@@ -226,6 +243,9 @@ exec mostrar_codigo_fuente('USUARIOS_TABLESPACE');
 
 * NOTA: El nombre del procedimiento debe ser en mayúsculas, ya que en la vista DBA_SOURCE está en mayúsculas. Si no, no lo encuentra. 
 
+![img](/img/BBDD/plsql-8.png)
+
+
 
 ### 8. Hacer un procedimiento llamado mostrar_privilegios_usuario que reciba el nombre de un usuario y muestre sus privilegios de sistema y sus privilegios sobre objetos. (DBA_SYS_PRIVS y DBA_TAB_PRIVS)
 
@@ -234,7 +254,7 @@ sale privilegios
 
 ```sql
 create or replace procedure mostrar_sys_priv #
-
+```
 
 ### 9. Realiza un procedimiento llamado listar_comisiones que nos muestre por pantalla un listado de las comisiones de los empleados agrupados según la localidad donde está ubicado su departamento con el siguiente formato:
 
@@ -359,6 +379,9 @@ end; $$;
 call mostrar_sal_empleado_pg(7782);
 ```
 
+![img](/img/BBDD/plsql-6.png)
+
+
 
 ### 11.2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre usando PL/pgSQL.
 
@@ -380,3 +403,5 @@ end; $$;
 
 call mostrar_ename_pg (7566);
 ```
+
+![img](/img/BBDD/plsql-7.png)
