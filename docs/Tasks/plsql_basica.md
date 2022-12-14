@@ -1,4 +1,8 @@
+---
+sidebar_position: 15
+---
 
+# PRIMER BOLETÍN PL/SQL
 
 Según el esquema Scott, hacer los siguientes procedimientos:
 
@@ -225,6 +229,11 @@ exec mostrar_codigo_fuente('USUARIOS_TABLESPACE');
 
 ### 8. Hacer un procedimiento llamado mostrar_privilegios_usuario que reciba el nombre de un usuario y muestre sus privilegios de sistema y sus privilegios sobre objetos. (DBA_SYS_PRIVS y DBA_TAB_PRIVS)
 
+parametros: nombre usuario
+sale privilegios
+
+```sql
+create or replace procedure mostrar_sys_priv #
 
 
 ### 9. Realiza un procedimiento llamado listar_comisiones que nos muestre por pantalla un listado de las comisiones de los empleados agrupados según la localidad donde está ubicado su departamento con el siguiente formato:
