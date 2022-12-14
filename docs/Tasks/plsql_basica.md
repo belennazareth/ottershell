@@ -1,5 +1,8 @@
---Según el esquema Scott, hacer los siguientes procedimientos:
 
+
+Según el esquema Scott, hacer los siguientes procedimientos:
+
+```sql
 CREATE TABLE DEPT
 (
  DEPTNO NUMBER(2),
@@ -7,6 +10,7 @@ CREATE TABLE DEPT
  LOC VARCHAR2(13),
  CONSTRAINT PK_DEPT PRIMARY KEY (DEPTNO)
 );
+
 CREATE TABLE EMP
 (
  EMPNO NUMBER(4),
@@ -20,10 +24,12 @@ CREATE TABLE EMP
  CONSTRAINT FK_DEPTNO FOREIGN KEY (DEPTNO) REFERENCES DEPT (DEPTNO),
  CONSTRAINT PK_EMP PRIMARY KEY (EMPNO)
 );
+
 INSERT INTO DEPT VALUES (10, 'ACCOUNTING', 'NEW YORK');
 INSERT INTO DEPT VALUES (20, 'RESEARCH', 'DALLAS');
 INSERT INTO DEPT VALUES (30, 'SALES', 'CHICAGO');
 INSERT INTO DEPT VALUES (40, 'OPERATIONS', 'BOSTON');
+
 INSERT INTO EMP VALUES(7369, 'SMITH', 'CLERK', 7902,TO_DATE('17-DIC-1980', 'DD-MON-YYYY'), 800, NULL, 20);
 INSERT INTO EMP VALUES(7499, 'ALLEN', 'SALESMAN', 7698,TO_DATE('20-FEB-1981', 'DD-MON-YYYY'), 1600, 300, 30);
 INSERT INTO EMP VALUES(7521, 'WARD', 'SALESMAN', 7698,TO_DATE('22-FEB-1981', 'DD-MON-YYYY'), 1250, 500, 30);
@@ -38,13 +44,14 @@ INSERT INTO EMP VALUES(7876, 'ADAMS', 'CLERK', 7788,TO_DATE('12-ENE-1983', 'DD-M
 INSERT INTO EMP VALUES(7900, 'JAMES', 'CLERK', 7698,TO_DATE('3-DIC-1981', 'DD-MON-YYYY'), 950, NULL, 30);
 INSERT INTO EMP VALUES(7902, 'FORD', 'ANALYST', 7566,TO_DATE('3-DIC-1981', 'DD-MON-YYYY'), 3000, NULL, 20);
 INSERT INTO EMP VALUES(7934, 'MILLER', 'CLERK', 7782,TO_DATE('23-ENE-1982', 'DD-MON-YYYY'), 1300, NULL, 10);
+```
 
 
+**** Lo primero sera ejecutar el siguiente comando `'set serveroutput on'`, además de `'startup'` para arrancar el servicio de oracle. ****
 
---**** Lo primero sera ejecutar el siguiente comando 'set serveroutput on', además de 'startup' para arrancar el servicio de oracle. ****
+### 1. Hacer un procedimiento que muestre el nombre y el salario del empleado cuyo código es 7782
 
---1. Hacer un procedimiento que muestre el nombre y el salario del empleado cuyo código es 7782
-
+```sql
 create or replace procedure mostrar_sal_empleado 
 as
     v_nombre emp.ename%type;
@@ -65,10 +72,11 @@ end;
 /
 
 exec mostrar_sal_empleado;
+```
 
+### 2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre
 
---2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre
-
+```sql
 create or replace procedure mostrar_ename (p_empno emp.empno%type) 
 as 
     v_nombre emp.ename%type;
@@ -87,11 +95,12 @@ end;
 /
 
 exec mostrar_ename(7566);
+```
 
 
+### 3. Hacer un procedimiento que devuelva los nombres de los tres empleados más antiguos
 
---3. Hacer un procedimiento que devuelva los nombres de los tres empleados más antiguos
-
+```sql
 create or replace procedure emp_mas_antiguos
 as
     cursor c_emp_antiguos is
@@ -113,10 +122,12 @@ end;
 /
 
 exec emp_mas_antiguos;
+```
 
 
---4. Hacer un procedimiento que reciba el nombre de un tablespace y muestre los nombres de los usuarios que lo tienen como tablespace por defecto (Vista DBA_USERS)
+### 4. Hacer un procedimiento que reciba el nombre de un tablespace y muestre los nombres de los usuarios que lo tienen como tablespace por defecto (Vista DBA_USERS)
 
+```sql
 create or replace procedure usuarios_tablespace (p_tablespace dba_users.default_tablespace%type)
 as
     cursor c_usuarios_tablespace is
@@ -138,10 +149,12 @@ end;
 /
 
 exec usuarios_tablespace('USERS');
+```
 
 
---5. Modificar el procedimiento anterior para que haga lo mismo pero devolviendo el número de usuarios que tienen ese tablespace como tablespace por defecto. Nota: Hay que convertir el procedimiento en función
+### 5. Modificar el procedimiento anterior para que haga lo mismo pero devolviendo el número de usuarios que tienen ese tablespace como tablespace por defecto. Nota: Hay que convertir el procedimiento en función
 
+```sql
 create or replace function function_usuarios_tablespace (p_tablespace dba_users.default_tablespace%type) return number
 as
     v_number number;
@@ -158,31 +171,34 @@ end;
 
 select function_usuarios_tablespace('USERS') from dual;
 select function_usuarios_tablespace('SYSTEM') from dual;
-
---6. Hacer un procedimiento llamado mostrar_usuarios_por_tablespace que muestre por pantalla un listado de los tablespaces existentes con la lista de usuarios de cada uno y el número de los mismos, así: (Vistas DBA_TABLESPACES y DBA_USERS)
-
---Tablespace xxxx:
---
---	Usr1
---	Usr2
---	...
---
---Total Usuarios Tablespace xxxx: n1
---
---Tablespace yyyy:
---
---	Usr1
---	Usr2
---	...
---
---Total Usuarios Tablespace yyyy: n2
---....
---Total Usuarios BD: nn
+```
 
 
+### 6. Hacer un procedimiento llamado mostrar_usuarios_por_tablespace que muestre por pantalla un listado de los tablespaces existentes con la lista de usuarios de cada uno y el número de los mismos, así: (Vistas DBA_TABLESPACES y DBA_USERS)
 
---7. Hacer un procedimiento llamado mostrar_codigo_fuente  que reciba el nombre de otro procedimiento y muestre su código fuente. (DBA_SOURCE)
+    Tablespace xxxx:
 
+    	Usr1
+    	Usr2
+    	...
+
+    Total Usuarios Tablespace xxxx: n1
+
+    Tablespace yyyy:
+
+    	Usr1
+    	Usr2
+    	...
+
+    Total Usuarios Tablespace yyyy: n2
+    ....
+    Total Usuarios BD: nn
+
+
+
+### 7. Hacer un procedimiento llamado mostrar_codigo_fuente  que reciba el nombre de otro procedimiento y muestre su código fuente. (DBA_SOURCE)
+
+```sql
 create or replace procedure mostrar_codigo_fuente (p_proc_name dba_source.name%type)
 is
     cursor c_codigo is
@@ -201,67 +217,71 @@ end;
 /
 
 exec mostrar_codigo_fuente('USUARIOS_TABLESPACE');
+```
 
 
--- * NOTA: El nombre del procedimiento debe ser en mayúsculas, ya que en la vista DBA_SOURCE está en mayúsculas. Si no, no lo encuentra. 
+* NOTA: El nombre del procedimiento debe ser en mayúsculas, ya que en la vista DBA_SOURCE está en mayúsculas. Si no, no lo encuentra. 
 
 
---8. Hacer un procedimiento llamado mostrar_privilegios_usuario que reciba el nombre de un usuario y muestre sus privilegios de sistema y sus privilegios sobre objetos. (DBA_SYS_PRIVS y DBA_TAB_PRIVS)
-
-
-
---9. Realiza un procedimiento llamado listar_comisiones que nos muestre por pantalla un listado de las comisiones de los empleados agrupados según la localidad donde está ubicado su departamento con el siguiente formato:
---
---Localidad NombreLocalidad
---	
---Departamento: NombreDepartamento
---
---		Empleado1 ……. Comisión 1
---		Empleado2 ……. Comisión 2
---		.	
---		.
---		.
---		Empleadon ……. Comision n
---
---	Total Comisiones en el Departamento NombreDepartamento: SumaComisiones
---
---	Departamento: NombreDepartamento
---
---		Empleado1 ……. Comisión 1
---		Empleado2 ……. Comisión 2
---		.	
---		.		.
---		Empleadon ……. Comision n
---
---	Total Comisiones en el Departamento NombreDepartamento: SumaComisiones
---	.	
---	.
---Total Comisiones en la Localidad NombreLocalidad: SumaComisionesLocalidad
---
---Localidad NombreLocalidad
---.
---.
---
---Total Comisiones en la Empresa: TotalComisiones
---
---Nota: Los nombres de localidades, departamentos y empleados deben aparecer por orden alfabético.
---
---Si alguno de los departamentos no tiene ningún empleado con comisiones, aparecerá un mensaje informando de ello en lugar de la lista de empleados.
---
---El procedimiento debe gestionar adecuadamente las siguientes excepciones:
---
---    a) La tabla Empleados está vacía.
---    b) Alguna comisión es mayor que 10000.
+### 8. Hacer un procedimiento llamado mostrar_privilegios_usuario que reciba el nombre de un usuario y muestre sus privilegios de sistema y sus privilegios sobre objetos. (DBA_SYS_PRIVS y DBA_TAB_PRIVS)
 
 
 
+### 9. Realiza un procedimiento llamado listar_comisiones que nos muestre por pantalla un listado de las comisiones de los empleados agrupados según la localidad donde está ubicado su departamento con el siguiente formato:
 
---10. Realiza un procedimiento que reciba el nombre de una tabla y muestre los nombres de las restricciones que tiene, a qué columna afectan y en qué consisten exactamente. (DBA_TABLES, DBA_CONSTRAINTS, DBA_CONS_COLUMNS)
+    Localidad NombreLocalidad
+    
+    Departamento: NombreDepartamento
+
+    		Empleado1 ……. Comisión 1
+    		Empleado2 ……. Comisión 2
+    		.	
+    		.
+    		.
+    		Empleadon ……. Comision n
+
+    	Total Comisiones en el Departamento NombreDepartamento: SumaComisiones
+
+    	Departamento: NombreDepartamento
+
+    		Empleado1 ……. Comisión 1
+    		Empleado2 ……. Comisión 2
+    		.	
+    		.		.
+    		Empleadon ……. Comision n
+
+    	Total Comisiones en el Departamento NombreDepartamento: SumaComisiones
+    	.	
+    	.
+    Total Comisiones en la Localidad NombreLocalidad: SumaComisionesLocalidad
+
+    Localidad NombreLocalidad
+    .
+    .
+
+    Total Comisiones en la Empresa: TotalComisiones
+
+
+Nota: Los nombres de localidades, departamentos y empleados deben aparecer por orden alfabético.
+
+Si alguno de los departamentos no tiene ningún empleado con comisiones, aparecerá un mensaje informando de ello en lugar de la lista de empleados.
+
+El procedimiento debe gestionar adecuadamente las siguientes excepciones:
+
+    a) La tabla Empleados está vacía.
+    b) Alguna comisión es mayor que 10000.
 
 
 
--- Para los siguientes apartados se ha usado postgresql creando la siguiente base de datos:
+### 10. Realiza un procedimiento que reciba el nombre de una tabla y muestre los nombres de las restricciones que tiene, a qué columna afectan y en qué consisten exactamente. (DBA_TABLES, DBA_CONSTRAINTS, DBA_CONS_COLUMNS)
 
+
+
+## PL/PgSQL
+
+Para los siguientes apartados se ha usado **postgresql** creando la siguiente base de datos:
+
+```sql
 create table dept (
   deptno integer,
   dname  text,
@@ -304,11 +324,13 @@ insert into emp (empno, ename,    job,        mgr,   hiredate,     sal, comm, de
                 (7900, 'JAMES',  'CLERK',     7698, '1981-12-03',  950, NULL,   30),
                 (7902, 'FORD',   'ANALYST',   7566, '1981-12-03', 3000, NULL,   20),
                 (7934, 'MILLER', 'CLERK',     7782, '1982-01-23', 1300, NULL,   10);
+```
 
 
 
---11.1. Hacer un procedimiento que muestre el nombre y el salario del empleado cuyo código es 7782 usando PL/pgSQL.
+### 11.1. Hacer un procedimiento que muestre el nombre y el salario del empleado cuyo código es 7782 usando PL/pgSQL.
 
+```sql
 create or replace procedure mostrar_sal_empleado_pg (p_emp_no integer)
 language plpgsql
 as $$
@@ -326,11 +348,12 @@ begin
 end; $$;
 
 call mostrar_sal_empleado_pg(7782);
+```
 
 
---11.2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre usando PL/pgSQL.
+### 11.2. Hacer un procedimiento que reciba como parámetro un código de empleado y devuelva su nombre usando PL/pgSQL.
 
-
+```sql
 create or replace procedure mostrar_ename_pg (p_emp_no integer)
 language plpgsql
 as $$
@@ -347,3 +370,4 @@ begin
 end; $$;
 
 call mostrar_ename_pg (7566);
+```
