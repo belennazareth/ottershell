@@ -61,17 +61,30 @@ La creación y configuración (conexión a las redes, creación de volumen, quit
 
 * Está instancia estará conectada a tu red interna. Asigna a la instancia una IP flotante.
 
+Primero creamos el volumen para la máquina `alfa`:
+
+```bash
+openstack volume create --size 30 \
+--description "Volumen para la máquina alfa" \
+--image "Debian 11 Bullseye" \
+--availability-zone "nova" \
+--bootable \
+volumen_alfa
+```
+
+
 Desde línea de comandos montamos el escenario mandándole el fichero de configuración cloud-config.yaml:
 
 ```bash
- openstack server create --flavor vol.medium \
- --image "Debian 11 Bullseye" \
+ openstack server create --volume volumen_alfa \
+ --flavor vol.medium \
  --security-group default \
  --key-name nazareth_local \
  --network "red de nazaret.duran" \
- --user-data cloud-config.yaml
+ --user-data cloud-config.yaml \
  alfa.nazareth
 ```
+
 
 El fichero cloud-config.yaml es el siguiente:
 
@@ -120,6 +133,14 @@ chpasswd:
 
 ```
 
+Para darle una ip flotante:
+
+```bash
+ openstack floating ip create ext-net
+ openstack server add floating ip  alfa.nazareth {ip}
+```
+
+
 4. Configuración de la máquina1 (alfa):
 
 * Conecta la instancia a tu Red DMZ, asígnale la dirección 172.16.0.1 para que sea la puerta de enlace las máquinas conectadas a esta red.
@@ -133,7 +154,7 @@ chpasswd:
 
 * Está instancia se conectará a la red DMZ. Usando un puerto asigna a esta máquina la dirección 172.16.0.200.
 
-* Crea una instancia sobre un vollumen de 30Gb, usando una imagen de Rocky Linux 9. Elige el sabor vol.normal. Y configuralá con cloud-init como se ha indicado anteriormente.
+* Crea una instancia sobre un volumen de 30Gb, usando una imagen de Rocky Linux 9. Elige el sabor vol.normal. Y configuralá con cloud-init como se ha indicado anteriormente.
 
 * Deshabilita la seguridad de los puertos en la interfaz de red para que funcione de manera adecuada el NAT.
 
