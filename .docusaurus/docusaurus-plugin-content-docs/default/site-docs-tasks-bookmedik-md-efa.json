@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Configuración Apache2 + fpm+php",
-    "permalink": "/docs/Tasks/apache2_fpm"
+    "title": "Instalación y configuración del servidor bind9 en nuestra red local",
+    "permalink": "/docs/Tasks/bind9_local"
   },
   "next": {
     "title": "Cifrado asimétrico con gpg y openssl",

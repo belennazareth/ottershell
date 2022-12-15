@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/redes_openstack"
   },
   "next": {
-    "title": "Instalación de la aplicación BookMedik",
-    "permalink": "/docs/Tasks/bookmedik"
+    "title": "Instalación y configuración del servidor bind9 en nuestra red local",
+    "permalink": "/docs/Tasks/bind9_local"
   }
 }

@@ -131,6 +131,12 @@
           },
           {
             "type": "link",
+            "label": "Instalación y configuración del servidor bind9 en nuestra red local",
+            "href": "/docs/Tasks/bind9_local",
+            "docId": "Tasks/bind9_local"
+          },
+          {
+            "type": "link",
             "label": "Instalación de la aplicación BookMedik",
             "href": "/docs/Tasks/bookmedik",
             "docId": "Tasks/bookmedik"
@@ -268,6 +274,12 @@
       "id": "Tasks/apache2_fpm",
       "title": "Configuración Apache2 + fpm+php",
       "description": "1. Pantallazo donde se compruebe que tienes corriendo en tu servidor procesos PHP-FPM.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/bind9_local": {
+      "id": "Tasks/bind9_local",
+      "title": "Instalación y configuración del servidor bind9 en nuestra red local",
+      "description": "",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/bookmedik": {

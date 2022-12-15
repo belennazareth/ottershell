@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-904": {
+  "/docs-9f2": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -132,6 +132,10 @@
   "/docs/Tasks/apache2_fpm-b47": {
     "__comp": "17896441",
     "content": "f99e8129"
+  },
+  "/docs/Tasks/bind9_local-3e2": {
+    "__comp": "17896441",
+    "content": "334592cc"
   },
   "/docs/Tasks/bookmedik-37d": {
     "__comp": "17896441",

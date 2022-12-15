@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '904'),
+    component: ComponentCreator('/docs', '9f2'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -90,6 +90,12 @@ export default [
       {
         path: '/docs/Tasks/apache2_fpm',
         component: ComponentCreator('/docs/Tasks/apache2_fpm', 'b47'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/bind9_local',
+        component: ComponentCreator('/docs/Tasks/bind9_local', '3e2'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
