@@ -140,6 +140,13 @@ Para darle una ip flotante:
  openstack server add floating ip  alfa.nazareth {ip}
 ```
 
+Para facilitar la conexión ssh se crea el fichero `config` en la carpeta `~/.ssh` con la estructura:
+
+```bash
+ host alfa
+    HostName {ip}
+    User nazare
+```
 
 4. Configuración de la máquina1 (alfa):
 
