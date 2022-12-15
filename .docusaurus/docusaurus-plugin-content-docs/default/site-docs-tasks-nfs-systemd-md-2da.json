@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/nfs_systemd",
+  "id": "Tasks/nfs_systemd",
+  "title": "Montaje NFS mediante systemd",
+  "description": "En una instancia del cloud, basada en la distribución de tu elección, anexa un volumen de 2GB. En dicha instancia deberás configurar el servicio nfs de exportación y en el volumen un punto de montaje de la exportación mediante systemd.",
+  "source": "@site/docs/Tasks/nfs_systemd.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/nfs_systemd",
+  "permalink": "/docs/Tasks/nfs_systemd",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/nfs_systemd.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 17,
+  "frontMatter": {
+    "sidebar_position": 17
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Criptografía II: Integridad, firmas y autenticación",
+    "permalink": "/docs/Tasks/criptografia2"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
