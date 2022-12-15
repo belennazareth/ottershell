@@ -150,6 +150,54 @@ debian@nfs-systemd:~$ rpcinfo -p
 
 ```
 
+Configuramos el punto de montaje en el servidor entrando al directorio `/etc/systemd/system` y creamos un fichero con la extensión `.mount`:
+
+```bash 
+mkdir /nfs
+
+nano /etc/systemd/system/nfs.mount
+```
+
+Dentro del fichero tendremos que añadir lo siguiente:
+
+```bash
+[Unit]
+Description=Disco montado en /nfs usando volumen añadido
+[Mount]
+What=/dev/vdb
+Where=/nfs
+Type=ext4
+Options=defaults
+[Install]
+WantedBy=multi-user.target
+```
+
+Debemos tener en cuenta que el volumen que hemos añadido a la instancia tiene que estar formateado. Para ello, ejecutamos el siguiente comando:
+
+```bash
+mkfs.ext4 /dev/vdb
+```
+
+Y por último, recargamos el *daemon* y activamos el punto de montaje:
+
+```bash
+systemctl daemon.reload
+systemctl start nfs.mount
+```
+
+Podemos comprobar que el punto de montaje se ha creado correctamente y que el volumen se ha montado en el directorio `/nfs` con el comando `lsblk -f`:
+
+```bash
+root@nfs-systemd:~# lsblk -f
+
+NAME    FSTYPE FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+vda                                                                            
+├─vda1  ext4   1.0         ce1282a1-ced7-40a2-8b01-eed78dc14d62    8.2G    11% /
+├─vda14                                                                        
+└─vda15 vfat   FAT16       4A0A-DB16                             117.8M     5% /boot/efi
+vdb     ext4   1.0         67c14f57-2088-41ad-8abf-6e2b4ddb71cd    1.8G     0% /nfs
+
+```
 
 ## Configuración del punto de montaje
 
