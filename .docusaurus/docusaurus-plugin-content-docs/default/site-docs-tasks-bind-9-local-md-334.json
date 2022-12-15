@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/bind9_local",
+  "id": "Tasks/bind9_local",
+  "title": "Instalación y configuración del servidor bind9 en nuestra red local",
+  "description": "",
+  "source": "@site/docs/Tasks/bind9_local.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/bind9_local",
+  "permalink": "/docs/Tasks/bind9_local",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/bind9_local.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuración Apache2 + fpm+php",
+    "permalink": "/docs/Tasks/apache2_fpm"
+  },
+  "next": {
+    "title": "Instalación de la aplicación BookMedik",
+    "permalink": "/docs/Tasks/bookmedik"
+  }
+}
