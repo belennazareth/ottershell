@@ -216,6 +216,14 @@ select function_usuarios_tablespace('SYSTEM') from dual;
     Total Usuarios BD: nn
 
 
+```sql
+
+create or replace procedure listar_tablespace (p_tablespace dba_users.default_tablespace%type)
+
+
+
+```
+
 
 ### 7. Hacer un procedimiento llamado mostrar_codigo_fuente  que reciba el nombre de otro procedimiento y muestre su código fuente. (DBA_SOURCE)
 
