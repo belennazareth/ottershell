@@ -15,11 +15,15 @@ Además el dominio será un subdominio de la forma tunombre.gonzalonazareno.org.
 
 * Máquina 1: Instancia en OpenStack con Debian 11 Bullseye que se llama alfa.tunombre.gonzalonazareno.org.
 
+
 * Máquina 2: Instancia en OpenStack con Rocky Linux 9 que se llama bravo.tunombre.gonzalonazareno.org.
+
 
 * Máquina 3: Contenedor LXC con Ubuntu 20.04 que se llama charlie.tunombre.gonzalonazareno.org.
 
+
 * Máquina 4: Contenedor LXC con Ubuntu 20.04 que se llama delta.tunombre.gonzalonazareno.org.
+
 
 La creación y configuración (conexión a las redes, creación de volumen, quitarle la seguridad alos puertos, …) de la máquina1 (alfa) la debes hacer con OSC. Lo demás lo puedes hacer con horizon.
 
@@ -57,6 +61,64 @@ La creación y configuración (conexión a las redes, creación de volumen, quit
 
 * Está instancia estará conectada a tu red interna. Asigna a la instancia una IP flotante.
 
+Desde línea de comandos montamos el escenario mandándole el fichero de configuración cloud-config.yaml:
+
+```bash
+ openstack server create --flavor vol.medium \
+ --image "Debian 11 Bullseye" \
+ --security-group default \
+ --key-name nazareth_local \
+ --network "red de nazaret.duran" \
+ --user-data cloud-config.yaml
+ alfa.nazareth
+```
+
+El fichero cloud-config.yaml es el siguiente:
+
+```yaml
+
+#cloud-config
+
+# Actualizar los paquetes de la distribución
+
+package_update: true
+package_upgrade: true
+
+# hostname y FQDN
+
+hostname: alfa
+fqdn: alfa.nazareth.gonzalonazareno.org
+
+# Crear usuarios
+
+users:
+
+# Usuario sin privilegios
+
+   - name: nazare
+   - sudo: ALL=(ALL) NOPASSWD:ALL
+   - shell: /bin/bash
+   - passwd: nazare
+   - ssh_authorized_keys:
+       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC73j7AidXdLgiu5wJw7YgJuvOHyb6U8c04MuQyehYnMknMR8mTnWZr20npVHJ8VHYHDy8RlgbkMMBFgeVCgXJ+Im3A6Efp6HC4yj2SM+73hr1EKCLdRPzCzdtDSUtkqU9k+x2RdF3T6qD6H4Cg/nT8Sg3Qenqds4XORfDWOvntxFja2D0OhZv1MLPUD9pEj+a8D4erfiPx/gKW/Rtu89une+uiwVgK60B5CxnC8XXnXmPO3NhrgyQhVgzQZ658cUbLooxQURVlo1gnOmcqX5h+svUKN1SDbzTyy7HKSk7bbLHEhk7qDh7jSzcf80GLU0li8vXc2to8NpC00EOQ9POPivESz23gMNY8ooDtNU3Ll/xYvhtvXrJNTbuBiuVLzuopMvrQi6LVsQEWmPJzBiJ2qt8JW1KRLcnWRL4AezbxAPXuRYVnYBS3it6L0J4AZjZg63BkIIrfU7GYzrKb+z5mqUgDJhIZ4d5av+OAxPSSzNeVnyWEnWrI0k9kf9qmqhU= nazare@ThousandSunny
+
+# Usuario profesor
+
+   - name: profesor
+   - sudo: ALL=(ALL) ALL:ALL
+   - shell: /bin/bash
+   - passwd: profesor
+   - ssh_authorized_keys:
+       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmjoVIoZCx4QFXvljqozXGqxxlSvO7V2aizqyPgMfGqnyl0J9YXo6zrcWYwyWMnMdRdwYZgHqfiiFCUn2QDm6ZuzC4Lcx0K3ZwO2lgL4XaATykVLneHR1ib6RNroFcClN69cxWsdwQW6dpjpiBDXf8m6/qxVP3EHwUTsP8XaOV7WkcCAqfYAMvpWLISqYme6e+6ZGJUIPkDTxavu5JTagDLwY+py1WB53eoDWsG99gmvyit2O1Eo+jRWN+mgRHIxJTrFtLS6o4iWeshPZ6LvCZ/Pum12Oj4B4bjGSHzrKjHZgTwhVJ/LDq3v71/PP4zaI3gVB9ZalemSxqomgbTlnT jose@debian
+
+# Contraseña al usuario root
+
+chpasswd:
+   list: |
+       root:root
+   expire: False
+
+```
 
 4. Configuración de la máquina1 (alfa):
 
