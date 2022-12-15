@@ -14,6 +14,7 @@ export default {
   '1f391b9e': [() => import(/* webpackChunkName: '1f391b9e' */ '@theme/MDXPage'), '@theme/MDXPage', require.resolveWeak('@theme/MDXPage')],
   '1f5bd34a': [() => import(/* webpackChunkName: '1f5bd34a' */ '@site/docs/Tasks/manejo_modulos.md'), '@site/docs/Tasks/manejo_modulos.md', require.resolveWeak('@site/docs/Tasks/manejo_modulos.md')],
   '2455c74e': [() => import(/* webpackChunkName: '2455c74e' */ '~blog/default/blog-tags-git-hub-bf3-list.json'), '~blog/default/blog-tags-git-hub-bf3-list.json', require.resolveWeak('~blog/default/blog-tags-git-hub-bf3-list.json')],
+  '2daf58d8': [() => import(/* webpackChunkName: '2daf58d8' */ '@site/docs/Tasks/nfs_systemd.md'), '@site/docs/Tasks/nfs_systemd.md', require.resolveWeak('@site/docs/Tasks/nfs_systemd.md')],
   '2e872b27': [() => import(/* webpackChunkName: '2e872b27' */ '~blog/default/blog-tags-contacto-980.json'), '~blog/default/blog-tags-contacto-980.json', require.resolveWeak('~blog/default/blog-tags-contacto-980.json')],
   '31fb806a': [() => import(/* webpackChunkName: '31fb806a' */ '@site/docs/Tasks/criptografia2.md'), '@site/docs/Tasks/criptografia2.md', require.resolveWeak('@site/docs/Tasks/criptografia2.md')],
   '334592cc': [() => import(/* webpackChunkName: '334592cc' */ '@site/docs/Tasks/bind9_local.md'), '@site/docs/Tasks/bind9_local.md', require.resolveWeak('@site/docs/Tasks/bind9_local.md')],

@@ -136,6 +136,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/nfs_systemd",
+              "path": "/docs/Tasks/nfs_systemd",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/nginx_php",
               "path": "/docs/Tasks/nginx_php",
               "sidebar": "tutorialSidebar"

@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Criptografía II: Integridad, firmas y autenticación",
-    "permalink": "/docs/Tasks/criptografia2"
+    "title": "Montaje NFS mediante systemd",
+    "permalink": "/docs/Tasks/nfs_systemd"
   },
   "next": {
     "title": "Extras",

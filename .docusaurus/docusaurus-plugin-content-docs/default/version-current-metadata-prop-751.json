@@ -215,6 +215,12 @@
           },
           {
             "type": "link",
+            "label": "Montaje NFS mediante systemd",
+            "href": "/docs/Tasks/nfs_systemd",
+            "docId": "Tasks/nfs_systemd"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -394,6 +400,12 @@
       "id": "Tasks/migracion_php",
       "title": "Instalación/migración de aplicaciones web PHP",
       "description": "Escenario",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/nfs_systemd": {
+      "id": "Tasks/nfs_systemd",
+      "title": "Montaje NFS mediante systemd",
+      "description": "En una instancia del cloud, basada en la distribución de tu elección, anexa un volumen de 2GB. En dicha instancia deberás configurar el servicio nfs de exportación y en el volumen un punto de montaje de la exportación mediante systemd.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/nginx_php": {

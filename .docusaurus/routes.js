@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '9f2'),
+    component: ComponentCreator('/docs', 'e27'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -210,6 +210,12 @@ export default [
       {
         path: '/docs/Tasks/migracion_php',
         component: ComponentCreator('/docs/Tasks/migracion_php', '940'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/nfs_systemd',
+        component: ComponentCreator('/docs/Tasks/nfs_systemd', '59a'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
