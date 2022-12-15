@@ -150,6 +150,9 @@ debian@nfs-systemd:~$ rpcinfo -p
 
 ```
 
+
+## Configuración del punto de montaje
+
 Configuramos el punto de montaje en el servidor entrando al directorio `/etc/systemd/system` y creamos un fichero con la extensión `.mount`:
 
 ```bash 
@@ -199,7 +202,16 @@ vdb     ext4   1.0         67c14f57-2088-41ad-8abf-6e2b4ddb71cd    1.8G     0% /
 
 ```
 
-## Configuración del punto de montaje
+
+Al realizar esta configuración con `systemd`, vemos que este daemon tiene dos tipos de configuración de unidades: las unidades de tipo service (automount) y las unidades de tipo mount. En este caso vamos hemos usado las unidades de tipo mount, las cuales se ejecutan en el arranque del sistema y se mantienen activas hasta que se apaga el sistema. Por otro lado, las unidades de tipo service (automount) se ejecutan en el arranque del sistema y se mantienen activas hasta que se desmontan. En este caso, no hemos usado este tipo de unidades porque no queremos que se desmonte el volumen cuando no se esté usando.
 
 
-systemd tiene dos tipos configuración de unidades: las unidades de tipo service (automount) y las unidades de tipo mount. En este caso vamos a utilizar las unidades de tipo mount.
+# Configuración del cliente NFS
+
+En el cliente, instalamos el servicio NFS:
+
+```bash
+apt install nfs-common
+```
+
+
