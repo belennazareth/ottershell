@@ -107,6 +107,48 @@ systemctl start rpcbind nfs-server
 systemctl enable rpcbind nfs-server
 ```
 
+Podemos comprobar que el servicio está instalado y activo con el comando:
+
+```bash
+systemctl status rpcbind nfs-server
+
+o
+
+rpcinfo -p
+
+```
+
+Con este último comando podemos ver que el servicio está activo y escuchando en el puerto 2049. Además, podemos ver que el servicio está activo en el puerto 111, que es el puerto por el que se comunica el cliente con el servidor. Obteniendo una salida similar a la siguiente:
+
+```bash
+debian@nfs-systemd:~$ rpcinfo -p
+
+   program vers proto   port  service
+    100000    4   tcp    111  portmapper
+    100000    3   tcp    111  portmapper
+    100000    2   tcp    111  portmapper
+    100000    4   udp    111  portmapper
+    100000    3   udp    111  portmapper
+    100000    2   udp    111  portmapper
+    100005    1   udp  54467  mountd
+    100005    1   tcp  36633  mountd
+    100005    2   udp  42675  mountd
+    100005    2   tcp  43481  mountd
+    100005    3   udp  44012  mountd
+    100005    3   tcp  58893  mountd
+    100003    3   tcp   2049  nfs
+    100003    4   tcp   2049  nfs
+    100227    3   tcp   2049
+    100003    3   udp   2049  nfs
+    100227    3   udp   2049
+    100021    1   udp  52555  nlockmgr
+    100021    3   udp  52555  nlockmgr
+    100021    4   udp  52555  nlockmgr
+    100021    1   tcp  43955  nlockmgr
+    100021    3   tcp  43955  nlockmgr
+    100021    4   tcp  43955  nlockmgr
+
+```
 
 
 ## Configuración del punto de montaje
