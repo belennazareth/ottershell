@@ -83,7 +83,6 @@ La creación y configuración (conexión a las redes, creación de volumen, quit
 
 
 
-
 ### Instalación de los contenedores 
 
 En maquina1 vamos a crear dos contenedores en un red interna, para ello:
