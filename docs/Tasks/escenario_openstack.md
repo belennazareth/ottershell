@@ -61,100 +61,6 @@ La creación y configuración (conexión a las redes, creación de volumen, quit
 
 * Está instancia estará conectada a tu red interna. Asigna a la instancia una IP flotante.
 
-Primero creamos el volumen para la máquina `alfa`:
-
-```bash
-openstack volume create --size 30 \
---description "Volumen para la máquina alfa" \
---image "Debian 11 Bullseye" \
---availability-zone "nova" \
---bootable \
-volumen_alfa
-```
-
-
-Desde línea de comandos montamos el escenario mandándole el fichero de configuración cloud-config.yaml:
-
-```bash
- openstack server create --volume volumen_alfa \
- --flavor vol.medium \
- --security-group default \
- --key-name nazareth_local \
- --network "red de nazaret.duran" \
- --user-data cloud-config.yaml \
- alfa.nazareth
-```
-
-
-El fichero cloud-config.yaml es el siguiente:
-
-```yaml
-#cloud-config
-
-# Actualizar los paquetes de la distribución
-
-package_update: true
-package_upgrade: true
-
-# hostname y FQDN
-
-hostname: alfa
-fqdn: alfa.nazareth.gonzalonazareno.org
-
-# Crear usuarios
-
-users:
-
-# Usuario sin privilegios
-
-  - name: nazare
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    shell: /bin/bash
-    passwd: nazare
-    ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC73j7AidXdLgiu5wJw7YgJuvOHyb6U8c04MuQyehYnMknMR8mTnWZr20npVHJ8VHYHDy8RlgbkMMBFgeVCgXJ+Im3A6Efp6HC4yj2SM+73hr1EKCLdRPzCzdtDSUtkqU9k+x2RdF3T6qD6H4Cg/nT8Sg3Qenqds4XORfDWOvntxFja2D0OhZv1MLPUD9pEj+a8D4erfiPx/gKW/Rtu89une+uiwVgK60B5CxnC8XXnXmPO3NhrgyQhVgzQZ658cUbLooxQURVlo1gnOmcqX5h+svUKN1SDbzTyy7HKSk7bbLHEhk7qDh7jSzcf80GLU0li8vXc2to8NpC00EOQ9POPivESz23gMNY8ooDtNU3Ll/xYvhtvXrJNTbuBiuVLzuopMvrQi6LVsQEWmPJzBiJ2qt8JW1KRLcnWRL4AezbxAPXuRYVnYBS3it6L0J4AZjZg63BkIIrfU7GYzrKb+z5mqUgDJhIZ4d5av+OAxPSSzNeVnyWEnWrI0k9kf9qmqhU= nazare@ThousandSunny
-
-# Usuario profesor
-
-  - name: profesor
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    shell: /bin/bash
-    passwd: profesor
-    ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmjoVIoZCx4QFXvljqozXGqxxlSvO7V2aizqyPgMfGqnyl0J9YXo6zrcWYwyWMnMdRdwYZgHqfiiFCUn2QDm6ZuzC4Lcx0K3ZwO2lgL4XaATykVLneHR1ib6RNroFcClN69cxWsdwQW6dpjpiBDXf8m6/qxVP3EHwUTsP8XaOV7WkcCAqfYAMvpWLISqYme6e+6ZGJUIPkDTxavu5JTagDLwY+py1WB53eoDWsG99gmvyit2O1Eo+jRWN+mgRHIxJTrFtLS6o4iWeshPZ6LvCZ/Pum12Oj4B4bjGSHzrKjHZgTwhVJ/LDq3v71/PP4zaI3gVB9ZalemSxqomgbTlnT jose@debian
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfk9mRtOHM3T1KpmGi0KiN2uAM6CDXM3WFcm1wkzKXx7RaLtf9pX+KCuVqHdy/N/9d9wtH7iSmLFX/4gQKQVG00jHiGf3ABufWeIpjmHtT1WaI0+vV47fofEIjDDfSZPlI3p5/c7tefHsIAK6GbQn31yepAcFYy9ZfqAh8H/Y5eLpf3egPZn9Czsvx+lm0I8Q+e/HSayRaiAPUukF57N2nnw7yhPZCHSZJqFbXyK3fVQ/UQVBeNS2ayp0my8X9sIBZnNkcYHFLIWBqJYdnu1ZFhnbu3yy94jmJdmELy3+54hqiwFEfjZAjUYSl8eGPixOfdTgc8ObbHbkHyIrQ91Kz rafa@eco
-
-# Contraseña al usuario root
-
-chpasswd:
-   list: |
-       root:root
-   expire: False
-```
-
-Para conectarla a la red DMZ "	Red DMZ de nazaret.duran" usamos un puerto con la ip:
-
-```bash
-openstack port create --network "Red DMZ de nazaret.duran" --fixed-ip ip-address=172.16.0.1 port_alfa
-
-openstack server add port alfa.nazareth port_alfa
-```
-
-
-Para darle una ip flotante:
-
-```bash
- openstack floating ip create ext-net
- openstack server add floating ip  alfa.nazareth {ip}
-```
-
-Para facilitar la conexión ssh se crea el fichero `config` en la carpeta `~/.ssh` con la estructura:
-
-```bash
- host alfa
-    HostName {ip}
-    User nazare
-```
 
 4. Configuración de la máquina1 (alfa):
 
@@ -183,6 +89,20 @@ Para facilitar la conexión ssh se crea el fichero `config` en la carpeta `~/.ss
 En maquina1 vamos a crear dos contenedores en un red interna, para ello:
 
 1. Crea en máquina1 (alfa) un linux bridge llamado br-intra y asigna una dirección IP estática 192.168.0.1. Esta será la IP de máquina1 (alfa) conectada a este switch virtual y será la puerta de enlace de los contenedores.
+
+Para esto debemos editar el fichero `/etc/network/interfaces.d/50-cloud-init` y añadir las siguientes líneas:
+
+```bash
+auto br-intra
+iface br-intra inet static
+    address      192.168.0.1/24
+    bridge_ports none
+```
+
+E instalar el paquete bridge-utils:
+
+    sudo apt install bridge-utils
+
 
 
 2. Instala LXC y crea dos contenedores con la distribución Ubuntu 20.04. Estos contenedores serán la máquina3 (charlie) y la máquina4 (delta).
@@ -222,15 +142,133 @@ En maquina1 vamos a crear dos contenedores en un red interna, para ello:
 
 ### 1. Las instrucciones para crear y configurar la máquina1 (alfa).
 
+Primero creamos el volumen para la máquina `alfa`:
 
- 
+```bash
+openstack volume create --size 30 \
+--description "Volumen para la máquina alfa" \
+--image "Debian 11 Bullseye" \
+--availability-zone "nova" \
+--bootable \
+volumen_alfa
+```
+
+
+Desde línea de comandos montamos el escenario mandándole el fichero de configuración cloud-config.yaml:
+
+```bash
+ openstack server create --volume volumen_alfa \
+ --flavor vol.medium \
+ --security-group default \
+ --key-name nazareth_local \
+ --network "red de nazaret.duran" \
+ --user-data cloud-config.yaml \
+ alfa
+```
+
+
+Para conectarla a la red DMZ `"Red DMZ de nazaret.duran"` usamos un puerto con la ip:
+
+```bash
+openstack port create --network "Red DMZ de nazaret.duran" --fixed-ip ip-address=172.16.0.1 port_alfa
+
+openstack server add port alfa port_alfa
+```
+
+
+Para darle una ip flotante:
+
+```bash
+ openstack floating ip create ext-net
+ openstack server add floating ip alfa {ip}
+```
+
+
+Para facilitar la conexión ssh se crea el fichero `config` en la carpeta `~/.ssh` con la estructura:
+
+```bash
+ host alfa
+    HostName {ip}
+    User nazare
+```
+
+
+Lo siguiente será deshabilitar la seguridad de los puertos en las dos interfaces de red para que funcione de manera adecuada el NAT, por lo que primero habrá que quitar los grupos de seguridad (en este caso `por defecto`):
+
+```bash
+openstack server remove security group alfa default
+
+openstack port set --disable-port-security port_alfa
+openstack port set --disable-port-security bd43cd96-b912-4276-a0f6-5bfc7ee0c0e9
+```
+
+
+Por ultimo, nos conectamos a la máquina `alfa` y configuramos de forma permanente la regla SNAT para que las máquinas de la Red DMZ tengan acceso a internet editando el fichero `/etc/network/interfaces.d/50-cloud-init.cfg`:
+
+```bash
+auto ens3
+iface ens3 inet dhcp
+    mtu 1450
+    post-up ip r del default && ip r add default via 10.0.0.1
+    post-up iptables -t nat -A POSTROUTING -s 172.16.0.0/16 -o ens3 -j MASQUERADE
+    post-up iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o ens3 -j MASQUERADE
+```
+
+
 
 ### 2. El fichero cloud-config.yaml para crear la máquina1 (alfa).
+
+El fichero cloud-config.yaml es el siguiente:
+
+```yaml
+#cloud-config
+
+# Actualizar los paquetes de la distribución
+
+package_update: true
+package_upgrade: true
+
+# hostname y FQDN
+
+hostname: alfa
+fqdn: alfa.gonzalonazareno.org
+
+# Crear usuarios
+
+users:
+
+# Usuario sin privilegios
+
+  - name: nazare
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    passwd: nazare
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC73j7AidXdLgiu5wJw7YgJuvOHyb6U8c04MuQyehYnMknMR8mTnWZr20npVHJ8VHYHDy8RlgbkMMBFgeVCgXJ+Im3A6Efp6HC4yj2SM+73hr1EKCLdRPzCzdtDSUtkqU9k+x2RdF3T6qD6H4Cg/nT8Sg3Qenqds4XORfDWOvntxFja2D0OhZv1MLPUD9pEj+a8D4erfiPx/gKW/Rtu89une+uiwVgK60B5CxnC8XXnXmPO3NhrgyQhVgzQZ658cUbLooxQURVlo1gnOmcqX5h+svUKN1SDbzTyy7HKSk7bbLHEhk7qDh7jSzcf80GLU0li8vXc2to8NpC00EOQ9POPivESz23gMNY8ooDtNU3Ll/xYvhtvXrJNTbuBiuVLzuopMvrQi6LVsQEWmPJzBiJ2qt8JW1KRLcnWRL4AezbxAPXuRYVnYBS3it6L0J4AZjZg63BkIIrfU7GYzrKb+z5mqUgDJhIZ4d5av+OAxPSSzNeVnyWEnWrI0k9kf9qmqhU= nazare@ThousandSunny
+
+# Usuario profesor
+
+  - name: profesor
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    passwd: profesor
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmjoVIoZCx4QFXvljqozXGqxxlSvO7V2aizqyPgMfGqnyl0J9YXo6zrcWYwyWMnMdRdwYZgHqfiiFCUn2QDm6ZuzC4Lcx0K3ZwO2lgL4XaATykVLneHR1ib6RNroFcClN69cxWsdwQW6dpjpiBDXf8m6/qxVP3EHwUTsP8XaOV7WkcCAqfYAMvpWLISqYme6e+6ZGJUIPkDTxavu5JTagDLwY+py1WB53eoDWsG99gmvyit2O1Eo+jRWN+mgRHIxJTrFtLS6o4iWeshPZ6LvCZ/Pum12Oj4B4bjGSHzrKjHZgTwhVJ/LDq3v71/PP4zaI3gVB9ZalemSxqomgbTlnT jose@debian
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfk9mRtOHM3T1KpmGi0KiN2uAM6CDXM3WFcm1wkzKXx7RaLtf9pX+KCuVqHdy/N/9d9wtH7iSmLFX/4gQKQVG00jHiGf3ABufWeIpjmHtT1WaI0+vV47fofEIjDDfSZPlI3p5/c7tefHsIAK6GbQn31yepAcFYy9ZfqAh8H/Y5eLpf3egPZn9Czsvx+lm0I8Q+e/HSayRaiAPUukF57N2nnw7yhPZCHSZJqFbXyK3fVQ/UQVBeNS2ayp0my8X9sIBZnNkcYHFLIWBqJYdnu1ZFhnbu3yy94jmJdmELy3+54hqiwFEfjZAjUYSl8eGPixOfdTgc8ObbHbkHyIrQ91Kz rafa@eco
+
+# Contraseña al usuario root
+
+chpasswd:
+   list: |
+       root:root
+   expire: False
+```
 
 
 
 ### 3. La Ip flotante de la máquina1 (alfa).
 
+`172.22.200.255`
 
 
 ### 4. Prueba de funcionamiento de qué los FQDN están bien configurados.
