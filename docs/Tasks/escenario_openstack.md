@@ -128,7 +128,6 @@ chpasswd:
 ```
 
 
-
 Desde línea de comandos creamos el volumen y el puerto, y montamos el escenario mandándole el fichero de configuración cloud-config.yaml:
 
 ```bash
@@ -232,6 +231,21 @@ E instalar el paquete bridge-utils:
     * Un usuario profesor, que puede utilizar sudo sin contraseña. Copia de las claves públicas de todos los profesores en los contenedores para que puedan acceder con el usuario profesor.
 
 * Cambia la contraseña al usuario root.
+
+
+Para instalar LXC:
+
+```bash
+sudo apt install lxc
+```
+
+Para crear los contenedores:
+
+```bash
+sudo lxc-create -n charlie -t ubuntu -- -r focal -a amd64
+sudo lxc-create -n delta -t ubuntu -- -r focal -a amd64
+```
+
 
 
 
@@ -366,6 +380,7 @@ chpasswd:
 ### 3. La Ip flotante de la máquina1 (alfa).
 
 `172.22.200.255`
+
 
 
 ### 4. Prueba de funcionamiento de qué los FQDN están bien configurados.
