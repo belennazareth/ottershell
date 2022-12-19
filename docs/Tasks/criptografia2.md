@@ -68,20 +68,23 @@ Significa que el usuario no tiene nuestra firma registrada/firmada dejándola co
 
 ### 3. Vamos a crear un anillo de confianza entre los miembros de nuestra clase, para ello.
 
-* Tu clave pública debe estar en un servidor de claves
+* **Tu clave pública debe estar en un servidor de claves**
 
-* Escribe tu fingerprint en un papel y dárselo a tu compañero, para que puede descargarse tu clave pública.
+* **Escribe tu fingerprint en un papel y dárselo a tu compañero, para que puede descargarse tu clave pública.**
 
-* Te debes bajar al menos tres claves públicas de compañeros. Firma estas claves.
+* **Te debes bajar al menos tres claves públicas de compañeros. Firma estas claves.**
 
-* Tu te debes asegurar que tu clave pública es firmada por al menos tres compañeros de la clase.
+* **Tu te debes asegurar que tu clave pública es firmada por al menos tres compañeros de la clase.**
 
-* Una vez que firmes una clave se la tendrás que devolver a su dueño, para que otra persona se la firme.
+* **Una vez que firmes una clave se la tendrás que devolver a su dueño, para que otra persona se la firme.**
 
-* Cuando tengas las tres firmas sube la clave al servidor de claves y rellena tus datos en la tabla 
-Claves públicas PGP 2020-2021
+* **Cuando tengas las tres firmas sube la clave al servidor de claves y rellena tus datos en la tabla Claves públicas PGP 2020-2021**
 
-* Asegurate que te vuelves a bajar las claves públicas de tus compañeros que tengan las tres firmas.
+* **Asegurate que te vuelves a bajar las claves públicas de tus compañeros que tengan las tres firmas.**
+
+
+Primero subimos la clave al servidor de claves de ubuntu `keyserver.ubuntu.com`:
+
 
 
 
