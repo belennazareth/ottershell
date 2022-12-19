@@ -79,7 +79,7 @@ La creación y configuración (conexión a las redes, creación de volumen, quit
 
 * Deshabilita la seguridad de los puertos en la interfaz de red para que funcione de manera adecuada el NAT.
 
-* Comprueba que tiene acceso a internet. Si no tiene acceso a internet, no se han actualizado los paquetes con cloud-init, hazlo posteriormente..
+* Comprueba que tiene acceso a internet. Si no tiene acceso a internet, no se han actualizado los paquetes con cloud-init, hazlo posteriormente.
 
 Lo primero sera crear el fichero config.yaml:
 
@@ -128,7 +128,8 @@ chpasswd:
 ```
 
 
-Desde línea de comandos creamos el volumen y montamos el escenario mandándole el fichero de configuración cloud-config.yaml:
+
+Desde línea de comandos creamos el volumen y el puerto, y montamos el escenario mandándole el fichero de configuración cloud-config.yaml:
 
 ```bash
 openstack volume create --size 30 \
@@ -138,22 +139,16 @@ openstack volume create --size 30 \
 --bootable \
 volumen_bravo
 
+openstack port create --network "Red DMZ de nazaret.duran" --fixed-ip ip-address=172.16.0.200 port_bravo
+
  openstack server create --volume volumen_bravo \
  --flavor vol.normal \
  --security-group default \
  --key-name nazareth_local \
- --network "red de nazaret.duran" \
+ --network "Red DMZ de nazaret.duran" \
+ --port port_bravo \
  --user-data cloud-config.yaml \
  bravo
-```
-
-
-Para conectarla a la red DMZ `"Red DMZ de nazaret.duran"` usamos un puerto con la ip:
-
-```bash
-openstack port create --network "Red DMZ de nazaret.duran" --fixed-ip ip-address=172.16.0.200 port_bravo
-
-openstack server add port bravo port_bravo
 ```
 
 
@@ -167,6 +162,22 @@ Para facilitar la conexión ssh se crea el fichero `config` en la carpeta `~/.ss
     ForwardAgent yes
 ```
 
+
+A continuación, se deshabilita la seguridad de los puertos desactivando en primer lugar los grupos de seguridad, en este caso por defecto:
+
+```bash
+openstack server remove security group bravo default
+
+openstack port set --disable-port-security port_bravo
+openstack port set --disable-port-security 83a70185-8f09-4c01-951e-9e73736fee5b
+```
+
+
+Para que funcione NAT es necesario activar el bit de forwarding en **alfa**  descomentando la línea `net.ipv4.ip_forward=1` en el fichero `/etc/sysctl.conf` y reiniciar el servicio o la máquina.
+
+```bash
+sudo sysctl -p
+```
 
 
 
