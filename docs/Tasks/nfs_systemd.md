@@ -2,6 +2,7 @@
 sidebar_position: 17
 ---
 
+
 # Montaje NFS mediante systemd
 
 En una instancia del cloud, basada en la distribución de tu elección, anexa un volumen de 2GB. En dicha instancia deberás configurar el servicio nfs de exportación y en el volumen un punto de montaje de la exportación mediante systemd.
@@ -80,6 +81,7 @@ Y le asignamos una ip flotante para poder acceder a ella:
 
 ```bash
 openstack floating ip create ext-net
+
 openstack server add floating ip nfs_systemd {ip} 
 ```
 
@@ -124,7 +126,6 @@ systemctl status rpcbind nfs-server
 o
 
 rpcinfo -p
-
 ```
 
 Con este último comando podemos ver que el servicio está activo y escuchando en el puerto 2049. Además, podemos ver que el servicio está activo en el puerto 111, que es el puerto por el que se comunica el cliente con el servidor. Obteniendo una salida similar a la siguiente:
@@ -253,15 +254,15 @@ debian@nfs-systemd-client:~$ cat /etc/passwd | egrep debian
 debian:x:1000:1000:Debian:/home/debian:/bin/bash
 ```
 
-*Nota: En caso de que no sean iguales se debería usar la opción `root_squash` en el servidor para que el usuario root se convierta en el usuario `nobody`. O cambiar con `chown` el usuario del directorio compartido por **nobody:** y los permisos a **750** con `chmod`.  
+*Nota: De esta manera el cliente puede acceder al directorio compartido del servidor y viceversa, pero no puede editar los ficheros o directorios del servidor, ya que el usuario que se usa es el del cliente y no el del servidor, por lo que en caso de querer editar algo del servidor, se debería cambiar el usuario del fichero con `chown` a nobody y los permisos a 750 con `chmod`. En mi caso, he realizado este procedimiento para poder editar los ficheros del servidor desde el cliente y poder ver los cambios en el servidor.
 
 Gracias a esto cuando un cliente se conecta a un recurso compartido, el usuario de ese cliente, pasa a tener los mismos permisos que el usuario de la máquina servidor.  
+
 En cuanto al usuario root, gracias a la configuración `root_squash` (que se uso en la configuración en el servidor en `/etc/exports`) evita que sea usado como tal asignado valores de usuarios `otros` al mismo.
 
 
 
 ### Instalación del cliente NFS
-
 
 Para realizar la instalación en el cliente del servicio NFS ejecutamos el siguiente comando:
 
@@ -276,8 +277,9 @@ Export list for 10.0.0.26:
 /nfs 10.0.0.0/24
 ```
 
-### Configuración del punto de montaje
 
+
+### Configuración del punto de montaje
 
 Para esto creamos el directorio donde se montará el recurso compartido:
 
@@ -313,10 +315,35 @@ debian@nfs-systemd-client:~$ df -h | egrep nfs
 10.0.0.26:/nfs  2.0G     0  1.8G   0% /nfs_cliente
 ```
 
+Para que el recurso compartido se monte automáticamente al arrancar el sistema, debemos añadir la siguiente línea al fichero `/etc/fstab`:
+
+```bash
+10.0.0.26:/nfs /nfs_cliente nfs defaults 0 0
+```
+
+
+
 ## Comprobación de funcionamiento
 
 Para comprobar que funciona correctamente podemos crear un fichero en el directorio compartido del servidor y verificar que se ha creado en el cliente:
 
 ```bash
+sudo touch /nfs/pruebesita  -- [directorio compartido del servidor]
 
+ls /nfs_cliente/    -- [listado del directorio compartido del cliente]
 ```
+
+![img](/img/ASO/nfsASO.png)
+
+
+Como se hizo un cambio en el directorio compartido del servidor tanto de permisos como de propietario, se puede editar ficheros, crear directorios, etc. desde el cliente y ver los cambios en el servidor, y viceversa.
+
+Por ejemplo, desde el cliente podemos editar el fichero y verlo desde el servidor:
+
+```bash
+sudo nano /nfs_cliente/pruebesita -- [edición del fichero compartido del cliente]
+
+cat /nfs/pruebesita -- [visualización del fichero compartido del servidor]
+```
+
+![img](/img/ASO/nfsASO-2.png)
