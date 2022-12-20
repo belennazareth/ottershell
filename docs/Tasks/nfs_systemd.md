@@ -6,7 +6,12 @@ sidebar_position: 17
 
 En una instancia del cloud, basada en la distribución de tu elección, anexa un volumen de 2GB. En dicha instancia deberás configurar el servicio nfs de exportación y en el volumen un punto de montaje de la exportación mediante systemd.
 
+
+
 ## Creación y configuración de las instancias
+
+Las instancias están basadas en la distribución `Debian 11 Bullseye` y se han creado en la red `red de nazaret.duran` con la clave `nazareth_local` y el grupo de seguridad `default` dentro de la aplicación `OpenStack`.
+
 
 
 ### Servidor
@@ -57,6 +62,7 @@ vdb     254:16   0    2G  0 disk
 ```
 
 
+
 ### Cliente
 
 Lo siguiente será crear una maquina cliente para lo cual no será necesario meterle un volumen:
@@ -89,6 +95,7 @@ vda     254:0    0   10G  0 disk
 └─vda15 254:15   0  124M  0 part /boot/efi
 
 ```
+
 
 
 ## Configuración del servicio NFS
@@ -149,6 +156,7 @@ debian@nfs-systemd:~$ rpcinfo -p
     100021    4   tcp  43955  nlockmgr
 
 ```
+
 
 
 ## Configuración del punto de montaje
@@ -219,6 +227,8 @@ Por último, para que se puedan conectar los clientes NFS, debemos añadir la si
 
 Donde indicamos que para ese directorio solo se puedan conectar desde la red **10.0.0.0** y tenga permisos de `lectura y escritura`, además de la opción **all_squash** que indica el uso de *root_squash* para todos los usuarios considerándolos anónimos, dicha opción hace que se realicen las consultas desde el usuario `nobody` obteniendo los permisos de `otros`. Y con la opción **no_subtree_check** indicamos que no se compruebe si el directorio es un subdirectorio de otro directorio compartido, es decir, permite que no se compruebe el camino hasta el directorio que se exporta, en el caso de que el usuario no tenga permisos sobre el directorio exportado.
 
+Para realizar la **[modificación anterior]()** sin necesidad de reiniciar el servicio podemos usar el comando **exportfs**, al aplicarle la opción **-r** realiza el reinicio añadiendo las modificaciones a su vez. 
+
 
 
 # Configuración del cliente NFS
@@ -242,7 +252,7 @@ debian:x:1000:1000:Debian:/home/debian:/bin/bash
 ```
 
 Gracias a esto cuando un cliente se conecta a un recurso compartido, el usuario de ese cliente, pasa a tener los mismos permisos que el usuario de la máquina servidor.  
-En cuanto al usuario root, gracias a la configuración root_squash evita que sea usado como tal asignado valores de usuarios otros al mismo.
+En cuanto al usuario root, gracias a la configuración `root_squash` (que se uso en la configuración en el servidor en `/etc/exports`) evita que sea usado como tal asignado valores de usuarios `otros` al mismo.
 
 
 Para realizar la instalación en el cliente del servicio NFS ejecutamos el siguiente comando:
