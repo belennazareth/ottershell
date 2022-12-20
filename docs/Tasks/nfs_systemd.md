@@ -227,7 +227,7 @@ Por último, para que se puedan conectar los clientes NFS, debemos añadir la si
 
 Donde indicamos que para ese directorio solo se puedan conectar desde la red **10.0.0.0** y tenga permisos de `lectura y escritura`, además de la opción **all_squash** que indica el uso de *root_squash* para todos los usuarios considerándolos anónimos, dicha opción hace que se realicen las consultas desde el usuario `nobody` obteniendo los permisos de `otros`. Y con la opción **no_subtree_check** indicamos que no se compruebe si el directorio es un subdirectorio de otro directorio compartido, es decir, permite que no se compruebe el camino hasta el directorio que se exporta, en el caso de que el usuario no tenga permisos sobre el directorio exportado.
 
-Para realizar la **[modificación anterior]()** sin necesidad de reiniciar el servicio podemos usar el comando **exportfs**, al aplicarle la opción **-r** realiza el reinicio añadiendo las modificaciones a su vez. 
+Para realizar la **[modificación anterior](https://ottershell.vercel.app/docs/Tasks/nfs_systemd#configuraci%C3%B3n-del-punto-de-montaje)** sin necesidad de reiniciar el servicio podemos usar el comando **exportfs**, al aplicarle la opción **-r** realiza el reinicio añadiendo las modificaciones a su vez. 
 
 
 
