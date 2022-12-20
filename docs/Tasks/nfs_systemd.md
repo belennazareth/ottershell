@@ -96,9 +96,9 @@ vda     254:0    0   10G  0 disk
 
 ```
 
+## Configuración del servidor NFS
 
-
-## Configuración del servicio NFS
+### Configuración del servicio NFS
 
 En primer lugar, instalamos el servicio NFS en el servidor:
 
@@ -159,7 +159,7 @@ debian@nfs-systemd:~$ rpcinfo -p
 
 
 
-## Configuración del punto de montaje
+### Configuración del punto de montaje
 
 Configuramos el punto de montaje en el servidor entrando al directorio `/etc/systemd/system` y creamos un fichero con la extensión `.mount`:
 
@@ -231,7 +231,7 @@ Para realizar la **[modificación anterior](https://ottershell.vercel.app/docs/T
 
 
 
-# Configuración del cliente NFS
+## Configuración del cliente NFS
 
 Los clientes NFS que usan el directorio compartido no usan ningún tipo de identificación ya que considera que los identificadores  de los usuarios son iguales:
 
@@ -256,7 +256,6 @@ En cuanto al usuario root, gracias a la configuración `root_squash` (que se uso
 
 
 Para realizar la instalación en el cliente del servicio NFS ejecutamos el siguiente comando:
-
 
     sudo apt install nfs-common
 
