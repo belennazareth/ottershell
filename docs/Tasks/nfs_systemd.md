@@ -205,13 +205,51 @@ vdb     ext4   1.0         67c14f57-2088-41ad-8abf-6e2b4ddb71cd    1.8G     0% /
 
 Al realizar esta configuración con `systemd`, vemos que este daemon tiene dos tipos de configuración de unidades: las unidades de tipo service (automount) y las unidades de tipo mount. En este caso vamos hemos usado las unidades de tipo mount, las cuales se ejecutan en el arranque del sistema y se mantienen activas hasta que se apaga el sistema. Por otro lado, las unidades de tipo service (automount) se ejecutan en el arranque del sistema y se mantienen activas hasta que se desmontan. En este caso, no hemos usado este tipo de unidades porque no queremos que se desmonte el volumen cuando no se esté usando.
 
+Si queremos que el volumen se monte automáticamente al arrancar el sistema, debemos añadir la siguiente línea al fichero `/etc/fstab`:
+
+```bash
+/dev/vdb /nfs ext4 defaults 0 0
+```
+
+Por último, para que se puedan conectar los clientes NFS, debemos añadir la siguiente línea al fichero `/etc/exports`:
+
+```bash
+/nfs 10.0.0.0/24(rw,all_squash,no_subtree_check)
+```
+
+Donde indicamos que para ese directorio solo se puedan conectar desde la red **10.0.0.0** y tenga permisos de `lectura y escritura`, además de la opción **all_squash** que indica el uso de *root_squash* para todos los usuarios considerándolos anónimos, dicha opción hace que se realicen las consultas desde el usuario `nobody` obteniendo los permisos de `otros`. Y con la opción **no_subtree_check** indicamos que no se compruebe si el directorio es un subdirectorio de otro directorio compartido, es decir, permite que no se compruebe el camino hasta el directorio que se exporta, en el caso de que el usuario no tenga permisos sobre el directorio exportado.
+
+
 
 # Configuración del cliente NFS
 
-En el cliente, instalamos el servicio NFS:
+Los clientes NFS que usan el directorio compartido no usan ningún tipo de identificación ya que considera que los identificadores  de los usuarios son iguales:
+
+    cat /etc/passwd | grep debian
 
 ```bash
-apt install nfs-common
+# En el servidor
+
+debian@nfs-systemd:~$ cat /etc/passwd | egrep debian
+
+debian:x:1000:1000:Debian:/home/debian:/bin/bash
+
+# En el cliente
+
+debian@nfs-systemd-client:~$ cat /etc/passwd | egrep debian
+
+debian:x:1000:1000:Debian:/home/debian:/bin/bash
 ```
+
+Gracias a esto cuando un cliente se conecta a un recurso compartido, el usuario de ese cliente, pasa a tener los mismos permisos que el usuario de la máquina servidor.  
+En cuanto al usuario root, gracias a la configuración root_squash evita que sea usado como tal asignado valores de usuarios otros al mismo.
+
+
+Para realizar la instalación en el cliente del servicio NFS ejecutamos el siguiente comando:
+
+
+    sudo apt install nfs-common
+
+
 
 
