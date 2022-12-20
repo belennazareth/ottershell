@@ -96,6 +96,8 @@ vda     254:0    0   10G  0 disk
 
 ```
 
+
+
 ## Configuración del servidor NFS
 
 ### Configuración del servicio NFS
@@ -175,12 +177,12 @@ Dentro del fichero tendremos que añadir lo siguiente:
 [Unit]
 Description=Disco montado en /nfs usando volumen añadido
 [Mount]
-What=/dev/vdb
-Where=/nfs
-Type=ext4
-Options=defaults
+What=/dev/vdb       -- Volumen añadido a la instancia
+Where=/nfs          -- Directorio donde se montará el volumen
+Type=ext4           -- Tipo de sistema de ficheros
+Options=defaults    -- Opciones de montaje
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target -- Servicio que se iniciará al arrancar el sistema
 ```
 
 Debemos tener en cuenta que el volumen que hemos añadido a la instancia tiene que estar formateado. Para ello, ejecutamos el siguiente comando:
@@ -251,14 +253,70 @@ debian@nfs-systemd-client:~$ cat /etc/passwd | egrep debian
 debian:x:1000:1000:Debian:/home/debian:/bin/bash
 ```
 
+*Nota: En caso de que no sean iguales se debería usar la opción `root_squash` en el servidor para que el usuario root se convierta en el usuario `nobody`. O cambiar con `chown` el usuario del directorio compartido por **nobody:** y los permisos a **750** con `chmod`.  
+
 Gracias a esto cuando un cliente se conecta a un recurso compartido, el usuario de ese cliente, pasa a tener los mismos permisos que el usuario de la máquina servidor.  
 En cuanto al usuario root, gracias a la configuración `root_squash` (que se uso en la configuración en el servidor en `/etc/exports`) evita que sea usado como tal asignado valores de usuarios `otros` al mismo.
+
+
+
+### Instalación del cliente NFS
 
 
 Para realizar la instalación en el cliente del servicio NFS ejecutamos el siguiente comando:
 
     sudo apt install nfs-common
 
+Podemos comprobar los puntos de montaje que tenemos en el sistema usando:
+
+```bash
+root@nfs-systemd-client:~# showmount -e 10.0.0.26 <-[ip del servidor]
+
+Export list for 10.0.0.26:
+/nfs 10.0.0.0/24
+```
+
+### Configuración del punto de montaje
 
 
+Para esto creamos el directorio donde se montará el recurso compartido:
 
+    mkdir /nfs_cliente
+
+Y dentro del fichero `/etc/systemd/system/nfs_client.mount` añadimos la siguiente configuración:
+
+```bash
+[Unit]
+Description=Disco montado en /nfs_cliente                       
+[Mount]
+What=10.0.0.26:/nfs     -- [ip del servidor]:[directorio compartido]
+Where=/nfs_cliente      -- directorio donde se montará el recurso compartido en el cliente
+Type=nfs                -- tipo de recurso compartido 
+Options=defaults        -- opciones de montaje
+[Install]
+WantedBy=multi-user.target      -- para que se monte al arrancar el sistema
+```
+
+Lo siguiente será activar el servicio:
+
+    systemctl enable nfs_client.mount
+
+Y por último montar el recurso compartido:
+
+    systemctl start nfs_client.mount
+
+Con esto ya tendremos el recurso compartido montado en el cliente, pudiendo comprobarlo con el comando `mount`:
+
+```bash
+debian@nfs-systemd-client:~$ df -h | egrep nfs
+
+10.0.0.26:/nfs  2.0G     0  1.8G   0% /nfs_cliente
+```
+
+## Comprobación de funcionamiento
+
+Para comprobar que funciona correctamente podemos crear un fichero en el directorio compartido del servidor y verificar que se ha creado en el cliente:
+
+```bash
+
+```
