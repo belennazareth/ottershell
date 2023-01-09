@@ -248,7 +248,6 @@ sudo lxc-create -n delta -t ubuntu -- -r focal -a amd64
 
 
 
-
 ## Entrega
 
 ### 1. Las instrucciones para crear y configurar la máquina1 (alfa).
