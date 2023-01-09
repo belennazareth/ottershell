@@ -105,7 +105,7 @@ export default {
           ]
         }
       ],
-      "copyright": " Belén Nazareth Durán Meléndez <br /> Copyright © 2022 My Project, Inc. Built with Docusaurus."
+      "copyright": " Belén Nazareth Durán Meléndez <br /> Copyright © 2023 My Project, Inc. Built with Docusaurus."
     },
     "prism": {
       "theme": {
