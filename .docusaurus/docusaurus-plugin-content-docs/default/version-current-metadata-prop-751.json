@@ -465,7 +465,7 @@
     "Tasks/tomcat": {
       "id": "Tasks/tomcat",
       "title": "Desarrollo y despliegue de una aplicación Java simple",
-      "description": "Primero hay que instalar tomcat9 (al realizar esta acción obtenemos automáticamente openjdk-11-jre-headless necesario para ejecutar maven) para seguir con la configuración del panel de administración. Para esto instalamos tomcat9-admin y editamos el fichero /etc/tomcat9/tomcat-users.xml para añadir el usuario admin:",
+      "description": "Instalación y configuración de Tomcat y Maven",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/virtualhosting_apache": {
