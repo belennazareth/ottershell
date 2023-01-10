@@ -5,6 +5,9 @@ sidebar_position: 15
 
 # Desarrollo y despliegue de una aplicación Java simple
 
+
+## Instalación y configuración de Tomcat y Maven
+
 Primero hay que instalar **tomcat9** (al realizar esta acción obtenemos automáticamente **openjdk-11-jre-headless** necesario para ejecutar **maven**) para seguir con la configuración del panel de administración. Para esto instalamos **tomcat9-admin** y editamos el fichero **/etc/tomcat9/tomcat-users.xml** para añadir el usuario **admin**:
 
 ```xml
@@ -167,10 +170,10 @@ Ahora podemos acceder a la aplicación desde el navegador y monitorear desde **t
 
 ## Entrega
 
-#### Entrega una captura de la aplicación de administración Tomcat-Manager una vez que la aplicación está desplegada, donde se comprueba que la aplicación está desplegada.
+#### 1. Entrega una captura de la aplicación de administración Tomcat-Manager una vez que la aplicación está desplegada, donde se comprueba que la aplicación está desplegada.
 
 ![Tomcat](/img/IAW/taller1IAW5-4.png)
 
-#### Entrega una captura de pantalla accediendo a la aplicación web.
+#### 2. Entrega una captura de pantalla accediendo a la aplicación web.
 
 ![Tomcat](/img/IAW/taller1IAW5-5.png)
