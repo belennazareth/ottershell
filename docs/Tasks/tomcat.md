@@ -33,3 +33,121 @@ Donde '-DgroupId' es el nombre del paquete, '-DartifactId' es el nombre del proy
 
 ![Tomcat](/img/IAW/taller1IAW5-2.png)
 
+Y se creará una estructura de directorios como la siguiente:
+
+```bash
+debian@nami:~$ tree javita
+
+javita
+├── pom.xml
+└── src
+    ├── main
+    │   └── java
+    │       └── com
+    │           └── app
+    │               └── example
+    │                   └── App.java
+    └── test
+        └── java
+            └── com
+                └── app
+                    └── example
+                        └── AppTest.java
+
+11 directories, 3 files
+```
+
+A continuación, editamos el fichero **pom.xml**, fichero de configuración de maven que contiene información sobre el proyecto y la configuración de las dependencias. Sustituimos la información existente por la siguiente:
+
+```xml
+<?xml version = "1.0" encoding = "UTF-8"?>
+<project xmlns = "http://maven.apache.org/POM/4.0.0" 
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+
+xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+   <groupId>com.tutorialspoint</groupId>
+   <artifactId>holaa</artifactId>
+   <version>1</version>
+   <packaging>war</packaging>
+   
+   <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>2.3.0.RELEASE</version>
+      <relativePath/> 
+   </parent>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+      <java.version>1.8</java.version>
+      <tomcat.version>9.0.37</tomcat.version>
+   </properties>
+
+   <dependencies>
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-web</artifactId>
+      </dependency>
+      <dependency>  
+         <groupId>org.springframework.boot</groupId>  
+	 <artifactId>spring-boot-starter-tomcat</artifactId>  
+	 <scope>provided</scope>  
+      </dependency>   
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-test</artifactId>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+         </plugin>
+      </plugins>
+   </build>
+   
+</project>
+```
+
+Y editamos el fichero **App.java** que se encuentra en la ruta **src/main/java/com/app/example/App.java**, con esto se construirá la aplicación:
+
+```java
+package com.app.example;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class App extends SpringBootServletInitializer {
+   @Override
+   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+      return application.sources(App.class);
+   }
+   public static void main(String[] args) {
+      SpringApplication.run(App.class, args);
+   }
+
+   @RequestMapping(value = "/")
+   public String hello() {
+      return "<center>Holaaa!!! ˚*•̩̩͙✩•̩̩͙*˚＊</center>";
+   }
+}
+```
+
+Ahora nos movemos al directorio donde 
+
+
+
+
+
