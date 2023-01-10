@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "PRIMER BOLETÍN PL/SQL",
-    "permalink": "/docs/Tasks/plsql_basica"
+    "title": "Desarrollo y despliegue de una aplicación Java simple",
+    "permalink": "/docs/Tasks/tomcat"
   },
   "next": {
     "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",

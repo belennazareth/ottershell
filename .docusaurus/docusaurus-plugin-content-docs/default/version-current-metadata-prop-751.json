@@ -179,6 +179,12 @@
           },
           {
             "type": "link",
+            "label": "Desarrollo y despliegue de una aplicación Java simple",
+            "href": "/docs/Tasks/tomcat",
+            "docId": "Tasks/tomcat"
+          },
+          {
+            "type": "link",
             "label": "Instalación de WordPress",
             "href": "/docs/Tasks/wordpress",
             "docId": "Tasks/wordpress"
@@ -454,6 +460,12 @@
       "id": "Tasks/servidor_lamp",
       "title": "Instalación de un servidor LAMP",
       "description": "1. Una captura de pantalla donde se vea la configuración de la resolución estática.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/tomcat": {
+      "id": "Tasks/tomcat",
+      "title": "Desarrollo y despliegue de una aplicación Java simple",
+      "description": "Primero hay que instalar tomcat9 para seguir con la configuración del panel de administración. Para esto instalamos tomcat9-admin y editamos el fichero /etc/tomcat9/tomcat-users.xml para añadir el usuario admin:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/virtualhosting_apache": {

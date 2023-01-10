@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'e27'),
+    component: ComponentCreator('/docs', 'dc3'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -264,6 +264,12 @@ export default [
       {
         path: '/docs/Tasks/servidor_lamp',
         component: ComponentCreator('/docs/Tasks/servidor_lamp', 'fb8'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/tomcat',
+        component: ComponentCreator('/docs/Tasks/tomcat', '5ff'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

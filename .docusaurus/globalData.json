@@ -181,6 +181,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/tomcat",
+              "path": "/docs/Tasks/tomcat",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/virtualhosting_apache",
               "path": "/docs/Tasks/virtualhosting_apache",
               "sidebar": "tutorialSidebar"

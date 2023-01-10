@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/migracion_centos"
   },
   "next": {
-    "title": "Instalación de WordPress",
-    "permalink": "/docs/Tasks/wordpress"
+    "title": "Desarrollo y despliegue de una aplicación Java simple",
+    "permalink": "/docs/Tasks/tomcat"
   }
 }
