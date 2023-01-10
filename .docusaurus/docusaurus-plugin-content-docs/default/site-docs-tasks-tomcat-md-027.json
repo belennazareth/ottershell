@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/tomcat",
+  "id": "Tasks/tomcat",
+  "title": "Desarrollo y despliegue de una aplicación Java simple",
+  "description": "Primero hay que instalar tomcat9 para seguir con la configuración del panel de administración. Para esto instalamos tomcat9-admin y editamos el fichero /etc/tomcat9/tomcat-users.xml para añadir el usuario admin:",
+  "source": "@site/docs/Tasks/tomcat.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/tomcat",
+  "permalink": "/docs/Tasks/tomcat",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/tomcat.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "sidebar_position": 15
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "PRIMER BOLETÍN PL/SQL",
+    "permalink": "/docs/Tasks/plsql_basica"
+  },
+  "next": {
+    "title": "Instalación de WordPress",
+    "permalink": "/docs/Tasks/wordpress"
+  }
+}
