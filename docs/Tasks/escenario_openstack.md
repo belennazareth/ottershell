@@ -263,7 +263,49 @@ lxc.start.auto = 1
 lxc.start.delay = 5
 ```
 
-Lo siguiente será 
+Lo siguiente será configurar la regla SNAT para que los contenedores tengan acceso a internet. Para esto, sera necesario añadir una entrada en los contenedores de tal forma que el envío de paquetes se haga a través de la interfaz de red de la máquina1 (alfa). Para ello, se edita el fichero `/etc/network/interfaces.d/50-cloud-init` y se añade la siguiente línea:
+
+```bash
+post-up iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o ens3 -j MASQUERADE
+```
+
+Para conectar los contenedores al bridge br-intra hay que editar el fichero `/var/lib/lxc/{nombre del contenedor}/config` y añadir:
+
+```bash
+lxc.net.0.link = br-intra
+```
+
+Y configuramos la ip de forma estática dentro del contenedor editando el fichero `/etc/netplan/10-lxc.yaml` y añadiendo:
+
+- Para el contenedor charlie:
+
+```bash
+network:
+  ethernets:
+    eth0: 
+     dhcp4: no
+     addresses:
+     - 192.168.0.2/24
+     gateway4: 192.168.0.1
+```
+
+- Para el contenedor delta:
+
+```bash
+network:
+  ethernets:
+    eth0: 
+     dhcp4: no
+     addresses:
+     - 192.168.0.3/24
+     gateway4: 192.168.0.1
+```
+
+Para modificar la mtu de los contenedores se edita el fichero `/var/lib/lxc/{nombre del contenedor}/config` y se añade:
+
+```bash
+lxc.net.0.mtu = 1450
+```
 
 
 
