@@ -138,6 +138,7 @@ openstack volume create --size 30 \
 --bootable \
 volumen_bravo
 
+
 openstack port create --network "Red DMZ de nazaret.duran" --fixed-ip ip-address=172.16.0.200 port_bravo
 
  openstack server create --volume volumen_bravo \
@@ -186,19 +187,6 @@ En maquina1 vamos a crear dos contenedores en un red interna, para ello:
 
 1. Crea en máquina1 (alfa) un linux bridge llamado br-intra y asigna una dirección IP estática 192.168.0.1. Esta será la IP de máquina1 (alfa) conectada a este switch virtual y será la puerta de enlace de los contenedores.
 
-Para esto debemos editar el fichero `/etc/network/interfaces.d/50-cloud-init` y añadir las siguientes líneas:
-
-```bash
-auto br-intra
-iface br-intra inet static
-    address      192.168.0.1/24
-    bridge_ports none
-```
-
-E instalar el paquete bridge-utils:
-
-    sudo apt install bridge-utils
-
 
 2. Instala LXC y crea dos contenedores con la distribución Ubuntu 20.04. Estos contenedores serán la máquina3 (charlie) y la máquina4 (delta).
 
@@ -230,6 +218,21 @@ E instalar el paquete bridge-utils:
     * Un usuario profesor, que puede utilizar sudo sin contraseña. Copia de las claves públicas de todos los profesores en los contenedores para que puedan acceder con el usuario profesor.
 
 * Cambia la contraseña al usuario root.
+
+
+Para crear `br-intra` junto con la asignación de la ip, debemos editar el fichero `/etc/network/interfaces.d/50-cloud-init` y añadir las siguientes líneas:
+
+```bash
+auto br-intra
+iface br-intra inet static
+    address      192.168.0.1/24
+    bridge_ports none
+```
+
+
+E instalar el paquete bridge-utils:
+
+    sudo apt install bridge-utils
 
 
 Para instalar LXC:
