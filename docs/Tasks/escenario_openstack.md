@@ -200,7 +200,6 @@ E instalar el paquete bridge-utils:
     sudo apt install bridge-utils
 
 
-
 2. Instala LXC y crea dos contenedores con la distribución Ubuntu 20.04. Estos contenedores serán la máquina3 (charlie) y la máquina4 (delta).
 
 
@@ -216,7 +215,7 @@ E instalar el paquete bridge-utils:
 6. Configura los contenedores para que se auto inicien al reiniciar la instancia.
 
 
-7. Los contenedores tendrán características parecidas a las instancias anteriormente:
+7. Los contenedores tendrán características parecidas a las instancias anteriores:
 
 * Debes actualizar los paquetes de la distribución instalada.
 
@@ -245,6 +244,26 @@ Para crear los contenedores:
 sudo lxc-create -n charlie -t ubuntu -- -r focal -a amd64
 sudo lxc-create -n delta -t ubuntu -- -r focal -a amd64
 ```
+
+Para iniciar los contenedores se usa el comando:
+
+    lxc-start {nombre del contenedor}
+
+
+Para conectarse se puede usar el comando de lxc (entrando como root) o por ssh (pudiendo entrar como el usuario que se haya creado con o sin privilegios):
+
+    lxc-attach {nombre del contenedor}
+    ssh usuario@ip_contenedor 
+
+
+Para poder auto iniciar los contenedores al reiniciar la instancia se edita el fichero `/var/lib/lxc/{nombre del contenedor}/config` y se añaden las siguientes líneas:
+
+```bash
+lxc.start.auto = 1
+lxc.start.delay = 5
+```
+
+Lo siguiente será 
 
 
 
@@ -381,8 +400,8 @@ chpasswd:
 `172.22.200.255`
 
 
-
 ### 4. Prueba de funcionamiento de qué los FQDN están bien configurados.
+
 
 
 
@@ -390,5 +409,7 @@ chpasswd:
 
 
 
+
 ### 6. Prueba de funcionamiento de que las máquinas tienen acceso a internet.
+
 
