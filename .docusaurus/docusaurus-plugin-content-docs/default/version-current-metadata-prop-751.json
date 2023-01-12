@@ -143,12 +143,6 @@
           },
           {
             "type": "link",
-            "label": "Cifrado asimétrico con gpg y openssl",
-            "href": "/docs/Tasks/cifrado_asimetrico",
-            "docId": "Tasks/cifrado_asimetrico"
-          },
-          {
-            "type": "link",
             "label": "Escenario en OpenStack",
             "href": "/docs/Tasks/escenario_openstack",
             "docId": "Tasks/escenario_openstack"
@@ -298,12 +292,6 @@
       "id": "Tasks/bookmedik",
       "title": "Instalación de la aplicación BookMedik",
       "description": "1. Entrega la configuración del virtualhost.",
-      "sidebar": "tutorialSidebar"
-    },
-    "Tasks/cifrado_asimetrico": {
-      "id": "Tasks/cifrado_asimetrico",
-      "title": "Cifrado asimétrico con gpg y openssl",
-      "description": "Cifrado asimétrico con gpg",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/cliente_vpn": {

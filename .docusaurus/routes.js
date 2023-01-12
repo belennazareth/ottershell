@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'dc3'),
+    component: ComponentCreator('/docs', '197'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -102,12 +102,6 @@ export default [
       {
         path: '/docs/Tasks/bookmedik',
         component: ComponentCreator('/docs/Tasks/bookmedik', '37d'),
-        exact: true,
-        sidebar: "tutorialSidebar"
-      },
-      {
-        path: '/docs/Tasks/cifrado_asimetrico',
-        component: ComponentCreator('/docs/Tasks/cifrado_asimetrico', '07c'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

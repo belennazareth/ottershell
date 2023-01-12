@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/bind9_local"
   },
   "next": {
-    "title": "Cifrado asimétrico con gpg y openssl",
-    "permalink": "/docs/Tasks/cifrado_asimetrico"
+    "title": "Escenario en OpenStack",
+    "permalink": "/docs/Tasks/escenario_openstack"
   }
 }
