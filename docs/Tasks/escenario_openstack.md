@@ -81,6 +81,8 @@ La creación y configuración (conexión a las redes, creación de volumen, quit
 
 * Comprueba que tiene acceso a internet. Si no tiene acceso a internet, no se han actualizado los paquetes con cloud-init, hazlo posteriormente.
 
+                              🦦                    🦦                        🦦                        🦦
+
 Lo primero sera crear el fichero config.yaml:
 
 ```yaml
