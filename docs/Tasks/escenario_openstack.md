@@ -322,6 +322,74 @@ Para modificar la mtu de los contenedores se edita el fichero `/var/lib/lxc/{nom
 lxc.net.0.mtu = 1450
 ```
 
+Pr último, se realiza un reinicio de los contenedores para que se apliquen los cambios:
+
+    lxc-stop -n {nombre del contenedor}
+    lxc-start -n {nombre del contenedor}
+
+Y para comprobar que todo funciona correctamente, se puede hacer un ping desde el contenedor a alfa.
+
+Además, se realizan las siguientes configuraciones:
+
+* Actualización de los paquetes:
+  
+       sudo apt update && sudo apt upgrade -y
+
+
+* Configuración del hostname y el FQDN del tipo tunombre.gonzalonazareno.org:
+
+    * En el fichero `/etc/hosts` se añade:
+
+      - Para el contenedor **charlie**:
+
+            {ip_local} charlie.nazareth.gonzalonazareno.org charlie
+
+
+      - Para el contenedor **delta**:
+
+            {ip_local} delta.nazareth.gonzalonazareno.org delta
+
+
+    * En el fichero `/etc/hostname` se añade:
+
+      - Para el contenedor **charlie**:
+
+            charlie
+
+      - Para el contenedor **delta**:
+        
+            delta
+
+
+* Para acceder a los contenedores vamos a usar ssh.
+
+      ssh -a usuario@ip_contenedor
+
+  - Aunque para facilitar la entrada a los contenedores, se puede crear un alias en el fichero `~/.ssh/config`:
+
+    ```bash
+    host charlie
+        HostName 192.168.0.2
+        user {nombre del usuario}
+
+    host delta
+        HostName 192.168.0.3 
+        user {nombre del usuario}
+    ```
+
+* Crea dos usuarios:
+
+    * Un usuario sin privilegios. Se puede llamar como quieras (el nombre de usuario que usaste en las instancias) y accederás a los contenedores usando tu clave ssh privada.
+
+    * Un usuario profesor, que puede utilizar sudo sin contraseña. Copia de las claves públicas de todos los profesores en los contenedores para que puedan acceder con el usuario profesor.
+
+* Cambia la contraseña al usuario root.
+
+
+
+
+
+
 ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ🐚                  🐚                     🐚                      🐚ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
 
 
@@ -399,9 +467,8 @@ iface ens3 inet dhcp
     mtu 1450
     post-up ip r del default && ip r add default via 10.0.0.1
     post-up iptables -t nat -A POSTROUTING -s 172.16.0.0/16 -o ens3 -j MASQUERADE
-    post-up iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o ens3 -j MASQUERADE
+    post-up iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o ens3 -j MASQUERADE #añadiendo esta línea donde se indica la red de la DMZ.
 ```
-
 
 
 ### 2. El fichero cloud-config.yaml para crear la máquina1 (alfa).
@@ -461,14 +528,14 @@ chpasswd:
 
 ### 4. Prueba de funcionamiento de qué los FQDN están bien configurados.
 
-
+en todas las maquinas hostname -f
 
 
 ### 5. Prueba de funcionamiento de que se pueden acceder a todas las máquinas por ssh.
 
-
+en todas las maquinas ssh
 
 
 ### 6. Prueba de funcionamiento de que las máquinas tienen acceso a internet.
 
-
+en todas las maquinas ping
