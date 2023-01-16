@@ -100,7 +100,7 @@ package_upgrade: true
 # hostname y FQDN
 
 hostname: bravo
-fqdn: bravo.gonzalonazareno.org
+fqdn: bravo.nazareth.gonzalonazareno.org
 
 # Crear usuarios
 
@@ -329,11 +329,12 @@ Pr último, se realiza un reinicio de los contenedores para que se apliquen los 
 
 Y para comprobar que todo funciona correctamente, se puede hacer un ping desde el contenedor a alfa.
 
+
 Además, se realizan las siguientes configuraciones:
 
-* Actualización de los paquetes:
+* Actualización de los paquetes (tanto en charlie como en delta):
   
-       sudo apt update && sudo apt upgrade -y
+       sudo apt-get update && sudo apt-get upgrade -y
 
 
 * Configuración del hostname y el FQDN del tipo tunombre.gonzalonazareno.org:
@@ -356,6 +357,7 @@ Además, se realizan las siguientes configuraciones:
 
             charlie
 
+
       - Para el contenedor **delta**:
         
             delta
@@ -363,29 +365,61 @@ Además, se realizan las siguientes configuraciones:
 
 * Para acceder a los contenedores vamos a usar ssh.
 
-      ssh -a usuario@ip_contenedor
+      ssh -AJ usuario@ip_alfa usuario@ip_contenedor
 
   - Aunque para facilitar la entrada a los contenedores, se puede crear un alias en el fichero `~/.ssh/config`:
 
     ```bash
-    host charlie
-        HostName 192.168.0.2
-        user {nombre del usuario}
+    host charlie #Nombre del contenedor
+        HostName 192.168.0.2 #Ip del contenedor
+        user {nombre del usuario} #Usuario que se ha creado en el contenedor
+        ProxyJump {usuario}@{ip_alfa} #Para saltar a la máquina alfa, aunque como ya esta configurado el ssh para saltar a la máquina alfa, 
+                                      # no es necesario ponerlo, es decir, se puede poner solo alfa
+        ForwardAgent yes #Para que se pueda acceder a los contenedores desde la máquina alfa
 
     host delta
         HostName 192.168.0.3 
         user {nombre del usuario}
+        ProxyJump {usuario}@{ip_alfa}
+        ForwardAgent yes
     ```
+
 
 * Crea dos usuarios:
 
-    * Un usuario sin privilegios. Se puede llamar como quieras (el nombre de usuario que usaste en las instancias) y accederás a los contenedores usando tu clave ssh privada.
+    * Un usuario sin privilegios que para acceder a los contenedores use la clave ssh privada:
+
+    - Primero creamos el usuario:
+
+            sudo adduser nazare
+
+    - Lo siguiente sera crear la carpeta `.ssh` y el fichero `authorized_keys`:
+
+            mkdir /home/nazare/.ssh
+            touch /home/nazare/.ssh/authorized_keys
+      
+      Y añadimos la clave pública del usuario alfa en el fichero `authorized_keys`
 
     * Un usuario profesor, que puede utilizar sudo sin contraseña. Copia de las claves públicas de todos los profesores en los contenedores para que puedan acceder con el usuario profesor.
 
-* Cambia la contraseña al usuario root.
+      - Primero creamos el usuario:
 
+            sudo adduser profesor
 
+      - Lo siguiente sera crear la carpeta `.ssh` y el fichero `authorized_keys`:
+
+            mkdir /home/profesor/.ssh
+            touch /home/profesor/.ssh/authorized_keys
+      
+      - Y añadimos las claves públicas de los profesores en el fichero `authorized_keys`
+
+      - Para que el usuario profesor pueda utilizar sudo sin contraseña, se edita el fichero `/etc/sudoers` y se añade:
+
+            profesor ALL=(ALL) NOPASSWD: ALL
+
+* Cambia la contraseña al usuario root (en ambos contenedores):
+
+      passwd root
 
 
 
@@ -520,7 +554,6 @@ chpasswd:
 ```
 
 
-
 ### 3. La Ip flotante de la máquina1 (alfa).
 
 `172.22.200.255`
@@ -528,7 +561,9 @@ chpasswd:
 
 ### 4. Prueba de funcionamiento de qué los FQDN están bien configurados.
 
-en todas las maquinas hostname -f
+En todas las maquinas se ha realizado `hostname -f`:
+
+![Repo](/img/SRI+HLC/openstackSRI4-2.png)
 
 
 ### 5. Prueba de funcionamiento de que se pueden acceder a todas las máquinas por ssh.
@@ -539,3 +574,5 @@ en todas las maquinas ssh
 ### 6. Prueba de funcionamiento de que las máquinas tienen acceso a internet.
 
 en todas las maquinas ping
+
+
