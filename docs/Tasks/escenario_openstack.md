@@ -582,6 +582,7 @@ ssh -AJ nazare@172.22.200.255 nazare@192.168.0.3  #para saltar a `delta`
 
 ### 6. Prueba de funcionamiento de que las máquinas tienen acceso a internet.
 
-en todas las maquinas ping
+Para comprobar que las máquinas tienen acceso a internet se ha realizado `ping` a la dirección ip de google `8.8.8.8`:
 
+![Repo](/img/SRI+HLC/openstackSRI4-4.png)
 
