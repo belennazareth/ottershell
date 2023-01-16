@@ -568,7 +568,16 @@ En todas las maquinas se ha realizado `hostname -f`:
 
 ### 5. Prueba de funcionamiento de que se pueden acceder a todas las máquinas por ssh.
 
-en todas las maquinas ssh
+Se ha accedido a todas las maquinas por ssh con el usuario `nazare`:
+
+```bash
+ssh nazare@172.22.200.255 #para entrar en `alfa`
+ssh -AJ nazare@172.22.200.255 nazare@172.16.0.200 #para saltar a `bravo`
+ssh -AJ nazare@172.22.200.255 nazare@192.168.0.2  #para saltar a `charlie`
+ssh -AJ nazare@172.22.200.255 nazare@192.168.0.3  #para saltar a `delta`
+```
+
+![Repo](/img/SRI+HLC/openstackSRI4-3.png)
 
 
 ### 6. Prueba de funcionamiento de que las máquinas tienen acceso a internet.
