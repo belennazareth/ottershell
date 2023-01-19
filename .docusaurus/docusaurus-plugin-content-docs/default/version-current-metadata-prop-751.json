@@ -221,6 +221,18 @@
           },
           {
             "type": "link",
+            "label": "Servidor de correo en los servidores de clase",
+            "href": "/docs/Tasks/correo",
+            "docId": "Tasks/correo"
+          },
+          {
+            "type": "link",
+            "label": "Recolección centralizada de logs de sistema",
+            "href": "/docs/Tasks/journald",
+            "docId": "Tasks/journald"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -312,6 +324,12 @@
       "description": "Para empezar a compilar el kernel debemos crear un directorio donde trabajaremos, y además, saber cual es la versión de nuestra máquina.",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/correo": {
+      "id": "Tasks/correo",
+      "title": "Servidor de correo en los servidores de clase",
+      "description": "En esta ocasión, se va a realizar un servidor de correo en los servidores de clase, para ello se va a utilizar el servicio de postfix, que se encarga de enviar y recibir correos electrónicos. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta.",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/criptografia1": {
       "id": "Tasks/criptografia1",
       "title": "Cifrado asimétrico con gpg y openssl",
@@ -352,6 +370,12 @@
       "id": "Tasks/intro_git",
       "title": "Introducción a git y GitHub",
       "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/journald": {
+      "id": "Tasks/journald",
+      "title": "Recolección centralizada de logs de sistema",
+      "description": "En esta ocasión, se va a realizar un sistema de recogida de logs de sistema, para ello se va a utilizar el servicio de journald, que se encarga de recoger los logs de los servicios del sistema, y de los servicios que se ejecutan en el mismo. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/lemp": {

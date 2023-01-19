@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-197": {
+  "/docs-11b": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -153,6 +153,10 @@
     "__comp": "17896441",
     "content": "eb4abe1b"
   },
+  "/docs/Tasks/correo-eee": {
+    "__comp": "17896441",
+    "content": "982f5f11"
+  },
   "/docs/Tasks/criptografia1-d61": {
     "__comp": "17896441",
     "content": "4b4f0e05"
@@ -180,6 +184,10 @@
   "/docs/Tasks/intro_git-221": {
     "__comp": "17896441",
     "content": "5d56c66f"
+  },
+  "/docs/Tasks/journald-da9": {
+    "__comp": "17896441",
+    "content": "72bdcc9d"
   },
   "/docs/Tasks/lemp-8ab": {
     "__comp": "17896441",

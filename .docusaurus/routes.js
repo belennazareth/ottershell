@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '197'),
+    component: ComponentCreator('/docs', '11b'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -124,6 +124,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/correo',
+        component: ComponentCreator('/docs/Tasks/correo', 'eee'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/criptografia1',
         component: ComponentCreator('/docs/Tasks/criptografia1', 'd61'),
         exact: true,
@@ -162,6 +168,12 @@ export default [
       {
         path: '/docs/Tasks/intro_git',
         component: ComponentCreator('/docs/Tasks/intro_git', '221'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/journald',
+        component: ComponentCreator('/docs/Tasks/journald', 'da9'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

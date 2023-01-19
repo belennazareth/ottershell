@@ -61,6 +61,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/correo",
+              "path": "/docs/Tasks/correo",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/criptografia1",
               "path": "/docs/Tasks/criptografia1",
               "sidebar": "tutorialSidebar"
@@ -93,6 +98,11 @@
             {
               "id": "Tasks/intro_git",
               "path": "/docs/Tasks/intro_git",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/journald",
+              "path": "/docs/Tasks/journald",
               "sidebar": "tutorialSidebar"
             },
             {

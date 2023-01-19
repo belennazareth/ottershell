@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Montaje NFS mediante systemd",
-    "permalink": "/docs/Tasks/nfs_systemd"
+    "title": "Recolección centralizada de logs de sistema",
+    "permalink": "/docs/Tasks/journald"
   },
   "next": {
     "title": "Extras",
