@@ -6,6 +6,25 @@ sidebar_position: 22
 
 ## Procedimiento
 
+### Creación y configuración de proyecto Java
+
+Como vimos en el [taller 1](https://ottershell.vercel.app/docs/Tasks/tomcat), se puede crear un proyecto Java con Maven. En este caso, tenemos el repositorio [rock-paper-scissors](https://github.com/josedom24/rock-paper-scissors) por lo que no es necesario crearlo.
+Ejecutar el siguiente comando para compilar el proyecto:
+
+```bash
+mvn package
+```
+
+### Despliegue de la aplicación
+
+Para desplegar la aplicación, se va a utilizar el servicio de Tomcat. Manualmente, introducimos el fichero `war` en la carpeta `webapps` de Tomcat. En este caso, se va a utilizar el servicio de Tomcat Manager, para ello, se debe acceder a la url `http://{ip_server}:8080/manager/html` y se debe introducir el usuario y contraseña que se ha creado en el [taller 1](https://ottershell.vercel.app/docs/Tasks/tomcat).
+
+```bash
+sudo cp /rock-paper-scissors/target/roshambo.war /var/lib/tomcat9/webapps/
+```
+
+Después de copiar el fichero, se puede acceder a la aplicación en la url `http://{ip_server}:8080/roshambo/`.
+
 
 
 ## Entrega
