@@ -42,6 +42,7 @@ export default {
   '9dde1a93': [() => import(/* webpackChunkName: '9dde1a93' */ '@site/docs/Tasks/wordpress.md'), '@site/docs/Tasks/wordpress.md', require.resolveWeak('@site/docs/Tasks/wordpress.md')],
   '9e4087bc': [() => import(/* webpackChunkName: '9e4087bc' */ '@theme/BlogArchivePage'), '@theme/BlogArchivePage', require.resolveWeak('@theme/BlogArchivePage')],
   '9ebb1dcc': [() => import(/* webpackChunkName: '9ebb1dcc' */ '@site/docs/Tasks/escenario_openstack.md'), '@site/docs/Tasks/escenario_openstack.md', require.resolveWeak('@site/docs/Tasks/escenario_openstack.md')],
+  'a10b8c5d': [() => import(/* webpackChunkName: 'a10b8c5d' */ '@site/docs/Tasks/despliegue_java.md'), '@site/docs/Tasks/despliegue_java.md', require.resolveWeak('@site/docs/Tasks/despliegue_java.md')],
   'a14eb6e2': [() => import(/* webpackChunkName: 'a14eb6e2' */ '@site/docs/Tasks/migracion_php.md'), '@site/docs/Tasks/migracion_php.md', require.resolveWeak('@site/docs/Tasks/migracion_php.md')],
   'a168c652': [() => import(/* webpackChunkName: 'a168c652' */ '@site/docs/Tasks/nginx_php.md'), '@site/docs/Tasks/nginx_php.md', require.resolveWeak('@site/docs/Tasks/nginx_php.md')],
   'a6aa9e1f': [() => import(/* webpackChunkName: 'a6aa9e1f' */ '@theme/BlogListPage'), '@theme/BlogListPage', require.resolveWeak('@theme/BlogListPage')],

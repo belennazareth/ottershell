@@ -233,6 +233,12 @@
           },
           {
             "type": "link",
+            "label": "Despliegue de aplicaciones Java",
+            "href": "/docs/Tasks/despliegue_java",
+            "docId": "Tasks/despliegue_java"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -340,6 +346,12 @@
       "id": "Tasks/criptografia2",
       "title": "Criptografía II: Integridad, firmas y autenticación",
       "description": "Tarea 1: Firmas electrónicas",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/despliegue_java": {
+      "id": "Tasks/despliegue_java",
+      "title": "Despliegue de aplicaciones Java",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/escenario_openstack": {

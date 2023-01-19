@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-11b": {
+  "/docs-88d": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -164,6 +164,10 @@
   "/docs/Tasks/criptografia2-f53": {
     "__comp": "17896441",
     "content": "31fb806a"
+  },
+  "/docs/Tasks/despliegue_java-473": {
+    "__comp": "17896441",
+    "content": "a10b8c5d"
   },
   "/docs/Tasks/escenario_openstack-6ef": {
     "__comp": "17896441",

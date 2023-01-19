@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Recolección centralizada de logs de sistema",
-    "permalink": "/docs/Tasks/journald"
+    "title": "Despliegue de aplicaciones Java",
+    "permalink": "/docs/Tasks/despliegue_java"
   },
   "next": {
     "title": "Extras",
