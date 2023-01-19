@@ -60,7 +60,7 @@ Para el envío de correos, se va a utilizar el comando mail, para ello, se va a 
 sudo apt install bsd-mailx
 ```
 
-### Envío de correos entre usuarios locales del servidor
+###  Envío local, entre usuarios del mismo servidor
 
 Para enviar correos entre usuarios locales del servidor, se va a utilizar el comando `mail` seguido del destinatario, siendo un ejemplo del mismo lo siguiente:
 
@@ -76,6 +76,38 @@ Una vez enviado el correo, se puede comprobar que se ha enviado correctamente, u
 
 Para comprobar el estado del correo enviado se puede ver el directorio de logs de postfix `/var/log/mail.log`.
 
+Los correos se guardan en `~/mbox`.
+
+###  Envío de correo desde usuarios del servidor a correos de internet
+
+Primero hay que configurar el servidor de correo para que use como relay el servidor de correo de nuestra red `babuino-smtp.gonzalonazareno.org`, para ello, se debe editar el fichero `/etc/postfix/main.cf` y añadir las siguientes líneas:
+
+```bash
+relayhost = babuino-smtp.gonzalonazareno.org
+```
+
+Después, se debe reiniciar el servicio de postfix:
+
+```bash
+sudo systemctl restart postfix
+```
+
+Para enviar el correo, se va a utilizar el comando `mail` seguido del destinatario, siendo un ejemplo del mismo lo siguiente:
+
+```bash
+nazare@delta:~$ mail belennazareth29@gmail.com
+
+Subject: Ejercicio 2 :)
+Envío de correo desde usuarios del servidor a correos de internet         
+Cc:
+```
+
+Comprobamos en el fichero de log de postfix que se ha enviado el correo correctamente.
+
+![Postfix](/img/SRI+HLC/taller1SRI6-5.png)
+
+Y, en este caso en `gmail`, podemos ver que se ha recibido el correo correctamente. En la opción de `mostrar cabeceras` podemos ver los servidores por los que ha pasado el correo. Aunque se ve mejor con la opción de `mostrar original` (##Entrega > Ejercicio 2).
+
 
 ## Entrega
 
@@ -87,7 +119,11 @@ Prueba de recepción de correo en el servidor root@delta:
 Fichero de logs de postfix:
 ![Postfix](/img/SRI+HLC/taller1SRI6-3.png)
 
+
 2. Muestra las cabeceras del correo recibido en el ejercicio 2 mostrando las cabeceras donde vemos los servidores por los que ha pasado el correo.
+
+![Postfix](/img/SRI+HLC/taller1SRI6-4.png)
+
 
 3. Muestra el log del sistema donde se comprueba que el correo se ha recibido con éxito en el ejercicio 3.
 
