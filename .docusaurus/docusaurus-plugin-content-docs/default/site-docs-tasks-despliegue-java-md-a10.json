@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/despliegue_java",
+  "id": "Tasks/despliegue_java",
+  "title": "Despliegue de aplicaciones Java",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/despliegue_java.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/despliegue_java",
+  "permalink": "/docs/Tasks/despliegue_java",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/despliegue_java.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 22,
+  "frontMatter": {
+    "sidebar_position": 22
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Recolección centralizada de logs de sistema",
+    "permalink": "/docs/Tasks/journald"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
