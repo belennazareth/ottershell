@@ -4,6 +4,12 @@ sidebar_position: 22
 
 # Despliegue de aplicaciones Java
 
+    IMPORTANTE: Para esta práctica es importante que la instancia que se use tenga al menos las siguientes características:
+    - 2 GB de RAM
+    - 2 vCPUs
+    - 20 GB de disco
+
+
 ## Procedimiento
 
 ### Creación y configuración de proyecto Java
@@ -85,8 +91,12 @@ Nos pedirá la dirección URL, en este caso, se ha dejado la que viene por defec
 
 Por último, aparecerá el proceso de instalación seguido de un mensaje de éxito:
 
+![tomcat](/img/SRI+HLC/javaSRI-10.png)
+![tomcat](/img/SRI+HLC/javaSRI-11.png)
 
+Podemos acceder a la aplicación de de OpenCMS desde la url `http://{ip_server}:8080/opencms/overview`:
 
+![tomcat](/img/SRI+HLC/javaSRI-12.png)
 
 A continuación, se configura el proxy inverso para que se pueda acceder a la aplicación OpenCMS desde la url `java.tunombre.org`. Para ello, se debe modificar el fichero `/etc/apache2/sites-available/000-default.conf` y añadir la siguiente configuración:
 
