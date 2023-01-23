@@ -103,18 +103,54 @@ Para realizar una modificación en la aplicación, desde la página de inicio so
 ![tomcat](/img/SRI+HLC/javaSRI-13.png)
 
 
-A continuación, se configura el proxy inverso para que se pueda acceder a la aplicación OpenCMS desde la url `java.tunombre.org`. Para ello, se debe modificar el fichero `/etc/apache2/sites-available/000-default.conf` y añadir la siguiente configuración:
+### Acceso a las aplicaciones
 
-```html
-<VirtualHost *:80>
-    ServerName java.tunombre.org
-    ProxyPreserveHost On
-    ProxyRequests Off
-    ProxyPass / http://localhost:8080/opencms/
-    ProxyPassReverse / http://localhost:8080/opencms/
-</VirtualHost>
+Para poder acceder directamente al servidor desde el navegador web, se debe configurar un proxy inverso en el servidor para que las URL queden de forma `java.nazareth.org/game` y `java.nazareth.org` respectivamente. Para ello, primero instalamos nginx y creamos un virtual host:
+
+```bash
+sudo apt install nginx
+
+sudo nano /etc/nginx/sites-available/java.conf
 ```
 
+Dentro del fichero, metemos para que nos redirija a la aplicación de rock-paper-scissors y a la de OpenCMS con las URL que hemos indicado anteriormente:
+
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name java.nazareth.org;
+
+    location /game {
+        proxy_pass http://localhost:8080/roshambo/;
+        include proxy_params;
+    }
+
+    location / {
+        proxy_pass http://localhost:8080/opencms/;
+        include proxy_params;
+    }
+}
+```
+
+Lo siguiente será activar el virtual host y reiniciar el servicio de nginx:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/java.conf /etc/nginx/sites-enabled/
+
+sudo systemctl restart nginx
+```
+
+Por último, en local, editamos el fichero `/etc/hosts` y añadimos la siguiente línea:
+
+```bash
+{ip_server} java.nazareth.org
+```
+
+Ahora, desde el navegador web, podemos acceder a las aplicaciones con las URL `java.nazareth.org/game` y `java.nazareth.org` respectivamente:
 
 
 
