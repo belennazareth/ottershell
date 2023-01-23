@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/despliegue_java",
   "id": "Tasks/despliegue_java",
   "title": "Despliegue de aplicaciones Java",
-  "description": "Procedimiento",
+  "description": "IMPORTANTE",
   "source": "@site/docs/Tasks/despliegue_java.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/despliegue_java",

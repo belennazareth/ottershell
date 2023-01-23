@@ -351,7 +351,7 @@
     "Tasks/despliegue_java": {
       "id": "Tasks/despliegue_java",
       "title": "Despliegue de aplicaciones Java",
-      "description": "Procedimiento",
+      "description": "IMPORTANTE",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/escenario_openstack": {
