@@ -98,6 +98,11 @@ Podemos acceder a la aplicación de de OpenCMS desde la url `http://{ip_server}:
 
 ![tomcat](/img/SRI+HLC/javaSRI-12.png)
 
+Para realizar una modificación en la aplicación, desde la página de inicio sobre cada zona de la misma hay un botón `Edit` que nos permite modificar el contenido (esquina superior derecha). Por ejemplo:
+
+![tomcat](/img/SRI+HLC/javaSRI-13.png)
+
+
 A continuación, se configura el proxy inverso para que se pueda acceder a la aplicación OpenCMS desde la url `java.tunombre.org`. Para ello, se debe modificar el fichero `/etc/apache2/sites-available/000-default.conf` y añadir la siguiente configuración:
 
 ```html
