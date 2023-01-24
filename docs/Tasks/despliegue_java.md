@@ -14,7 +14,12 @@ sidebar_position: 22
 
 ### Creación y configuración de proyecto Java
 
-Como vimos en el [taller 1](https://ottershell.vercel.app/docs/Tasks/tomcat), se puede crear un proyecto Java con Maven. En este caso, tenemos el repositorio [rock-paper-scissors](https://github.com/josedom24/rock-paper-scissors) por lo que no es necesario crearlo.
+Como vimos en el [taller 1](https://ottershell.vercel.app/docs/Tasks/tomcat), se puede crear un proyecto Java con Maven. En este caso, tenemos el repositorio [rock-paper-scissors](https://github.com/josedom24/rock-paper-scissors) por lo que no es necesario crearlo. Solo debemos clonarlo en el servidor con git clone, o en mi caso realice un scp para copiarlo.
+
+```bash
+scp -r rock-paper-scissors user@{ip_server}:/home/user/
+```
+
 Ejecutar el siguiente comando para compilar el proyecto:
 
 ```bash
@@ -152,17 +157,28 @@ Por último, en local, editamos el fichero `/etc/hosts` y añadimos la siguiente
 
 Ahora, desde el navegador web, podemos acceder a las aplicaciones con las URL `java.nazareth.org/game` y `java.nazareth.org` respectivamente:
 
+![tomcat](/img/SRI+HLC/javaSRI-14.png)
+![tomcat](/img/SRI+HLC/javaSRI-15.png)
+
+
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ🦦                  🦦                     🦦                      🦦ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+
 
 
 ## Entrega
 
 **1. Entrega una captura de la aplicación de administración Tomcat-Manager donde se compruebe que las aplicaciones están desplegadas.**
 
-
-
+![tomcat](/img/SRI+HLC/javaSRI-16.png)
 
 **2. Configuración del proxy inverso para acceder a las aplicaciones cómo nos indica la práctica.**
 
+
+
 **3. Acceso desde un navegar web a la aplicación rock-paper-scissors con la url java.tunombre.org/game.**
 
+
+
 **4. Acceso desde un navegar web a la aplicación OpenCMS con la url java.tunombre.org.**
+
+
