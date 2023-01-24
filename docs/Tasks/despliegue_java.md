@@ -129,13 +129,17 @@ server {
 
     server_name java.nazareth.org;
 
-    location /game {
-        proxy_pass http://localhost:8080/roshambo/;
+    location / {
+        return 301 http://$host/opencms/;
+    }
+
+    location /opencms/ {
+        proxy_pass http://localhost:8080;
         include proxy_params;
     }
 
-    location / {
-        proxy_pass http://localhost:8080/opencms/;
+    location /game/ {
+        proxy_pass http://localhost:8080/roshambo/;
         include proxy_params;
     }
 }
@@ -171,8 +175,33 @@ Ahora, desde el navegador web, podemos acceder a las aplicaciones con las URL `j
 
 ![tomcat](/img/SRI+HLC/javaSRI-16.png)
 
+
 **2. Configuración del proxy inverso para acceder a las aplicaciones cómo nos indica la práctica.**
 
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name java.nazareth.org;
+
+    location / {
+        return 301 http://$host/opencms/;
+    }
+
+    location /opencms/ {
+        proxy_pass http://localhost:8080;
+        include proxy_params;
+    }
+
+    location /game/ {
+        proxy_pass http://localhost:8080/roshambo/;
+        include proxy_params;
+    }
+}
+```
 
 
 **3. Acceso desde un navegar web a la aplicación rock-paper-scissors con la url java.tunombre.org/game.**
