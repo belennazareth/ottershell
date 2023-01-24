@@ -204,10 +204,12 @@ server {
 ```
 
 
-**3. Acceso desde un navegar web a la aplicación rock-paper-scissors con la url java.tunombre.org/game.**
+**3. Acceso desde un navegador web a la aplicación rock-paper-scissors con la url java.tunombre.org/game.**
+
+![tomcat](/img/SRI+HLC/javaSRI-14.png)
 
 
+**4. Acceso desde un navegador web a la aplicación OpenCMS con la url java.tunombre.org.**
 
-**4. Acceso desde un navegar web a la aplicación OpenCMS con la url java.tunombre.org.**
-
+![tomcat](/img/SRI+HLC/javaSRI-15.png)
 
