@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Despliegue de aplicaciones Java",
-    "permalink": "/docs/Tasks/despliegue_java"
+    "title": "Despliegue de aplicaciones python",
+    "permalink": "/docs/Tasks/despliegue_python"
   },
   "next": {
     "title": "Extras",

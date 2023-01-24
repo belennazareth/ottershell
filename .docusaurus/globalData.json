@@ -81,6 +81,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/despliegue_python",
+              "path": "/docs/Tasks/despliegue_python",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/escenario_openstack",
               "path": "/docs/Tasks/escenario_openstack",
               "sidebar": "tutorialSidebar"

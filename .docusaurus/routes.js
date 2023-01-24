@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '88d'),
+    component: ComponentCreator('/docs', '2a7'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -144,6 +144,12 @@ export default [
       {
         path: '/docs/Tasks/despliegue_java',
         component: ComponentCreator('/docs/Tasks/despliegue_java', '473'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/despliegue_python',
+        component: ComponentCreator('/docs/Tasks/despliegue_python', 'a1b'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

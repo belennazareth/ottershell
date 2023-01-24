@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-88d": {
+  "/docs-2a7": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -168,6 +168,10 @@
   "/docs/Tasks/despliegue_java-473": {
     "__comp": "17896441",
     "content": "a10b8c5d"
+  },
+  "/docs/Tasks/despliegue_python-a1b": {
+    "__comp": "17896441",
+    "content": "6b8d4f82"
   },
   "/docs/Tasks/escenario_openstack-6ef": {
     "__comp": "17896441",

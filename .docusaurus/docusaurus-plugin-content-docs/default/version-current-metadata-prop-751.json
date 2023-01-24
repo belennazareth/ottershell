@@ -239,6 +239,12 @@
           },
           {
             "type": "link",
+            "label": "Despliegue de aplicaciones python",
+            "href": "/docs/Tasks/despliegue_python",
+            "docId": "Tasks/despliegue_python"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -352,6 +358,12 @@
       "id": "Tasks/despliegue_java",
       "title": "Despliegue de aplicaciones Java",
       "description": "IMPORTANTE",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/despliegue_python": {
+      "id": "Tasks/despliegue_python",
+      "title": "Despliegue de aplicaciones python",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/escenario_openstack": {
