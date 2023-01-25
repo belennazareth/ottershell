@@ -197,7 +197,7 @@ target disk boots and works correctly.
 
 ## 3. Entrega la clave privada que has utilizado y un enlace para descargarme la imagen base.
 
-
+La clave se encuentra alojada en el repositorio de Github del ejercio 1, [linux_virt]() y la imagen base se encuentra en el mismo repositorio además de en el siguiente enlace: [Imagen base](https://mega.nz/file/UvI3ETLQ#-FY372jhOTtfCvW4Mup0R9n9-XpnqtXzPnjcC3qB834)
 
 
 ## 4. Ejecuta el script y cuando se pause. Entrega pantallazo donde se compruebe que se puede acceder al servidor web en la maquina1.
