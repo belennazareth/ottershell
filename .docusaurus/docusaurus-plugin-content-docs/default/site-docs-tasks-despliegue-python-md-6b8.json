@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/despliegue_python",
+  "id": "Tasks/despliegue_python",
+  "title": "Despliegue de aplicaciones python",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/despliegue_python.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/despliegue_python",
+  "permalink": "/docs/Tasks/despliegue_python",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/despliegue_python.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 24,
+  "frontMatter": {
+    "sidebar_position": 24
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Despliegue de aplicaciones Java",
+    "permalink": "/docs/Tasks/despliegue_java"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
