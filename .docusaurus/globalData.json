@@ -211,6 +211,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/vpn",
+              "path": "/docs/Tasks/vpn",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/wordpress",
               "path": "/docs/Tasks/wordpress",
               "sidebar": "tutorialSidebar"

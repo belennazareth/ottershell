@@ -245,6 +245,12 @@
           },
           {
             "type": "link",
+            "label": "Redes Privadas Virtuales",
+            "href": "/docs/Tasks/vpn",
+            "docId": "Tasks/vpn"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -514,6 +520,12 @@
       "id": "Tasks/virtualizacion_linux",
       "title": "Virtualización en Linux",
       "description": "Vamos a crear una máquina virtual por medio de un script.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/vpn": {
+      "id": "Tasks/vpn",
+      "title": "Redes Privadas Virtuales",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/wordpress": {

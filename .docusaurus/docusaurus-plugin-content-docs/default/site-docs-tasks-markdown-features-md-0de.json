@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Despliegue de aplicaciones python",
-    "permalink": "/docs/Tasks/despliegue_python"
+    "title": "Redes Privadas Virtuales",
+    "permalink": "/docs/Tasks/vpn"
   },
   "next": {
     "title": "Extras",

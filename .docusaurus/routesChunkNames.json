@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-2a7": {
+  "/docs-89d": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -272,6 +272,10 @@
   "/docs/Tasks/virtualizacion_linux-3d7": {
     "__comp": "17896441",
     "content": "147aa350"
+  },
+  "/docs/Tasks/vpn-0fa": {
+    "__comp": "17896441",
+    "content": "88b21f1a"
   },
   "/docs/Tasks/wordpress-b17": {
     "__comp": "17896441",
