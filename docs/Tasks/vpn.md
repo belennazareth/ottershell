@@ -4,7 +4,6 @@ sidebar_position: 25
 
 # Redes Privadas Virtuales
 
-## Procedimiento
 
 **A) VPN de acceso remoto con OpenVPN y certificados x509 (5 puntos)**
 
@@ -47,12 +46,9 @@ Extra 2) VPN sitio a sitio con IPsec (10 puntos)
 Montando el escenario en GNS3 usando routers CISCO o con una aplicación por software (por ejemplo, FreeS/Wan) despliega la configuración solicitada. Documenta el proceso detalladamente.
 
 
-## Entrega
+## VPN de acceso remoto con OpenVPN y certificados x509
 
-
-### VPN de acceso remoto con OpenVPN y certificados x509
-
-#### Escenario
+### Escenario
 
 ```vagrantfile
 Vagrant.configure("2") do |config|
@@ -106,7 +102,7 @@ config.vm.synced_folder ".", "/vagrant", disabled: true
 end
 ```
 
-#### server
+### server
 
 Instalamos openvpn:
 
@@ -180,6 +176,37 @@ Your new CA certificate file for publishing is at:
 ```
 
 La clave generada se guarda en /etc/openvpn/easy-rsa/pki/private/ca.key y el certificado en /etc/openvpn/easy-rsa/pki/ca.crt.
+
+Generamos el certificado y la clave privada del servidor:
+
+```bash
+sudo ./easyrsa build-server-full server nopass
+```
+
+Con salida:
+
+```bash
+vagrant@server:/etc/openvpn/easy-rsa$ sudo ./easyrsa build-server-full server nopass
+
+Using SSL: openssl OpenSSL 1.1.1n  15 Mar 2022
+Generating a RSA private key
+.................+++++
+.........................................................................................................................+++++
+writing new private key to '/etc/openvpn/easy-rsa/pki/easy-rsa-2724.zCddHx/tmp.2fDdSl'
+-----
+Using configuration from /etc/openvpn/easy-rsa/pki/easy-rsa-2724.zCddHx/tmp.2k2v1j
+Enter pass phrase for /etc/openvpn/easy-rsa/pki/private/ca.key:
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'server'
+Certificate is to be certified until Apr 30 01:11:14 2025 GMT (825 days)
+
+Write out database with 1 new entries
+Data Base Updated
+```
+
+La clave generada se guarda en /etc/openvpn/easy-rsa/pki/private/server.key y el certificado en /etc/openvpn/easy-rsa/pki/issued/server.crt.
 
 Generamos el certificado y la clave del servidor diffie-hellman, que es un algoritmo que se utiliza para generar claves de cifrado de forma segura:
 
@@ -280,8 +307,8 @@ proto udp
 dev tun
 
 ca /etc/openvpn/easy-rsa/pki/ca.crt
-cert /etc/openvpn/easy-rsa/pki/issued/client.crt
-key /etc/openvpn/easy-rsa/pki/private/client.key
+cert /etc/openvpn/easy-rsa/pki/issued/server.crt
+key /etc/openvpn/easy-rsa/pki/private/server.key
 dh /etc/openvpn/easy-rsa/pki/dh.pem
 
 topology subnet
