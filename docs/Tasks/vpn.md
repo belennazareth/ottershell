@@ -457,6 +457,130 @@ traceroute 10.99.99.1
 
 ## VPN de acceso remoto con WireGuard
 
+### Escenario
+
+```bash
+Vagrant.configure("2") do |config|
+
+config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.cpus = 1
+    libvirt.memory = 512
+  end
+
+  config.vm.define :maquina1 do |maquina1|
+    maquina1.vm.box = "debian/bullseye64"
+    maquina1.vm.hostname = "maquina1"
+    maquina1.vm.network :private_network,
+      :libvirt__network_name => "privada1",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.22.2",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+  end
+
+  config.vm.define :client do |client|
+    client.vm.box = "debian/bullseye64"
+    client.vm.hostname = "client"
+    client.vm.network :private_network,
+      :libvirt__network_name => "privada1",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.22.1",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+    client.vm.network :private_network,
+      :libvirt__network_name => "internet",
+      :libvirt__dhcp_enabled => false,
+      :ip => "172.22.0.11",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+  end
+
+  config.vm.define :server do |server|
+    server.vm.box = "debian/bullseye64"
+    server.vm.hostname = "server"
+    server.vm.network :private_network,
+      :libvirt__network_name => "internet",
+      :libvirt__dhcp_enabled => false,
+      :ip => "172.22.0.10",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+    server.vm.network :private_network,
+      :libvirt__network_name => "privada2",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.20.1",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+  end
+
+  config.vm.define :maquina2 do |maquina2|
+    maquina2.vm.box = "debian/bullseye64"
+    maquina2.vm.hostname = "maquina2"
+    maquina2.vm.network :private_network,
+      :libvirt__network_name => "privada2",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.20.2",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+  end
+
+end
+```
+
+### server
+
+Instalamos y generamos los mismos certificados que en el caso anterior:
+
+- Instalamos openvpn:
+
+```bash
+sudo apt install openvpn
+```
+
+- Habilitamos forwarding:
+
+```bash
+echo 1 > /proc/sys/net/ipv4/ip_forward
+```
+
+- Creamos PKI que sirve para generar los certificados: 
+
+```bash
+sudo cp -r /usr/share/easy-rsa /etc/openvpn
+cd /etc/openvpn/easy-rsa
+sudo ./easyrsa init-pki
+```
+
+- Generamos el certificado de la CA:
+
+```bash
+sudo ./easyrsa build-ca 
+```
+
+Donde se le da de password a la CA: `nazareth` y de nombre a la CA: `nazarethCA`
+
+- Generamos el certificado del servidor y la clave privada:
+
+```bash
+sudo ./easyrsa build-server-full server nopass
+```
+
+Se almacenan en `/etc/openvpn/easy-rsa/pki/issued/server.crt` y `/etc/openvpn/easy-rsa/pki/private/server.key`
+
+- Generamos los parámetros Diffie-Hellman:
+
+```bash
+sudo ./easyrsa gen-dh
+```
+
+Se almacena en `/etc/openvpn/easy-rsa/pki/dh.pem`
+
+
+
+
+
+
 
 ## VPN de acceso remoto con WireGuard
 
