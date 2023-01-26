@@ -132,7 +132,10 @@ echo "debian ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 Para que se realice DHCP en las dos interfaces de red, hay que editar el fichero `/etc/network/interfaces` y añadir las siguientes líneas:
 
 ```bash
-allow-hotplug enp2s0
+auto enp1s0
+iface enp1s0 inet dhcp
+
+auto enp2s0
 iface enp2s0 inet dhcp
 ```
 
@@ -145,7 +148,7 @@ ssh-keygen -t ecdsa
 Una vez generadas, copiamos la clave pública al usuario debian:
 
 ```bash
-nazare@ThousandSunny :~$ ssh-copy-id -i virt debian@192.168.124.204 
+nazare@ThousandSunny :~$ ssh-copy-id -i virt.pub debian@192.168.124.204 
 ```
 
 Y la probamos ingresando a la máquina de la siguiente forma:
@@ -160,10 +163,10 @@ Para reducir la imagen la máquina debe estar apagada, por lo que primero la apa
 virsh -c qemu:///system shutdown bullseye-base
 ```
 
-He copiado la imagen al repositorio de GitHub para que no ocupe espacio en mi disco duro:
+He copiado la imagen a mi directorio home:
 
 ```bash
-nazare@ThousandSunny :~$ sudo cp /var/lib/libvirt/images/bullseye-base.qcow2 ~/github/linux_virt
+nazare@ThousandSunny :~$ sudo cp /var/lib/libvirt/images/bullseye-base.qcow2 ~/home/nazare/
 ```
 
 Después, he cambiado el usuario de propietario de la imagen a mi usuario:
@@ -181,7 +184,7 @@ virt-sparsify bullseye-base.qcow2 bullseye-base-sparse.qcow2
 Cuya salida es la siguiente:
 
 ```bash
- nazare@ThousandSunny :~/github/linux_virt ~ virt-sparsify bullseye-base.qcow2 bullseye-base-sparse.qcow2
+ nazare@ThousandSunny :~$ virt-sparsify bullseye-base.qcow2 bullseye-base-sparse.qcow2
 
 [   0.0] Create overlay file in /tmp to protect source disk
 [   0.0] Examine source disk
@@ -197,7 +200,7 @@ target disk boots and works correctly.
 
 ## 3. Entrega la clave privada que has utilizado y un enlace para descargarme la imagen base.
 
-La clave se encuentra alojada en el repositorio de Github del ejercio 1, [linux_virt](https://github.com/belennazareth/linux_virt/tree/main/keys) y la imagen base se encuentra en el siguiente enlace: [Imagen base](https://mega.nz/file/UvI3ETLQ#-FY372jhOTtfCvW4Mup0R9n9-XpnqtXzPnjcC3qB834).
+La clave se encuentra alojada en el repositorio de Github del ejercio 1, [linux_virt](https://github.com/belennazareth/linux_virt/tree/main/keys) y la imagen base se encuentra en el siguiente enlace: [Imagen base](https://mega.nz/file/5iYE1QDY#94qGT8iHVpDCLK6b85XWsrJvlg-EJ77n2tUXBkuKYaw).
 
 
 ## 4. Ejecuta el script y cuando se pause. Entrega pantallazo donde se compruebe que se puede acceder al servidor web en la maquina1.
