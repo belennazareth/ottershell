@@ -709,6 +709,34 @@ sudo ip route del default
 sudo ip route add default via 192.168.22.1
 ```
 
+### maquina2
+
+- Configuramos las rutas:
+
+```bash
+sudo ip route del default
+sudo ip route add default via 192.168.20.1
+```
+
+### Comprobación
+
+- Comprobamos que podemos acceder a la maquina1 desde la maquina2:
+
+```bash
+traceroute 192.168.20.2
+```
+
+![vpn](/img/SAD/vpnSAD-5.png)
+
+- Comprobamos que podemos acceder a la maquina2 desde la maquina1:
+
+```bash
+traceroute 192.168.22.2
+```
+
+![vpn](/img/SAD/vpnSAD-6.png)
+
+
 ## VPN de acceso remoto con WireGuard
 
 
