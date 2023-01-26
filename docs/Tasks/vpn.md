@@ -739,5 +739,211 @@ traceroute 192.168.22.2
 
 ## VPN de acceso remoto con WireGuard
 
+## Escenario
+
+```bash
+Vagrant.configure("2") do |config|
+
+config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.cpus = 1
+    libvirt.memory = 512
+  end
+
+  config.vm.define :client do |client|
+    client.vm.box = "debian/bullseye64"
+    client.vm.hostname = "client"
+    client.vm.network :private_network,
+      :libvirt__network_name => "internet",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.122.11",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+  end
+
+  config.vm.define :server do |server|
+    server.vm.box = "debian/bullseye64"
+    server.vm.hostname = "server"
+    server.vm.network :private_network,
+      :libvirt__network_name => "internet",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.122.10",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+    server.vm.network :private_network,
+      :libvirt__network_name => "privada3",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.0.1",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+  end
+
+  config.vm.define :maquina1 do |maquina1|
+    maquina1.vm.box = "debian/bullseye64"
+    maquina1.vm.hostname = "maquina1"
+    maquina1.vm.network :private_network,
+      :libvirt__network_name => "privada3",
+      :libvirt__dhcp_enabled => false,
+      :ip => "192.168.0.2",
+      :libvirt__netmask => '255.255.255.0',
+      :libvirt__forward_mode => "veryisolated"
+  end
+
+end
+```
+
+### Procedimiento
+
+- Instalamos wireguard en el servidor y el cliente:
+
+```bash
+sudo apt install wireguard
+```
+
+- En el servidor generamos el par de claves como root:
+
+```bash
+wg genkey | tee /etc/wireguard/privatekey | wg pubkey | tee /etc/wireguard/publickey
+```
+
+Clave privada: `AMetqK+E79IlJEPCi05Ct8JllBdihArqQiNAS6k9kEU=`
+Clave pública: `qxa6n/ypAvfWZ+kfc2WhCylzKAz1Q06k1aDuxl5Z+SY=`
+
+- En el cliente generamos el par de claves como root:
+
+```bash
+wg genkey | tee /etc/wireguard/privatekey | wg pubkey | tee /etc/wireguard/publickey
+```
+
+Clave privada: `8HsTgRemwrz/JZDOJ4vdd/K4ANyR5bz8ootdu2vhF2Q=`
+Clave pública: `OWYfOUY+s1IiDAs9WJAy7MF23Z+QyiB5U/3CYKRhZF4=`
+
+- Creamos el fichero de configuración `/etc/wireguard/wg0.conf` y lo configuramos:
+
+**Servidor**
+
+```bash
+[Interface]
+Address = 10.99.99.1/24
+ListenPort = 51820
+PrivateKey = AMetqK+E79IlJEPCi05Ct8JllBdihArqQiNAS6k9kEU=
+
+[Peer]
+PublicKey = OWYfOUY+s1IiDAs9WJAy7MF23Z+QyiB5U/3CYKRhZF4=
+AllowedIPs = 10.99.99.2/32
+```
+
+**Cliente**
+
+```bash
+[Interface]
+Address = 10.99.99.2/24
+PrivateKey = 8HsTgRemwrz/JZDOJ4vdd/K4ANyR5bz8ootdu2vhF2Q=
+
+[Peer]
+PublicKey = qxa6n/ypAvfWZ+kfc2WhCylzKAz1Q06k1aDuxl5Z+SY=
+AllowedIPs = 0.0.0.0/0
+Endpoint = 192.168.22.10:51820
+PersistentKeepalive = 25
+```
+
+Siendo [interface] la configuración del servidor y [peer] la configuración del cliente. `ListenPort` es el puerto por el que escucha el servidor y `PrivateKey` es la clave privada del servidor. En [peer] `PublicKey` es la clave pública del cliente y `AllowedIPs` es la IP que se le asignará al cliente.
+
+- Activamos el bit de forwarding en el servidor:
+
+```bash
+echo 1 > /proc/sys/net/ipv4/ip_forward
+```
+
+- Modificamos los permisos del fichero de configuración para que solo root pueda modificarlo:
+
+```bash
+sudo chmod 600 /etc/wireguard/ -R
+```
+
+- Iniciamos el servicio en el servidor y en el cliente:
+
+```bash
+sudo wg-quick up /etc/wireguard/wg0.conf
+```
+
+Obtenemos la siguiente salida:
+
+**Servidor**
+
+```bash
+root@server:~# wg-quick up /etc/wireguard/wg0.conf
+
+[#] ip link add wg0 type wireguard
+[#] wg setconf wg0 /dev/fd/63
+[#] ip -4 address add 10.99.99.1/24 dev wg0
+[#] ip link set mtu 1420 up dev wg0
+```
+
+**Cliente**
+
+```bash
+root@client:~# wg-quick up /etc/wireguard/wg0.conf
+
+[#] ip link add wg0 type wireguard
+[#] wg setconf wg0 /dev/fd/63
+[#] ip -4 address add 10.99.99.2/24 dev wg0
+[#] ip link set mtu 1420 up dev wg0
+[#] wg set wg0 fwmark 51820
+[#] ip -4 route add 0.0.0.0/0 dev wg0 table 51820
+[#] ip -4 rule add not fwmark 51820 table 51820
+[#] ip -4 rule add table main suppress_prefixlength 0
+[#] sysctl -q net.ipv4.conf.all.src_valid_mark=1
+[#] nft -f /dev/fd/63
+```
+
+- Si realizamos un ip a en el servidor y en el cliente, obtenemos la siguiente salida:
+
+**Servidor**
+
+```bash
+6: wg0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1420 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/none 
+    inet 10.99.99.1/24 scope global wg0
+       valid_lft forever preferred_lft forever
+
+```
+
+**Cliente**
+
+```bash
+4: wg0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1420 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/none 
+    inet 10.99.99.2/24 scope global wg0
+       valid_lft forever preferred_lft forever
+
+```
+
+- Si realizamos un ip route en el servidor y en el cliente, obtenemos la siguiente salida:
+
+**Servidor**
+
+```bash
+10.99.99.0/24 dev wg0 proto kernel scope link src 10.99.99.1 
+```
+
+**Cliente**
+
+```bash
+10.99.99.0/24 dev wg0 proto kernel scope link src 10.99.99.2 
+```
+
+- En la maquina1 cambiaremos la configuración de red para que tenga una IP de la red modificando la red por defecto:
+
+```bash
+sudo ip route del default
+sudo ip route add default via 192.168.0.1
+```
+
+- Para comprobar que funciona correctamente, realizamos un ping del cliente al servidor:
+
+```bash
+
 
 ## VPN sitio a sitio con WireGuard
