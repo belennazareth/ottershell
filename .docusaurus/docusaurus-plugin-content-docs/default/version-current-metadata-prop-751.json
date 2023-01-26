@@ -525,7 +525,7 @@
     "Tasks/vpn": {
       "id": "Tasks/vpn",
       "title": "Redes Privadas Virtuales",
-      "description": "Procedimiento",
+      "description": "A) VPN de acceso remoto con OpenVPN y certificados x509 (5 puntos)",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/wordpress": {
