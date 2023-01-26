@@ -612,7 +612,7 @@ scp ~/client.crt vagrant@172.22.0.11:/home/vagrant/
 scp ~/client.key vagrant@172.22.0.11:/home/vagrant/
 ```
 
-- Configuramos el servidor creando el fichero `/etc/openvpn/server.conf`:
+- Configuramos el servidor creando el fichero `/etc/openvpn/server/server.conf`:
 
 ```bash
 dev tun
@@ -631,6 +631,77 @@ log /var/log/openvpn/openvpn-status.log
 
 verb 3
 ```
+
+- Arrancamos el servidor:
+
+```bash
+sudo systemctl enable --now openvpn-server@server
+```
+
+- Comprobamos que funciona:
+
+```bash
+sudo systemctl status openvpn-server@servidor
+```
+
+### client
+
+- Instalamos openvpn:
+
+```bash
+sudo apt install openvpn
+```
+
+- Activamos forwarding:
+
+```bash
+echo 1 > /proc/sys/net/ipv4/ip_forward
+```
+
+- Movemos los ficheros y cambiamos el propietario:
+
+```bash
+sudo mv ~/ca.crt /etc/openvpn/client/
+sudo mv ~/client.crt /etc/openvpn/client/
+sudo mv ~/client.key /etc/openvpn/client/
+
+sudo chown root: /etc/openvpn/client/ca.crt
+sudo chown root: /etc/openvpn/client/client.crt
+sudo chown root: /etc/openvpn/client/client.key
+```
+
+- Creamos el fichero de configuración `/etc/openvpn/client/client.conf` y lo configuramos:
+
+```bash
+dev tun
+remote 172.22.0.10 #ip del servidor server
+ifconfig 10.99.99.2 10.99.99.1
+route 192.168.20.0 255.255.0.0 #red interna de server compartida con maquina2
+tls-client
+ca /etc/openvpn/client/ca.crt
+cert /etc/openvpn/client/cliente.crt
+key /etc/openvpn/client/cliente.key
+comp-lzo
+keepalive 10 60
+log /var/log/openvpn/cliente.log
+
+verb 3
+```
+
+- Arrancamos el cliente:
+
+```bash
+sudo systemctl enable --now openvpn-client@client
+```
+
+- Comprobamos que funciona:
+
+```bash
+sudo systemctl status openvpn-client@client
+```
+
+
+
 
 ## VPN de acceso remoto con WireGuard
 
