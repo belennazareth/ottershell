@@ -844,7 +844,7 @@ PrivateKey = 8HsTgRemwrz/JZDOJ4vdd/K4ANyR5bz8ootdu2vhF2Q=
 [Peer]
 PublicKey = qxa6n/ypAvfWZ+kfc2WhCylzKAz1Q06k1aDuxl5Z+SY=
 AllowedIPs = 0.0.0.0/0
-Endpoint = 192.168.22.10:51820
+Endpoint = 192.168.122.10:51820  #ip externa del servidor
 PersistentKeepalive = 25
 ```
 
@@ -870,7 +870,7 @@ sudo wg-quick up /etc/wireguard/wg0.conf
 
 Obtenemos la siguiente salida:
 
-**Servidor**
+- **Servidor**
 
 ```bash
 root@server:~# wg-quick up /etc/wireguard/wg0.conf
@@ -881,7 +881,7 @@ root@server:~# wg-quick up /etc/wireguard/wg0.conf
 [#] ip link set mtu 1420 up dev wg0
 ```
 
-**Cliente**
+- **Cliente**
 
 ```bash
 root@client:~# wg-quick up /etc/wireguard/wg0.conf
