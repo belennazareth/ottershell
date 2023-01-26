@@ -455,7 +455,7 @@ traceroute 10.99.99.1
 ![vpn](/img/SAD/vpnSAD-4.png)
 
 
-## VPN de acceso remoto con WireGuard
+## VPN sitio a sitio con OpenVPN y certificados x509
 
 ### Escenario
 
@@ -676,11 +676,11 @@ sudo chown root: /etc/openvpn/client/client.key
 dev tun
 remote 172.22.0.10 #ip del servidor server
 ifconfig 10.99.99.2 10.99.99.1
-route 192.168.20.0 255.255.0.0 #red interna de server compartida con maquina2
+route 192.168.20.0 255.255.255.0 #red interna de server compartida con maquina2
 tls-client
 ca /etc/openvpn/client/ca.crt
-cert /etc/openvpn/client/cliente.crt
-key /etc/openvpn/client/cliente.key
+cert /etc/openvpn/client/client.crt
+key /etc/openvpn/client/client.key
 comp-lzo
 keepalive 10 60
 log /var/log/openvpn/cliente.log
@@ -700,8 +700,14 @@ sudo systemctl enable --now openvpn-client@client
 sudo systemctl status openvpn-client@client
 ```
 
+### maquina1
 
+- Configuramos las rutas:
 
+```bash
+sudo ip route del default
+sudo ip route add default via 192.168.22.1
+```
 
 ## VPN de acceso remoto con WireGuard
 
