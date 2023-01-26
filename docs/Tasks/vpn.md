@@ -146,6 +146,192 @@ Your newly created PKI dir is: /etc/openvpn/easy-rsa/pki
 
 ```
 
+Lo siguiente será la creación de la CA, que es el certificado que va a firmar los certificados de los clientes y del servidor:
+
+```bash
+sudo ./easyrsa build-ca
+```
+
+Al ejecutarlo obtenemos la siguiente salida en la que pide un passphrase para la CA(nazareth) y un Common Name (CN) para la CA(nazarethCA):
+
+
+```bash
+root@server:/etc/openvpn/easy-rsa# ./easyrsa build-ca
+Using SSL: openssl OpenSSL 1.1.1n  15 Mar 2022
+
+Enter New CA Key Passphrase: 
+Re-Enter New CA Key Passphrase: 
+Generating RSA private key, 2048 bit long modulus (2 primes)
+.......................................+++++
+........+++++
+e is 65537 (0x010001)
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Common Name (eg: your user, host, or server name) [Easy-RSA CA]:nazarethCA
+
+CA creation complete and you may now import and sign cert requests.
+Your new CA certificate file for publishing is at:
+/etc/openvpn/easy-rsa/pki/ca.crt
+```
+
+La clave generada se guarda en /etc/openvpn/easy-rsa/pki/private/ca.key y el certificado en /etc/openvpn/easy-rsa/pki/ca.crt.
+
+Generamos el certificado y la clave del servidor diffie-hellman, que es un algoritmo que se utiliza para generar claves de cifrado de forma segura:
+
+```bash
+sudo ./easyrsa gen-dh
+```
+
+Con salida similar a la siguiente:
+
+```bash
+root@server:/etc/openvpn/easy-rsa# ./easyrsa gen-dh
+Using SSL: openssl OpenSSL 1.1.1n  15 Mar 2022
+Generating DH parameters, 2048 bit long safe prime, generator 2
+This is going to take a long time
+........................................................................+....................................................................................................................................................+...............................+.................................................+....................+......................................................................................................................................................................................+..........................................................................................+...............................................................+............................................................................................................................................................................+.........................................................................................................................................................................+...........................................................................................................................................................................................................+...........................................................................................................................................................................................................................................................................................+.....................................................................................+..................+..............................................+.......+.................................................................................................................................................................................................................+......+..............................................................................................++*++*++*++*
+
+DH parameters of size 2048 created at /etc/openvpn/easy-rsa/pki/dh.pem
+```
+
+Generamos el certificado y la clave del cliente VPN:
+
+```bash
+sudo ./easyrsa build-client-full client nopass
+```
+
+Obtenemos la siguiente salida:
+
+```bash
+root@server:/etc/openvpn/easy-rsa# ./easyrsa build-client-full client nopass
+
+Using SSL: openssl OpenSSL 1.1.1n  15 Mar 2022
+Generating a RSA private key
+..........+++++
+..................................+++++
+writing new private key to '/etc/openvpn/easy-rsa/pki/easy-rsa-2143.TYQit1/tmp.C8dJPm'
+-----
+Using configuration from /etc/openvpn/easy-rsa/pki/easy-rsa-2143.TYQit1/tmp.Btnfcu
+Enter pass phrase for /etc/openvpn/easy-rsa/pki/private/ca.key:
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'client'
+Certificate is to be certified until Apr 29 22:36:37 2025 GMT (825 days)
+
+Write out database with 1 new entries
+Data Base Updated
+```
+
+Se almacenará el certificado en /etc/openvpn/easy-rsa/pki/issued/client.crt y la clave en /etc/openvpn/easy-rsa/pki/private/client.key.
+
+Pasamos los ficheros al cliente VPN para que pueda conectarse al servidor:
+
+```bash
+sudo cp -rp /etc/openvpn/easy-rsa/pki/ca.crt ~
+sudo cp -rp /etc/openvpn/easy-rsa/pki/issued/client.crt ~
+sudo cp -rp /etc/openvpn/easy-rsa/pki/private/client.key ~
+```
+
+Y cambiamos el propietario de los ficheros para que el usuario cliente pueda acceder a ellos al hacer scp:
+
+```bash
+sudo chown vagrant: ~/ca.crt
+sudo chown vagrant: ~/client.crt
+sudo chown vagrant: ~/client.key
+```
+
+Generamos una clave ssh en el servidor para que el cliente pueda conectarse por ssh:
+
+```bash
+ssh-keygen
+```
+
+Y la copiamos al cliente:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+Pasamos al cliente los ficheros:
+
+```bash
+scp ~/ca.crt vagrant@192.168.22.15:/home/vagrant
+scp ~/client.crt vagrant@192.168.22.15:/home/vagrant
+scp ~/client.key vagrant@192.168.22.15:/home/vagrant
+```
+
+Configuramos el servidor VPN copiando el fichero de configuración de ejemplo de openvpn:
+
+```bash
+sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf /etc/openvpn/server/servidor.conf
+```
+
+Modificamos el fichero de configuración del servidor para que quede de la siguiente forma:
+
+```bash
+port 1194
+proto udp
+dev tun
+
+ca /etc/openvpn/easy-rsa/pki/ca.crt
+cert /etc/openvpn/easy-rsa/pki/issued/client.crt
+key /etc/openvpn/easy-rsa/pki/private/client.key
+dh /etc/openvpn/easy-rsa/pki/dh.pem
+
+topology subnet
+
+# Configure server mode and supply a VPN subnet
+# for OpenVPN to draw client addresses from.
+# The server will take 10.8.0.1 for itself,
+# the rest will be made available to clients.
+# Each client will be able to reach the server
+# on 10.8.0.1. Comment this line out if you are
+# ethernet bridging. See the man page for more info.
+#Configuración del tunel donde la ip del servidor: 10.8.8.1
+server 10.8.8.0 255.255.255.0
+ifconfig-pool-persist /var/log/openvpn/ipp.txt
+
+push "route 192.168.22.0 255.255.255.0"
+
+keepalive 10 120
+cipher AES-256-CBC
+persist-key
+persist-tun
+status /var/log/openvpn/openvpn-status.log
+verb 3
+explicit-exit-notify 1
+```
+
+Inicializamos el servicio de openvpn:
+
+```bash
+sudo systemctl enable --now openvpn-server@servidor
+```
+
+Obteniendo de resultado:
+
+```bash
+vagrant@server:~$ sudo systemctl enable --now openvpn-server@servidor
+
+Created symlink /etc/systemd/system/multi-user.target.wants/openvpn-server@servidor.service → /lib/systemd/system/openvpn-server@.service.
+```
+
+Y comprobamos que el servicio está activo:
+
+```bash
+sudo systemctl status openvpn-server@servidor
+```
+
+![vpn](/img/SAD/vpnSAD.png)
+
+
+
 ### VPN de acceso remoto con WireGuard
 
 

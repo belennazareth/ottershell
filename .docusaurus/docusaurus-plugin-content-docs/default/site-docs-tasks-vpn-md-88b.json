@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/vpn",
+  "id": "Tasks/vpn",
+  "title": "Redes Privadas Virtuales",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/vpn.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/vpn",
+  "permalink": "/docs/Tasks/vpn",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/vpn.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 25,
+  "frontMatter": {
+    "sidebar_position": 25
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Despliegue de aplicaciones python",
+    "permalink": "/docs/Tasks/despliegue_python"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
