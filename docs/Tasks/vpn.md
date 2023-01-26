@@ -455,10 +455,10 @@ traceroute 10.99.99.1
 ![vpn](/img/SAD/vpnSAD-4.png)
 
 
-### VPN de acceso remoto con WireGuard
+## VPN de acceso remoto con WireGuard
 
 
-### VPN de acceso remoto con WireGuard
+## VPN de acceso remoto con WireGuard
 
 
-### VPN sitio a sitio con WireGuard
+## VPN sitio a sitio con WireGuard
