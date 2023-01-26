@@ -96,7 +96,7 @@ config.vm.synced_folder ".", "/vagrant", disabled: true
     maquina1.vm.box = "debian/bullseye64"
     maquina1.vm.hostname = "maquina1"
     maquina1.vm.network :private_network,
-      :libvirt__network_name => "interna",
+      :libvirt__network_name => "interna-vpn",
       :libvirt__dhcp_enabled => false,
       :ip => "172.22.0.7",
       :libvirt__netmask => '255.255.255.0',
@@ -293,11 +293,11 @@ topology subnet
 # Each client will be able to reach the server
 # on 10.8.0.1. Comment this line out if you are
 # ethernet bridging. See the man page for more info.
-#Configuración del tunel donde la ip del servidor: 10.8.8.1
-server 10.8.8.0 255.255.255.0
+#Configuración del tunel donde la ip del servidor: 10.99.99.1
+server 10.99.99.0 255.255.255.0 
 ifconfig-pool-persist /var/log/openvpn/ipp.txt
 
-push "route 192.168.22.0 255.255.255.0"
+push "route 172.22.0.0 255.255.255.0" #IP de la red interna
 
 keepalive 10 120
 cipher AES-256-CBC
@@ -329,6 +329,97 @@ sudo systemctl status openvpn-server@servidor
 ```
 
 ![vpn](/img/SAD/vpnSAD.png)
+
+
+#### client
+
+Instalamos openvpn en el cliente:
+
+```bash
+sudo apt install openvpn
+```
+
+Y movemos los ficheros de configuración a la carpeta /etc/openvpn/client para que el cliente pueda conectarse al servidor y cambiamos el propietario de los ficheros:
+
+```bash
+sudo mv ~/ca.crt /etc/openvpn/client
+sudo mv ~/client.crt /etc/openvpn/client
+sudo mv ~/client.key /etc/openvpn/client
+
+sudo chown root: /etc/openvpn/client/*
+```
+
+Configuramos el cliente VPN copiando el fichero de configuración de ejemplo de openvpn:
+
+```bash
+sudo cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/cliente.conf
+```
+
+Modificamos el fichero de configuración del cliente para que quede de la siguiente forma:
+
+```bash
+client
+dev tun
+proto udp
+
+remote 192.168.22.17 1194 #IP del servidor
+resolv-retry infinite
+nobind
+
+persist-key
+persist-tun
+
+ca /etc/openvpn/client/ca.crt
+cert /etc/openvpn/client/client.crt
+key /etc/openvpn/client/client.key
+
+remote-cert-tls server
+cipher AES-256-CBC
+verb 3
+```
+
+Habilitamos el servicio de openvpn:
+
+```bash
+sudo systemctl enable --now openvpn-client@cliente
+```
+
+Obteniendo de resultado:
+
+```bash
+vagrant@client:~$ sudo systemctl enable --now openvpn-client@cliente
+
+Created symlink /etc/systemd/system/multi-user.target.wants/openvpn-client@cliente.service → /lib/systemd/system/openvpn-client@.service.
+```
+
+Y comprobamos que el servicio está activo:
+
+```bash
+sudo systemctl status openvpn-client@cliente
+```
+
+![vpn](/img/SAD/vpnSAD-2.png)
+
+#### maquina1
+
+En esta máquina cambiamos las rutas por defecto para que todas las peticiones que se hagan por la red interna pasen por el servidor VPN y no por el router, colocando la ip de la red interna del servidor VPN como puerta de enlace:
+
+```bash
+sudo ip route del default
+sudo ip route add default via 172.22.0.5
+```
+
+#### Comprobación
+
+Desde la máquina client hacemos una petición a la máquina1:
+
+```bash
+```
+
+También a la maquina server:
+
+```bash
+```
 
 
 
