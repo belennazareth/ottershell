@@ -358,7 +358,7 @@ sudo systemctl status openvpn-server@servidor
 ![vpn](/img/SAD/vpnSAD.png)
 
 
-#### client
+### client
 
 Instalamos openvpn en el cliente:
 
@@ -427,7 +427,7 @@ sudo systemctl status openvpn-client@cliente
 
 ![vpn](/img/SAD/vpnSAD-2.png)
 
-#### maquina1
+### maquina1
 
 En esta máquina cambiamos las rutas por defecto para que todas las peticiones que se hagan por la red interna pasen por el servidor VPN y no por el router, colocando la ip de la red interna del servidor VPN como puerta de enlace:
 
@@ -436,18 +436,23 @@ sudo ip route del default
 sudo ip route add default via 172.22.0.5
 ```
 
-#### Comprobación
+### Comprobación
 
 Desde la máquina client hacemos una petición a la máquina1:
 
 ```bash
+traceroute 172.22.0.7
 ```
+
+![vpn](/img/SAD/vpnSAD-3.png)
 
 También a la maquina server:
 
 ```bash
+traceroute 10.99.99.1
 ```
 
+![vpn](/img/SAD/vpnSAD-4.png)
 
 
 ### VPN de acceso remoto con WireGuard
