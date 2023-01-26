@@ -576,11 +576,61 @@ sudo ./easyrsa gen-dh
 
 Se almacena en `/etc/openvpn/easy-rsa/pki/dh.pem`
 
+- Generamos el certificado del cliente y la clave privada:
 
+```bash
+sudo ./easyrsa build-client-full client nopass
+```
 
+Se almacenan en `/etc/openvpn/easy-rsa/pki/issued/client.crt` y `/etc/openvpn/easy-rsa/pki/private/client.key`
 
+- Generamos la clave ssh:
 
+```bash
+ssh-keygen
+```
 
+La pasamos al cliente:
+
+```bash
+nano ~/.ssh/authorized_keys
+```
+
+- Pasamos los ficheros al cliente:
+
+```bash
+sudo cp -rp /etc/openvpn/easy-rsa/pki/ca.crt ~
+sudo cp -rp /etc/openvpn/easy-rsa/pki/issued/client.crt ~
+sudo cp -rp /etc/openvpn/easy-rsa/pki/private/client.key ~
+
+sudo chown vagrant: ~/ca.crt
+sudo chown vagrant: ~/client.crt
+sudo chown vagrant: ~/client.key
+
+scp ~/ca.crt vagrant@172.22.0.11:/home/vagrant/
+scp ~/client.crt vagrant@172.22.0.11:/home/vagrant/
+scp ~/client.key vagrant@172.22.0.11:/home/vagrant/
+```
+
+- Configuramos el servidor creando el fichero `/etc/openvpn/server.conf`:
+
+```bash
+dev tun
+ifconfig 10.99.99.1 10.99.99.2
+route 192.168.22.0 255.255.255.0 #red interna de client compartida con maquina1
+tls-server #habilita tls
+
+dh /etc/openvpn/easy-rsa/pki/dh.pem
+ca /etc/openvpn/easy-rsa/pki/ca.crt
+cert /etc/openvpn/easy-rsa/pki/issued/server.crt
+key /etc/openvpn/easy-rsa/pki/private/server.key
+
+comp-lzo
+keepalive 10 60
+log /var/log/openvpn/openvpn-status.log
+
+verb 3
+```
 
 ## VPN de acceso remoto con WireGuard
 
