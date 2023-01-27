@@ -210,22 +210,23 @@ La clave se encuentra alojada en el repositorio de Github del ejercio 1, [linux_
 
 ## 5. Al finalizar el script: pantallazo donde se compruebe que se puede acceder al servidor web con la IP pública.
 
-
+![web2](/img/HLC/virtHLC-3.png)
 
 
 ## 6. Al finalizar el script: Pantallazos para comprobar:
 
 ### - Que la máquina tiene montado un disco en el directorio /var/www/html.
 
-
+lsblk -f
 
 ### - Que la máquina tiene 2G de RAM.
 
-
+free -h
 
 ### - Que accediendo a la máquina puedes acceder al contenedor.
 
-
+lxc attach container1
 
 ### - Que se ha ha creado un snapshot.
 
+virsh -c qemu:///system snapshot-list bullseye-base
