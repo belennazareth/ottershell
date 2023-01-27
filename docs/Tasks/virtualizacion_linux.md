@@ -217,16 +217,27 @@ La clave se encuentra alojada en el repositorio de Github del ejercio 1, [linux_
 
 ### - Que la máquina tiene montado un disco en el directorio /var/www/html.
 
-lsblk -f
+``lsblk -f``
+
+![lsblk](/img/HLC/virtHLC-4.png)
+
 
 ### - Que la máquina tiene 2G de RAM.
 
-free -h
+``free -h``
+
+![free](/img/HLC/virtHLC-5.png)
+
 
 ### - Que accediendo a la máquina puedes acceder al contenedor.
 
-lxc attach container1
+``lxc attach container1``
+
+![lxc](/img/HLC/virtHLC-6.png)
+
 
 ### - Que se ha ha creado un snapshot.
 
-virsh -c qemu:///system snapshot-list bullseye-base
+``ls -la | grep maquina1``
+
+![snap](/img/HLC/virtHLC-7.png)
