@@ -941,9 +941,32 @@ sudo ip route del default
 sudo ip route add default via 192.168.0.1
 ```
 
-- Para comprobar que funciona correctamente, realizamos un ping del cliente al servidor:
+- Para comprobar que funciona correctamente, realizamos un traceroute del cliente al servidor:
 
 ```bash
+traceroute 192.168.0.1
+```
+
+![vpn](/img/SAD/vpnSAD-7.png)
+
+
+### Windows
+
+- Descargamos el cliente de WireGuard para Windows desde [aquí](https://www.wireguard.com/install/).
 
 
 ## VPN sitio a sitio con WireGuard
+
+- Montamos el escenario usando el vagrantfile del apartado b.
+
+- Cambiamos las puertas de enlaces de las interfaces de red de las máquinas:
+
+```bash
+vagrant@maquina1:~$ sudo ip r del default
+vagrant@maquina1:~$ sudo ip r add default via 192.168.22.1
+
+vagrant@maquina2:~$ sudo ip r del default
+vagrant@maquina2:~$ sudo ip r add default via 192.168.20.1
+
+
+```
