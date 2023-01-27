@@ -205,10 +205,11 @@ La clave se encuentra alojada en el repositorio de Github del ejercio 1, [linux_
 
 ## 4. Ejecuta el script y cuando se pause. Entrega pantallazo donde se compruebe que se puede acceder al servidor web en la maquina1.
 
-
+![web](/img/HLC/virtHLC-2.png)
 
 
 ## 5. Al finalizar el script: pantallazo donde se compruebe que se puede acceder al servidor web con la IP pública.
+
 
 
 
