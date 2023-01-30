@@ -495,7 +495,7 @@
     "Tasks/router_nat": {
       "id": "Tasks/router_nat",
       "title": "Creación y configuración de un escenario router-nat",
-      "description": "1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/servidor_lamp": {
