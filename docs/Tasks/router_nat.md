@@ -80,6 +80,12 @@ Queremos configurar el escenario con ansible, para que cumpla lo siguiente:
 
 - La máquina cliente debe tener acceso a internet. Para ello debe salir por eth1 y la máquina router debe estar configurada para enrutar las peticiones de las máquinas conectadas a la red privada. Del mismo modo, eth0 sólo se utiliza para acceder con vagrant ssh. Debes pensar qué configuración debe tener la máquina cliente: puerta de enlace, configuración dns,…
 
+Para esto 
+
+```bash
+
+```
+
 - La máquina cliente tendrá un servidor web instalado, la máquina router hará DNAT para que podamos acceder a la página usando su IP pública.
 
 La receta ansible debe tener al menos 4 roles:
