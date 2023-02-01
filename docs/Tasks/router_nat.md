@@ -109,12 +109,12 @@ Y obtenemos el siguiente resultado:
 
 ## Entrega
 
-1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.
+**1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.**
 
 [Repositorio](https://github.com/belennazareth/vagrant_ansible)
 
 
-2. Entrega una captura de pantalla accediendo por ssh a las dos máquinas (sin utilizar vagrant ssh, es decir sin hacer conexiones a eth0). Usa la opción -A de ssh para acceder al cliente.
+**2. Entrega una captura de pantalla accediendo por ssh a las dos máquinas (sin utilizar vagrant ssh, es decir sin hacer conexiones a eth0). Usa la opción -A de ssh para acceder al cliente.**
 
 ```bash
 ssh -A vagrant@192.168.1.105
@@ -127,29 +127,35 @@ ssh -AJ vagrant@192.168.1.105 vagrant@10.0.0.2
 *Nota: accedemos al cliente por con -AJ para que haga puente con el router y así poder acceder a la máquina cliente desde el router.
 
 
-3. Entrega capturas de pantalla donde se vean las puertas de enlaces de los dos equipos.
+**3. Entrega capturas de pantalla donde se vean las puertas de enlaces de los dos equipos.**
 
 ```bash
 ip route
 ```
 
 * Router
+
 ![Term](/img/SRI/practicaSRI-11.png)
 
+
 * Cliente
+
 ![Term](/img/SRI/practicaSRI-12.png)
 
 
-4. Entrega capturas de pantalla donde se vean las máquinas haciendo ping al exterior.
+**4. Entrega capturas de pantalla donde se vean las máquinas haciendo ping al exterior.**
 
 ```bash
 ping 8.8.8.8
 ```
 
 * Router
+
 ![Term](/img/SRI/practicaSRI-13.png)
 
+
 * Cliente
+
 ![Term](/img/SRI/practicaSRI-14.png)
 
 *Nota: para que esto funcione se tienen que conectar las dos máquinas para que el cliente pueda acceder al exterior a través del router:
@@ -159,7 +165,7 @@ up iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth1 -j MASQUERADE
 ```
 
 
-5. Entrega una captura de pantalla donde se vea un acceso a la página web alojada en la máquina cliente.
+**5. Entrega una captura de pantalla donde se vea un acceso a la página web alojada en la máquina cliente.**
 
 ![Term](/img/SRI/practicaSRI-15.png)
 
