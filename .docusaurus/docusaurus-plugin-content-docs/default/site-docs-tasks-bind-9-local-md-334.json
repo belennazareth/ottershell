@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/bind9_local",
   "id": "Tasks/bind9_local",
   "title": "Instalación y configuración del servidor bind9 en nuestra red local",
-  "description": "",
+  "description": "Procedimiento",
   "source": "@site/docs/Tasks/bind9_local.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/bind9_local",

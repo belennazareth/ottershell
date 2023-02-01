@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-89d": {
+  "/docs-775": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -232,6 +232,10 @@
   "/docs/Tasks/nginx_php-77d": {
     "__comp": "17896441",
     "content": "a168c652"
+  },
+  "/docs/Tasks/openLDAP-6a9": {
+    "__comp": "17896441",
+    "content": "46843c04"
   },
   "/docs/Tasks/parametros_kernel-f29": {
     "__comp": "17896441",

@@ -161,6 +161,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/openLDAP",
+              "path": "/docs/Tasks/openLDAP",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/parametros_kernel",
               "path": "/docs/Tasks/parametros_kernel",
               "sidebar": "tutorialSidebar"

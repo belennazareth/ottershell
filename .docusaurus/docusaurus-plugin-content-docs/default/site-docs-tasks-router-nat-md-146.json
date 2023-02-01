@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Ejercicios gestión de paquetería",
-    "permalink": "/docs/Tasks/gestion_paqueteria_aso"
+    "title": "Instalación y configuración inicial de OpenLDAP",
+    "permalink": "/docs/Tasks/openLDAP"
   },
   "next": {
     "title": "Clonación e instantáneas de máquinas virtuales",

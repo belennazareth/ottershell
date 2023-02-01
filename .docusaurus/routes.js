@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '89d'),
+    component: ComponentCreator('/docs', '775'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -240,6 +240,12 @@ export default [
       {
         path: '/docs/Tasks/nginx_php',
         component: ComponentCreator('/docs/Tasks/nginx_php', '77d'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/openLDAP',
+        component: ComponentCreator('/docs/Tasks/openLDAP', '6a9'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
