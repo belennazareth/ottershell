@@ -83,10 +83,19 @@ Significa que el usuario no tiene nuestra firma registrada/firmada dejándola co
 * **Asegurate que te vuelves a bajar las claves públicas de tus compañeros que tengan las tres firmas.**
 
 
-Primero subimos la clave al servidor de claves de ubuntu `keyserver.ubuntu.com`:
+Primero subimos la clave pública al servidor de claves de ubuntu `keyserver.ubuntu.com`:
 
+```bash
+gpg --keyserver keyserver.ubuntu.com --send-keys 522E1EE9CC010A467AA2318919CFB634F516F12A
+```
 
+![crip](/img/SAD/cripto2SAD.png)
 
+Lo siguiente será firmar las claves de los compañeros, para ello primero descargamos las claves de los compañeros:
+
+```bash
+gpg 
+```
 
 ### 4. Muestra las firmas que tiene tu clave pública.
 
