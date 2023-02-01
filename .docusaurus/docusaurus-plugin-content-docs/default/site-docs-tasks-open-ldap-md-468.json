@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/openLDAP",
+  "id": "Tasks/openLDAP",
+  "title": "Instalación y configuración inicial de OpenLDAP",
+  "description": "Realiza la instalación y configuración básica de OpenLDAP en alfa,utilizando como base el nombre DNS asignado. Deberás crear un usuario llamado prueba y configurar una máquina cliente basada en Debian y Rocky para que pueda validarse en servidor ldap configurado anteriormente con el usuario prueba.",
+  "source": "@site/docs/Tasks/openLDAP.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/openLDAP",
+  "permalink": "/docs/Tasks/openLDAP",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/openLDAP.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ejercicios gestión de paquetería",
+    "permalink": "/docs/Tasks/gestion_paqueteria_aso"
+  },
+  "next": {
+    "title": "Creación y configuración de un escenario router-nat",
+    "permalink": "/docs/Tasks/router_nat"
+  }
+}
