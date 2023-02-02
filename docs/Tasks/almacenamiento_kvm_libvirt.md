@@ -1,10 +1,10 @@
 ---
-sidebar_position: 17
+sidebar_position: 26
 ---
 
 # Gestión de pool de almacenamiento lógico en KVM/libvirt
 
-1. Crea con virsh un nuevo pool de almacenamiento de tipo lógico. Para ello, lo más fácil, es tener un grupo de volúmenes con espacio libre.
+1.- Crea con virsh un nuevo pool de almacenamiento de tipo lógico. Para ello, lo más fácil, es tener un grupo de volúmenes con espacio libre.
 
 ```bash
 virsh -c qemu:///system pool-define-as --name pool1 --type logical --source-name /dev/vg01
@@ -16,7 +16,7 @@ virsh -c qemu:///system v
 *Nota: **IMPORTANTE** primero hay que crearlo, luego definirlo y por último ativarlo.
 
 
-2. Crea un volumen en ese pool de almacenamiento. Comprueba que se ha creado un volumen lógico nuevo en el grupo de volúmenes.
+2.- Crea un volumen en ese pool de almacenamiento. Comprueba que se ha creado un volumen lógico nuevo en el grupo de volúmenes.
 
 ```bash
 virsh -c qemu:///system vol-create-as pool1 vol_mv1 10G
@@ -27,7 +27,7 @@ sudo lvs
 ![lvs](/img/SRI+HLC/taller1SRI7.png)
 
 
-3. Usa virt-install para crear una máquina virtual cuyo disco corresponda al volumen que has creado anteriormente.
+3.- Usa virt-install para crear una máquina virtual cuyo disco corresponda al volumen que has creado anteriormente.
 
 ```bash
 virt-install --connect qemu:///system \
@@ -47,7 +47,7 @@ virt-install --connect qemu:///system --virt-type kvm --name mv1 --cdrom ~/Escri
 ```
 
 
-4. Una vez que la máquina este funcionando, crea un nuevo volumen y añádelo a la máquina.
+4.- Una vez que la máquina este funcionando, crea un nuevo volumen y añádelo a la máquina.
 
 ```bash
 virsh -c qemu:///system vol-create-as pool1 vol_mv2 2G
@@ -55,7 +55,7 @@ virsh -c qemu:///system attach-disk mv1 /dev/vg01/vol_mv2 vdb --persistent
 ```
 
 
-5. Apaga la máquina, y siguiendo el artículo [Acceder a una imagen de disco KVM ubicada en un volumen lógico](https://albertomolina.wordpress.com/2009/12/14/acceder-a-una-imagen-de-disco-kvm-ubicada-en-un-volumen-logico/) monta la partición del disco de la máquina en tu anfitrión para acceder a sistema de archivos.
+5.- Apaga la máquina, y siguiendo el artículo [Acceder a una imagen de disco KVM ubicada en un volumen lógico](https://albertomolina.wordpress.com/2009/12/14/acceder-a-una-imagen-de-disco-kvm-ubicada-en-un-volumen-logico/) monta la partición del disco de la máquina en tu anfitrión para acceder a sistema de archivos.
 
 ```bash
 virsh -c qemu:///system shutdown mv1
@@ -116,6 +116,7 @@ lrwxrwxrwx  1 root root    28 feb  2 10:20 vmlinuz.old -> boot/vmlinuz-5.10.0-18
 ## Entrega
 
 **1. Instrucción para crear el pool de almacenamiento.**
+
 
 
 **2. Instrucción para crear el volumen.**
