@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/despliegue_python"
   },
   "next": {
-    "title": "Protocolo DHCP",
-    "permalink": "/docs/Tasks/dhcp"
+    "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
+    "permalink": "/docs/Tasks/almacenamiento_kvm_libvirt"
   }
 }

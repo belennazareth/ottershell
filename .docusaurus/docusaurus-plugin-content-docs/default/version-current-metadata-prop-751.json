@@ -215,12 +215,6 @@
           },
           {
             "type": "link",
-            "label": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
-            "href": "/docs/Tasks/almacenamiento_kvm_libvirt",
-            "docId": "Tasks/almacenamiento_kvm_libvirt"
-          },
-          {
-            "type": "link",
             "label": "Criptografía II: Integridad, firmas y autenticación",
             "href": "/docs/Tasks/criptografia2",
             "docId": "Tasks/criptografia2"
@@ -260,6 +254,12 @@
             "label": "Redes Privadas Virtuales",
             "href": "/docs/Tasks/vpn",
             "docId": "Tasks/vpn"
+          },
+          {
+            "type": "link",
+            "label": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
+            "href": "/docs/Tasks/almacenamiento_kvm_libvirt",
+            "docId": "Tasks/almacenamiento_kvm_libvirt"
           },
           {
             "type": "link",
@@ -321,7 +321,7 @@
     "Tasks/almacenamiento_kvm_libvirt": {
       "id": "Tasks/almacenamiento_kvm_libvirt",
       "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
-      "description": "1. Crea con virsh un nuevo pool de almacenamiento de tipo lógico. Para ello, lo más fácil, es tener un grupo de volúmenes con espacio libre.",
+      "description": "1.- Crea con virsh un nuevo pool de almacenamiento de tipo lógico. Para ello, lo más fácil, es tener un grupo de volúmenes con espacio libre.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/apache_wsgi": {

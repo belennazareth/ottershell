@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
-    "permalink": "/docs/Tasks/almacenamiento_kvm_libvirt"
+    "title": "Instalación/migración de aplicaciones web PHP",
+    "permalink": "/docs/Tasks/migracion_php"
   },
   "next": {
     "title": "Montaje NFS mediante systemd",

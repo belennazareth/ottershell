@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Redes Privadas Virtuales",
-    "permalink": "/docs/Tasks/vpn"
+    "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
+    "permalink": "/docs/Tasks/almacenamiento_kvm_libvirt"
   },
   "next": {
     "title": "Markdown Features",
