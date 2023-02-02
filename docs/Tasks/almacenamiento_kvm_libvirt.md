@@ -149,8 +149,84 @@ nazare@ThousandSunny:~$ virsh -c qemu:///system pool-list
 
 **2. Instrucción para crear el volumen.**
 
+Para crear el volumen se ha usado el comando:
+
+```bash
+virsh -c qemu:///system vol-create-as pool1 vol_mv1 10G
+```
+
+Y se ha comprobado que se ha creado correctamente con el comando:
+
+```bash
+sudo lvs
+```
+
+![KP](/img/SRI+HLC/taller1SRI7.png)
+
 
 **3. Una vez instalado el sistema, la configuración XML de la máquina donde se ve el almacenamiento de la misma (se deben ver los dos discos).**
+
+En la siguiente imagen se ven ambos discos de la máquina virtual, y como uno aparece como `<driver name="qemu" type="raw" cache="none" io="native"/>` y el otro como `<driver name="qemu" type="qcow2"/>`:
+
+![KP](/img/SRI+HLC/taller1SRI7-4.png)
+
+El código XML de la máquina virtual es el siguiente:
+
+```xml
+<domain type="kvm">
+  <name>mv1</name>
+  <uuid>0bc92500-5d44-4db7-9bc4-6c217825876d</uuid>
+  <metadata>
+    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
+      <libosinfo:os id="http://debian.org/debian/10"/>
+    </libosinfo:libosinfo>
+  </metadata>
+  <memory unit="KiB">1048576</memory>
+  <currentMemory unit="KiB">1048576</currentMemory>
+  <vcpu placement="static">1</vcpu>
+  <os>
+    <type arch="x86_64" machine="pc-q35-5.2">hvm</type>
+    <boot dev="hd"/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <vmport state="off"/>
+  </features>
+  <cpu mode="host-model" check="partial"/>
+  <clock offset="utc">
+    <timer name="rtc" tickpolicy="catchup"/>
+    <timer name="pit" tickpolicy="delay"/>
+    <timer name="hpet" present="no"/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <pm>
+    <suspend-to-mem enabled="no"/>
+    <suspend-to-disk enabled="no"/>
+  </pm>
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <disk type="block" device="disk">                                                <!-- 🐢 Aquí se ve el volumen creado con virsh dentro del pool1 -->
+      <driver name="qemu" type="raw" cache="none" io="native"/>
+      <source dev="/dev/vg01/vol_mv1"/>
+      <target dev="vda" bus="virtio"/>
+      <address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0"/>
+    </disk>                                                                          <!-- 🐢 -->
+    <disk type="file" device="disk">                                                 <!-- 🦐 Aquí se ve el volumen creado con virt-manager -->
+      <driver name="qemu" type="qcow2"/>
+      <source file="/var/lib/libvirt/images/mv1.qcow2"/>
+      <target dev="vdb" bus="virtio"/>
+      <address type="pci" domain="0x0000" bus="0x08" slot="0x00" function="0x0"/>
+    </disk>                                                                          <!-- 🦐 -->
+
+    ...
+
+  </devices>
+</domain>
+```
+
 
 
 **4. Las instrucciones ejecutadas para montar la partición del disco, y la lista de ficheros del sistema de archivos.**
