@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '775'),
+    component: ComponentCreator('/docs', 'db2'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -78,6 +78,12 @@ export default [
       {
         path: '/docs/intro',
         component: ComponentCreator('/docs/intro', '99a'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/almacenamiento_kvm_libvirt',
+        component: ComponentCreator('/docs/Tasks/almacenamiento_kvm_libvirt', '0c7'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
@@ -150,6 +156,12 @@ export default [
       {
         path: '/docs/Tasks/despliegue_python',
         component: ComponentCreator('/docs/Tasks/despliegue_python', 'a1b'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/dhcp',
+        component: ComponentCreator('/docs/Tasks/dhcp', '606'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

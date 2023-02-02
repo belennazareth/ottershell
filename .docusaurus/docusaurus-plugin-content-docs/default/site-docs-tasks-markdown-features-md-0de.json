@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Redes Privadas Virtuales",
-    "permalink": "/docs/Tasks/vpn"
+    "title": "Protocolo DHCP",
+    "permalink": "/docs/Tasks/dhcp"
   },
   "next": {
     "title": "Extras",

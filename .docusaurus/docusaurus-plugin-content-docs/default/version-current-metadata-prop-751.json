@@ -215,6 +215,12 @@
           },
           {
             "type": "link",
+            "label": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
+            "href": "/docs/Tasks/almacenamiento_kvm_libvirt",
+            "docId": "Tasks/almacenamiento_kvm_libvirt"
+          },
+          {
+            "type": "link",
             "label": "Criptografía II: Integridad, firmas y autenticación",
             "href": "/docs/Tasks/criptografia2",
             "docId": "Tasks/criptografia2"
@@ -254,6 +260,12 @@
             "label": "Redes Privadas Virtuales",
             "href": "/docs/Tasks/vpn",
             "docId": "Tasks/vpn"
+          },
+          {
+            "type": "link",
+            "label": "Protocolo DHCP",
+            "href": "/docs/Tasks/dhcp",
+            "docId": "Tasks/dhcp"
           },
           {
             "type": "link",
@@ -304,6 +316,12 @@
       "id": "intro",
       "title": "Sobre mí",
       "description": "Hola! 😊",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/almacenamiento_kvm_libvirt": {
+      "id": "Tasks/almacenamiento_kvm_libvirt",
+      "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
+      "description": "1. Crea con virsh un nuevo pool de almacenamiento de tipo lógico. Para ello, lo más fácil, es tener un grupo de volúmenes con espacio libre.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/apache_wsgi": {
@@ -375,6 +393,12 @@
     "Tasks/despliegue_python": {
       "id": "Tasks/despliegue_python",
       "title": "Despliegue de aplicaciones python",
+      "description": "Procedimiento",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/dhcp": {
+      "id": "Tasks/dhcp",
+      "title": "Protocolo DHCP",
       "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },

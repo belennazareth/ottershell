@@ -26,6 +26,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/almacenamiento_kvm_libvirt",
+              "path": "/docs/Tasks/almacenamiento_kvm_libvirt",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/apache_wsgi",
               "path": "/docs/Tasks/apache_wsgi",
               "sidebar": "tutorialSidebar"
@@ -83,6 +88,11 @@
             {
               "id": "Tasks/despliegue_python",
               "path": "/docs/Tasks/despliegue_python",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/dhcp",
+              "path": "/docs/Tasks/dhcp",
               "sidebar": "tutorialSidebar"
             },
             {
