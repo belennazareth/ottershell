@@ -117,6 +117,34 @@ lrwxrwxrwx  1 root root    28 feb  2 10:20 vmlinuz.old -> boot/vmlinuz-5.10.0-18
 
 **1. Instrucción para crear el pool de almacenamiento.**
 
+Para crear el pool de almacenamiento se ha usado el comando:
+
+```bash
+virsh -c qemu:///system pool-define-as --name pool1 --type logical --source-name /dev/vg01
+```
+
+Después de crear el pool, se ha iniciado con el comando:
+
+```bash
+virsh -c qemu:///system pool-start pool1
+```
+
+Y se ha comprobado que se ha creado correctamente con el comando:
+
+```bash
+virsh -c qemu:///system pool-list
+```
+
+Obteniendo como salida algo similar a:
+
+```bash
+nazare@ThousandSunny:~$ virsh -c qemu:///system pool-list
+
+ Nombre        Estado   Inicio automático
+-------------------------------------------
+ default       activo   si
+ pool1         activo   no
+```
 
 
 **2. Instrucción para crear el volumen.**
