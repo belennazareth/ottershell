@@ -2,70 +2,54 @@
 sidebar_position: 27
 ---
 
+# Protocolo DHCP
+
+## Procedimiento
+
+Vamos a continuar trabajando en el escenario que desarrollamos en la [Práctica: Creación y configuración de un escenario router-nat](https://ottershell.vercel.app/docs/Tasks/router_nat).
+
+Para evitar los problemas que nos puede causar vagrant a la hora de trabajar con el DHCP (los clientes tendrían dos servidores DHCP, el que estamos configurando y el de la red de mantenimiento por eth0), os sugiero:
+
+1. Que montéis el mismo escenario pero en kvm/libvirt, en relación a las redes:
+
+* No tendríamos la interfaz conectada a la red de mantenimiento de vagrant.
+
+* Conectaríamos las máquinas a una red NAT sin dhcp (con IP estática) que utilizaríamos para configurar las máquinas por ansible. Esto soluciona el problema de que las direcciones IP cambien en vagrant y tengamos que cambiar el inventario cada vez que creemos el escenario.
+
+2. Ejecutamos el playbook de la práctica anterior y comprobamos que las máquinas tienen el funcionamiento esperado.
+
+A partir de esta configuración podríamos seguir con esta práctica.
+
+Queremos instalar un servidor DHCP en la máquina router para que configure de forma automática las máquinas que se conectan en la red interna. Tenemos que tener en cuenta lo siguiente:
+
+1. La máquina cliente de la práctica anterior, que tiene instalado el servidor web, debe tener la misma IP que la que le asígnate estáticamente, por lo tanto haremos una reserva para que tenga la misma IP.
+
+2. Al añadir una nueva máquina a la red local (recuerda que no se le instalará el servidor web) se configurará de forma dinámica.
+
+3. Crea un nuevo rol en el playbook de ansible llamado dhcp que configure el servidor DHCP de forma correcta. Quizás sea necesario modificar el comportamiento de algún rol de la práctica anterior.
+
+4. Todos los parámetros que reparta el servidor DHCP, así como cualquier otro dato, por ejemplo la dirección MAC del cliente se guardarán en variables.
+
+5. Añade una nueva máquina al escenario conectada a la red interna muy aislada. Vuelve a ejecutar el playbook y comprueba que todo funciona de forma correcta.
+
+## Entrega
+
+1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.
 
 
-Crea una infraestructura en QEMU/KVM que te permita tener una máquina donde instalar un servidor dhcp y un cliente que se configuren para tomar la configuración de forma dinámica. El servidor estará conectado al cliente por una red interna muy aislada.
-Para instalar nuestro servidor dhcp ejecutamos:
 
- apt-get install isc-dhcp-server
-Nota: Cuando instalamos el servidor por primera se produce un error, ya que no está configurado. Puedes ver los errores producidos por el servidor en el fichero /var/log/syslog o systemctl -u isc-dhcp-server.
+2. Entrega el fichero de configuración del servidor DHCP después de ejecutar el playbook de ansible.
 
-Vamos a configurar la interfaz por la que va a trabajar el servidor dhcp, para ello editamos el siguiente fichero /etc/default/isc-dhcp-server. Donde configuramos el parámetro interfaces (modifícalo según tu escenario), por ejemplo:
-INTERFACES="eth1"
-Vamos a estudiar el fichero de configuración del servicio /etc/dhcp/dhcpd.conf.
 
-El fichero de configuración está dividido en dos partes:
 
-Parte principal (valores por defecto): especifica los parámetros generales que definen la concesión y los parámetros adicionales que se proporcionarán al cliente.
-Secciones (concretan a la principal):
+3. Entrega el fichero de configuración de red del cliente (para comprobar que toma direccionamiento dinámico) y que ha tomado la dirección reservada en el servidor DHCP.
 
-Subnet: Especifican rangos de direcciones IPs que serán cedidas a los clientes que lo soliciten.
-Host: Especificaciones concretas de equipos.
-En la parte principal podemos configurar los siguientes parámetros, que más tarde podremos reescribir en las distintas secciones:
 
-Parámetros de tiempos:
 
-max-lease-time: Es el tiempo máximo en segundos de concesión que un cliente puede solicitar. Si por ejemplo, un cliente solicita una concesión de 900 segundos pero el tiempo máximo es de 600 segundos, la concesión tendrá una duración de 600 segundos. No tiene por qué ser T3 o temporizador de alquiler.
-min-lease-time: Es el tiempo mínimo en segundos de concesión que un cliente puede solicitar. Si por ejemplo, un cliente solicita una concesión de 900 segundos pero el tiempo mínimo es de 1200 segundos, la concesión tendrá una duración de 1200 segundos.
-default-lease-time: Es el tiempo por defecto en segundos de concesión que se le asignará a un cliente en caso de que éste no haya solicitado ningún periodo en concreto. Estos tres primeros parámetro determinan el tiempo T3 o tiempo de concesión.
-option dhcp-renewal-time: Es el tiempo en segundos que ha de transcurrir hasta que el cliente pase al estado RENEWING. También conocido como T1 o temporizador de renovación de alquiler. No confundir con default-lease-time.
-option dhcp-rebinding-time: Es el tiempo en segundos que ha de transcurrir hasta que el cliente pase al estado REBINDING. También conocido como T2 o temporizador de reenganche.
-Parámetros de configuración:
+4. Entrega el fichero de configuración de red de la otra máquina cliente, la dirección que ha tomado y el fichero de concesiones del servidor donde se demuestra que se ha repartido.
 
-option routers: Indicamos la dirección red de la puerta de enlace que se utiliza para salir a internet.
-option domain-name-servers: Se pone las direcciones IP de los servidores DNS que va a utilizar el cliente.
-option domain-name: Nombre del dominio que se manda al cliente.
-option subnet-mask: Subred enviada a los clientes.
-option broadcast-address: Dirección de difusión de la red.
-Al indicar una sección subnet tenemos que indicar la dirección de la red y la mascara de red y entre llaves podemos poner los siguientes parámetros:
 
-range: Indicamos el rango de direcciones IP que vamos a asignar.
-Algunos de los parámetros que hemos explicado en la sección principal.
-Configura el servidor DHCP con las siguientes características
 
-Rango de direcciones a repartir: 192.168.0.100 - 192.168.0.110
-Máscara de red: 255.255.255.0
-Duración de la concesión: 1 hora
-Puerta de enlace: 192.168.0.1
-Servidores DNS: 192.168.202.2 y 1.1.1.1
-La configuración quedaría:
+5. Comprueba que la nueva máquina cliente no tiene el servidor apache2 instalado, y una captura de pantalla comprobando que sigue siendo accesible el servidor web de cliente.
 
- subnet 192.168.0.0 netmask 255.255.255.0 {
-   default-lease-time 3600;
-   max-lease-time 3600;  
-   range 192.168.0.100 192.168.0.110;
-   option subnet-mask 255.255.255.0;
-   option broadcast-address 192.168.0.255;
-   option routers 192.168.0.1;
-   option domain-name-servers 192.168.202.2, 1.1.1.1;
- }
-Nota 1: Si ponemos algún parámetro fuera de la sección subnet afectará a todas las secciones subnet. Si dentro de la sección subnet se reescribe el parámetro no se utilizará el valor del parámetro general.
-Nota 2: El tiempo T3 será default-lease-time si el cliente no ha solicitado tiempo de concesión. Si el cliente lo ha solicitado no será mayor que max-lease-time ni menor que min-lease-time.
-Nota 3: No hemos indicado ni el T1, ni el T2, por lo que estos valores se calcularán a partir de T3.
-Configura los clientes para obtener direccionamiento dinámico. Comprueba las configuraciones de red que han tomado los clientes.
 
-Nota: En Windows la instrucción ipconfig /release libera la concesión, la instrucción ipconfig /renew la renueva. En linux el comando para liberar la concesión es dhclient -r y el que nos permite renovarla será dhclient.
-
-El servidor debe hacer router-nat para que el cliente tenga acceso a internet. La configuración debe ser persistente.
-
-Cuando el servidor va repartiendo la configuración a los clientes va guardando las concesiones en el fichero /var/lib/dhcp/dhcpd.leases.
