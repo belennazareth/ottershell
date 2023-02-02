@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/dhcp",
+  "id": "Tasks/dhcp",
+  "title": "Protocolo DHCP",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/dhcp.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/dhcp",
+  "permalink": "/docs/Tasks/dhcp",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/dhcp.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 27,
+  "frontMatter": {
+    "sidebar_position": 27
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Redes Privadas Virtuales",
+    "permalink": "/docs/Tasks/vpn"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

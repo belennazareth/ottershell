@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/almacenamiento_kvm_libvirt",
+  "id": "Tasks/almacenamiento_kvm_libvirt",
+  "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
+  "description": "1. Crea con virsh un nuevo pool de almacenamiento de tipo lógico. Para ello, lo más fácil, es tener un grupo de volúmenes con espacio libre.",
+  "source": "@site/docs/Tasks/almacenamiento_kvm_libvirt.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/almacenamiento_kvm_libvirt",
+  "permalink": "/docs/Tasks/almacenamiento_kvm_libvirt",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/almacenamiento_kvm_libvirt.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 17,
+  "frontMatter": {
+    "sidebar_position": 17
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación/migración de aplicaciones web PHP",
+    "permalink": "/docs/Tasks/migracion_php"
+  },
+  "next": {
+    "title": "Criptografía II: Integridad, firmas y autenticación",
+    "permalink": "/docs/Tasks/criptografia2"
+  }
+}
