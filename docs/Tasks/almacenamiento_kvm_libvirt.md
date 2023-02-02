@@ -228,6 +228,55 @@ El código XML de la máquina virtual es el siguiente:
 ```
 
 
-
 **4. Las instrucciones ejecutadas para montar la partición del disco, y la lista de ficheros del sistema de archivos.**
 
+Para montar la partición del disco de la máquina en tu anfitrión para acceder a sistema de archivos:
+
+```bash
+sudo kpartx -va /dev/vg01/vol_mv1
+ls -l /dev/mapper
+```
+
+![KP](/img/SRI+HLC/taller1SRI7-2.png)
+![KP](/img/SRI+HLC/taller1SRI7-3.png)
+
+
+```bash
+mount /dev/mapper/vg01-vol_mv1p1 /mnt_vg/ #como root
+ls -l /mnt_vg/
+```
+
+Con salida:
+
+```bash
+root@ThousandSunny:~# mount /dev/mapper/vg01-vol_mv1p1 /mnt_vg/
+root@ThousandSunny:~# ls -l /mnt_vg/
+total 76
+
+lrwxrwxrwx  1 root root     7 feb  2 10:20 bin -> usr/bin
+drwxr-xr-x  3 root root  4096 feb  2 10:25 boot
+drwxr-xr-x  4 root root  4096 feb  2 10:20 dev
+drwxr-xr-x 68 root root  4096 feb  2 10:26 etc
+drwxr-xr-x  3 root root  4096 feb  2 10:25 home
+lrwxrwxrwx  1 root root    31 feb  2 10:22 initrd.img -> boot/initrd.img-5.10.0-21-amd64
+lrwxrwxrwx  1 root root    31 feb  2 10:20 initrd.img.old -> boot/initrd.img-5.10.0-18-amd64
+lrwxrwxrwx  1 root root     7 feb  2 10:20 lib -> usr/lib
+lrwxrwxrwx  1 root root     9 feb  2 10:20 lib32 -> usr/lib32
+lrwxrwxrwx  1 root root     9 feb  2 10:20 lib64 -> usr/lib64
+lrwxrwxrwx  1 root root    10 feb  2 10:20 libx32 -> usr/libx32
+drwx------  2 root root 16384 feb  2 10:20 lost+found
+drwxr-xr-x  3 root root  4096 feb  2 10:20 media
+drwxr-xr-x  2 root root  4096 feb  2 10:20 mnt
+drwxr-xr-x  2 root root  4096 feb  2 10:20 opt
+drwxr-xr-x  2 root root  4096 sep  3 14:10 proc
+drwx------  2 root root  4096 feb  2 10:20 root
+drwxr-xr-x  2 root root  4096 feb  2 10:26 run
+lrwxrwxrwx  1 root root     8 feb  2 10:20 sbin -> usr/sbin
+drwxr-xr-x  2 root root  4096 feb  2 10:20 srv
+drwxr-xr-x  2 root root  4096 sep  3 14:10 sys
+drwxrwxrwt  7 root root  4096 feb  2 10:36 tmp
+drwxr-xr-x 14 root root  4096 feb  2 10:20 usr
+drwxr-xr-x 11 root root  4096 feb  2 10:20 var
+lrwxrwxrwx  1 root root    28 feb  2 10:22 vmlinuz -> boot/vmlinuz-5.10.0-21-amd64
+lrwxrwxrwx  1 root root    28 feb  2 10:20 vmlinuz.old -> boot/vmlinuz-5.10.0-18-amd64
+```
