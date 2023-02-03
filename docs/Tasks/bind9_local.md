@@ -322,9 +322,57 @@ nazareth.org.		86400	IN	SOA	dns1.nazareth.org. root.nazareth.org. 1 604800 86400
 \- Servidor de correo del dominio.
 
 ```bash
+usuario@debian:~$ dig mx www.nazareth.org
+
+; <<>> DiG 9.16.27-Debian <<>> mx www.nazareth.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 41144
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 045220b8900d341c0100000063dcd6c204406c361337968e (good)
+;; QUESTION SECTION:
+;www.nazareth.org.		IN	MX      #<<<🤩🥳 MX 🤩🥳
+
+;; ANSWER SECTION:
+www.nazareth.org.	86400	IN	CNAME	asterix.nazareth.org.   #<<<🤩🥳 CNAME 🤩🥳 
+
+;; AUTHORITY SECTION:
+nazareth.org.		86400	IN	SOA	dns1.nazareth.org. root.nazareth.org. 1 604800 86400 2419200 86400
+
+;; Query time: 0 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)
+;; WHEN: Fri Feb 03 10:41:22 CET 2023
+;; MSG SIZE  rcvd: 141
 
 ```
 
 \- Una resolución inversa.
 
+Para esto es necesario conocer la IP de la máquina o servicio.
 
+```bash
+usuario@debian:~$ dig -x 172.22.5.136
+
+; <<>> DiG 9.16.27-Debian <<>> -x 172.22.5.136
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5156
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: bd90284350d965fc0100000063dcdab74bf7d2c3bbba5429 (good)
+;; QUESTION SECTION:
+;136.5.22.172.in-addr.arpa.	IN	PTR      #<<<😍🥰 PTR 😍🥰
+
+;; ANSWER SECTION:
+136.5.22.172.in-addr.arpa. 86400 IN	PTR	dns1.nazareth.org.    #<<<😍🥰 PTR 😍🥰
+
+;; Query time: 4 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)
+;; WHEN: Fri Feb 03 10:58:15 CET 2023
+;; MSG SIZE  rcvd: 113
+```
