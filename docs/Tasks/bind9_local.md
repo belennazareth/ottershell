@@ -58,41 +58,43 @@ sudo apt install bind9
 
 \- Hacemos un `dig` para ver que funciona de tal manera que se solicita el nombre de dominio y se obtiene la dirección ip de la máquina:
 
-    ```bash
-    nazare@ThousandSunny :~$ dig @172.22.5.136  www.josedomingo.org
+        dig @<IP de tu servidor DNS> www.josedomingo.org
 
-    ; <<>> DiG 9.16.33-Debian <<>> @172.22.5.136 www.josedomingo.org
-    ; (1 server found)
-    ;; global options: +cmd
-    ;; Got answer:
-    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 22687
-    ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
 
-    ;; OPT PSEUDOSECTION:
-    ; EDNS: version: 0, flags:; udp: 1232
-    ; COOKIE: a242d4befd4900d80100000063d8e90dae507b3eb8a6ebed (good)
-    ;; QUESTION SECTION:
-    ;www.josedomingo.org.		IN	A
+```bash
+nazare@ThousandSunny :~$ dig @172.22.5.136  www.josedomingo.org
 
-    ;; ANSWER SECTION:
-    www.josedomingo.org.	900	IN	CNAME	endor.josedomingo.org.
-    endor.josedomingo.org.	900	IN	A	37.187.119.60
+; <<>> DiG 9.16.33-Debian <<>> @172.22.5.136 www.josedomingo.org
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 22687
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
 
-    ;; Query time: 656 msec
-    ;; SERVER: 172.22.5.136#53(172.22.5.136)
-    ;; WHEN: Tue Jan 31 11:10:21 CET 2023
-    ;; MSG SIZE  rcvd: 112
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: a242d4befd4900d80100000063d8e90dae507b3eb8a6ebed (good)
+;; QUESTION SECTION:
+;www.josedomingo.org.		IN	A
 
-    ```
+;; ANSWER SECTION:
+www.josedomingo.org.	900	IN	CNAME	endor.josedomingo.org.
+endor.josedomingo.org.	900	IN	A	37.187.119.60
+
+;; Query time: 656 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)
+;; WHEN: Tue Jan 31 11:10:21 CET 2023
+;; MSG SIZE  rcvd: 112
+```
 
 \- Para que el servidor resuelva los nombres de dominio de la red local, se debe modificar el fichero `/etc/bind/named.conf.local` y añadir la siguiente línea:
 
-    ```bash
-    zone "nazareth.org" {
-        type master;
-        file "db.nazareth.org";
-    };
-    ```
+```bash
+zone "nazareth.org" {
+    type master;
+    file "db.nazareth.org";
+};
+```
 
     Esto hará que la información de la zona se guarde en db.nazareth.org que está en el directorio `/var/cache/bind`
 
@@ -113,12 +115,12 @@ $TTL    86400
 $ORIGIN nazareth.org.
 
 dns1			    IN	A	172.22.5.136 #IP de la máquina
-correo			  IN	A	172.22.200.101
-asterix		    IN	A	172.22.200.102
-obelix			  IN	A	172.22.200.103
-www			      IN	CNAME	asterix
-informatica		IN	CNAME	asterix
-ftp			      IN	CNAME	obelix
+correo			    IN	A	172.22.200.101
+asterix		        IN	A	172.22.200.102
+obelix			    IN	A	172.22.200.103
+www			        IN	CNAME	asterix
+informatica		    IN	CNAME	asterix
+ftp			        IN	CNAME	obelix
 ```
 
 \- Crearemos una zona inversa para que el servidor resuelva los nombres de dominio de la red local, se debe modificar el fichero `/etc/bind/named.conf.local` y añadir la siguiente línea:
@@ -169,13 +171,14 @@ $ORIGIN 22.172.in-addr.arpa.
 103.200		IN 	PTR		obelix.nazareth.org.
 ```
 
+
 \- Reiniciamos el servicio bind9 con el siguiente comando:
 
 ```bash
 sudo systemctl restart bind9
 ```
 
-\- En otra máquina configuramos el DNS en el fichero `/etc/resolv.conf`:
+\- En otra máquina configuramos el DNS en el fichero `/etc/resolv.conf` colocándolo en primer lugar ya que se va leyendo en orden de posición:
 
 ```bash
 nameserver 172.22.5.136
@@ -184,6 +187,117 @@ nameserver 172.22.5.136
 Y ejecutamos el comando `dig` para comprobar que funciona correctamente:
 
 ```bash
-dig www.nazareth.org
+dig ns www.nazareth.org
 ```
+
+
 ## Entrega
+
+**1. Responde a las preguntas del apartado 2.**
+
+-¿Cuánto ha tardado en realizar la consulta? ¿Qué consultas se han realizado para averiguar la dirección IP?
+
+```bash
+nazare@ThousandSunny:~$ dig @172.22.5.136  www.josedomingo.org
+
+; <<>> DiG 9.16.33-Debian <<>> @172.22.5.136 www.josedomingo.org
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5587
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 229329b0860b2be20100000063dcc9b448b8c28492578cca (good)
+;; QUESTION SECTION:
+;www.josedomingo.org.		IN	A
+
+;; ANSWER SECTION:
+www.josedomingo.org.	900	IN	CNAME	endor.josedomingo.org.      #<<<🌈✨
+endor.josedomingo.org.	900	IN	A	37.187.119.60                   #<<<🌈✨
+
+;; Query time: 4688 msec        #<<<🔥🔥
+;; SERVER: 172.22.5.136#53(172.22.5.136)
+;; WHEN: Fri Feb 03 09:45:40 CET 2023
+;; MSG SIZE  rcvd: 112
+```
+
+La primera consulta ha tardado 4688 milisegundos `;; Query time: 4688 msec`
+Se ha realizado la consulta `www.josedomingo.org.	900	IN	CNAME	endor.josedomingo.org.` donde consigue el nombre del servidor, gracias a esto vemos como en la siguiente línea aparece la IP del mismo `endor.josedomingo.org.	900	IN	A	37.187.119.60`
+
+
+-Realiza de nuevo la consulta. ¿Cuánto ha tardado ahora? ¿Por qué ha tardado menos? ¿Qué consultas se han realizado para averiguar la dirección IP?
+
+```bash
+nazare@ThousandSunny:~$ dig @172.22.5.136  www.josedomingo.org
+
+; <<>> DiG 9.16.33-Debian <<>> @172.22.5.136 www.josedomingo.org
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 28371
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: bc2265e384ef0f090100000063dcc9c297e0fbe4f710b738 (good)
+;; QUESTION SECTION:
+;www.josedomingo.org.		IN	A
+
+;; ANSWER SECTION:
+www.josedomingo.org.	886	IN	CNAME	endor.josedomingo.org.      #<<<🌈✨
+endor.josedomingo.org.	886	IN	A	37.187.119.60                   #<<<🌈✨
+
+;; Query time: 3 msec       #<<<🔥🔥
+;; SERVER: 172.22.5.136#53(172.22.5.136)
+;; WHEN: Fri Feb 03 09:45:54 CET 2023
+;; MSG SIZE  rcvd: 112
+```
+
+Esta vez ha tardado 3 milisegundos `;; Query time: 3 msec`, ha tardado menos porque se ha registrado en cache en el fichero `/var/cache/bind/` dentro del servidor dns.
+
+
+**2. El resultado de las siguientes consultas desde otra máquina:**
+    
+\- Dirección IP de una máquina o servicio.
+
+```bash
+usuario@debian:~$ dig www.nazareth.org
+
+; <<>> DiG 9.16.27-Debian <<>> www.nazareth.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39622
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: f8cb1d12805018ca0100000063dcd210a9d94c153b8053ac (good)
+;; QUESTION SECTION:
+;www.nazareth.org.		IN	A
+
+;; ANSWER SECTION:
+www.nazareth.org.	86400	IN	CNAME	asterix.nazareth.org.
+asterix.nazareth.org.	86400	IN	A	172.22.200.102      #<<<🎷🐛 IP 🎷🐛
+
+;; Query time: 0 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)
+;; WHEN: Fri Feb 03 10:21:20 CET 2023
+;; MSG SIZE  rcvd: 111
+
+```
+
+\- Servidor DNS con autoridad del dominio.
+
+```bash
+
+```
+
+\- Servidor de correo del dominio.
+
+
+
+\- Una resolución inversa.
+
+
