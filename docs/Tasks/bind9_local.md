@@ -255,7 +255,7 @@ endor.josedomingo.org.	886	IN	A	37.187.119.60                   #<<<🌈✨
 ;; MSG SIZE  rcvd: 112
 ```
 
-Esta vez ha tardado 3 milisegundos `;; Query time: 3 msec`, ha tardado menos porque se ha registrado en cache en el fichero `/var/cache/bind/` dentro del servidor dns.
+Esta vez ha tardado 3 milisegundos `;; Query time: 3 msec`, ha tardado menos porque se ha registrado en cache en el fichero `/var/cache/bind/` dentro del servidor dns, por ser recursor.
 
 
 **2. El resultado de las siguientes consultas desde otra máquina:**
@@ -290,13 +290,40 @@ asterix.nazareth.org.	86400	IN	A	172.22.200.102      #<<<🎷🐛 IP 🎷🐛
 
 \- Servidor DNS con autoridad del dominio.
 
-```bash
+Para averiguar el servidor DNS con autoridad del dominio, se realiza una consulta de tipo NS, para averiguar el nombre del servidor DNS con autoridad del dominio:
 
+```bash
+usuario@debian:~$ dig ns www.nazareth.org
+
+; <<>> DiG 9.16.27-Debian <<>> ns www.nazareth.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 57598
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: b0d19d6dbee3925b0100000063dcd55e6031511c11c36551 (good)
+;; QUESTION SECTION:
+;www.nazareth.org.		IN	NS    #<<<👻👺 NS 👻👺
+
+;; ANSWER SECTION:
+www.nazareth.org.	86400	IN	CNAME	asterix.nazareth.org.  #<<<👻👺 CNAME 👻👺
+
+;; AUTHORITY SECTION:
+nazareth.org.		86400	IN	SOA	dns1.nazareth.org. root.nazareth.org. 1 604800 86400 2419200 86400
+
+;; Query time: 0 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)
+;; WHEN: Fri Feb 03 10:35:26 CET 2023
+;; MSG SIZE  rcvd: 141
 ```
 
 \- Servidor de correo del dominio.
 
+```bash
 
+```
 
 \- Una resolución inversa.
 
