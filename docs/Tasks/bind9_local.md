@@ -260,7 +260,7 @@ Esta vez ha tardado 3 milisegundos `;; Query time: 3 msec`, ha tardado menos por
 
 **2. El resultado de las siguientes consultas desde otra máquina:**
     
-\- Dirección IP de una máquina o servicio.
+**- Dirección IP de una máquina o servicio.**
 
 ```bash
 usuario@debian:~$ dig www.nazareth.org
@@ -288,7 +288,7 @@ asterix.nazareth.org.	86400	IN	A	172.22.200.102      #<<<🎷🐛 IP 🎷🐛
 
 ```
 
-\- Servidor DNS con autoridad del dominio.
+**- Servidor DNS con autoridad del dominio.**
 
 Para averiguar el servidor DNS con autoridad del dominio, se realiza una consulta de tipo NS, para averiguar el nombre del servidor DNS con autoridad del dominio:
 
@@ -319,7 +319,7 @@ nazareth.org.		86400	IN	SOA	dns1.nazareth.org. root.nazareth.org. 1 604800 86400
 ;; MSG SIZE  rcvd: 141
 ```
 
-\- Servidor de correo del dominio.
+**- Servidor de correo del dominio.**
 
 ```bash
 usuario@debian:~$ dig mx www.nazareth.org
@@ -349,7 +349,7 @@ nazareth.org.		86400	IN	SOA	dns1.nazareth.org. root.nazareth.org. 1 604800 86400
 
 ```
 
-\- Una resolución inversa.
+**- Una resolución inversa.**
 
 Para esto es necesario conocer la IP de la máquina o servicio.
 
