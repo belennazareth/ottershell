@@ -263,9 +263,21 @@
           },
           {
             "type": "link",
+            "label": "Instalación y configuración de un servidor DNS esclavo",
+            "href": "/docs/Tasks/DNS_esclavo",
+            "docId": "Tasks/DNS_esclavo"
+          },
+          {
+            "type": "link",
             "label": "Protocolo DHCP",
             "href": "/docs/Tasks/dhcp",
             "docId": "Tasks/dhcp"
+          },
+          {
+            "type": "link",
+            "label": "Introducción a iSCSI",
+            "href": "/docs/Tasks/iSCSI",
+            "docId": "Tasks/iSCSI"
           },
           {
             "type": "link",
@@ -402,6 +414,12 @@
       "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/DNS_esclavo": {
+      "id": "Tasks/DNS_esclavo",
+      "title": "Instalación y configuración de un servidor DNS esclavo",
+      "description": "Procedimiento",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/escenario_openstack": {
       "id": "Tasks/escenario_openstack",
       "title": "Escenario en OpenStack",
@@ -430,6 +448,12 @@
       "id": "Tasks/intro_git",
       "title": "Introducción a git y GitHub",
       "description": "1. Una captura de pantalla donde se vea que has creado el repositorio.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/iSCSI": {
+      "id": "Tasks/iSCSI",
+      "title": "Introducción a iSCSI",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/journald": {

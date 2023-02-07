@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'db2'),
+    component: ComponentCreator('/docs', '4a8'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -166,6 +166,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/DNS_esclavo',
+        component: ComponentCreator('/docs/Tasks/DNS_esclavo', '87b'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/escenario_openstack',
         component: ComponentCreator('/docs/Tasks/escenario_openstack', '6ef'),
         exact: true,
@@ -192,6 +198,12 @@ export default [
       {
         path: '/docs/Tasks/intro_git',
         component: ComponentCreator('/docs/Tasks/intro_git', '221'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/iSCSI',
+        component: ComponentCreator('/docs/Tasks/iSCSI', '997'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

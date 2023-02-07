@@ -17,11 +17,11 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
-    "permalink": "/docs/Tasks/almacenamiento_kvm_libvirt"
+    "title": "Instalación y configuración de un servidor DNS esclavo",
+    "permalink": "/docs/Tasks/DNS_esclavo"
   },
   "next": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Introducción a iSCSI",
+    "permalink": "/docs/Tasks/iSCSI"
   }
 }

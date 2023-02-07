@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Protocolo DHCP",
-    "permalink": "/docs/Tasks/dhcp"
+    "title": "Introducción a iSCSI",
+    "permalink": "/docs/Tasks/iSCSI"
   },
   "next": {
     "title": "Extras",

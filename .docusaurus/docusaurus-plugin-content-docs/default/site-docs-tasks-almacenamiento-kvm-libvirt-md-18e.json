@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/vpn"
   },
   "next": {
-    "title": "Protocolo DHCP",
-    "permalink": "/docs/Tasks/dhcp"
+    "title": "Instalación y configuración de un servidor DNS esclavo",
+    "permalink": "/docs/Tasks/DNS_esclavo"
   }
 }

@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-db2": {
+  "/docs-4a8": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -181,6 +181,10 @@
     "__comp": "17896441",
     "content": "1d4b65d0"
   },
+  "/docs/Tasks/DNS_esclavo-87b": {
+    "__comp": "17896441",
+    "content": "93b44164"
+  },
   "/docs/Tasks/escenario_openstack-6ef": {
     "__comp": "17896441",
     "content": "9ebb1dcc"
@@ -200,6 +204,10 @@
   "/docs/Tasks/intro_git-221": {
     "__comp": "17896441",
     "content": "5d56c66f"
+  },
+  "/docs/Tasks/iSCSI-997": {
+    "__comp": "17896441",
+    "content": "2b17633b"
   },
   "/docs/Tasks/journald-da9": {
     "__comp": "17896441",
