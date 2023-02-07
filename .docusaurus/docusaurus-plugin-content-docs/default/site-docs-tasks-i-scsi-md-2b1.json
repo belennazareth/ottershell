@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/iSCSI",
+  "id": "Tasks/iSCSI",
+  "title": "Introducción a iSCSI",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/iSCSI.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/iSCSI",
+  "permalink": "/docs/Tasks/iSCSI",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/iSCSI.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 27,
+  "frontMatter": {
+    "sidebar_position": 27
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Protocolo DHCP",
+    "permalink": "/docs/Tasks/dhcp"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}

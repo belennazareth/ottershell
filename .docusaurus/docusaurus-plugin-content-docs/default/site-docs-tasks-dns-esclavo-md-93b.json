@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/DNS_esclavo",
+  "id": "Tasks/DNS_esclavo",
+  "title": "Instalación y configuración de un servidor DNS esclavo",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/DNS_esclavo.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/DNS_esclavo",
+  "permalink": "/docs/Tasks/DNS_esclavo",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/DNS_esclavo.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 27,
+  "frontMatter": {
+    "sidebar_position": 27
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
+    "permalink": "/docs/Tasks/almacenamiento_kvm_libvirt"
+  },
+  "next": {
+    "title": "Protocolo DHCP",
+    "permalink": "/docs/Tasks/dhcp"
+  }
+}
