@@ -114,6 +114,18 @@ sudo mkdir /mnt/iscsi
 sudo mount /dev/sda /mnt/iscsi
 ```
 
+Para que sea persistente el montaje, debemos añadir la siguiente línea al fichero `/etc/fstab` incluyendo el UUID de la unidad lógica que nos proporciona el target en este caso `/dev/sda`:
+
+```bash
+UUID=fcdea401-e4e1-46e9-aecc-be4ed847a8c3       /mnt/iscsi      ext4     defaults        0      0
+```
+
+Para ver el UUID de la unidad lógica, ejecutamos el siguiente comando:
+
+```bash
+sudo blkid
+```
+
 Comprobamos que se ha montado correctamente:
 
 ```bash
