@@ -189,6 +189,96 @@ sudo systemctl start mnt-iscsi.mount
 
 **3. Capturas de pantallas donde se vea cómo se ha escaneado los targets y se han formateado los dispositivos de bloque y se han montado en el cliente windows.**
 
+Conectamos la máquina a la red de vagrant para que pueda conectarse a las otras máquinas (cliente y servidor).
+Quitamos el cortafuegos de la máquina windows para que pueda conectarse al servidor y hacer ping a las otras máquinas.
+
+![KP](/img/SRI+HLC/taller2SRI7-7.png)
+
+En la máquina cliente creamos otro target con 2 LUN:
+
+```bash
+sudo nano /etc/tgt/conf.d/target2.conf
+```
+
+Y añadimos lo siguiente:
+
+```bash
+<target iqn.2021-11.org.example:target2>
+    driver iscsi
+    controller_tid 2
+    backing-store /dev/vdc
+    backing-store /dev/vdd
+    incominguser usuario usuariocontra
+</target>
+```
+
+Reiniciamos el servicio `tgt`:
+
+```bash
+sudo systemctl restart tgt
+```
+
+Podemos comprobarlo con el comando:
+
+```bash
+sudo tgtadm --lld iscsi --op show --mode target
+```
+
+Con esto vemos que en el apartado `Backing store path` aparecen las rutas `/dev/vdc` y `/dev/vdd` que son las unidades lógicas que hemos creado.
+
+```bash
+        LUN: 1
+            Type: disk
+            SCSI ID: IET     00020001
+            SCSI SN: beaf21
+            Size: 2147 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/vdc        <<<< ⭐🐝 RUTA DE LA UNIDAD LÓGICA ⭐🐝
+            Backing store flags: 
+        LUN: 2
+            Type: disk
+            SCSI ID: IET     00020002
+            SCSI SN: beaf22
+            Size: 3221 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: rdwr
+            Backing store path: /dev/vdd        <<<< 💐🐥 RUTA DE LA UNIDAD LÓGICA 💐🐥
+            Backing store flags: 
+    Account information:
+        usuario
+    ACL information:
+        ALL
+```
+
+En windows, entramos en iscsi initiator y cambiamos en discovery el portal al del servidor para que pueda escanear los targets:
+
+![KP](/img/SRI+HLC/taller2SRI7-8.png)
+
+Después, en el apartado `Targets` vemos que aparece el target2 que hemos creado en el servidor, clicamos en él y a continuación en `Connect` para conectarnos al target:
+
+![KP](/img/SRI+HLC/taller2SRI7-9.png)
+
+Al entrar, usamos la configuración avanzada y activamos `Enable CHAP log on`, ponemos el usuario y la contraseña que hemos puesto en el servidor y le damos a `OK`: 
+
+![KP](/img/SRI+HLC/taller2SRI7-10.png)
+![KP](/img/SRI+HLC/taller2SRI7-11.png)
+
+Como podemos ver, se ha conectado correctamente:
+
+![KP](/img/SRI+HLC/taller2SRI7-12.png)
+
+
 
 
 **4. Se realizará una prueba delante del profesor para comprobar que el sistema funciona después de un reinicio.**
