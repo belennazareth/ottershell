@@ -212,6 +212,8 @@ Y añadimos lo siguiente:
 </target>
 ```
 
+*Nota: La contraseña tiene que tener entre 12 y 16 caracteres sino no funciona despues en windows la verificación por CHAP.
+
 Reiniciamos el servicio `tgt`:
 
 ```bash
@@ -261,7 +263,7 @@ Con esto vemos que en el apartado `Backing store path` aparecen las rutas `/dev/
         ALL
 ```
 
-En windows, entramos en iscsi initiator y cambiamos en discovery el portal al del servidor para que pueda escanear los targets:
+En windows, entramos en `iscsi initiator` y cambiamos en `Discovery` el portal al del servidor para que pueda escanear los targets:
 
 ![KP](/img/SRI+HLC/taller2SRI7-8.png)
 
@@ -278,8 +280,16 @@ Como podemos ver, se ha conectado correctamente:
 
 ![KP](/img/SRI+HLC/taller2SRI7-12.png)
 
+Por último, entramos en `Disks Management` y vemos que se han creado dos unidades lógicas que marcaremos como GPT:
 
+![KP](/img/SRI+HLC/taller2SRI7-13.png)
 
+Para dar formato NTFS, clicamos con el botón derecho en cada unidad lógica y le damos a `crear volumen simple` y le damos formato NTFS:
+
+![KP](/img/SRI+HLC/taller2SRI7-14.png)
+![KP](/img/SRI+HLC/taller2SRI7-15.png)
+![KP](/img/SRI+HLC/taller2SRI7-16.png)
+![KP](/img/SRI+HLC/taller2SRI7-17.png)
 
 **4. Se realizará una prueba delante del profesor para comprobar que el sistema funciona después de un reinicio.**
 
