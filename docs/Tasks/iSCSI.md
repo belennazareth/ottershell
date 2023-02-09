@@ -304,4 +304,3 @@ Para dar formato NTFS, clicamos con el botón derecho en cada unidad lógica y l
 ![KP](/img/SRI+HLC/taller2SRI7-17.png)
 
 **4. Se realizará una prueba delante del profesor para comprobar que el sistema funciona después de un reinicio.**
-
