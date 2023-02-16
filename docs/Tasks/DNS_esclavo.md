@@ -65,17 +65,17 @@ zone "22.172.in-addr.arpa" {
 4.- Modificamos la definición de las zona en el servidor DNS esclavo. Modificamos el fichero /etc/bind/named.conf.local:
 
 ```bash
- include "/etc/bind/zones.rfc1918";
- zone "nazareth.org" {
-     type slave;
-     file "db.nazareth.org";
-     masters { 172.22.4.145; };
- };
- zone "22.172.in-addr.arpa" {
-     type slave;
-     file "db.172.22.0.0";
-     masters { 172.22.4.145; };
- };	
+include "/etc/bind/zones.rfc1918";
+zone "nazareth.org" {
+    type slave;
+    file "db.nazareth.org";
+    masters { 172.22.5.136; };
+};
+zone "22.172.in-addr.arpa" {
+    type slave;
+    file "db.172.22.0.0";
+    masters { 172.22.5.136; };
+};	
 ```
 
 * type slave: Se indica que este servidor será esclavo para estas zonas.
@@ -149,11 +149,52 @@ $ORIGIN 22.172.in-addr.arpa.
 
 ```bash
  named-checkzone tunombre.org /var/cache/bind/db.tunombre.org
- named-checkzone 22.172.in-addr.arpa /var/cache/bind/db.172.22.0.0  Para detectar errores de configuración en `named.conf`, podemos usar:
+ named-checkzone 22.172.in-addr.arpa /var/cache/bind/db.172.22.0.0  
+```
+
+ Para detectar errores de configuración en `named.conf`, podemos usar:
+
+```bash
  named-checkconf
 ```
 
 8.- Configura el cliente con los dos servidores DNS. Para ello en su fichero /etc/resolv.conf utiliza dos directivas nameserver. Si hacemos una consulta desde un cliente, y el dns maestro no responde, responderá el esclavo. Prueba a realizar una consulta. ¿Quién ha respondido?. Apaga el servidor maestro, y vuelve a hacer la misma consulta. ¿Ha respondido el servidor DNS esclavo?
+
+En el fichero ponemos dos directivas nameserver:
+
+```bash
+nameserver 172.22.5.136
+nameserver 172.22.4.145
+```
+
+- Consulta con ambos servidores DNS:
+
+![DNS](/img/SRI+HLC/taller2SRI5.png)
+
+Vemos en la última línea que ha respondido el servidor DNS maestro:
+
+```bash
+...
+;; Query time: 0 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)    <<<🐞💥 IP del servidor DNS maestro 🐞💥
+;; WHEN: Thu Feb 16 13:35:33 CET 2023
+;; MSG SIZE  rcvd: 139
+```
+
+Y en el cuerpo de la respuesta vemos que el servidor DNS esclavo aparece también:
+
+```bash
+...
+;; ANSWER SECTION:
+nazareth.org.		86400	IN	NS	dns2.nazareth.org.  <<<🍀🐢 DNS esclavo 🍀🐢
+nazareth.org.		86400	IN	NS	dns1.nazareth.org.  <<<🫐🐦 DNS maestro 🫐🐦
+...
+```
+
+- Consulta con el servidor DNS maestro apagado:
+
+
+
 
 9.- Vamos a modificar la información de la zona. Para ello vamos a modificar en el servidor DNS maestro y en su fichero /var/cache/bind/db.tunombre.org vamos a añadir un nuevo registro:
 

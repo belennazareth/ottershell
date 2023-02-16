@@ -114,12 +114,12 @@ $TTL    86400
 
 $ORIGIN nazareth.org.
 
-dns1			    IN	A	172.22.5.136 #IP de la máquina
+dns1			      IN	A	172.22.5.136 #IP de la máquina
 correo			    IN	A	172.22.200.101
-asterix		        IN	A	172.22.200.102
+asterix		      IN	A	172.22.200.102
 obelix			    IN	A	172.22.200.103
 www			        IN	CNAME	asterix
-informatica		    IN	CNAME	asterix
+informatica		  IN	CNAME	asterix
 ftp			        IN	CNAME	obelix
 ```
 
