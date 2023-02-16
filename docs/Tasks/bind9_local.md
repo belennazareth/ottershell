@@ -122,7 +122,7 @@ www			        IN	CNAME	asterix
 informatica		  IN	CNAME	asterix
 ftp			        IN	CNAME	obelix
 ```
-
+ 
 \- Crearemos una zona inversa para que el servidor resuelva los nombres de dominio de la red local, se debe modificar el fichero `/etc/bind/named.conf.local` y añadir la siguiente línea:
 
 ```bash
