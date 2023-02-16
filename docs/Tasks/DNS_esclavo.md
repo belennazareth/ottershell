@@ -8,9 +8,28 @@ sidebar_position: 27
 
 Un servidor DNS esclavo contiene una réplica de las zonas del servidor maestro. Se debe producir una transferencia de zona (el esclavo hace una solicitud de la zona completa al maestro) para que se sincronicen los servidores.
 
-1.- Crea otra máquina en Proxmox que tendrá el rol de servidor DNS esclavo. Instala bind9 y nombrarlo de manera adecuada para que tenga el nombre dns2.tunombre.org. Voy a suponer que la dirección de esta nueva máquina es la 172.22.200.110. La transferencia de zona entre maestro y esclavo usa el puerto 53/tcp, ábrelo en el grupo de seguridad.
+*********************
+        IPs
+
+Servidor: 172.22.5.136
+Cliente: 172.22.1.35
+Esclavo: 172.22.4.145
+*********************
 
 
+1.- Crea otra máquina en Proxmox que tendrá el rol de servidor DNS esclavo. Instala bind9 y nombralo de manera adecuada para que tenga el nombre dns2.tunombre.org. Voy a suponer que la dirección de esta nueva máquina es la 172.22.200.110. La transferencia de zona entre maestro y esclavo usa el puerto 53/tcp, ábrelo en el grupo de seguridad.
+
+Para esto ejecutamos el siguiente comando:
+
+```bash
+sudo hostnamectl set-hostname dns2
+```
+
+Y editamos el fichero /etc/hosts para que tenga el nombre dns2.tunombre.org:
+
+```bash
+127.0.1.1 dns2.nazareth.org dns2
+```
 
 2.- Por seguridad, sólo debemos aceptar transferencias de zonas hacía los esclavos autorizados, para ello en el fichero /etc/bind/named.conf.options, deshabilitamos las transferencias:
 
@@ -24,37 +43,38 @@ Un servidor DNS esclavo contiene una réplica de las zonas del servidor maestro.
 3.- Modificamos la definición de las zona en el servidor DNS maestro. Modificamos el fichero /etc/bind/named.conf.local:
 
 ```bash
- include "/etc/bind/zones.rfc1918";
- zone "tunombre.org" {
-     type master;
-     file "db.tunombre.org";
-     allow-transfer { 172.22.200.110; };
-     notify yes;
- };
- zone "22.172.in-addr.arpa" {
-     type master;
-     file "db.172.22.0.0";
-     allow-transfer { 172.22.200.110; };
-     notify yes;
- };
+include "/etc/bind/zones.rfc1918";
+zone "nazareth.org" {
+    type master;
+    file "db.nazareth.org";
+    allow-transfer { 172.22.4.145; };
+    notify yes;
+};
+zone "22.172.in-addr.arpa" {
+    type master;
+    file "db.172.22.0.0";
+    allow-transfer { 172.22.4.145; };
+    notify yes;
+};
 ```
 
 * allow-tranfer: Se permite las transferencias de zonas al servidor DNS esclavo (172.22.200.110).
+
 * notify yes: Cuando se reinicie el servidor DNS maestro se notificará al esclavo que ha habido cambios para que solicite una transferencia de zona.
 
 4.- Modificamos la definición de las zona en el servidor DNS esclavo. Modificamos el fichero /etc/bind/named.conf.local:
 
 ```bash
  include "/etc/bind/zones.rfc1918";
- zone "tunombre.org" {
+ zone "nazareth.org" {
      type slave;
-     file "db.tunombre.org";
-     masters { 172.22.200.100; };
+     file "db.nazareth.org";
+     masters { 172.22.4.145; };
  };
  zone "22.172.in-addr.arpa" {
      type slave;
      file "db.172.22.0.0";
-     masters { 172.22.200.100; };
+     masters { 172.22.4.145; };
  };	
 ```
 
@@ -64,44 +84,46 @@ Un servidor DNS esclavo contiene una réplica de las zonas del servidor maestro.
 5.- En el servidor DNS maestro añadimos la información del servidor DNS esclavo en las zonas. En la zona de resolución directa, en el fichero /var/cache/bind/db.tunombre.org añadimos un nuevo registro NS y su correspondiente registro A:
 
 ```bash
- $TTL    86400
- @       IN      SOA     dns1.tunombre.org. root.tunombre.org. (
-                               1         ; Serial
-                          604800         ; Refresh
-                           86400         ; Retry
-                         2419200         ; Expire
-                           86400 )       ; Negative Cache TTL
- ;
- @	IN	NS		dns1.tunombre.org.
- @	IN	NS		dns2.tunombre.org.
- @	IN	MX	10	correo.tunombre.org.
+$TTL    86400
+@       IN      SOA     dns1.nazareth.org. root.nazareth.org. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+;
 
- $ORIGIN tunombre.org.
+@	IN	NS		dns1.nazareth.org.
+@	IN	NS		dns2.nazareth.org.
+@	IN	MX	10	correo.nazareth.org.
 
- dns1		IN	A	172.22.200.100
- dns2		IN	A	172.22.200.110
- ...
+$ORIGIN nazareth.org.
+
+dns1		IN	A	172.22.5.136
+dns2		IN	A	172.22.4.145
+...
 ```
 
 La zona de resolución inverso quedaría de la siguiente forma, modificando el fichero /var/cache/bind/db.172.22.0.0:
 
 ```bash
- $TTL    86400
- @       IN      SOA     dns1.tunombre.org. root.tunombre.org. (
-                               1         ; Serial
-                          604800         ; Refresh
-                           86400         ; Retry
-                         2419200         ; Expire
-                           86400 )       ; Negative Cache TTL
- ;
- @	IN	NS		dns1.tunombre.org.
- @	IN	NS		dns2.tunombre.org.
+$TTL    86400
+@       IN      SOA     dns1.nazareth.org. root.nazareth.org. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+;
 
- $ORIGIN 22.172.in-addr.arpa.
+@	IN	NS		dns1.nazareth.org.
+@	IN	NS		dns2.nazareth.org.
 
- 100.200		IN	PTR		dns1.tunombre.org.
- 110.200		IN	PTR		dns2.tunombre.org.
- ...
+$ORIGIN 22.172.in-addr.arpa.
+
+136.5		IN	PTR		dns1.nazareth.org.
+145.4   	IN	PTR		dns2.nazareth.org.
+...
 ```
 
 *Nota: La información de los registros de las zonas sólo se modifican en el servidor DNS maestro. Estás modificaciones se copia en el esclavo por medio de una transferencia de zona.
