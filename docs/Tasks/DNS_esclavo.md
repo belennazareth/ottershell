@@ -193,20 +193,57 @@ nazareth.org.		86400	IN	NS	dns1.nazareth.org.  <<<🫐🐦 DNS maestro 🫐🐦
 
 - Consulta con el servidor DNS maestro apagado:
 
+![DNS](/img/SRI+HLC/taller2SRI5-2.png)
 
+Vemos ha respondido el servidor DNS esclavo:
 
+```bash
+...
+;; Query time: 0 msec
+;; SERVER: 172.22.4.145#53(172.22.4.145)    <<<🐞💥 IP del servidor DNS esclavo 🐞💥
+;; WHEN: Thu Feb 16 13:59:17 CET 2023
+;; MSG SIZE  rcvd: 139
+```
+
+Y en el cuerpo de la respuesta vemos que aparecen ambos servidores DNS:
+
+```bash
+...
+;; ANSWER SECTION:
+nazareth.org.		86400	IN	NS	dns1.nazareth.org.  <<<🫐🐦 DNS maestro 🫐🐦
+nazareth.org.		86400	IN	NS	dns2.nazareth.org.  <<<🍀🐢 DNS esclavo 🍀🐢
+...
+```
 
 9.- Vamos a modificar la información de la zona. Para ello vamos a modificar en el servidor DNS maestro y en su fichero /var/cache/bind/db.tunombre.org vamos a añadir un nuevo registro:
 
 ```bash
  ...
- prueba		IN	A	172.22.200.120
+prueba		IN	A	172.22.200.120
 
 ```
 
 **Recuerda incrementar el número de serie, para que al reiniciar el servidor DNS maestro se produzca la transferencia de zona.**
 
 10.- Desde el cliente realiza una consulta para preguntar por la dirección IP de prueba.tunombre.org. ¿Quién ha respondido?. Apaga el servidor maestro, y vuelve a hacer la misma consulta. ¿Ha respondido el servidor DNS esclavo?. Comprueba en el esclavo que se ha producido la transferencia.
+
+![DNS](/img/SRI+HLC/taller2SRI5-3.png)
+
+Donde vemos que al hacer la consulta aparece como respuesta que esa direccion se encuentra en la ip que hemos registado anteriormente:
+
+```bash
+;; ANSWER SECTION:
+prueba.nazareth.org.	86400	IN	A	172.22.200.120  <<<🍀🐢 IP que hemos registrado 🍀🐢
+```
+
+Y en el pie de la respuesta vemos que ha respondido el servidor DNS maestro:
+
+```bash
+;; Query time: 0 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)    <<<🐞💥 IP del servidor DNS maestro 🐞💥
+;; WHEN: Fri Feb 17 08:48:36 CET 2023
+;; MSG SIZE  rcvd: 92
+```
 
 11.- Algunos trucos adicionales:
 
@@ -227,9 +264,65 @@ nazareth.org.		86400	IN	NS	dns1.nazareth.org.  <<<🫐🐦 DNS maestro 🫐🐦
 
 **1. Realización del apartado 8.**
 
+En el fichero ponemos dos directivas nameserver:
+
+```bash
+nameserver 172.22.5.136
+nameserver 172.22.4.145
+```
+
+- Consulta con ambos servidores DNS:
+
+![DNS](/img/SRI+HLC/taller2SRI5.png)
+
+Vemos en la última línea que ha respondido el servidor DNS maestro:
+
+```bash
+...
+;; Query time: 0 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)    <<<🐞💥 IP del servidor DNS maestro 🐞💥
+;; WHEN: Thu Feb 16 13:35:33 CET 2023
+;; MSG SIZE  rcvd: 139
+```
+
+Y en el cuerpo de la respuesta vemos que el servidor DNS esclavo aparece también:
+
+```bash
+...
+;; ANSWER SECTION:
+nazareth.org.		86400	IN	NS	dns2.nazareth.org.  <<<🍀🐢 DNS esclavo 🍀🐢
+nazareth.org.		86400	IN	NS	dns1.nazareth.org.  <<<🫐🐦 DNS maestro 🫐🐦
+...
+```
+
+- Consulta con el servidor DNS maestro apagado:
+
+![DNS](/img/SRI+HLC/taller2SRI5-2.png)
+
+Vemos ha respondido el servidor DNS esclavo:
+
+```bash
+...
+;; Query time: 0 msec
+;; SERVER: 172.22.4.145#53(172.22.4.145)    <<<🐞💥 IP del servidor DNS esclavo 🐞💥
+;; WHEN: Thu Feb 16 13:59:17 CET 2023
+;; MSG SIZE  rcvd: 139
+```
+
+Y en el cuerpo de la respuesta vemos que aparecen ambos servidores DNS:
+
+```bash
+...
+;; ANSWER SECTION:
+nazareth.org.		86400	IN	NS	dns1.nazareth.org.  <<<🫐🐦 DNS maestro 🫐🐦
+nazareth.org.		86400	IN	NS	dns2.nazareth.org.  <<<🍀🐢 DNS esclavo 🍀🐢
+...
+```
 
 
 **2. Transferencia de zonas: indica para que sirve el número de serie. Explica con tus palabras qué indican los tiempos que se configuran en el registro SOA.**
+
+
 
 
 **3. Realización del apartado 10.**
