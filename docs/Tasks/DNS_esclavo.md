@@ -8,13 +8,13 @@ sidebar_position: 27
 
 Un servidor DNS esclavo contiene una réplica de las zonas del servidor maestro. Se debe producir una transferencia de zona (el esclavo hace una solicitud de la zona completa al maestro) para que se sincronicen los servidores.
 
-*********************
-        IPs
-
-Servidor: 172.22.5.136
-Cliente: 172.22.1.35
-Esclavo: 172.22.4.145
-*********************
+************************
+| IPs |
+| :-: |
+ Servidor: 172.22.5.136
+ Cliente: 172.22.1.35
+ Esclavo: 172.22.4.145
+************************
 
 
 1.- Crea otra máquina en Proxmox que tendrá el rol de servidor DNS esclavo. Instala bind9 y nombralo de manera adecuada para que tenga el nombre dns2.tunombre.org. Voy a suponer que la dirección de esta nueva máquina es la 172.22.200.110. La transferencia de zona entre maestro y esclavo usa el puerto 53/tcp, ábrelo en el grupo de seguridad.
@@ -223,7 +223,7 @@ prueba		IN	A	172.22.200.120
 
 ```
 
-**Recuerda incrementar el número de serie, para que al reiniciar el servidor DNS maestro se produzca la transferencia de zona.**
+**Recuerda INCREMENTAR EL NÚMERO DE SERIE, para que al reiniciar el servidor DNS maestro se produzca la transferencia de zona.**
 
 10.- Desde el cliente realiza una consulta para preguntar por la dirección IP de prueba.tunombre.org. ¿Quién ha respondido?. Apaga el servidor maestro, y vuelve a hacer la misma consulta. ¿Ha respondido el servidor DNS esclavo?. Comprueba en el esclavo que se ha producido la transferencia.
 
@@ -322,10 +322,40 @@ nazareth.org.		86400	IN	NS	dns2.nazareth.org.  <<<🍀🐢 DNS esclavo 🍀🐢
 
 **2. Transferencia de zonas: indica para que sirve el número de serie. Explica con tus palabras qué indican los tiempos que se configuran en el registro SOA.**
 
+El numero de serie es un campo que se utiliza para identificar de forma unica a cada zona. Cuando se realiza una modificación en la zona, se debe incrementar el numero de serie para que el servidor DNS esclavo sepa que debe realizar una transferencia de zona. 
 
+Los tiempos que se configuran en el registro SOA son:
+
+- **Refresh:** Tiempo que debe pasar entre consultas de refresco de la zona. Si el tiempo de refresco es 0, el servidor DNS esclavo no consultará al maestro.
+
+- **Retry:** Tiempo que debe pasar entre consultas de refresco de la zona si el servidor DNS maestro no responde.
+
+- **Expire:** Tiempo que debe pasar para que el servidor DNS esclavo considere que la zona ha expirado.
+
+- **Serial:** Número de serie de la zona. Se incrementa cada vez que se realiza una modificación en la zona.
+
+- **Negative Cache TTL**: Tiempo que debe pasar para que el servidor DNS esclavo considere que la zona ha expirado.
 
 
 **3. Realización del apartado 10.**
+
+![DNS](/img/SRI+HLC/taller2SRI5-3.png)
+
+Donde vemos que al hacer la consulta aparece como respuesta que esa direccion se encuentra en la ip que hemos registado anteriormente:
+
+```bash
+;; ANSWER SECTION:
+prueba.nazareth.org.	86400	IN	A	172.22.200.120  <<<🍀🐢 IP que hemos registrado 🍀🐢
+```
+
+Y en el pie de la respuesta vemos que ha respondido el servidor DNS maestro:
+
+```bash
+;; Query time: 0 msec
+;; SERVER: 172.22.5.136#53(172.22.5.136)    <<<🐞💥 IP del servidor DNS maestro 🐞💥
+;; WHEN: Fri Feb 17 08:48:36 CET 2023
+;; MSG SIZE  rcvd: 92
+```
 
 
 **4. Realiza el ejercicio que te va a proponer el profesor.**
