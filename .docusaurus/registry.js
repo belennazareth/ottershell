@@ -70,6 +70,7 @@ export default {
   'd94373a8': [() => import(/* webpackChunkName: 'd94373a8' */ '@site/docs/Tasks/clonacion_instantanea.md'), '@site/docs/Tasks/clonacion_instantanea.md', require.resolveWeak('@site/docs/Tasks/clonacion_instantanea.md')],
   'd9f32620': [() => import(/* webpackChunkName: 'd9f32620' */ '@site/blog/2021-08-26-welcome/index.md'), '@site/blog/2021-08-26-welcome/index.md', require.resolveWeak('@site/blog/2021-08-26-welcome/index.md')],
   'db5c031a': [() => import(/* webpackChunkName: 'db5c031a' */ '~blog/default/blog-tags-linkedin-40d-list.json'), '~blog/default/blog-tags-linkedin-40d-list.json', require.resolveWeak('~blog/default/blog-tags-linkedin-40d-list.json')],
+  'e64c6e79': [() => import(/* webpackChunkName: 'e64c6e79' */ '@site/docs/Tasks/bind9_subdominios.md'), '@site/docs/Tasks/bind9_subdominios.md', require.resolveWeak('@site/docs/Tasks/bind9_subdominios.md')],
   'e8d71a07': [() => import(/* webpackChunkName: 'e8d71a07' */ '@site/docs/Tasks/makefile_aso.md'), '@site/docs/Tasks/makefile_aso.md', require.resolveWeak('@site/docs/Tasks/makefile_aso.md')],
   'eb4abe1b': [() => import(/* webpackChunkName: 'eb4abe1b' */ '@site/docs/Tasks/compilacion_kernel.md'), '@site/docs/Tasks/compilacion_kernel.md', require.resolveWeak('@site/docs/Tasks/compilacion_kernel.md')],
   'efa196ad': [() => import(/* webpackChunkName: 'efa196ad' */ '@site/docs/Tasks/bookmedik.md'), '@site/docs/Tasks/bookmedik.md', require.resolveWeak('@site/docs/Tasks/bookmedik.md')],

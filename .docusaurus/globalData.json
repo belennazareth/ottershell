@@ -46,6 +46,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/bind9_subdominios",
+              "path": "/docs/Tasks/bind9_subdominios",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/bookmedik",
               "path": "/docs/Tasks/bookmedik",
               "sidebar": "tutorialSidebar"

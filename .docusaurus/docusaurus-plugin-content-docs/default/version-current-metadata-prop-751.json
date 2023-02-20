@@ -284,6 +284,12 @@
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
+          },
+          {
+            "type": "link",
+            "label": "bind9_subdominios",
+            "href": "/docs/Tasks/bind9_subdominios",
+            "docId": "Tasks/bind9_subdominios"
           }
         ],
         "href": "/docs/category/tasks"
@@ -352,6 +358,12 @@
       "id": "Tasks/bind9_local",
       "title": "Instalación y configuración del servidor bind9 en nuestra red local",
       "description": "Procedimiento",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/bind9_subdominios": {
+      "id": "Tasks/bind9_subdominios",
+      "title": "bind9_subdominios",
+      "description": "",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/bookmedik": {

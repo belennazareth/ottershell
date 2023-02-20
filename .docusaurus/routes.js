@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '4a8'),
+    component: ComponentCreator('/docs', '117'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -102,6 +102,12 @@ export default [
       {
         path: '/docs/Tasks/bind9_local',
         component: ComponentCreator('/docs/Tasks/bind9_local', '3e2'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/bind9_subdominios',
+        component: ComponentCreator('/docs/Tasks/bind9_subdominios', 'fa0'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

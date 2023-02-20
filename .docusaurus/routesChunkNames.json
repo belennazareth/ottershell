@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-4a8": {
+  "/docs-117": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -140,6 +140,10 @@
   "/docs/Tasks/bind9_local-3e2": {
     "__comp": "17896441",
     "content": "334592cc"
+  },
+  "/docs/Tasks/bind9_subdominios-fa0": {
+    "__comp": "17896441",
+    "content": "e64c6e79"
   },
   "/docs/Tasks/bookmedik-37d": {
     "__comp": "17896441",
