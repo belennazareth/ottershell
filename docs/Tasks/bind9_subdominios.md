@@ -6,16 +6,13 @@ sidebar_position: 29
 
 # Procedimiento
 
-***********************
+************************
 | IPs |
 | :-: |
- Servidor: 172.22.5.136
-| :-: |
- Cliente: 172.22.1.35
-| :-: |
- Esclavo: 172.22.4.145 
-| :-: |
- Delegado: 172.22.5.137
+| Servidor: 172.22.5.136 |
+| Cliente: 172.22.1.35 |
+| Esclavo: 172.22.4.145 |
+| Delegado: 172.22.5.137 |
 ***********************
 
 1Crea una nueva máquina e instala un servidor DNS bind9, será el servidor DNS con autoridad para la zona delegada que será informatica.tunombre.org. Nombra de manera adecuada esta máquina para que tenga el nombre dns.informatica.tunombre.org. Voy a suponer que la dirección de esta nueva máquina es la 172.22.200.120.
