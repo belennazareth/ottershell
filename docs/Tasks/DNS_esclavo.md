@@ -11,11 +11,9 @@ Un servidor DNS esclavo contiene una réplica de las zonas del servidor maestro.
 ************************
 | IPs |
 | :-: |
- Servidor: 172.22.5.136
-| -- |
- Cliente: 172.22.1.35
-| -- |
- Esclavo: 172.22.4.145
+| Servidor: 172.22.5.136 |
+| Cliente: 172.22.1.35 |
+| Esclavo: 172.22.4.145 |
 ************************
 
 
