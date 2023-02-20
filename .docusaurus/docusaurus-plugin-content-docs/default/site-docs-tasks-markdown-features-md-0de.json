@@ -17,11 +17,11 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Introducción a iSCSI",
-    "permalink": "/docs/Tasks/iSCSI"
+    "title": "Delegación de subdominios con bind9",
+    "permalink": "/docs/Tasks/bind9_subdominios"
   },
   "next": {
-    "title": "bind9_subdominios",
-    "permalink": "/docs/Tasks/bind9_subdominios"
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
   }
 }

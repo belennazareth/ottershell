@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/dhcp"
   },
   "next": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Delegación de subdominios con bind9",
+    "permalink": "/docs/Tasks/bind9_subdominios"
   }
 }

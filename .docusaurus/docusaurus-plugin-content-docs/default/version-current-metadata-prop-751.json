@@ -281,15 +281,15 @@
           },
           {
             "type": "link",
-            "label": "Markdown Features",
-            "href": "/docs/Tasks/markdown-features",
-            "docId": "Tasks/markdown-features"
+            "label": "Delegación de subdominios con bind9",
+            "href": "/docs/Tasks/bind9_subdominios",
+            "docId": "Tasks/bind9_subdominios"
           },
           {
             "type": "link",
-            "label": "bind9_subdominios",
-            "href": "/docs/Tasks/bind9_subdominios",
-            "docId": "Tasks/bind9_subdominios"
+            "label": "Markdown Features",
+            "href": "/docs/Tasks/markdown-features",
+            "docId": "Tasks/markdown-features"
           }
         ],
         "href": "/docs/category/tasks"
@@ -362,8 +362,8 @@
     },
     "Tasks/bind9_subdominios": {
       "id": "Tasks/bind9_subdominios",
-      "title": "bind9_subdominios",
-      "description": "",
+      "title": "Delegación de subdominios con bind9",
+      "description": "*",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/bookmedik": {
