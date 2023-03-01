@@ -281,6 +281,12 @@
           },
           {
             "type": "link",
+            "label": "Auditoría",
+            "href": "/docs/Tasks/auditorias",
+            "docId": "Tasks/auditorias"
+          },
+          {
+            "type": "link",
             "label": "Delegación de subdominios con bind9",
             "href": "/docs/Tasks/bind9_subdominios",
             "docId": "Tasks/bind9_subdominios"
@@ -354,6 +360,12 @@
       "description": "1. Pantallazo donde se compruebe que tienes corriendo en tu servidor procesos PHP-FPM.",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/auditorias": {
+      "id": "Tasks/auditorias",
+      "title": "Auditoría",
+      "description": "Las auditorías son un conjunto de técnicas que permiten recopilar información sobre el uso de un sistema informático. La auditoría de un sistema informático consiste en la recopilación de información sobre el uso de un sistema informático, con el fin de verificar que el sistema se está utilizando de forma correcta y que los usuarios están cumpliendo con las políticas de seguridad establecidas.",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/bind9_local": {
       "id": "Tasks/bind9_local",
       "title": "Instalación y configuración del servidor bind9 en nuestra red local",
@@ -363,7 +375,7 @@
     "Tasks/bind9_subdominios": {
       "id": "Tasks/bind9_subdominios",
       "title": "Delegación de subdominios con bind9",
-      "description": "*",
+      "description": "| IPs |",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/bookmedik": {

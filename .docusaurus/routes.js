@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '117'),
+    component: ComponentCreator('/docs', '794'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -96,6 +96,12 @@ export default [
       {
         path: '/docs/Tasks/apache2_fpm',
         component: ComponentCreator('/docs/Tasks/apache2_fpm', 'b47'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/auditorias',
+        component: ComponentCreator('/docs/Tasks/auditorias', 'b53'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

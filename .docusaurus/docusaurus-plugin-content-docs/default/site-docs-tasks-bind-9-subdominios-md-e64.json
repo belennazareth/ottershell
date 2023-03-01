@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/bind9_subdominios",
   "id": "Tasks/bind9_subdominios",
   "title": "Delegación de subdominios con bind9",
-  "description": "*",
+  "description": "| IPs |",
   "source": "@site/docs/Tasks/bind9_subdominios.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/bind9_subdominios",
@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Introducción a iSCSI",
-    "permalink": "/docs/Tasks/iSCSI"
+    "title": "Auditoría",
+    "permalink": "/docs/Tasks/auditorias"
   },
   "next": {
     "title": "Markdown Features",

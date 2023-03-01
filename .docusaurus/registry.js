@@ -27,6 +27,7 @@ export default {
   '3b927334': [() => import(/* webpackChunkName: '3b927334' */ '@site/docs/Tasks/migracion_centos.md'), '@site/docs/Tasks/migracion_centos.md', require.resolveWeak('@site/docs/Tasks/migracion_centos.md')],
   '46843c04': [() => import(/* webpackChunkName: '46843c04' */ '@site/docs/Tasks/openLDAP.md'), '@site/docs/Tasks/openLDAP.md', require.resolveWeak('@site/docs/Tasks/openLDAP.md')],
   '4b4f0e05': [() => import(/* webpackChunkName: '4b4f0e05' */ '@site/docs/Tasks/criptografia1.md'), '@site/docs/Tasks/criptografia1.md', require.resolveWeak('@site/docs/Tasks/criptografia1.md')],
+  '52be7948': [() => import(/* webpackChunkName: '52be7948' */ '@site/docs/Tasks/auditorias.md'), '@site/docs/Tasks/auditorias.md', require.resolveWeak('@site/docs/Tasks/auditorias.md')],
   '556022be': [() => import(/* webpackChunkName: '556022be' */ '~blog/default/blog-tags-gmail-679-list.json'), '~blog/default/blog-tags-gmail-679-list.json', require.resolveWeak('~blog/default/blog-tags-gmail-679-list.json')],
   '596b171e': [() => import(/* webpackChunkName: '596b171e' */ '@site/docs/Tasks/markdown.md'), '@site/docs/Tasks/markdown.md', require.resolveWeak('@site/docs/Tasks/markdown.md')],
   '5d56c66f': [() => import(/* webpackChunkName: '5d56c66f' */ '@site/docs/Tasks/intro_git.md'), '@site/docs/Tasks/intro_git.md', require.resolveWeak('@site/docs/Tasks/intro_git.md')],
