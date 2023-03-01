@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/auditorias",
+  "id": "Tasks/auditorias",
+  "title": "Auditoría",
+  "description": "Las auditorías son un conjunto de técnicas que permiten recopilar información sobre el uso de un sistema informático. La auditoría de un sistema informático consiste en la recopilación de información sobre el uso de un sistema informático, con el fin de verificar que el sistema se está utilizando de forma correcta y que los usuarios están cumpliendo con las políticas de seguridad establecidas.",
+  "source": "@site/docs/Tasks/auditorias.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/auditorias",
+  "permalink": "/docs/Tasks/auditorias",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/auditorias.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 29,
+  "frontMatter": {
+    "sidebar_position": 29
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introducción a iSCSI",
+    "permalink": "/docs/Tasks/iSCSI"
+  },
+  "next": {
+    "title": "Delegación de subdominios con bind9",
+    "permalink": "/docs/Tasks/bind9_subdominios"
+  }
+}
