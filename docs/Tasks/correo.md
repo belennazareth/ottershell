@@ -108,6 +108,16 @@ Comprobamos en el fichero de log de postfix que se ha enviado el correo correcta
 
 Y, en este caso en `gmail`, podemos ver que se ha recibido el correo correctamente. En la opción de `mostrar cabeceras` podemos ver los servidores por los que ha pasado el correo. Aunque se ve mejor con la opción de `mostrar original` (##Entrega > Ejercicio 2).
 
+### Recibir correos desde internet a usuarios del servidor
+
+Para este apartado es necesario que el dominio esté dentro del `relay_domains` del servidor de correo de la red, en este caso, `babuino-smtp.gonzalonazareno.org`. Y configurar el registro MX del dominio para que apunte al servidor de correo de la red:
+
+```bash
+
+```
+
+Después, ya podemos enviar correos desde internet a usuarios del servidor, un ejemplo sería responder a un correo que se ha recibido en el servidor.
+
 
 ## Entrega
 
