@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/nfs_systemd"
   },
   "next": {
-    "title": "Recolección centralizada de logs de sistema",
+    "title": "Recolección centralizada de logs del sistema",
     "permalink": "/docs/Tasks/journald"
   }
 }

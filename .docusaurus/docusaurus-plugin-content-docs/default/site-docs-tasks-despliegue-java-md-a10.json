@@ -17,7 +17,7 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Recolección centralizada de logs de sistema",
+    "title": "Recolección centralizada de logs del sistema",
     "permalink": "/docs/Tasks/journald"
   },
   "next": {
