@@ -215,9 +215,57 @@ exec accesos_fallidos;
 ```
 
 ![Auditoria](/img/BBDD/auditoria-4.png)
+![Auditoria](/img/BBDD/auditoria-5.png)
 
 
 ## 3. Activa la auditoría de las operaciones DML realizadas por SCOTT. Comprueba su funcionamiento.
+
+En caso de no tener al usuario SCOTT creado, lo creamos y le damos permiso para trabajar sobre la tabla `emp` y `dept`:
+
+```sql
+CREATE USER scott IDENTIFIED BY tiger;
+GRANT SELECT, INSERT, UPDATE, DELETE ON emp TO scott;
+GRANT SELECT, INSERT, UPDATE, DELETE ON dept TO scott;
+```
+
+*Nota: si no deja crear el usuario, puede ser porque ya exista o porque no nos permita aun siendo administrador debido a permisos de seguridad o similar. **No es recomendable** pero podemos ejecutar `ALTER SESSION SET "_ORACLE_SCRIPT"=true;_` para poder crear el usuario. Esto **es una mala práctica** y no se recomienda, ya que lo que hace es alterar la sesión para que no se apliquen las restricciones de seguridad, por lo que **puede ser peligroso.**
+
+Lo siguiente será activar la auditoría, para ello tenemos que ejecutar el siguiente comando:
+
+```sql
+AUDIT INSERT TABLE, UPDATE TABLE, DELETE TABLE BY SCOTT;
+```
+
+Y comprobamos que se ha activado correctamente trabajando sobre la tabla `emp` de SCOTT:
+
+```sql
+UPDATE emp SET ename = 'JUAN' WHERE empno = 7844;
+```
+
+![Auditoria](/img/BBDD/auditoria-6.png)
+
+
+```sql
+DELETE FROM emp WHERE sal <= 950;
+```
+
+![Auditoria](/img/BBDD/auditoria-7.png)
+
+
+```sql
+INSERT INTO EMP VALUES(7900, 'JAMES', 'CLERK', 7698,TO_DATE('3-DIC-1981', 'DD-MON-YYYY'), 950, NULL, 30);
+```
+
+![Auditoria](/img/BBDD/auditoria-8.png)
+
+
+Para poder visualizar la recolección de datos en la auditoria se consulta la tabla `DBA_AUDIT_OBJECT`, esta tabla muestra registros de auditoría para cada objeto de la base de datos que se ha auditado, en este enlace vemos más información sobre la misma: https://docs.oracle.com/cd/B13789_01/server.101/b10755/statviews_2047.htm
+
+Vamos a consultar el nombre de usuario, el nombre del objeto, el tipo de operación y la fecha y hora de la operación:
+
+```sql
+SELECT USERNAME, OBJ_NAME, ACTION_NAME, EXTENDED_TIMESTAMP FROM DBA_AUDIT_OBJECT;
+```
 
 
 ## 4. Realiza una auditoría de grano fino para almacenar información sobre la inserción de empleados con sueldo superior a 2000 en la tabla emp de scott.
