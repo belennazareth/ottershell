@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/configuracion_dhcp",
+  "id": "Tasks/configuracion_dhcp",
+  "title": "Instalación y configuración del servidor DHCP",
+  "description": "1.- Crea una infraestructura en QEMU/KVM que te permita tener una máquina donde instalar un servidor dhcp y un cliente que se configuren para tomar la configuración de forma dinámica. El servidor estará conectado al cliente por una red interna muy aislada.",
+  "source": "@site/docs/Tasks/configuracion_dhcp.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/configuracion_dhcp",
+  "permalink": "/docs/Tasks/configuracion_dhcp",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/configuracion_dhcp.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 29,
+  "frontMatter": {
+    "sidebar_position": 29
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Delegación de subdominios con bind9",
+    "permalink": "/docs/Tasks/bind9_subdominios"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
