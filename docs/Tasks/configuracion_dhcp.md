@@ -32,11 +32,6 @@ Para que el cliente reciba la configuración de forma dinámica, debemos configu
 
 Se usa una IP estática para que el cliente pueda acceder al servidor dhcp, ya que de otra manera se conectaría al dhcp de la red externa.
 
-Después, configuramos el cliente para que tome la configuración de forma dinámica, para ello editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
-
-```bash
-    iface enp1s0 inet dhcp
-```
 
 4.- Vamos a estudiar el fichero de configuración del servicio `/etc/dhcp/dhcpd.conf`. 
 
@@ -111,16 +106,124 @@ subnet 192.168.0.0 netmask 255.255.255.0 {
 
 **Nota: En Windows la instrucción ipconfig /release libera la concesión, la instrucción ipconfig /renew la renueva. En linux el comando para liberar la concesión es dhclient -r y el que nos permite renovarla será dhclient.**
 
+Hay que instalar el paquete isc-dhcp-client en el cliente.
+
+    sudo apt-get install isc-dhcp-client
+
+Después, configuramos el cliente para que tome la configuración de forma dinámica, para ello editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
+
+```bash
+    iface enp1s0 inet dhcp
+```
+
+Reiniciamos el servicio de red:
+
+    sudo systemctl restart isc-dhcp-client 
+
+![SRI](/img/SRI+HLC/taller1SRI2.png)
+
+
 7.- El servidor debe hacer router-nat para que el cliente tenga acceso a internet. La configuración debe ser persistente.
 
+Para esto tenemos que editar el fichero `/etc/sysctl.conf` y añadir la siguiente línea:
+
+    net.ipv4.ip_forward=1
+
+Y activar el bit de forwarding añadiendo un 1 en el fichero `/proc/sys/net/ipv4/ip_forward`.
+
+    echo 1 > /proc/sys/net/ipv4/ip_forward
+
+Recargamos usando el comando:
+
+    sudo sysctl -p
+
+Instalamos iptables:
+
+    sudo apt-get install iptables
+
+Ahora hay que configurar iptables para que haga NAT indicando que todo lo que venga desde la red 192.168.0.0/24 lo saque por la interfaz enp1s0.
+
+    sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o enp1s0 -j MASQUERADE
+
+Para que se haga permanente, en el servidor, editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
+
+```bash
+auto enp1s0
+iface enp1s0 inet static
+        address 192.168.0.1
+        netmask 255.255.255.0
+        post-up iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o enp1s0 -j MASQUERADE    <<< 🌼🐸 configura el NAT 🐸🌼
+```
+
+Para que se apliquen los cambios de ese fichero, reiniciamos el servicio de red con el comando:
+
+    sudo systemctl restart isc-dhcp-server
+
+O reiniciamos el servidor.
+
+Para comprobar que esta funcionando iptables ejecutamos el comando:
+
+    sudo iptables -t nat -L -n
+
+En mi caso, aparece:
+
+```bash
+debian@serverdhcp:~$ sudo iptables -t nat -L -n
+
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+MASQUERADE  all  --  192.168.0.0/24       0.0.0.0/0     <<< 🌈🐝 configuración activa de NAT 🐝🌈
+```
+
+Para comprobar que funciona desde el cliente, podemos hacer ping a google:
+
+    ping 8.8.8.8
+
+
 8.- Cuando el servidor va repartiendo la configuración a los clientes va guardando las concesiones en el fichero /var/lib/dhcp/dhcpd.leases.
+
 
 ## Entrega
 
 **1.- Configuración del cliente para que configure la red de forma dinámica.**
 
+```bash
+cat /etc/network/interfaces
+```
+
+![SRI](/img/SRI+HLC/taller1SRI2-2.png)
+
 **2.- Una vez que el cliente se haya configurado, capturas de pantalla donde se vea en el cliente: su dirección IP, su puerta de enlace y su servidor DNS.**
+
+```bash
+ip a
+ip r
+cat /etc/resolv.conf
+```
+
+![SRI](/img/SRI+HLC/taller1SRI2-3.png)
 
 **3.- La concesión que se ha hecho en el servidor. Estará en el fichero donde se guarda la lista de concesiones.**
 
+```bash
+cat /var/lib/dhcp/dhcpd.leases
+```
+
+![SRI](/img/SRI+HLC/taller1SRI2-4.png)
+
 **4.- Una comprobación del que el cliente puede hacer resolución a un nombre de internet.**
+
+```bash
+ping 8.8.8.8
+```
+
+![SRI](/img/SRI+HLC/taller1SRI2-5.png)
