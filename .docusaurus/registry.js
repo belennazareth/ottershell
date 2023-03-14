@@ -31,6 +31,7 @@ export default {
   '556022be': [() => import(/* webpackChunkName: '556022be' */ '~blog/default/blog-tags-gmail-679-list.json'), '~blog/default/blog-tags-gmail-679-list.json', require.resolveWeak('~blog/default/blog-tags-gmail-679-list.json')],
   '596b171e': [() => import(/* webpackChunkName: '596b171e' */ '@site/docs/Tasks/markdown.md'), '@site/docs/Tasks/markdown.md', require.resolveWeak('@site/docs/Tasks/markdown.md')],
   '5d56c66f': [() => import(/* webpackChunkName: '5d56c66f' */ '@site/docs/Tasks/intro_git.md'), '@site/docs/Tasks/intro_git.md', require.resolveWeak('@site/docs/Tasks/intro_git.md')],
+  '5e3c85a0': [() => import(/* webpackChunkName: '5e3c85a0' */ '@site/docs/Tasks/configuracion_dhcp.md'), '@site/docs/Tasks/configuracion_dhcp.md', require.resolveWeak('@site/docs/Tasks/configuracion_dhcp.md')],
   '5e9f5e1a': [() => import(/* webpackChunkName: '5e9f5e1a' */ '@generated/docusaurus.config'), '@generated/docusaurus.config', require.resolveWeak('@generated/docusaurus.config')],
   '6183c210': [() => import(/* webpackChunkName: '6183c210' */ '@site/docs/Tasks/interconexion_bbdd.md'), '@site/docs/Tasks/interconexion_bbdd.md', require.resolveWeak('@site/docs/Tasks/interconexion_bbdd.md')],
   '6875c492': [() => import(/* webpackChunkName: '6875c492' */ '@theme/BlogTagsPostsPage'), '@theme/BlogTagsPostsPage', require.resolveWeak('@theme/BlogTagsPostsPage')],

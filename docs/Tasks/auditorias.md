@@ -259,9 +259,11 @@ INSERT INTO EMP VALUES(7900, 'JAMES', 'CLERK', 7698,TO_DATE('3-DIC-1981', 'DD-MO
 ![Auditoria](/img/BBDD/auditoria-8.png)
 
 
+*Nota: en caso de no poder ejecutar lo anterior puede ser porque no tenga cuota en un tablespace, para ello podemos ejecutar `ALTER USER scott QUOTA UNLIMITED ON USERS;` para darle cuota ilimitada al usuario.
+
 Para poder visualizar la recolección de datos en la auditoria se consulta la tabla `DBA_AUDIT_OBJECT`, esta tabla muestra registros de auditoría para cada objeto de la base de datos que se ha auditado, en este enlace vemos más información sobre la misma: https://docs.oracle.com/cd/B13789_01/server.101/b10755/statviews_2047.htm
 
-Vamos a consultar el nombre de usuario, el nombre del objeto, el tipo de operación y la fecha y hora de la operación:
+Para ver la recopilación de datos, como aparece en las imágenes anteriores, vamos a consultar el nombre de usuario, el nombre del objeto, el tipo de operación y la fecha y hora de la operación de la tabla `DBA_AUDIT_OBJECT`:
 
 ```sql
 SELECT USERNAME, OBJ_NAME, ACTION_NAME, EXTENDED_TIMESTAMP FROM DBA_AUDIT_OBJECT;
@@ -269,6 +271,7 @@ SELECT USERNAME, OBJ_NAME, ACTION_NAME, EXTENDED_TIMESTAMP FROM DBA_AUDIT_OBJECT
 
 
 ## 4. Realiza una auditoría de grano fino para almacenar información sobre la inserción de empleados con sueldo superior a 2000 en la tabla emp de scott.
+
 
 
 ## 5. Explica la diferencia entre auditar una operación by access o by session ilustrándolo con ejemplos.

@@ -293,6 +293,12 @@
           },
           {
             "type": "link",
+            "label": "Instalación y configuración del servidor DHCP",
+            "href": "/docs/Tasks/configuracion_dhcp",
+            "docId": "Tasks/configuracion_dhcp"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -400,6 +406,12 @@
       "id": "Tasks/compilacion_kernel",
       "title": "Compilación de un Kernel linux a medida",
       "description": "Para empezar a compilar el kernel debemos crear un directorio donde trabajaremos, y además, saber cual es la versión de nuestra máquina.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/configuracion_dhcp": {
+      "id": "Tasks/configuracion_dhcp",
+      "title": "Instalación y configuración del servidor DHCP",
+      "description": "1.- Crea una infraestructura en QEMU/KVM que te permita tener una máquina donde instalar un servidor dhcp y un cliente que se configuren para tomar la configuración de forma dinámica. El servidor estará conectado al cliente por una red interna muy aislada.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/correo": {

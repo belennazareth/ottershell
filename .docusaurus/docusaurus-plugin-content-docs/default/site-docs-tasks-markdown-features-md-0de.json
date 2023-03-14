@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Delegación de subdominios con bind9",
-    "permalink": "/docs/Tasks/bind9_subdominios"
+    "title": "Instalación y configuración del servidor DHCP",
+    "permalink": "/docs/Tasks/configuracion_dhcp"
   },
   "next": {
     "title": "Extras",

@@ -76,6 +76,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/configuracion_dhcp",
+              "path": "/docs/Tasks/configuracion_dhcp",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/correo",
               "path": "/docs/Tasks/correo",
               "sidebar": "tutorialSidebar"
