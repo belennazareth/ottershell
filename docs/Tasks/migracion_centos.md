@@ -34,24 +34,25 @@ Nuevas distribuciones surgidas para paliar el hueco dejado:
 ## Puntos a tratar
 
 
-1. Analiza el desencadenante de la retirada de centOS 8 del mercado. ¿Qué opinión tienes al respecto?
+**1.- Analiza el desencadenante de la retirada de centOS 8 del mercado. ¿Qué opinión tienes al respecto?**
 
-Según Red Hat, el motivo de la retirada de CentOS 8 es que sintieron la necesidad de innovar en el desarrollo de centos y buscar una estabilidad resolviendo los problemas que se les presentaron en el pasado. Además, vieron que reconstruir o clonar lo que ya estaba hecho no era la mejor opción para seguir avanzando. Por lo tanto, decicidieron realizar un cambio de recursos e invertir en el desarrollo de CentOS Stream, que es la versión de desarrollo de RHEL 8. Como consecuencia, CentOS 8 no recibirá más actualizaciones de seguridad, ni correcciones de errores, ni actualizaciones de software.
-
-
-
-
-2. Crea una cuenta en Red Hat y descárgate la iso de Red Hat Enterprise Linux (REL) y evalúa el producto. Comenta el procedimiento de alta.
+Según Red Hat, el motivo de la retirada de CentOS 8 es que sintieron la necesidad de innovar en el desarrollo de centos y buscar una estabilidad resolviendo los problemas que se les presentaron en el pasado. 
+Además, vieron que reconstruir o clonar lo que ya estaba hecho no era la mejor opción para seguir avanzando. 
+Por lo tanto, decicidieron realizar un cambio de recursos e invertir en el desarrollo de CentOS Stream, que es la versión de desarrollo de RHEL 8. Como consecuencia, CentOS 8 no recibirá más actualizaciones de seguridad, ni correcciones de errores, ni actualizaciones de software.
 
 
-
-3. Descarga la iso de CentOS Stream y evalúa el producto.
+**2.- Crea una cuenta en Red Hat y descárgate la iso de Red Hat Enterprise Linux (REL) y evalúa el producto. Comenta el procedimiento de alta.**
 
 
 
-4. Descarga iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.
+
+**3.- Descarga la iso de CentOS Stream y evalúa el producto.**
 
 
 
-5. Instala CentOS 7, y evalúa la herramientas que ofrecen la distribución del punto 3.
+**4.- Descarga iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.**
+
+
+
+**5.- Instala CentOS 7, y evalúa la herramientas que ofrecen la distribución del punto 3.**
 
