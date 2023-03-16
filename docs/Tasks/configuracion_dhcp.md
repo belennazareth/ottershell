@@ -18,17 +18,20 @@ Primero creamos las máquinas y copiamos la clave pública para acceder directam
 
     INTERFACES="eth1"
 
-En mi caso, la interfaz que voy a utilizar es `enp2s0`:
+En mi caso, la interfaz que voy a utilizar es `enp1s0`:
 
-    INTERFACESv4="enp2s0"    
+    INTERFACESv4="enp1s0"    
 
-Para que el cliente reciba la configuración de forma dinámica, debemos configurar la interfaz de red del cliente para que tome la configuración de forma dinámica. Para ello editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
+Editamos el fichero `/etc/network/interfaces` en el servidor y añadimos la siguiente línea:
 
 ```bash
-    iface enp1s0 inet static
-        add 192.168.0.1     <<<🌸🦎 IP del servidor DHCP 🌸🦎
+allow-hotplug enp1s0
+iface enp1s0 inet static
+        address 10.0.0.1    <<<🌸🦎 IP del servidor DHCP 🌸🦎
         netmask 255.255.255.0
 ```
+
+Reiniciamos la máquina para que se apliquen los cambios.
 
 Se usa una IP estática para que el cliente pueda acceder al servidor dhcp, ya que de otra manera se conectaría al dhcp de la red externa.
 
@@ -87,16 +90,20 @@ Al indicar una sección subnet tenemos que indicar la dirección de la red y la 
 La configuración usando los datos de mis máquinas quedaría:
 
 ```bash
-subnet 192.168.0.0 netmask 255.255.255.0 {
-  default-lease-time 3600;
-  max-lease-time 3600;  
-  range 192.168.0.100 192.168.0.110;
-  option subnet-mask 255.255.255.0;
-  option broadcast-address 192.168.0.255;
-  option routers 192.168.0.1;
-  option domain-name-servers 192.168.202.2, 1.1.1.1;
+subnet 10.0.0.0 netmask 255.255.255.0 {
+   default-lease-time 3600;
+   max-lease-time 3600;
+   range 10.0.0.100 10.0.0.110;
+   option subnet-mask 255.255.255.0;
+   option broadcast-address 10.0.0.255;
+   option routers 10.0.0.1;
+   option domain-name-servers 192.168.202.2, 1.1.1.1;
 }
 ```
+
+Reiniciamos el servicio para que se apliquen los cambios.
+
+    sudo systemctl restart isc-dhcp-server
 
 **Nota 1: Si ponemos algún parámetro fuera de la sección subnet afectará a todas las secciones subnet. Si dentro de la sección subnet se reescribe el parámetro no se utilizará el valor del parámetro general.**
 **Nota 2: El tiempo T3 será default-lease-time si el cliente no ha solicitado tiempo de concesión. Si el cliente lo ha solicitado no será mayor que max-lease-time ni menor que min-lease-time.**
@@ -106,53 +113,34 @@ subnet 192.168.0.0 netmask 255.255.255.0 {
 
 **Nota: En Windows la instrucción ipconfig /release libera la concesión, la instrucción ipconfig /renew la renueva. En linux el comando para liberar la concesión es dhclient -r y el que nos permite renovarla será dhclient.**
 
-Hay que instalar el paquete isc-dhcp-client en el cliente.
-
-    sudo apt-get install isc-dhcp-client
-
-Después, configuramos el cliente para que tome la configuración de forma dinámica, para ello editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
+Configuramos el cliente para que tome la configuración de forma dinámica, para ello editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
 
 ```bash
-    iface enp1s0 inet dhcp
+allow-hotplug enp1s0
+iface enp1s0 inet dhcp
 ```
 
-Reiniciamos el servicio de red:
-
-    sudo systemctl restart isc-dhcp-client 
-
-![SRI](/img/SRI+HLC/taller1SRI2.png)
+Reiniciamos la máquina.
 
 
 7.- El servidor debe hacer router-nat para que el cliente tenga acceso a internet. La configuración debe ser persistente.
 
-Para esto tenemos que editar el fichero `/etc/sysctl.conf` y añadir la siguiente línea:
+Para esto tenemos que activar el bit de forwarding editando el fichero `/etc/sysctl.conf` y añadir la siguiente línea:
 
     net.ipv4.ip_forward=1
-
-Y activar el bit de forwarding añadiendo un 1 en el fichero `/proc/sys/net/ipv4/ip_forward`.
-
-    echo 1 > /proc/sys/net/ipv4/ip_forward
-
-Recargamos usando el comando:
-
-    sudo sysctl -p
 
 Instalamos iptables:
 
     sudo apt-get install iptables
 
-Ahora hay que configurar iptables para que haga NAT indicando que todo lo que venga desde la red 192.168.0.0/24 lo saque por la interfaz enp1s0.
-
-    sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o enp1s0 -j MASQUERADE
-
-Para que se haga permanente, en el servidor, editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
+Para que se haga permanente la configuración NAT, en el servidor, editamos el fichero `/etc/network/interfaces` y añadimos la siguiente línea:
 
 ```bash
 auto enp1s0
 iface enp1s0 inet static
-        address 192.168.0.1
+        address 10.0.0.1
         netmask 255.255.255.0
-        post-up iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o enp1s0 -j MASQUERADE    <<< 🌼🐸 configura el NAT 🐸🌼
+        post-up iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o enp2s0 -j MASQUERADE    <<< 🌼🐸 configura el NAT 🐸🌼
 ```
 
 Para que se apliquen los cambios de ese fichero, reiniciamos el servicio de red con el comando:
@@ -168,7 +156,7 @@ Para comprobar que esta funcionando iptables ejecutamos el comando:
 En mi caso, aparece:
 
 ```bash
-debian@serverdhcp:~$ sudo iptables -t nat -L -n
+debian@serverdhcp:~$ sudo iptables -t nat -L
 
 Chain PREROUTING (policy ACCEPT)
 target     prot opt source               destination         
@@ -181,7 +169,7 @@ target     prot opt source               destination
 
 Chain POSTROUTING (policy ACCEPT)
 target     prot opt source               destination         
-MASQUERADE  all  --  192.168.0.0/24       0.0.0.0/0     <<< 🌈🐝 configuración activa de NAT 🐝🌈
+MASQUERADE  all  --  10.0.0.0/24          anywhere      <<< 🌈🐝 configuración activa de NAT 🐝🌈
 ```
 
 Para comprobar que funciona desde el cliente, podemos hacer ping a google:
@@ -200,7 +188,7 @@ Para comprobar que funciona desde el cliente, podemos hacer ping a google:
 cat /etc/network/interfaces
 ```
 
-![SRI](/img/SRI+HLC/taller1SRI2-2.png)
+![SRI](/img/SRI+HLC/taller1SRI2.png)
 
 **2.- Una vez que el cliente se haya configurado, capturas de pantalla donde se vea en el cliente: su dirección IP, su puerta de enlace y su servidor DNS.**
 
@@ -210,7 +198,7 @@ ip r
 cat /etc/resolv.conf
 ```
 
-![SRI](/img/SRI+HLC/taller1SRI2-3.png)
+![SRI](/img/SRI+HLC/taller1SRI2-2.png)
 
 **3.- La concesión que se ha hecho en el servidor. Estará en el fichero donde se guarda la lista de concesiones.**
 
@@ -218,7 +206,7 @@ cat /etc/resolv.conf
 cat /var/lib/dhcp/dhcpd.leases
 ```
 
-![SRI](/img/SRI+HLC/taller1SRI2-4.png)
+![SRI](/img/SRI+HLC/taller1SRI2-3.png)
 
 **4.- Una comprobación del que el cliente puede hacer resolución a un nombre de internet.**
 
@@ -226,4 +214,4 @@ cat /var/lib/dhcp/dhcpd.leases
 ping 8.8.8.8
 ```
 
-![SRI](/img/SRI+HLC/taller1SRI2-5.png)
+![SRI](/img/SRI+HLC/taller1SRI2-4.png)
