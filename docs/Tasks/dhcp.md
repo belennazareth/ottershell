@@ -34,22 +34,22 @@ Queremos instalar un servidor DHCP en la máquina router para que configure de f
 
 ## Entrega
 
-1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.
+### 1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.
 
 
 
-2. Entrega el fichero de configuración del servidor DHCP después de ejecutar el playbook de ansible.
+### 2. Entrega el fichero de configuración del servidor DHCP después de ejecutar el playbook de ansible.
 
 
 
-3. Entrega el fichero de configuración de red del cliente (para comprobar que toma direccionamiento dinámico) y que ha tomado la dirección reservada en el servidor DHCP.
+### 3. Entrega el fichero de configuración de red del cliente (para comprobar que toma direccionamiento dinámico) y que ha tomado la dirección reservada en el servidor DHCP.
 
 
 
-4. Entrega el fichero de configuración de red de la otra máquina cliente, la dirección que ha tomado y el fichero de concesiones del servidor donde se demuestra que se ha repartido.
+### 4. Entrega el fichero de configuración de red de la otra máquina cliente, la dirección que ha tomado y el fichero de concesiones del servidor donde se demuestra que se ha repartido.
 
 
 
-5. Comprueba que la nueva máquina cliente no tiene el servidor apache2 instalado, y una captura de pantalla comprobando que sigue siendo accesible el servidor web de cliente.
+### 5. Comprueba que la nueva máquina cliente no tiene el servidor apache2 instalado, y una captura de pantalla comprobando que sigue siendo accesible el servidor web de cliente.
 
 
