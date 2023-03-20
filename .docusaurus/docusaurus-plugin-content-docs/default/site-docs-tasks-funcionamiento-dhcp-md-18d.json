@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/funcionamiento_dhcp",
+  "id": "Tasks/funcionamiento_dhcp",
+  "title": "Funcionamiento del servidor DHCP",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/funcionamiento_dhcp.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/funcionamiento_dhcp",
+  "permalink": "/docs/Tasks/funcionamiento_dhcp",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/funcionamiento_dhcp.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 29,
+  "frontMatter": {
+    "sidebar_position": 29
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación y configuración del servidor DHCP",
+    "permalink": "/docs/Tasks/configuracion_dhcp"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
