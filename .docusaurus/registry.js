@@ -8,6 +8,7 @@ export default {
   '147aa350': [() => import(/* webpackChunkName: '147aa350' */ '@site/docs/Tasks/virtualizacion_linux.md'), '@site/docs/Tasks/virtualizacion_linux.md', require.resolveWeak('@site/docs/Tasks/virtualizacion_linux.md')],
   '14eb3368': [() => import(/* webpackChunkName: '14eb3368' */ '@theme/DocCategoryGeneratedIndexPage'), '@theme/DocCategoryGeneratedIndexPage', require.resolveWeak('@theme/DocCategoryGeneratedIndexPage')],
   '17896441': [() => import(/* webpackChunkName: '17896441' */ '@theme/DocItem'), '@theme/DocItem', require.resolveWeak('@theme/DocItem')],
+  '18db6793': [() => import(/* webpackChunkName: '18db6793' */ '@site/docs/Tasks/funcionamiento_dhcp.md'), '@site/docs/Tasks/funcionamiento_dhcp.md', require.resolveWeak('@site/docs/Tasks/funcionamiento_dhcp.md')],
   '18e02547': [() => import(/* webpackChunkName: '18e02547' */ '@site/docs/Tasks/almacenamiento_kvm_libvirt.md'), '@site/docs/Tasks/almacenamiento_kvm_libvirt.md', require.resolveWeak('@site/docs/Tasks/almacenamiento_kvm_libvirt.md')],
   '19f6a984': [() => import(/* webpackChunkName: '19f6a984' */ '@site/docs/Tasks/lemp.md'), '@site/docs/Tasks/lemp.md', require.resolveWeak('@site/docs/Tasks/lemp.md')],
   '1a6360f0': [() => import(/* webpackChunkName: '1a6360f0' */ '~blog/default/blog-tags-contacto-980-list.json'), '~blog/default/blog-tags-contacto-980-list.json', require.resolveWeak('~blog/default/blog-tags-contacto-980-list.json')],

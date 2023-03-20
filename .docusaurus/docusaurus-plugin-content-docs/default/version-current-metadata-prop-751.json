@@ -299,6 +299,12 @@
           },
           {
             "type": "link",
+            "label": "Funcionamiento del servidor DHCP",
+            "href": "/docs/Tasks/funcionamiento_dhcp",
+            "docId": "Tasks/funcionamiento_dhcp"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -460,6 +466,12 @@
       "id": "Tasks/escenario_openstack",
       "title": "Escenario en OpenStack",
       "description": "Procedimientos",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/funcionamiento_dhcp": {
+      "id": "Tasks/funcionamiento_dhcp",
+      "title": "Funcionamiento del servidor DHCP",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/gestion_paqueteria_aso": {

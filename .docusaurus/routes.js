@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'c2a'),
+    component: ComponentCreator('/docs', '738'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -192,6 +192,12 @@ export default [
       {
         path: '/docs/Tasks/escenario_openstack',
         component: ComponentCreator('/docs/Tasks/escenario_openstack', '6ef'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/funcionamiento_dhcp',
+        component: ComponentCreator('/docs/Tasks/funcionamiento_dhcp', '525'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

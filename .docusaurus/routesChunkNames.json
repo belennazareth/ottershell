@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-c2a": {
+  "/docs-738": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -200,6 +200,10 @@
   "/docs/Tasks/escenario_openstack-6ef": {
     "__comp": "17896441",
     "content": "9ebb1dcc"
+  },
+  "/docs/Tasks/funcionamiento_dhcp-525": {
+    "__comp": "17896441",
+    "content": "18db6793"
   },
   "/docs/Tasks/gestion_paqueteria_aso-b86": {
     "__comp": "17896441",
