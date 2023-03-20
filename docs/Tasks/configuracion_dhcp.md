@@ -6,6 +6,23 @@ sidebar_position: 29
 
 1.- Crea una infraestructura en QEMU/KVM que te permita tener una máquina donde instalar un servidor dhcp y un cliente que se configuren para tomar la configuración de forma dinámica. El servidor estará conectado al cliente por una red interna muy aislada.
 
+Partimos de la creación de una red muy aislada, para esto se ha creado un fichero llamado `red-muy-aislada.xml`:
+
+```xml
+<network>
+  <name>red_muy_aislada</name>
+  <bridge name='virbr20'/>
+</network>
+```
+
+Se crea con el comando:
+
+    virsh -c qemu:///system net-define --file red-muy-aislada.xml
+
+Y se activa con el comando:
+
+    virsh -c qemu:///system net-start red_muy_aislada 
+
 Primero creamos las máquinas y copiamos la clave pública para acceder directamente a las máquinas *(ssh-copy-id dhcpclient/dhcpserver)*.
 
 2.- Para instalar nuestro servidor dhcp ejecutamos:
