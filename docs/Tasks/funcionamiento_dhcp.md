@@ -50,9 +50,18 @@ host cliente-windows {
 }
 ```
 
+Editamos el fichero `/etc/dhcp/dhcpd.conf`, en el apartado host añadimos:
 
+```bash
+host cliente-windows {
+  hardware ethernet 52:54:00:10:6a:8e;
+  fixed-address 10.100.0.200;
+}
+```
 
 ¿Se guarda la reserva en la lista de concesiones?
+
+No, porque al ser una reserva, no se guarda en la lista de concesiones ya que no necesita que el servidor DHCP le asigne una IP, ya que la tiene fija.
 
 
 ## Entrega
@@ -130,3 +139,21 @@ Podemos ver que ha cambiado la ip del servidor y los clientes:
 
 **4. Capturas de pantalla donde se vea el funcionamiento de la reserva. ¿Se guarda la reserva en la lista de concesiones?**
 
+Editamos el fichero `/etc/dhcp/dhcpd.conf`, en el apartado host añadimos:
+
+```bash
+host cliente-windows {
+  hardware ethernet 52:54:00:10:6a:8e;    <<< 💐🔥 dirección MAC del cliente 💐🔥
+  fixed-address 10.100.0.200;
+}
+```
+
+¿Se guarda la reserva en la lista de concesiones?
+
+No, porque al ser una reserva, no se guarda en la lista de concesiones ya que no necesita que el servidor DHCP le asigne una IP, ya que la tiene fija.
+
+![](/img/SRI+HLC/taller2SRI2-6.png)
+
+Comprobamos la lista de concesiones `/var/lib/dhcp/dhcpd.leases` y vemos que no se ha guardado la reserva:
+
+![](/img/SRI+HLC/taller2SRI2-7.png)
