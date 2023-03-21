@@ -43,7 +43,9 @@ Por lo tanto, decicidieron realizar un cambio de recursos e invertir en el desar
 
 **2.- Crea una cuenta en Red Hat y descárgate la iso de Red Hat Enterprise Linux (REL) y evalúa el producto. Comenta el procedimiento de alta.**
 
+Después de registrarnos en la página de Red Hat, nos descargamos la iso de RHEL y la instalamos en una máquina virtual:
 
+![cent](/img/ASO/centosASO.png)
 
 
 **3.- Descarga la iso de CentOS Stream y evalúa el producto.**
