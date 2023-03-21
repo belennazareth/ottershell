@@ -66,6 +66,14 @@ Instalación:
 ![cent](/img/ASO/centosASO-5.png)
 ![cent](/img/ASO/centosASO-6.png)
 
+- Entramos en la terminal y ejecutamos, como administrador, el siguiente comando para registrarnos con nuestra cuenta de Red Hat:
+
+    subscription-manager register
+
+![cent](/img/ASO/centosASO-7.png)
+
+
+
 
 **3.- Descarga la iso de CentOS Stream y evalúa el producto.**
 
