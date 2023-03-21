@@ -72,7 +72,33 @@ Instalación:
 
 ![cent](/img/ASO/centosASO-7.png)
 
+- Con esto ya estaríamos registrados y podremos instalar paquetes de Red Hat Enterprise Linux. Actualizamos para poder tener todos los paquetes actualizados:
 
+    yum update
+
+![cent](/img/ASO/centosASO-8.png)
+
+- Podemos comprobar que tenemos acceso a los repositorios de Red Hat Enterprise Linux con el siguiente comando:
+
+    yum repolist
+
+![cent](/img/ASO/centosASO-9.png)
+
+- Podemos instalar paquetes de Red Hat Enterprise Linux con el siguiente comando:
+
+    yum install <paquete>
+
+- Por ejemplo, instalamos el paquete de apache:
+
+    yum install httpd
+
+![cent](/img/ASO/centosASO-10.png)
+
+- Comprobamos que se ha instalado correctamente ejecutando el siguiente comando:
+
+    systemctl status httpd
+
+![cent](/img/ASO/centosASO-11.png)
 
 
 **3.- Descarga la iso de CentOS Stream y evalúa el producto.**
