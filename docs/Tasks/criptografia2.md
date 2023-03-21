@@ -94,8 +94,15 @@ gpg --keyserver keyserver.ubuntu.com --send-keys 522E1EE9CC010A467AA2318919CFB63
 Lo siguiente será firmar las claves de los compañeros, para ello primero descargamos las claves de los compañeros:
 
 ```bash
-gpg 
+gpg --keyserver keyserver.ubuntu.com --recv-keys {fingerprint}
 ```
+
+Para firmarlas usamos el comando `gpg --sign-key`:
+
+```bash
+gpg --sign-key {fingerprint}
+```
+
 
 ### 4. Muestra las firmas que tiene tu clave pública.
 
