@@ -61,8 +61,10 @@ Instalación:
 
 ![cent](/img/ASO/centosASO-4.png)
 
-- Al finalizar la instalación, nos pedirá que creemos un usuario:
+- Al finalizar la instalación, reiniciamos la máquina virtual y entramos en el sistema:
 
+![cent](/img/ASO/centosASO-5.png)
+![cent](/img/ASO/centosASO-6.png)
 
 
 **3.- Descarga la iso de CentOS Stream y evalúa el producto.**
