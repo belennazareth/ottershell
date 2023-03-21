@@ -195,7 +195,7 @@ mkfs.ext4 /dev/vdb
 Y por último, recargamos el *daemon* y activamos el punto de montaje:
 
 ```bash
-systemctl daemon.reload
+systemctl daemon-reload
 systemctl start nfs.mount
 ```
 
