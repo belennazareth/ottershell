@@ -86,7 +86,7 @@ Instalación:
 
 - Podemos instalar paquetes de Red Hat Enterprise Linux con el siguiente comando:
 
-    yum install <paquete>
+    yum install {paquete}
 
 - Por ejemplo, instalamos el paquete de apache:
 
