@@ -363,7 +363,7 @@
     "Tasks/apache_wsgi": {
       "id": "Tasks/apache_wsgi",
       "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-      "description": "1. Entrega la configuración del virtualhost.",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/apache2_fpm": {

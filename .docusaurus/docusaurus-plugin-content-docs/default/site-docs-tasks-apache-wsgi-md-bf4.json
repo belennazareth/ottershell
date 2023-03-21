@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/apache_wsgi",
   "id": "Tasks/apache_wsgi",
   "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-  "description": "1. Entrega la configuración del virtualhost.",
+  "description": "Procedimiento",
   "source": "@site/docs/Tasks/apache_wsgi.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/apache_wsgi",
