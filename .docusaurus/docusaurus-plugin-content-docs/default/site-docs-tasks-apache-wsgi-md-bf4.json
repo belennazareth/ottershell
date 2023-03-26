@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/apache_wsgi",
   "id": "Tasks/apache_wsgi",
   "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-  "description": "Procedimiento",
+  "description": "Ejercicio: Ejecución de aplicaciones python flask",
   "source": "@site/docs/Tasks/apache_wsgi.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/apache_wsgi",

@@ -363,7 +363,7 @@
     "Tasks/apache_wsgi": {
       "id": "Tasks/apache_wsgi",
       "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-      "description": "Procedimiento",
+      "description": "Ejercicio: Ejecución de aplicaciones python flask",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/apache2_fpm": {
