@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-738": {
+  "/docs-91d": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -128,6 +128,10 @@
   "/docs/Tasks/almacenamiento_kvm_libvirt-0c7": {
     "__comp": "17896441",
     "content": "18e02547"
+  },
+  "/docs/Tasks/apache_uwsgi-885": {
+    "__comp": "17896441",
+    "content": "2ba75ccb"
   },
   "/docs/Tasks/apache_wsgi-83c": {
     "__comp": "17896441",

@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '738'),
+    component: ComponentCreator('/docs', '91d'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -84,6 +84,12 @@ export default [
       {
         path: '/docs/Tasks/almacenamiento_kvm_libvirt',
         component: ComponentCreator('/docs/Tasks/almacenamiento_kvm_libvirt', '0c7'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/apache_uwsgi',
+        component: ComponentCreator('/docs/Tasks/apache_uwsgi', '885'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

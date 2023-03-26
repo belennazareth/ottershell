@@ -191,6 +191,12 @@
           },
           {
             "type": "link",
+            "label": "Desplegando aplicaciones flask con apache2/nginx + uwsgi",
+            "href": "/docs/Tasks/apache_uwsgi",
+            "docId": "Tasks/apache_uwsgi"
+          },
+          {
+            "type": "link",
             "label": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
             "href": "/docs/Tasks/apache_wsgi",
             "docId": "Tasks/apache_wsgi"
@@ -358,6 +364,12 @@
       "id": "Tasks/almacenamiento_kvm_libvirt",
       "title": "Gestión de pool de almacenamiento lógico en KVM/libvirt",
       "description": "1.- Crea con virsh un nuevo pool de almacenamiento de tipo lógico. Para ello, lo más fácil, es tener un grupo de volúmenes con espacio libre.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/apache_uwsgi": {
+      "id": "Tasks/apache_uwsgi",
+      "title": "Desplegando aplicaciones flask con apache2/nginx + uwsgi",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/apache_wsgi": {

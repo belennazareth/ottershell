@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/tomcat"
   },
   "next": {
-    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
-    "permalink": "/docs/Tasks/apache_wsgi"
+    "title": "Desplegando aplicaciones flask con apache2/nginx + uwsgi",
+    "permalink": "/docs/Tasks/apache_uwsgi"
   }
 }

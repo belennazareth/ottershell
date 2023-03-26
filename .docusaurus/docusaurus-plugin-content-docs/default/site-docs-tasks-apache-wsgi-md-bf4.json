@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Instalación de WordPress",
-    "permalink": "/docs/Tasks/wordpress"
+    "title": "Desplegando aplicaciones flask con apache2/nginx + uwsgi",
+    "permalink": "/docs/Tasks/apache_uwsgi"
   },
   "next": {
     "title": "Cifrado asimétrico con gpg y openssl",
