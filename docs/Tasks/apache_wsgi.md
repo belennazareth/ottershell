@@ -74,6 +74,16 @@ Veamos:
 
 Crea un virtualhost que se acceda con el nombre `flask.tunombre.org`, esta configuración irá en el fichero correspondiente:
 
+```bash
+DocumentRoot /home/debian/guestbook
+WSGIDaemonProcess flask_guestbook python-path=/home/debian/guestbook:/home/debian/venv/flask/lib/python3.9/site-packages
+WSGIProcessGroup flask_guestbook
+WSGIScriptAlias / /home/debian/guestbook/wsgi.py process-group=flask_guestbook
+<Directory /home/debian/guestbook>
+        Require all granted
+</Directory>
+```
+
 Para crear un virtualhost en apache2 debes crear un fichero en `/etc/apache2/sites-available/` con el nombre del dominio que quieres usar. En este caso vamos a crear el fichero `flask.nazareth.org.conf` con el siguiente contenido:
 
 ```bash
@@ -133,7 +143,25 @@ Con esto ya aparecerá la página web:
 
 ### 1. Entrega la configuración del virtualhost.
 
+La configuración del virtualhost es la siguiente:
 
+```bash
+<VirtualHost *:80>
+
+    ServerName flask.nazareth.org
+    DocumentRoot /home/debian/guestbook
+
+    <Directory /home/debian/guestbook>
+            Require all granted
+    </Directory>
+
+    WSGIDaemonProcess flask_guestbook python-path=/home/debian/guestbook:/home/debian/venv/flask/lib/python3.9/site-packages
+    WSGIProcessGroup flask_guestbook
+    WSGIScriptAlias / /home/debian/guestbook/wsgi.py process-group=flask_guestbook
+
+</VirtualHost>
+```
 
 ### 2. Entrega una captura de pantalla accediendo a la aplicación web.
 
+![wsgi](/img/IAW/taller1IAW4-2.png)
