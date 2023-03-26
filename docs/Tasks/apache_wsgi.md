@@ -6,19 +6,19 @@ sidebar_position: 16
 
 ## Ejercicio: Ejecución de aplicaciones python flask
 
-1. Crea una máquina en OpenStack con la que vamos a trabajar los ejercicios y talleres de esta unidad.
+**1. Crea una máquina en OpenStack con la que vamos a trabajar los ejercicios y talleres de esta unidad.**
 
-2. Clona el repositorio de la aplicación [guestbook](https://github.com/josedom24/guestbook).
+**2. Clona el repositorio de la aplicación [guestbook](https://github.com/josedom24/guestbook).**
 
     git clone {dirección del repositorio}
 
-3. `guestbook` es una aplicación escrita en python flask. Es una aplicación donde podemos dejar guardados mensajes en un **“libro de visita”**. Los mensajes se van a guardar en una base de datos no relacional llamada `redis`. `redis` es una base de datos clave-valor y necesitamos instalarla:
+**3. `guestbook` es una aplicación escrita en python flask. Es una aplicación donde podemos dejar guardados mensajes en un **“libro de visita”**. Los mensajes se van a guardar en una base de datos no relacional llamada `redis`. `redis` es una base de datos clave-valor y necesitamos instalarla:**
 
     apt install redis
 
 Para más información sobre `redis` puedes leer este interesante artículo: [Redis, base de datos no relacional](https://www.josedomingo.org/pledin/2015/02/redis-base-de-datos-no-relacional/).
 
-4. Crea un entorno virtual donde vamos a instalar las librerías necesarias para que funcione nuestra aplicación (fichero requirements.txt).
+**4. Crea un entorno virtual donde vamos a instalar las librerías necesarias para que funcione nuestra aplicación (fichero requirements.txt).**
 
 Para esto hemos creado el directorio venv y dentro un directorio flask:
 
@@ -28,7 +28,7 @@ Para esto hemos creado el directorio venv y dentro un directorio flask:
     source bin/activate
     pip install -r /home/debian/guestbook/app/requirements.txt
 
-5. Ejecuta el servidor web de desarrollo ejecutando la siguientes instrucción: python3 app.py. Recuerda abrir el puerto 5000 en el grupo de seguridad y accede desde el navegador a la URL http://172.22.X.X:5000.
+**5. Ejecuta el servidor web de desarrollo ejecutando la siguientes instrucción: python3 app.py. Recuerda abrir el puerto 5000 en el grupo de seguridad y accede desde el navegador a la URL http://172.22.X.X:5000.**
 
 Para abrir el puerto 5000 desde el panel de control de OpenStack debes ir a la pestaña de seguridad y añadir una regla de entrada para el puerto 5000. Para que se aplique la regla debes reiniciar la máquina. Después, para acceder a la página web desde el navegador debes poner la dirección IP de la máquina seguido de :5000.
 
