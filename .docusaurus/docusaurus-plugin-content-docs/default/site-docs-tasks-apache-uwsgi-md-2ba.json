@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/apache_uwsgi",
+  "id": "Tasks/apache_uwsgi",
+  "title": "Desplegando aplicaciones flask con apache2/nginx + uwsgi",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/apache_uwsgi.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/apache_uwsgi",
+  "permalink": "/docs/Tasks/apache_uwsgi",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/apache_uwsgi.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 16,
+  "frontMatter": {
+    "sidebar_position": 16
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación de WordPress",
+    "permalink": "/docs/Tasks/wordpress"
+  },
+  "next": {
+    "title": "Desplegando aplicaciones flask con apache2 + mod_wsgi",
+    "permalink": "/docs/Tasks/apache_wsgi"
+  }
+}
