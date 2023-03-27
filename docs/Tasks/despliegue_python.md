@@ -80,8 +80,13 @@ Si entramos en la zona de administración de la aplicación (`/admin`), aparecer
 Lo siguiente será entrar como administrador y crear un par de cuestiones. El usuario y contraseña que pide la página `/admin` es el que se ha creado con el comando `python manage.py createsuperuser`:
 
 ![py](/img/IAW/desplieguePYIAW4-4.png)
+![py](/img/IAW/desplieguePYIAW4-5.png)
 
+Una vez creadas las preguntas, podemos comprobar que se han creado correctamente entrando en `/polls`:
 
+![py](/img/IAW/desplieguePYIAW4-6.png)
+![py](/img/IAW/desplieguePYIAW4-7.png)
+![py](/img/IAW/desplieguePYIAW4-8.png)
 
 
 ### Entorno de producción
