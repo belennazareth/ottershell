@@ -94,7 +94,58 @@ Si entramos en la zona de administración de la aplicación (`/admin`), y selecc
 
 * Configura el servidor web apache2 con el módulo wsgi para servir la página web. Si utilizas como entorno de desarrollo la máquina bravo, se accederá con el nombre python.tunombre.gonzalonazareno.org.
 
-A continuación, vamos a **configurar el servidor web Apache** para que pueda servir la aplicación Django usando wsgi.
+A continuación, vamos a **configurar el servidor web Apache** para que pueda servir la aplicación Django usando wsgi. Para ello, debemos instalar el módulo para wsgi:
+
+    sudo dnf install python3-mod_wsgi
+
+*Nota: Para hacer este apartado se han usado los talleres: [Desplegando aplicaciones flask con apache2 + mod_wsgi](https://ottershell.vercel.app/docs/Tasks/apache_wsgi) y [Desplegando aplicaciones flask con apache2/nginx + uwsgi](https://ottershell.vercel.app/docs/Tasks/apache_uwsgi)
+
+Movemos el directorio `django_tutorial` y el entorno virtual a la carpeta `/var/www/html` para que sea accesible desde el servidor web:
+
+```bash
+mv github/django_tutorial /var/www/html
+mv venv/django /var/www/html
+```
+
+Lo siguiente será editar el fichero `django_tutorial/settings.py` y modificar la variable `ALLOWED_HOSTS` para que pueda acceder sin problemas a la aplicación desde cualquier host y añadimos `STATIC_ROOT` para que se pueda acceder a los ficheros estáticos:
+
+```python
+ALLOWED_HOSTS = ['*']
+STATIC_ROOT = '/var/www/html/django_tutorial/static/'
+```
+
+Dentro de `django_tutorial` creamos el contenido estático de la aplicación:
+
+```bash
+sudo python3 manage.py collectstatic
+```
+
+Creamos un fichero de configuración para el servidor apache, `/etc/httpd/sites-available/django.conf`:
+
+```bash
+<VirtualHost *:80>
+    ServerName python.tunombre.gonzalonazareno.org
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/django_tutorial
+
+    Alias /static /var/www/html/django_tutorial/static
+
+    <Directory /var/www/html/django_tutorial/static>
+        Require all granted
+    </Directory>
+
+    <Directory /var/www/html/django_tutorial>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    WSGIDaemonProcess django_tutorial python-path=/var/www/html/django_tutorial:/var/www/html/django/lib/python3.6/site-packages
+    WSGIProcessGroup django_tutorial
+    WSGIScriptAlias / /var/www/html/django_tutorial/django_tutorial/wsgi.py
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 
 
 ### Entorno de producción
