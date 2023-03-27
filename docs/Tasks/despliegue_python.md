@@ -88,20 +88,18 @@ Una vez creadas las preguntas, podemos comprobar que se han creado correctamente
 ![py](/img/IAW/desplieguePYIAW4-7.png)
 ![py](/img/IAW/desplieguePYIAW4-8.png)
 
+Si entramos en la zona de administración de la aplicación (`/admin`), y seleccionamos una de las dos preguntas que hemos creado, aparecerá una pantalla como la siguiente mostrando los detalles de la pregunta y las votaciones que ha recibido:
+
+![py](/img/IAW/desplieguePYIAW4-9.png)
+
+* Configura el servidor web apache2 con el módulo wsgi para servir la página web. Si utilizas como entorno de desarrollo la máquina bravo, se accederá con el nombre python.tunombre.gonzalonazareno.org.
+
+A continuación, vamos a **configurar el servidor web Apache** para que pueda servir la aplicación Django usando wsgi.
+
 
 ### Entorno de producción
 
 ### Modificación de nuestra aplicación
 
 
-
-## Entrega
-
-**1. En este momento, muestra al profesor la aplicación funcionando. Entrega una documentación resumida donde expliques los pasos fundamentales para realizar esta tarea. Y pantallazos que demuestren que la aplicación está funcionando. (3 puntos si eliges como entorno de desarrollo a bravo y 1 punto si eliges como entorno de desarrollo una máquina de openstack).**
-
-
-**2. En este momento, muestra al profesor la aplicación funcionando. Entrega una documentación resumida donde expliques los pasos fundamentales para realizar esta tarea y pantallazos donde se vea que todo está funcionando.**
-
-
-**3. Explica los cambios que has realizado en el entorno de desarrollo y cómo lo has desplegado en producción para cada una de las modificaciones. Entrega pantallazos donde se vean las distintas modificaciones y que todo está funcionando.**
 
