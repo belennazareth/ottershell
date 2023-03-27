@@ -50,7 +50,7 @@ python manage.py createsuperuser
 Además, es necesario editar el fichero `django_tutorial/settings.py` y modificar la variable `ALLOWED_HOSTS` para que pueda acceder sin problemas a la aplicación desde cualquier host:
 
 ```python
-ALLOWED_HOSTS = ['www.nazareth.gn.org']
+ALLOWED_HOSTS = ['*']
 ```
 
 Para poder acceder, como estamos usando `bravo`, debemos añadir una nueva regla **DNAT** para que se redirija el tráfico de la máquina `bravo` al puerto `8000` de la máquina `alfa` editando el fichero `/etc/network/interfaces.d/50-cloud-init`:
