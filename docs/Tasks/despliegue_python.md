@@ -77,6 +77,11 @@ Si entramos en la zona de administración de la aplicación (`/admin`), aparecer
 
 ![py](/img/IAW/desplieguePYIAW4-3.png)
 
+Lo siguiente será entrar como administrador y crear un par de cuestiones. El usuario y contraseña que pide la página `/admin` es el que se ha creado con el comando `python manage.py createsuperuser`:
+
+![py](/img/IAW/desplieguePYIAW4-4.png)
+
+
 
 
 ### Entorno de producción
