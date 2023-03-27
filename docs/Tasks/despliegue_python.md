@@ -40,7 +40,7 @@ DATABASES = {
 }
 ```
 
-A continuación, se va a crear un base de datos vacía para la aplicación y un superusuario para poder acceder a la aplicación:
+A continuación, se va a crear una base de datos vacía para la aplicación y un superusuario para poder acceder a la aplicación:
 
 ```bash
 python manage.py migrate
@@ -53,14 +53,29 @@ Además, es necesario editar el fichero `django_tutorial/settings.py` y modifica
 ALLOWED_HOSTS = ['www.nazareth.gn.org']
 ```
 
+Para poder acceder, como estamos usando `bravo`, debemos añadir una nueva regla **DNAT** para que se redirija el tráfico de la máquina `bravo` al puerto `8000` de la máquina `alfa` editando el fichero `/etc/network/interfaces.d/50-cloud-init`:
+
+```bash
+post-up iptables -t nat -A PREROUTING -p tcp --dport 8000 -i ens3 -j DNAT --to 172.16.0.200
+```
+
+![py](/img/IAW/desplieguePYIAW4.png)
+
+Y reiniciamos la maquina para que se apliquen los cambios. 
+
 Lo siguiente es ejecutar el servidor web de desarrollo para comprobar los datos que se han modificado entrando en la zona de administración de la aplicación (`/admin`):
 
 ```bash
 python manage.py runserver 0.0.0.0:8000
 ```
 
-Hay que p
+Aparecerá una pantalla como la siguiente:
 
+![py](/img/IAW/desplieguePYIAW4-2.png)
+
+Si entramos en la zona de administración de la aplicación (`/admin`), aparecerá una pantalla como la siguiente:
+
+![py](/img/IAW/desplieguePYIAW4-3.png)
 
 
 
