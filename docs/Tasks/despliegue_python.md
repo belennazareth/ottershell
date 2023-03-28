@@ -120,35 +120,165 @@ Dentro de `django_tutorial` creamos el contenido estático de la aplicación:
 sudo python3 manage.py collectstatic
 ```
 
-Creamos un fichero de configuración para el servidor apache, `/etc/httpd/sites-available/django.conf`:
+Creamos un fichero de configuración para el servidor apache, `/etc/httpd/sites-available/django_apache.conf`:
 
 ```bash
 <VirtualHost *:80>
-    ServerName python.tunombre.gonzalonazareno.org
-    ServerAdmin webmaster@localhost
+
+    ServerName python.nazareth.gonzalonazareno.org
     DocumentRoot /var/www/html/django_tutorial
 
-    Alias /static /var/www/html/django_tutorial/static
+    Alias /static/ /var/www/html/django_tutorial/static/
 
-    <Directory /var/www/html/django_tutorial/static>
-        Require all granted
-    </Directory>
-
-    <Directory /var/www/html/django_tutorial>
-        <Files wsgi.py>
-            Require all granted
-        </Files>
-    </Directory>
-
-    WSGIDaemonProcess django_tutorial python-path=/var/www/html/django_tutorial:/var/www/html/django/lib/python3.6/site-packages
+    WSGIDaemonProcess django_tutorial python-path=/var/www/html/django_tutorial:/var/www/html/django/lib/python3.9/site-packages
     WSGIProcessGroup django_tutorial
     WSGIScriptAlias / /var/www/html/django_tutorial/django_tutorial/wsgi.py
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog /var/log/httpd/django_tutorial_error.log
+    CustomLog /var/log/httpd/django_tutorial_access.log combined
+</VirtualHost>
+```
+
+Y lo activamos:
+
+```bash
+sudo ln -s /etc/httpd/sites-available/django_apache.conf /etc/httpd/sites-enabled/
+sudo systemctl restart httpd
+```
+
+Ya podemos entrar en la aplicación desde el navegador introduciendo la dirección:
+
+    python.nazareth.gonzalonazareno.org
+
+![py](/img/IAW/desplieguePYIAW4-10.png)
 
 
 ### Entorno de producción
+
+Vamos a realizar el despliegue de nuestra aplicación en un entorno de producción, para ello vamos a utilizar nuestro VPS.
+
+Lo primero será clonar el repositorio de la aplicación en el VPS:
+
+```bash
+git clone https://github.com/belennazareth/django_tutorial.git
+```
+
+Instalamos python3 y pip3:
+
+```bash
+apt-get install python3-venv
+apt-get install python3-pip
+```
+
+Creamos un entorno virtual para la aplicación y lo activamos:
+
+```bash
+python3 -m venv venv/django
+source venv/django/bin/activate
+```
+
+Instalamos las dependencias de la aplicación:
+
+```bash
+pip install -r django_tutorial/requirements.txt
+```
+
+Necesitamos poder trabajar con mysql desde python, para ello instalamos el conector:
+
+```bash
+sudo apt install libmariadb-dev
+pip install mysqlclient
+pip install pymysql
+```
+
+Creamos la base de datos y el usuario para la aplicación, es importante que el usuario y la contraseña sean los mismos que en sqlite:
+
+```bash
+sudo mysql 
+```
+
+```sql
+CREATE DATABASE django;
+CREATE USER 'django'@'localhost' IDENTIFIED BY 'django';
+GRANT ALL PRIVILEGES ON django.* TO 'django'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Modificamos el fichero `django_tutorial/settings.py` para que la aplicación pueda conectarse a la base de datos:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': 'django',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+```
+
+En bravo, creamos una copia de seguridad de la aplicación:
+
+```bash
+sudo python3 manage.py dumpdata > db.json
+```
+
+Subimos la copia al repositorio:
+
+```bash
+git add db.json
+git commit -m "Copia de seguridad"
+git push
+```
+
+En la máquina del VPS, actualizamos el repositorio:
+
+```bash
+git pull
+```
+
+Y restauramos la copia de seguridad en el VPS:
+
+```bash
+python3 manage.py migrate
+python3 manage.py loaddata db.json
+```
+
+Editamos el fichero `django_tutorial/settings.py` para que la aplicación pueda servir los ficheros estáticos:
+
+```python
+ALLOWED_HOSTS = ['*']
+STATIC_ROOT = '/home/poke/django_tutorial/static/'
+```
+
+Y generamos el contenido estático:
+
+```bash
+python3 manage.py collectstatic
+```
+
+**Configuraremos nginx** instalando primero el paquete `nginx` y `uwsgi`:
+
+```bash
+sudo apt install nginx
+pip install uwsgi
+```
+
+Creamos un nuevo directorio para el fichero de configuración de nginx, `/home/poke/django/servidor.ini`:
+
+```bash
+[uwsgi]
+http = :8080
+chdir = /home/poke/django_tutorial 
+wsgi-file = django_tutorial/wsgi.py
+processes = 4
+threads = 2
+```
+
+
+
 
 ### Modificación de nuestra aplicación
 
