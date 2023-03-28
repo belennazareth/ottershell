@@ -369,24 +369,26 @@ Las modificaciones se realizarán en el entorno de desarrollo, en mi caso `bravo
 
 #### Desarrollo
 
-Modificamos la página inicial donde se ven las encuestas para que aparezca tu nombre editando el archivo `django_tutorial/polls/templates/polls/index.html`:
+Modificamos la página inicial donde se ven las encuestas para que aparezca tu nombre editando el archivo `django_tutorial/polls/templates/index.html`:
 
 ```html
-{% load static %}
+<!DOCTYPE html>
+<html lang="es">
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Django Tutorial</title>
 
-<h1>Belén Nazareth Durán Meléndez</h1>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Almarai:wght@800&amp;family=Nunito+Sans&amp;display=swap" />
+</head>
 
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<body>
+  <div class="container">
+    <div class="content">
+      <img src="https://dit.gonzalonazareno.org/gestiona/static/img/iesgn.jpg" alt="DigitalOcean Logo" width="100" />
+      <h1>Aplicación <a href="https://www.djangoproject.com/">Django Tutorial</a>!<br>Belen Nazareth Duran Melendez</h1>
 ```
 
 Modificamos la imagen que se ve de fondo en la página de inicio añadiendo una nueva imagen en `django_tutorial/polls/static/polls/images` y editando el archivo `django_tutorial/polls/static/polls/style.css`:
@@ -464,3 +466,17 @@ git push
 
 #### Producción
 
+Realizamos los cambios en el entorno de producción:
+
+```bash
+git pull
+python3.9 manage.py migrate
+python3.9 manage.py loaddata db2.json
+python3.9 manage.py collectstatic
+```
+
+Y vemos como se ha actualizado la página de inicio:
+
+![py](/img/IAW/desplieguePYIAW4-14.png)
+![py](/img/IAW/desplieguePYIAW4-15.png)
+<!-- ![py](/img/IAW/desplieguePYIAW4-16.png) -->
