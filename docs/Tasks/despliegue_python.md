@@ -266,7 +266,7 @@ sudo apt install nginx
 pip install uwsgi
 ```
 
-Creamos un nuevo directorio para el fichero de configuración de nginx, `/home/poke/django/servidor.ini`:
+Creamos dentro de la carpeta del entorno virtual el fichero de configuración de nginx, `/home/poke/venv/django/servidor.ini`:
 
 ```bash
 [uwsgi]
@@ -277,7 +277,82 @@ processes = 4
 threads = 2
 ```
 
+Como vimos en el taller, creamos una unidad systemd para que el servicio se inicie automáticamente editando el fichero `/etc/systemd/system/uwsgi-django.service`:
 
+```bash
+[Unit]
+Description=uwsgi-django
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=www-data
+Group=www-data
+Restart=always
+
+ExecStart=/home/poke/venv/django/bin/uwsgi /home/poke/venv/django/servidor.ini
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+WorkingDirectory=/home/poke/django_tutorial
+Environment=PYTHONPATH='/home/poke/django_tutorial:/home/poke/venv/django/lib/python3.9/site-packages'
+
+PrivateTmp=true
+```
+
+Y lo activamos:
+
+```bash
+sudo systemctl enable uwsgi-django
+sudo systemctl start uwsgi-django
+```
+
+Por último, creamos el fichero de configuración de nginx, `/etc/nginx/sites-available/django.conf` copiando el existente con https y cambiando la línea `location /` y servername por `python.ottershell.es`:
+
+```bash
+server {
+    listen 80;
+    listen 443 ssl http2;
+
+    server_name pyhton.ottershell.es;
+
+    access_log /var/log/nginx/python.com-access.log;
+    error_log /var/log/nginx/python.com-error.log;
+
+    ssl_certificate    /etc/letsencrypt/live/ottershell.es/fullchain.pem;
+    ssl_certificate_key    /etc/letsencrypt/live/ottershell.es/privkey.pem;
+
+    root /home/poke/django_tutorial;
+
+    index index.php;
+    location / {
+    proxy_pass http://localhost:8080;
+    include proxy_params;
+    }
+    location /static/polls {
+    alias /home/poke/django_tutorial/polls/static/polls;
+    }
+    location /static/admin {
+    alias /home/poke/venv/django/lib/python3.9/site-packages/django/contrib/admin/static/admin/;
+    }
+}
+
+```
+
+Desactivamos el DEBUG en el fichero `django_tutorial/settings.py` para que no se muestren los errores y den información sensible:
+
+```python
+DEBUG = False
+```
+
+Creamos el enlace simbólico y reiniciamos el servicio:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/django /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
+```
 
 
 ### Modificación de nuestra aplicación
