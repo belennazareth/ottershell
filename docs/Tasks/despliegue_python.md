@@ -389,5 +389,78 @@ Modificamos la página inicial donde se ven las encuestas para que aparezca tu n
 {% endif %}
 ```
 
+Modificamos la imagen que se ve de fondo en la página de inicio añadiendo una nueva imagen en `django_tutorial/polls/static/polls/images` y editando el archivo `django_tutorial/polls/static/polls/style.css`:
 
+```css
+li a {
+    color: black;
+    background-color: blanchedalmond;
+}
+
+body {
+    background: white url("images/background3.jpg");
+}
+```
+
+Vamos a crear una nueva tabla en la base de datos siguiendo estos pasos:
+
+1. Creamos un nuevo modelo en `django_tutorial/polls/models.py`:
+
+```python
+class Categoria(models.Model):
+    Abr = models.CharField(max_length=4)
+    Nombre = models.CharField(max_length=50)
+
+    def __str__(self):
+    	return self.Abr+" - "+self.Nombre
+```
+
+2. Creamos las migraciones:
+
+```bash
+sudo python3 manage.py makemigrations --name nueva_categoria
+sudo python3 manage.py migrate
+```
+
+- Obtenemos una salida parecida a esta:
+
+```bash
+(django) [nazare@bravo django_tutorial]$ sudo python3 manage.py makemigrations --name nueva_categoria
+
+Migrations for 'polls':
+  polls/migrations/0002_nueva_categoria.py
+    - Create model Categoria
+
+(django) [nazare@bravo django_tutorial]$ sudo python3 manage.py migrate
+
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, polls, sessions
+Running migrations:
+  Applying polls.0002_nueva_categoria... OK
+```
+
+3. Añadimos el nuevo modelo a la interfaz de administración en `django_tutorial/polls/admin.py` cambiando la línea `from .models import Question` por:
+
+```python
+from .models import Choice, Question, Categoria
+```
+
+4. Al final del fichero, añadimos:
+
+```python
+admin.site.register(Categoria)
+```
+
+5. Para poder trasladar los cambios:
+
+```bash
+sudo python3 manage.py 
+sudo python3 manage.py dumpdata > db2.json
+sudo python3 manage.py collectstatic
+git add *
+git commit -m "Añadida nueva tabla + cambios en la página de inicio"
+git push
+```
+
+#### Producción
 
