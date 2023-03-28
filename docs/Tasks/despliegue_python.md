@@ -354,8 +354,40 @@ sudo ln -s /etc/nginx/sites-available/django /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
 ```
 
+En la página donde tenemos contratado el dominio, añadimos un nuevo registro de tipo `CNAME` con el nombre `python` y el valor `ottershell.es`.
+
+Si entramos en python.ottershell.es, veremos nuestra aplicación funcionando:
+
+![py](/img/IAW/desplieguePYIAW4-11.png)
+![py](/img/IAW/desplieguePYIAW4-12.png)
+![py](/img/IAW/desplieguePYIAW4-13.png)
+
 
 ### Modificación de nuestra aplicación
+
+Las modificaciones se realizarán en el entorno de desarrollo, en mi caso `bravo`. Una vez realizadas, se subirán al repositorio y se actualizará el entorno de producción.
+
+#### Desarrollo
+
+Modificamos la página inicial donde se ven las encuestas para que aparezca tu nombre editando el archivo `django_tutorial/polls/templates/polls/index.html`:
+
+```html
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<h1>Belén Nazareth Durán Meléndez</h1>
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+```
 
 
 
