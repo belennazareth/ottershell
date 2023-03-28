@@ -150,7 +150,7 @@ Ya podemos entrar en la aplicación desde el navegador introduciendo la direcci�
 
     python.nazareth.gonzalonazareno.org
 
-![py](/img/IAW/desplieguePYIAW4-10.png)
+
 
 
 ### Entorno de producción
@@ -481,4 +481,4 @@ Y vemos como se ha actualizado la página de inicio:
 ![py](/img/IAW/desplieguePYIAW4-15.png)
 <!-- ![py](/img/IAW/desplieguePYIAW4-16.png) -->
 
-*Nota: Activar los entornos virtuales, en bravo ahora esta en /var/www/, no usar emojis en sqlite, 
+*Nota: Activar los entornos virtuales, en bravo ahora esta en /var/www/, no usar emojis en sqlite, las maquinas usadas son bravo y buizel con usuario poke
