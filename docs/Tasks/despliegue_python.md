@@ -482,3 +482,5 @@ Y vemos como se ha actualizado la página de inicio:
 <!-- ![py](/img/IAW/desplieguePYIAW4-16.png) -->
 
 *Nota: Activar los entornos virtuales, en bravo ahora esta en /var/www/, no usar emojis en sqlite, las maquinas usadas son bravo y buizel con usuario poke
+
+Repositorio Github: https://github.com/belennazareth/django_tutorial
