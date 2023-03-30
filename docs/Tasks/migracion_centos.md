@@ -100,6 +100,10 @@ Instalación:
 
 ![cent](/img/ASO/centosASO-11.png)
 
+Con este análisis podemos ver que RHEL es una distribución muy completa y que tiene una gran variedad de paquetes que podemos instalar. Además, podemos instalar paquetes de Red Hat Enterprise Linux que no están disponibles en otras distribuciones.
+
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ💫                  💫                     💫                      💫ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+
 
 **3.- Descarga la iso de CentOS Stream y evalúa el producto.**
 
