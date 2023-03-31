@@ -105,9 +105,21 @@ Con este análisis podemos ver que RHEL es una distribución muy completa y que 
 ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ💫                  💫                     💫                      💫ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
 
 
-**3.- Descarga la iso de CentOS Stream y evalúa el producto.**
+### 3.- Descarga la iso de CentOS Stream y evalúa el producto.
 
+Lo primero será descargar la iso de CentOS Stream desde la página oficial de [CentOS](https://www.centos.org/centos-stream/), al ejecutar la iso en una máquina virtual, nos aparecerá el siguiente menú:
 
+![cent](/img/ASO/centosASO-12.png)
+
+Después de seleccionar "Install CentOS Stream", nos aparecerá la selección del idioma. Al seleccionar el idioma, nos aparecerá el siguiente menú muy parecido al de RHEL:
+
+![cent](/img/ASO/centosASO-13.png)
+
+Rellenamos todos los campos y comenzamos la instalación:
+
+![cent](/img/ASO/centosASO-14.png)
+
+Al finalizar la instalación, reiniciamos la máquina virtual y entramos en el sistema:
 
 **4.- Descarga iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.**
 
