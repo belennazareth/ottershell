@@ -121,6 +121,8 @@ Rellenamos todos los campos y comenzamos la instalación:
 
 Al finalizar la instalación, reiniciamos la máquina virtual y entramos en el sistema:
 
+![cent](/img/ASO/centosASO-15.png)
+
 **4.- Descarga iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.**
 
 
