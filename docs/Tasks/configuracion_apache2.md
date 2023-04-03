@@ -453,6 +453,9 @@ Modificamos el fichero `/etc/apache2/sites-available/taller2.conf`:
 
     <Directory /home/vagrant/taller2/documentos>
         Require all granted
+        AllowOverride All
+        Options Indexes FollowSymLinks
+        Deny from 10.0.0.0/24     
     </Directory>
 
     ErrorLog ${APACHE_LOG_DIR}/taller2_error.log
@@ -472,32 +475,101 @@ systemctl restart apache2
 
 ### 1. Configuración completa del virtualhost.
 
+```yaml
+<VirtualHost *:80>
 
+    ServerName www.taller2.com
+    DocumentRoot /home/vagrant/taller2
+
+    RedirectMatch ^/$ /principal
+
+    Alias /principal/documentos /home/vagrant/doc
+
+    <Directory /home/vagrant/taller2>
+        Require all granted
+    </Directory>
+
+    <Directory /home/vagrant/taller2/principal>
+        Require all granted
+    </Directory>
+
+    <Directory /home/vagrant/doc>
+        Options Indexes
+        Require all granted
+    </Directory>
+
+    <Directory /home/vagrant/taller2/intranet>
+        Require ip 10.0.0.0/24
+    </Directory>
+
+    <Directory /home/vagrant/taller2/internet>
+        Require ip 192.168.1.0/24
+    </Directory>
+
+    <Directory /home/vagrant/taller2/secreto>
+        AuthType Basic
+        AuthName "Acceso restringido"
+        AuthUserFile /etc/apache2/claves/contra.txt
+        Require valid-user
+        Require ip 10.0.0.0/24
+    </Directory>
+
+    <Directory /home/vagrant/taller2/documentos>
+        Require all granted
+        AllowOverride All
+        Options Indexes FollowSymLinks        
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/taller2_error.log
+    CustomLog ${APACHE_LOG_DIR}/taller2_access.log combined
+
+</VirtualHost>
+```
 
 ### 2. Comprobación de que al acceder a www.taller2.com se produce una redirección.
 
-
+![http](/img/SRI+HLC/taller2SRI3.png)
 
 ### 3. Pantallazo accediendo a www.taller2.com/principal/documentos (pon algunos ficheros para que se vea la lista).
 
+![http](/img/SRI+HLC/taller2SRI3-2.png)
 
+### 4. Pantallazos de accesos a www.taller2.com/intranet desde el host y el cliente interno. Pantallazos de acceso a www.taller2.com/internet desde el host y el clientee interno.
 
-### 4. Pantallazos de accesos a www.taller2.com/intranet desde el host y el clientee interno. Pantallazos de acceso a www.taller2.com/internet desde el host y el clientee interno.
+Host:
 
+![http](/img/SRI+HLC/taller2SRI3-3.png)
+![http](/img/SRI+HLC/taller2SRI3-4.png)
 
+Cliente interno:
 
+![http](/img/SRI+HLC/taller2SRI3-5.png)
+![http](/img/SRI+HLC/taller2SRI3-6.png)
 
 ### 5. Pantallazos de la autentificación básica.
 
-
-
+![http](/img/SRI+HLC/taller2SRI3-7.png)
 
 ### 6. Pantallazos de acceso a www.taller2.com/secreto desde el host y el clientee interno.
 
+Host:
 
+![http](/img/SRI+HLC/taller2SRI3-7.png)
+![http](/img/SRI+HLC/taller2SRI3-8.png)
 
+Cliente interno:
 
-### 7. Contenido del fichero .htaccess. Acceso a www.taller2.com/documentos comprobando que se produce una redirección desde el exterior y prueba de acceso desde el clientee interno para comprobar que no tiene permiso de acceso.
+![http](/img/SRI+HLC/taller2SRI3-9.png)
 
+### 7. Contenido del fichero .htaccess. Acceso a www.taller2.com/documentos comprobando que se produce una redirección desde el exterior y prueba de acceso desde el cliente interno para comprobar que no tiene permiso de acceso.
 
+Contenido del fichero `.htaccess`:
 
+```bash
+RewriteEngine On
+RewriteRule ^(.*)$ /principal/documentos/ [R=301,L]
+```
+
+![http](/img/SRI+HLC/taller2SRI3-10.png)
+
+![http](/img/SRI+HLC/taller2SRI3-11.png)
