@@ -550,7 +550,7 @@ Cliente interno:
 
 ![http](/img/SRI+HLC/taller2SRI3-7.png)
 
-### 6. Pantallazos de acceso a www.taller2.com/secreto desde el host y el clientee interno.
+### 6. Pantallazos de acceso a www.taller2.com/secreto desde el host y el cliente interno.
 
 Host:
 
