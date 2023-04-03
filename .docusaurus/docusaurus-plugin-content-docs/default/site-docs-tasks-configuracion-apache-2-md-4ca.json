@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/configuracion_apache2",
+  "id": "Tasks/configuracion_apache2",
+  "title": "Configuración de un servidor Apache2",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/configuracion_apache2.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/configuracion_apache2",
+  "permalink": "/docs/Tasks/configuracion_apache2",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/configuracion_apache2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 29,
+  "frontMatter": {
+    "sidebar_position": 29
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Delegación de subdominios con bind9",
+    "permalink": "/docs/Tasks/bind9_subdominios"
+  },
+  "next": {
+    "title": "Instalación y configuración del servidor DHCP",
+    "permalink": "/docs/Tasks/configuracion_dhcp"
+  }
+}
