@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Delegación de subdominios con bind9",
-    "permalink": "/docs/Tasks/bind9_subdominios"
+    "title": "Configuración de un servidor Apache2",
+    "permalink": "/docs/Tasks/configuracion_apache2"
   },
   "next": {
     "title": "Funcionamiento del servidor DHCP",

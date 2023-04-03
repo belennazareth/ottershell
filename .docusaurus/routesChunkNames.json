@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-91d": {
+  "/docs-962": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -168,6 +168,10 @@
   "/docs/Tasks/compilacion_kernel-bc5": {
     "__comp": "17896441",
     "content": "eb4abe1b"
+  },
+  "/docs/Tasks/configuracion_apache2-1dc": {
+    "__comp": "17896441",
+    "content": "4cadcc7b"
   },
   "/docs/Tasks/configuracion_dhcp-413": {
     "__comp": "17896441",
