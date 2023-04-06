@@ -123,6 +123,44 @@ Al finalizar la instalación, reiniciamos la máquina virtual y entramos en el s
 
 ![cent](/img/ASO/centosASO-15.png)
 
+Podemos comprobar la version de centos que tenemos instalada con el siguiente comando:
+
+    cat /etc/centos-release
+
+![cent](/img/ASO/centosASO-16.png)
+
+Actualizamos para poder tener todos los paquetes actualizados:
+
+    yum update
+
+![cent](/img/ASO/centosASO-17.png)
+
+Podemos comprobar que tenemos acceso a los repositorios de CentOS Stream con el siguiente comando:
+
+    yum repolist
+
+![cent](/img/ASO/centosASO-18.png)
+
+Al igual que en RHEL, podemos instalar paquetes de CentOS Stream con el siguiente comando:
+
+    yum install {paquete}
+
+- Por ejemplo, instalamos el paquete de apache:
+    
+    yum install httpd
+
+![cent](/img/ASO/centosASO-19.png)
+
+- Comprobamos que se ha instalado correctamente ejecutando el siguiente comando:
+
+    systemctl status httpd
+
+![cent](/img/ASO/centosASO-20.png)
+
+CentOS Stream es una distribución de Linux de código abierto que se basa en RHEL y ofrece actualizaciones de software continuas. Está diseñado para usuarios que desean estar a la vanguardia de las actualizaciones de software.
+La ventaja es que se puede utilizarse tanto en servidores como en estaciones de trabajo, y que es compatible con paquetes de software RHEL.
+A diferencia de RHEL, CentOs Stream ofrece actualizaciones de software continuas, por lo que no es necesario actualizar la distribución cada cierto tiempo. Además, CentOs Stream no ofrece soporte oficial, mientras que RHEL ofrece soporte técnico y de actualizaciones de seguridad.
+
 **4.- Descarga iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.**
 
 

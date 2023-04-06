@@ -23,7 +23,7 @@ Para esto ejecutamos el siguiente comando:
 sudo hostnamectl set-hostname dns
 ```
 
-Y editamos el fichero /etc/hosts para que tenga el nombre dns2.tunombre.org:
+Y editamos el fichero /etc/hosts para que tenga el nombre dns.tunombre.org:
 
 ```bash
 127.0.1.1 dns.informatica.nazareth.org dns
@@ -33,9 +33,6 @@ Y editamos el fichero /etc/hosts para que tenga el nombre dns2.tunombre.org:
 
 
 * Tendremos el servidor dns.informatica.tunombre.org con autoridad sobre el subdominio delegado, es decir tendrá autoridad para la zona informatica.tunombre.org. En esta zona, por ejemplo, puede existir el nombre www.informatica.tunombre.org.
-
-Para esto tenemos que modificar el fichero /etc/bind/named.conf.local y añadir la IP del servidor DNS con autoridad para la zona delegado en el apartado `allow-transfer`, además en el fichero /var/cache/bind/db.tunombre.org 
-
 
 2.- Vamos a realizar la delegación de autoridad para el subdominio en el servidor DNS principal (en dns1.tunombre.org) para ello modificamos el fichero /var/cache/bind/db.tunombre.org añadiendo las siguientes líneas donde realizamos la delegación:
 
@@ -117,6 +114,8 @@ Si no aparacen en el fichero, ponemos las dos directivas nameserver del servidor
 nameserver 172.22.5.136
 nameserver 172.22.4.145
 ```
+
+*Nota: principal es dns1.tunombre.org y esclavo es dns2.tunombre.org, delegado es dns.informatica.tunombre.org.
 
 # Entrega
 
