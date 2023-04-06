@@ -7,12 +7,58 @@ sidebar_position: 30
 
 ## Procedimiento
 
-En primer lugar, configura en tu servidor web un **servicio LAMP** para instalar una aplicación PHP y tener disponible un gestor de base de datos `(Puedes usar cualquier máquina donde tengas ya instalado el servidor LAMP)`. [phpmyadmin](https://www.phpmyadmin.net/) es una aplicación web escrita en PHP que nos posibilita la gestión de una base de datos **mysql/mariadb**. Normalmente vamos a instalar las aplicaciones web descargando directamente el código de la aplicación al servidor, pero en este ejercicio vamos a instalar la aplicación desde los repositorios de Debian.
+En primer lugar, configura en tu servidor web un **servicio LAMP** para instalar una aplicación PHP y tener disponible un gestor de base de datos `(Puedes usar cualquier máquina donde tengas ya instalado el servidor LAMP)`. 
+[phpmyadmin](https://www.phpmyadmin.net/) es una aplicación web escrita en PHP que nos posibilita la gestión de una base de datos **mysql/mariadb**. Normalmente vamos a instalar las aplicaciones web descargando directamente el código de la aplicación al servidor, pero en este ejercicio vamos a instalar la aplicación desde los repositorios de Debian.
+
+Para hacer este taller he usado el siguiente vagrantfile:
+
+```ruby
+Vagrant.configure("2") do |config|
+    config.vm.box = "debian/bullseye64"
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+
+    config.vm.define :serverlamp do |serverlamp|
+        serverlamp.vm.hostname = "serverlamp"
+        serverlamp.vm.network :public_network,
+		    :dev => "br0",
+		    :mode => "bridge",
+		    :type => "bridge"
+    end
+end
+```
+
+Para hacer el servidor LAMP, primero instalamos apache2, mysql y php:
+
+```bash
+sudo apt update
+sudo apt install apache2 mysql-server php php-mysql libapache2-mod-php -y
+```
+
 
 Realiza los siguientes pasos:
 
 **1. Accede desde el terminal a la base de datos con el root (con contraseña) y crea una base de datos y un usuario que tenga permiso sobre ella.**
 
+Primero damos contraseña al usuario root:
+
+```bash
+passwd root
+```
+
+Ahora accedemos a la base de datos con el usuario root:
+
+```bash
+mysql -u root -p
+```
+
+Y creamos la base de datos y el usuario:
+
+```sql
+CREATE DATABASE phplamp;
+CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'usuario';
+GRANT ALL PRIVILEGES ON phplamp.* TO 'usuario'@'localhost';
+FLUSH PRIVILEGES;
+```
 
 **2. Instala desde los repositorios la aplicación phpmyadmin. En la instalación nos pregunta que servidor estamos usando, en nuestro caso elegimos apache2. Además elegimos que No se configure la base de datos en el proceso de instalación-. Accede con un navegador a la URL http://ip_servidor/phpmyadmin (usa el nombre de usuario creado en el punto anterior).**
 
