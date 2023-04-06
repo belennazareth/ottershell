@@ -320,6 +320,12 @@
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
+          },
+          {
+            "type": "link",
+            "label": "Instalación de phpmyadmin",
+            "href": "/docs/Tasks/phpmyadmin",
+            "docId": "Tasks/phpmyadmin"
           }
         ],
         "href": "/docs/category/tasks"
@@ -604,6 +610,12 @@
       "id": "Tasks/peticion_http",
       "title": "Peticiones HTTP",
       "description": "Con la herramienta curl podemos realizar peticiones HTTP según lo que queramos ver:",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/phpmyadmin": {
+      "id": "Tasks/phpmyadmin",
+      "title": "Instalación de phpmyadmin",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/plsql_basica": {

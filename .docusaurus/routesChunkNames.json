@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-962": {
+  "/docs-f24": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -284,6 +284,10 @@
   "/docs/Tasks/peticion_http-71d": {
     "__comp": "17896441",
     "content": "379ad948"
+  },
+  "/docs/Tasks/phpmyadmin-af4": {
+    "__comp": "17896441",
+    "content": "8a8f2def"
   },
   "/docs/Tasks/plsql_basica-c45": {
     "__comp": "17896441",

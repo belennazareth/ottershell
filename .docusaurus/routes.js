@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '962'),
+    component: ComponentCreator('/docs', 'f24'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -318,6 +318,12 @@ export default [
       {
         path: '/docs/Tasks/peticion_http',
         component: ComponentCreator('/docs/Tasks/peticion_http', '71d'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/phpmyadmin',
+        component: ComponentCreator('/docs/Tasks/phpmyadmin', 'af4'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

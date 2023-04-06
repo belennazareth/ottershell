@@ -226,6 +226,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/phpmyadmin",
+              "path": "/docs/Tasks/phpmyadmin",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/plsql_basica",
               "path": "/docs/Tasks/plsql_basica",
               "sidebar": "tutorialSidebar"
