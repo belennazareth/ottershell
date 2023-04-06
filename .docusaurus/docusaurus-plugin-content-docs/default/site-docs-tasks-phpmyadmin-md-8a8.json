@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/phpmyadmin",
+  "id": "Tasks/phpmyadmin",
+  "title": "Instalación de phpmyadmin",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/phpmyadmin.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/phpmyadmin",
+  "permalink": "/docs/Tasks/phpmyadmin",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/phpmyadmin.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "sidebar_position": 30
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  },
+  "next": {
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
+  }
+}
