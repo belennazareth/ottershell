@@ -49,6 +49,7 @@ Ahora accedemos a la base de datos con el usuario root:
 
 ```bash
 mysql -u root -p
+(sudo mysql)
 ```
 
 Y creamos la base de datos y el usuario:
@@ -60,7 +61,18 @@ GRANT ALL PRIVILEGES ON phplamp.* TO 'usuario'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-**2. Instala desde los repositorios la aplicación phpmyadmin. En la instalación nos pregunta que servidor estamos usando, en nuestro caso elegimos apache2. Además elegimos que No se configure la base de datos en el proceso de instalación-. Accede con un navegador a la URL http://ip_servidor/phpmyadmin (usa el nombre de usuario creado en el punto anterior).**
+**2. Instala desde los repositorios la aplicación phpmyadmin. En la instalación nos pregunta que servidor estamos usando, en nuestro caso elegimos apache2. Además elegimos que NO se configure la base de datos en el proceso de instalación-. Accede con un navegador a la URL http://ip_servidor/phpmyadmin (usa el nombre de usuario creado en el punto anterior).**
+
+Instalamos phpmyadmin:
+
+```bash
+sudo apt install phpmyadmin -y
+```
+
+Ahora accedemos a la aplicación:
+
+![phpma](/img/SRI+HLC/taller3SRI3.png)
+
 
 
 **3. ¿Se ha creado en el DocumentRoot (/var/www/html) un directorio que se llama phpmyadmin? Entonces, ¿cómo podemos acceder?**
