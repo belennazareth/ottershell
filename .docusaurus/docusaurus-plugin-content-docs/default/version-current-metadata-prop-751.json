@@ -326,6 +326,12 @@
             "label": "Instalación de phpmyadmin",
             "href": "/docs/Tasks/phpmyadmin",
             "docId": "Tasks/phpmyadmin"
+          },
+          {
+            "type": "link",
+            "label": "apache2 como proxy inverso",
+            "href": "/docs/Tasks/proxy_apache2",
+            "docId": "Tasks/proxy_apache2"
           }
         ],
         "href": "/docs/category/tasks"
@@ -622,6 +628,12 @@
       "id": "Tasks/plsql_basica",
       "title": "PRIMER BOLETÍN PL/SQL",
       "description": "PL/SQL",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/proxy_apache2": {
+      "id": "Tasks/proxy_apache2",
+      "title": "apache2 como proxy inverso",
+      "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/ramas_uniones": {
