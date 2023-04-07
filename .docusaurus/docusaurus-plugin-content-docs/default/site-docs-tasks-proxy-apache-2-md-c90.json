@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/proxy_apache2",
+  "id": "Tasks/proxy_apache2",
+  "title": "apache2 como proxy inverso",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/proxy_apache2.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/proxy_apache2",
+  "permalink": "/docs/Tasks/proxy_apache2",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/proxy_apache2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 33,
+  "frontMatter": {
+    "sidebar_position": 33
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación de phpmyadmin",
+    "permalink": "/docs/Tasks/phpmyadmin"
+  },
+  "next": {
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
+  }
+}
