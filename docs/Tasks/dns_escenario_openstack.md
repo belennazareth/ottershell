@@ -278,6 +278,12 @@ systemctl restart bind9
 
 En `bravo` vamos a instalar un servidor web apache. Configura el servidor para que sea capaz de ejecutar código php. Investiga las reglas DNAT de cortafuegos que tienes que configurar en `alfa` para, cuando accedamos a la IP flotante/pública se acceda al servidor web. La página web será accesible con el nombre `www.tu_nombre.gonzalonazareno.org.`
 
+En alfa hay que añadir en `/etc/network/interfaces/50-cloud-init` la siguiente línea:
+
+```bash
+post-up iptables -t nat -A PREROUTING -p tcp --dport 80 -i ens3 -j DNAT --to 172.16.0.200
+```
+
 Para instalar el servidor web apache, ejecutamos el siguiente comando:
 
 ```bash
