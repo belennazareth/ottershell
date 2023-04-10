@@ -34,7 +34,7 @@ Y editamos el fichero /etc/hosts para que tenga el nombre dns.tunombre.org:
 
 * Tendremos el servidor dns.informatica.tunombre.org con autoridad sobre el subdominio delegado, es decir tendrá autoridad para la zona informatica.tunombre.org. En esta zona, por ejemplo, puede existir el nombre www.informatica.tunombre.org.
 
-2.- Vamos a realizar la delegación de autoridad para el subdominio en el servidor DNS principal (en dns1.tunombre.org) para ello modificamos el fichero /var/cache/bind/db.tunombre.org añadiendo las siguientes líneas donde realizamos la delegación:
+2.- Vamos a realizar la delegación de autoridad para el subdominio en el servidor DNS principal (en dns1.tunombre.org) para ello modificamos el fichero `/var/cache/bind/db.tunombre.org` añadiendo las siguientes líneas donde realizamos la delegación:
 
 ```bash
  ...
@@ -51,7 +51,7 @@ dns 	IN	 A 		172.22.2.233
 
 * Si incrementas el número de serie la delegación que hemos realizado se transferirá al servidor DNS esclavo.
 
-3.- Ahora vamos a configurar el servidor DNS delegado. Por lo tanto en el servidor dns.informatica.tunombre.org creamos una nueva zona en el fichero /etc/bind/named.conf.local:
+3.- Ahora vamos a configurar el servidor DNS delegado. Por lo tanto en el servidor `dns.informatica.tunombre.org` creamos una nueva zona en el fichero `/etc/bind/named.conf.local`:
 
 ```bash
 zone "informatica.tunombre.org" {
@@ -106,7 +106,7 @@ www			IN 	CNAME 		web
 ...
 ```
 
-4.- No modifiques el fichero /etc/resolv.conf del cliente, es decir, las consultas se hacen al servidor DNS principal, cuando preguntemos por un nombre en la zona delegada el servidor DNS principal, preguntará al servidor DNS delegado y guardara la respuesta en su caché. Pregunta por la dirección ip del nombre www.informatica.tunombre.org. ¿Quién ha respondido?.
+4.- No modifiques el fichero `/etc/resolv.conf` del cliente, es decir, las consultas se hacen al servidor DNS principal, cuando preguntemos por un nombre en la zona delegada el servidor DNS principal, preguntará al servidor DNS delegado y guardara la respuesta en su caché. Pregunta por la dirección ip del nombre www.informatica.tunombre.org. ¿Quién ha respondido?.
 
 Si no aparacen en el fichero, ponemos las dos directivas nameserver del servidor DNS maestro y del servidor DNS esclavo en el fichero /etc/resolv.conf del cliente:
 
@@ -121,15 +121,35 @@ nameserver 172.22.4.145
 
 **1.- Una captura de pantalla donde se vea la consulta para averiguar la dirección IP de www.informatica.tunombre.org.**
 
+```bash
+dig www.informatica.nazareth.org
+```
+
+![delg](/img/SRI+HLC/taller3SRI5.png)
 
 
 **2.- Una captura de pantalla donde se vea la consulta para averiguar el servidor DNS con autoridad para la zona del dominio informatica.tunombre.org. ¿Es el mismo que el servidor DNS con autoridad para la zona tunombre.org?**
 
+```bash
+dig NS informatica.nazareth.org
+dig NS nazareth.org
+```
+
+![delg](/img/SRI+HLC/taller3SRI5-2.png)
+
+No es el mismo, el servidor DNS con autoridad para la zona `tunombre.org` es `dns1.tunombre.org` y el servidor DNS con autoridad para la zona `informatica.tunombre.org` es `dns.informatica.tunombre.org`. Aunque el servidor DNS con autoridad para la zona `tunombre.org` es el que responde a la consulta.
 
 
 **3.- Una captura de pantalla donde se vea la consulta para averiguar el servidor de correo configurado para informatica.tunombre.org.**
 
+```bash
+dig MX informatica.nazareth.org
+```
+
+![delg](/img/SRI+HLC/taller3SRI5-3.png)
 
 
 **4.- Realiza el ejercicio que te va a proponer el profesor.**
 
+
+*Nota: sudo rndc flush para borrar la cache del servidor DNS.
