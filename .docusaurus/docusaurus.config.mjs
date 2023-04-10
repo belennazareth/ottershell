@@ -44,7 +44,7 @@ export default {
       "title": "OtterShell",
       "logo": {
         "alt": "My Site Logo",
-        "src": "img/logo.svg"
+        "src": "img/docusaurus.png"
       },
       "items": [
         {
