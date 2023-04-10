@@ -121,6 +121,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/dns_escenario_openstack",
+              "path": "/docs/Tasks/dns_escenario_openstack",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/DNS_esclavo",
               "path": "/docs/Tasks/DNS_esclavo",
               "sidebar": "tutorialSidebar"

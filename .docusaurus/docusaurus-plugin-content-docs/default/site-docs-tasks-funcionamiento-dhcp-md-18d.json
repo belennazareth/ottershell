@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/configuracion_dhcp"
   },
   "next": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
+    "permalink": "/docs/Tasks/dns_escenario_openstack"
   }
 }

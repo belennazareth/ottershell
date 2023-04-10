@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-5e5": {
+  "/docs-481": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -200,6 +200,10 @@
   "/docs/Tasks/dhcp-606": {
     "__comp": "17896441",
     "content": "1d4b65d0"
+  },
+  "/docs/Tasks/dns_escenario_openstack-6f2": {
+    "__comp": "17896441",
+    "content": "54e361b8"
   },
   "/docs/Tasks/DNS_esclavo-87b": {
     "__comp": "17896441",

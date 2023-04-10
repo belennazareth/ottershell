@@ -31,6 +31,7 @@ export default {
   '4b4f0e05': [() => import(/* webpackChunkName: '4b4f0e05' */ '@site/docs/Tasks/criptografia1.md'), '@site/docs/Tasks/criptografia1.md', require.resolveWeak('@site/docs/Tasks/criptografia1.md')],
   '4cadcc7b': [() => import(/* webpackChunkName: '4cadcc7b' */ '@site/docs/Tasks/configuracion_apache2.md'), '@site/docs/Tasks/configuracion_apache2.md', require.resolveWeak('@site/docs/Tasks/configuracion_apache2.md')],
   '52be7948': [() => import(/* webpackChunkName: '52be7948' */ '@site/docs/Tasks/auditorias.md'), '@site/docs/Tasks/auditorias.md', require.resolveWeak('@site/docs/Tasks/auditorias.md')],
+  '54e361b8': [() => import(/* webpackChunkName: '54e361b8' */ '@site/docs/Tasks/dns_escenario_openstack.md'), '@site/docs/Tasks/dns_escenario_openstack.md', require.resolveWeak('@site/docs/Tasks/dns_escenario_openstack.md')],
   '556022be': [() => import(/* webpackChunkName: '556022be' */ '~blog/default/blog-tags-gmail-679-list.json'), '~blog/default/blog-tags-gmail-679-list.json', require.resolveWeak('~blog/default/blog-tags-gmail-679-list.json')],
   '596b171e': [() => import(/* webpackChunkName: '596b171e' */ '@site/docs/Tasks/markdown.md'), '@site/docs/Tasks/markdown.md', require.resolveWeak('@site/docs/Tasks/markdown.md')],
   '5d56c66f': [() => import(/* webpackChunkName: '5d56c66f' */ '@site/docs/Tasks/intro_git.md'), '@site/docs/Tasks/intro_git.md', require.resolveWeak('@site/docs/Tasks/intro_git.md')],

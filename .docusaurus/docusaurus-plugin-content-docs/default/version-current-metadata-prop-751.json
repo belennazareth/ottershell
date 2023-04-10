@@ -317,6 +317,12 @@
           },
           {
             "type": "link",
+            "label": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
+            "href": "/docs/Tasks/dns_escenario_openstack",
+            "docId": "Tasks/dns_escenario_openstack"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -489,6 +495,12 @@
     "Tasks/dhcp": {
       "id": "Tasks/dhcp",
       "title": "Protocolo DHCP",
+      "description": "Procedimiento",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/dns_escenario_openstack": {
+      "id": "Tasks/dns_escenario_openstack",
+      "title": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
       "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },

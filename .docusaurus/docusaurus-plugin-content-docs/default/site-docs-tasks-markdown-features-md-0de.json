@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Funcionamiento del servidor DHCP",
-    "permalink": "/docs/Tasks/funcionamiento_dhcp"
+    "title": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
+    "permalink": "/docs/Tasks/dns_escenario_openstack"
   },
   "next": {
     "title": "Instalación de phpmyadmin",
