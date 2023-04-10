@@ -287,7 +287,7 @@ sudo dnf install httpd
 Para instalar el módulo de php, ejecutamos el siguiente comando:
 
 ```bash
-sudo dnf install php
+sudo dnf install php php-mysqlnd php-gd php-fpm
 ```
 
 Agregamos en alfa las reglas DNAT para que cuando accedamos a la IP flotante/pública se acceda al servidor web en el fichero `/etc/network/interfaces/50-cloud-init`:
