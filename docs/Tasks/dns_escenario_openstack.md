@@ -103,15 +103,51 @@ view dmz {
 };
 ```
 
+Donde, meteremos por zonas lo que va a resolver cada vista. En este caso, la vista `interna` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `externa` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `dmz` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas.
+
+En el fichero `/etc/bind/named.conf` añadimos las vistas:
+
+```bash
+include "/etc/bind/named.conf.local";
+include "/etc/bind/named.conf.options";
+include "/etc/bind/named.conf.default-zones";
+```
+
+Después, creamos los ficheros de configuración de las zonas:
+
+```bash
+touch /var/cache/bind/db.interna.nazareth.gonzalonazareno.org
+touch /var/cache/bind/db.externa.nazareth.gonzalonazareno.org
+touch /var/cache/bind/db.dmz.nazareth.gonzalonazareno.org
+```
+
+Y, por último, configuramos las zonas:
+
+* `db.interna.nazareth.gonzalonazareno.org`:
+
+```bash
+```
+
+* `db.externa.nazareth.gonzalonazareno.org`:
+
+```bash
+```
+
+* `db.dmz.nazareth.gonzalonazareno.org`:
+
+```bash
+```
+
+
 
 
 ### Servidor Web
 
-En `bravo` vamos a instalar un servidor web apache. Configura el servidor para que sea capaz de ejecutar código php. Investiga las reglas DNAT de cortafuegos que tienes que configurar en `alfa` para, cuando accedemos a la IP flotante/pública se acceda al servidor web. La página web será accesible con el nombre `www.tu_nombre.gonzalonazareno.org.`
+En `bravo` vamos a instalar un servidor web apache. Configura el servidor para que sea capaz de ejecutar código php. Investiga las reglas DNAT de cortafuegos que tienes que configurar en `alfa` para, cuando accedamos a la IP flotante/pública se acceda al servidor web. La página web será accesible con el nombre `www.tu_nombre.gonzalonazareno.org.`
 
 ### Servidor de Base de Datos
 
-En delta vamos a instalar un servidor de base de datos mariadb (`bd.tu_nombre.gonzalonazareno.org`). A este servidor de base de datos se debe permitir el acceso desde todas las máquinas del escenario.
+En `delta` vamos a instalar un servidor de base de datos mariadb (`bd.tu_nombre.gonzalonazareno.org`). A este servidor de base de datos se debe permitir el acceso desde todas las máquinas del escenario.
 
 ## Entrega
 

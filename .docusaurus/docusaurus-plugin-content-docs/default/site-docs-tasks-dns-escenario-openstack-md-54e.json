@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/dns_escenario_openstack",
+  "id": "Tasks/dns_escenario_openstack",
+  "title": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
+  "description": "Procedimiento",
+  "source": "@site/docs/Tasks/dns_escenario_openstack.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/dns_escenario_openstack",
+  "permalink": "/docs/Tasks/dns_escenario_openstack",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/dns_escenario_openstack.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "sidebar_position": 30
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Funcionamiento del servidor DHCP",
+    "permalink": "/docs/Tasks/funcionamiento_dhcp"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
