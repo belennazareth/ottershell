@@ -323,12 +323,6 @@
           },
           {
             "type": "link",
-            "label": "Markdown Features",
-            "href": "/docs/Tasks/markdown-features",
-            "docId": "Tasks/markdown-features"
-          },
-          {
-            "type": "link",
             "label": "Instalación de phpmyadmin",
             "href": "/docs/Tasks/phpmyadmin",
             "docId": "Tasks/phpmyadmin"
@@ -338,6 +332,12 @@
             "label": "apache2 como proxy inverso",
             "href": "/docs/Tasks/proxy_apache2",
             "docId": "Tasks/proxy_apache2"
+          },
+          {
+            "type": "link",
+            "label": "Markdown Features",
+            "href": "/docs/Tasks/markdown-features",
+            "docId": "Tasks/markdown-features"
           }
         ],
         "href": "/docs/category/tasks"

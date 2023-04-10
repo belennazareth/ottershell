@@ -11,17 +11,17 @@
   "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/markdown-features.md",
   "tags": [],
   "version": "current",
-  "sidebarPosition": 30,
+  "sidebarPosition": 70,
   "frontMatter": {
-    "sidebar_position": 30
+    "sidebar_position": 70
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
-    "permalink": "/docs/Tasks/dns_escenario_openstack"
+    "title": "apache2 como proxy inverso",
+    "permalink": "/docs/Tasks/proxy_apache2"
   },
   "next": {
-    "title": "Instalación de phpmyadmin",
-    "permalink": "/docs/Tasks/phpmyadmin"
+    "title": "Extras",
+    "permalink": "/docs/category/extras"
   }
 }
