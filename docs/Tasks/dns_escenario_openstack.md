@@ -103,7 +103,7 @@ view dmz {
 };
 ```
 
-**IMPORTANTE:** HAY QUE MODIFICAR EL FICHERO `/etc/bind/named.conf` Y COMENTAR LA LINEA `include "/etc/bind/named.conf.default-zones";` PARA QUE NO SE CARGUEN LAS ZONAS POR DEFECTO Y PODAMOS USAR `include` EN EL FICHERO `/etc/bind/named.conf.local`.
+🟪👾⏩**IMPORTANTE:** HAY QUE MODIFICAR EL FICHERO `/etc/bind/named.conf` Y COMENTAR LA LINEA `include "/etc/bind/named.conf.default-zones";` PARA QUE NO SE CARGUEN LAS ZONAS POR DEFECTO Y PODAMOS USAR `include` EN EL FICHERO `/etc/bind/named.conf.local`.⏪👾🟪
 
 Donde, meteremos por zonas lo que va a resolver cada vista. En este caso, la vista `interna` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `externa` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `dmz` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas.
 
@@ -277,6 +277,20 @@ systemctl restart bind9
 ### Servidor Web
 
 En `bravo` vamos a instalar un servidor web apache. Configura el servidor para que sea capaz de ejecutar código php. Investiga las reglas DNAT de cortafuegos que tienes que configurar en `alfa` para, cuando accedamos a la IP flotante/pública se acceda al servidor web. La página web será accesible con el nombre `www.tu_nombre.gonzalonazareno.org.`
+
+Para instalar el servidor web apache, ejecutamos el siguiente comando:
+
+```bash
+sudo dnf install httpd
+```
+
+Para instalar el módulo de php, ejecutamos el siguiente comando:
+
+```bash
+sudo dnf install php
+```
+
+Agregamos en alfa las reglas DNAT para que cuando accedamos a la IP flotante/pública se acceda al servidor web en el fichero `/etc/network/interfaces/50-cloud-init`:
 
 
 
