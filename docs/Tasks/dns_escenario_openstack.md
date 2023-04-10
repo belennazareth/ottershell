@@ -103,6 +103,8 @@ view dmz {
 };
 ```
 
+**IMPORTANTE:** HAY QUE MODIFICAR EL FICHERO `/etc/bind/named.conf` Y COMENTAR LA LINEA `include "/etc/bind/named.conf.default-zones";` PARA QUE NO SE CARGUEN LAS ZONAS POR DEFECTO Y PODAMOS USAR `include` EN EL FICHERO `/etc/bind/named.conf.local`.
+
 Donde, meteremos por zonas lo que va a resolver cada vista. En este caso, la vista `interna` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `externa` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `dmz` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas.
 
 En el fichero `/etc/bind/named.conf` añadimos las vistas:
@@ -206,7 +208,7 @@ www     IN      CNAME   bravo
 ![dns](/img/SRI+HLC/DNSSRI5-3.png)
 
 
-Lo siguiente será configurar las zonas inversas:
+Lo siguiente será configurar las zonas inversas dentro del directori `/var/cache/bind/`:
 
 * `db.0.168.192`:
 
@@ -230,6 +232,9 @@ $ORIGIN 0.168.192.in-addr.arpa.
 
 *Nota: En este caso, en origin se pone la dirección inversa de la red a la que se conectan los contenedores, en este caso la 0.168.192.in-addr.arpa. Y en el PTR se pone el nombre de la máquina y el dominio. En este caso, al ser la red interna, se pone el nombre de la máquina y el dominio, ya que es el servidor que resuelve las zonas internas por eso no es necesario poner la ip.
 
+![dns](/img/SRI+HLC/DNSSRI5-4.png)
+
+
 * `db.16.172`:
 
 ```bash
@@ -249,12 +254,31 @@ $ORIGIN 16.172.in-addr.arpa.
 200.0     IN      PTR     bravo.nazareth.gonzalonazareno.org.
 ```
 
+*Nota: Se debe poner 1.0 y 200.0 porque para que sea válido el PTR, debe incluir los dos octetos de la dirección ip separados por un punto en orden inverso.
 
+![dns](/img/SRI+HLC/DNSSRI5-5.png)
+
+
+Hay que desactivar las zonas inversas por defecto que se crean al instalar el servidor DNS, para ello, hay que editar el archivo `/etc/bind/zones.rfc1918` y comentar las líneas que contienen las zonas inversas.
+
+![dns](/img/SRI+HLC/DNSSRI5-6.png)
+
+Configuramos el archivo `/etc/bind/named.conf.options` para que el servidor papión haga de forwarder (es decir, que resuelva las zonas externas):
+
+![dns](/img/SRI+HLC/DNSSRI5-7.png)
+
+Reiniciamos el servicio DNS:
+
+```bash
+systemctl restart bind9
+```
 
 
 ### Servidor Web
 
 En `bravo` vamos a instalar un servidor web apache. Configura el servidor para que sea capaz de ejecutar código php. Investiga las reglas DNAT de cortafuegos que tienes que configurar en `alfa` para, cuando accedamos a la IP flotante/pública se acceda al servidor web. La página web será accesible con el nombre `www.tu_nombre.gonzalonazareno.org.`
+
+
 
 ### Servidor de Base de Datos
 
