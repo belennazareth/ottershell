@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Contenido propio',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.png').default,
     description: (
       <>
         Se trata de una página personal donde la documentación aportada es siempre original.
@@ -14,7 +14,7 @@ const FeatureList = [
   },
   {
     title: 'Trabaja conmigo',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/undraw_docusaurus_tree.png').default,
     description: (
       <>
         Siempre será agradecida cualquier aportación a este blog, ya sea por correción
@@ -24,7 +24,7 @@ const FeatureList = [
   },
   {
     title: 'Aprendizaje continuo',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/undraw_docusaurus_react.png').default,
     description: (
       <>
         "El saber no ocupa lugar ni tiene edad"
