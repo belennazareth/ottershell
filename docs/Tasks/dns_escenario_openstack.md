@@ -12,25 +12,25 @@ Vamos a instalar un servidor dns en charlie que nos permita gestionar la resoluc
 
 Hay que tener en cuenta los siguientes aspectos:
 
-1.- Modifica la configuración de la subred en las redes que estás usando en OpenStack para que el servidor DNS principal sea charlie (192.168.0.2). O modifica los ficheros /etc/resolv.conf de forma permanente si quieres no tocar los servidores DHCP.
+1. Modifica la configuración de la **subred** en las redes que estás usando en OpenStack para que el servidor **DNS principal** sea `charlie` (192.168.0.2). O modifica los ficheros `/etc/resolv.conf` de forma permanente si quieres no tocar los servidores **DHCP**.
 
-2.- Modifica la configuración de los contenedores para que usen charlie como DNS.
+2. Modifica la configuración de los contenedores para que usen `charlie` como **DNS**.
 
-3.- El servidor DNS que vamos a usar va a actuar como forward/caché, de tal manera que las consultas la realizará sobre nuestro servidor 192.168.202.2. Para configurar el servidor como forwarder hay que modificar el parámetro en el fichero named.conf.options.
+3. El servidor **DNS** que vamos a usar va a actuar como `forward/caché`, de tal manera que las consultas la realizará sobre nuestro servidor `192.168.202.2`. Para configurar el servidor como **forwarder** hay que modificar el parámetro en el fichero `named.conf.options`.
 
-4.- Será necesario realizar consultas desde el exterior (ya que vamos a hacer una delegación del subdominio). Determina la regla DNAT en alfa para que podamos hacer consultas DNS desde el exterior.
+4. Será necesario realizar consultas desde el exterior (ya que vamos a hacer una delegación del subdominio). Determina la regla **DNAT** en `alfa` para que podamos hacer consultas **DNS** desde el exterior.
 
-5.- Indica al profesor el nombre de tu dominio para que pueda realizar la delegación en el servidor DNS principal papion-dns. Recuerda que papion-dns (192.168.202.2) debe poder realizar consultas a tu servidor DNS.
+5. Indica al profesor el nombre de tu dominio para que pueda realizar la delegación en el servidor **DNS principal papion-dns**. Recuerda que **papion-dns** (`192.168.202.2`) debe poder realizar consultas a tu servidor **DNS**.
 
-6.- El servidor DNS se va a configurar en un principio de la siguiente manera:
+6. El servidor **DNS** se va a configurar en un principio de la siguiente manera:
 
-* El servidor DNS se llama charlie.tu_nombre.gonzalonazareno.org y va a ser el servidor con autoridad para la zona tu_nombre.gonzalonazareno.org.
+* El servidor **DNS** se llama `charlie.tu_nombre.gonzalonazareno.org` y va a ser el servidor con autoridad para la zona `tu_nombre.gonzalonazareno.org`.
 
 * El servidor debe resolver el nombre de todas las máquinas.
 
 * El servidor debe resolver los distintos servicios (virtualhost, servidor de base de datos, servidor ldap, …).
 
-* Vamos a usar vistas en bind9, para que el nombre de alfa se corresponda con una ip distinta según desde se realice la consulta.
+* Vamos a usar vistas en `bind9`, para que el nombre de `alfa` se corresponda con una ip distinta según desde se realice la consulta.
 
 * Determina cuantas vistas vamos a crear y que nombres se van a crear en cada vista.
 
@@ -126,16 +126,127 @@ Y, por último, configuramos las zonas:
 * `db.interna.nazareth.gonzalonazareno.org`:
 
 ```bash
+$TTL 86400
+@       IN      SOA     charlie.nazareth.gonzalonazareno.org. root.nazareth.gonzalonazareno.org. (
+                             1         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        86400 )        ; Negative Cache TTL
+;
+@       IN      NS      charlie.nazareth.gonzalonazareno.org.
+
+$ORIGIN nazareth.gonzalonazareno.org.
+
+alfa    IN      A       192.168.0.1
+bravo   IN      A       172.16.0.200
+charlie IN      A       192.168.0.2
+delta   IN      A       192.168.0.3
+bd      IN      CNAME   delta
+dns     IN      CNAME   charlie
+www     IN      CNAME   bravo
 ```
+
+*Nota: En alfa se pone la red a la que se conectan los contenedores, en este caso la 192.168.0.1
+
+![dns](/img/SRI+HLC/DNSSRI5.png)
+
 
 * `db.externa.nazareth.gonzalonazareno.org`:
 
 ```bash
+$TTL 86400
+@       IN      SOA     alfa.nazareth.gonzalonazareno.org. root.nazareth.gonzalonazareno.org. (
+                             1         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        86400 )        ; Negative Cache TTL
+;
+@       IN      NS      alfa.nazareth.gonzalonazareno.org.
+
+$ORIGIN nazareth.gonzalonazareno.org.
+
+alfa    IN      A       172.22.200.255
+dns     IN      CNAME   alfa
+www     IN      CNAME   alfa
 ```
+
+*Nota: En alfa se pone la red a la que se accede al exterior, en este caso la 172.22.200.255, además, en este caso, al ser la red externa, no se pone la red a la que se conectan los contenedores, ya que no se conectan a ninguna. Y se pone en origin el nombre de alfa, ya que es el servidor que resuelve las zonas externas.
+
+![dns](/img/SRI+HLC/DNSSRI5-2.png)
+
 
 * `db.dmz.nazareth.gonzalonazareno.org`:
 
 ```bash
+$TTL 86400
+@       IN      SOA     charlie.nazareth.gonzalonazareno.org. root.nazareth.gonzalonazareno.org. (
+                             1         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        86400 )        ; Negative Cache TTL
+;
+@       IN      NS      charlie.nazareth.gonzalonazareno.org.
+
+$ORIGIN nazareth.gonzalonazareno.org.
+
+alfa    IN      A       172.16.0.1
+bravo   IN      A       172.16.0.200
+charlie IN      A       192.168.0.2
+delta   IN      A       192.168.0.3
+bd      IN      CNAME   delta
+dns     IN      CNAME   charlie
+www     IN      CNAME   bravo
+```
+
+*Nota: En alfa la red conectada a la DMZ, en este caso la 172.16.0.1
+
+![dns](/img/SRI+HLC/DNSSRI5-3.png)
+
+
+Lo siguiente será configurar las zonas inversas:
+
+* `db.0.168.192`:
+
+```bash
+$TTL 86400
+@       IN      SOA     charlie.nazareth.gonzalonazareno.org. root.nazareth.gonzalonazareno.org. (
+                             1         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        86400 )        ; Negative Cache TTL
+;
+@       IN      NS      charlie.nazareth.gonzalonazareno.org.
+
+$ORIGIN 0.168.192.in-addr.arpa.
+
+1       IN      PTR     alfa.nazareth.gonzalonazareno.org.
+2       IN      PTR     charlie.nazareth.gonzalonazareno.org.
+3       IN      PTR     delta.nazareth.gonzalonazareno.org.
+```
+
+*Nota: En este caso, en origin se pone la dirección inversa de la red a la que se conectan los contenedores, en este caso la 0.168.192.in-addr.arpa. Y en el PTR se pone el nombre de la máquina y el dominio. En este caso, al ser la red interna, se pone el nombre de la máquina y el dominio, ya que es el servidor que resuelve las zonas internas por eso no es necesario poner la ip.
+
+* `db.16.172`:
+
+```bash
+$TTL 86400
+@       IN      SOA     charlie.nazareth.gonzalonazareno.org. root.nazareth.gonzalonazareno.org. (
+                             1         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        86400 )        ; Negative Cache TTL
+;
+@       IN      NS      charlie.nazareth.gonzalonazareno.org.
+
+$ORIGIN 16.172.in-addr.arpa.
+
+1.0       IN      PTR     alfa.nazareth.gonzalonazareno.org.
+200.0     IN      PTR     bravo.nazareth.gonzalonazareno.org.
 ```
 
 
