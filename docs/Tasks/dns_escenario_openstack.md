@@ -290,7 +290,27 @@ Para instalar el módulo de php, ejecutamos el siguiente comando:
 sudo dnf install php php-mysqlnd php-gd php-fpm
 ```
 
-Agregamos en alfa las reglas DNAT para que cuando accedamos a la IP flotante/pública se acceda al servidor web en el fichero `/etc/network/interfaces/50-cloud-init`:
+Iniciamos el servicio apache y php-fpm:
+
+```bash
+sudo systemctl enable httpd
+sudo systemctl enable php-fpm
+```
+
+**SI NO EXISTEN** creamos `sites-available` y `sites-enabled` dentro de `/etc/httpd/`:
+
+```bash
+sudo mkdir /etc/httpd/sites-available
+sudo mkdir /etc/httpd/sites-enabled
+```
+
+Añadimos la siguiente línea al final del archivo `/etc/httpd/conf/httpd.conf`:
+
+```bash
+IncludeOptional sites-enabled/*.conf
+```
+
+
 
 
 
