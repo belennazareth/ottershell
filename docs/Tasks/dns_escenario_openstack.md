@@ -43,6 +43,12 @@ Primero, en `charlie`, instalamos bind9:
 sudo apt-get install bind9
 ```
 
+En alfa añadimos la regla DNAT para que podamos hacer consultas DNS desde el exterior:
+
+```bash
+post-up iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 192.168.0.2:53
+```
+
 Después, en el fichero `/etc/bind/named.conf.local` configuramos las vistas y las zonas:
 
 ```bash
@@ -273,6 +279,16 @@ Reiniciamos el servicio DNS:
 systemctl restart bind9
 ```
 
+En alfa editamos el fichero `/etc/resolvconf/resolv.conf.d/head` para que el servidor DNS sea el servidor DNS de la DMZ y reiniciamos el servicio para que se apliquen los cambios en el fichero `/etc/resolv.conf`, de esta manera si se reinicia la máquina, el fichero `/etc/resolv.conf` se volverá a generar con los cambios que hemos hecho:
+
+```bash
+sudo nano /etc/resolvconf/resolv.conf.d/head
+
+nameserver 192.168.0.2
+
+sudo resolvconf -u
+```
+
 
 ### Servidor Web
 
@@ -323,12 +339,13 @@ Creamos el archivo `/etc/httpd/sites-available/www.nazareth.gonzalonazareno.org.
        ServerName www.nazareth.gonzalonazareno.org
        DocumentRoot /var/www/html/nazareth
        ErrorLog /var/log/httpd/nazareth-error.log
-       CustomLog /var/log/httpd/nazareth-error.log combined
+       CustomLog /var/log/httpd/access-nazareth-error.log combined
        <FilesMatch \.php$>
               SetHandler "proxy:unix:/run/php-fpm/www.sock|fcgi://localhost"
        </FilesMatch>
 </VirtualHost>
 ```
+curl www.nazareth.gonzalonazareno.org
 
 Hacemos el enlace simbólico del archivo creado en `sites-available` a `sites-enabled`:
 
@@ -374,12 +391,108 @@ Reiniciamos la máquina para que se apliquen los cambios.
 
 Entramos en la web desde el navegador y comprobamos que funciona correctamente:
 
-
+![dns](/img/SRI+HLC/DNSSRI5-8.png)
 
 
 ### Servidor de Base de Datos
 
 En `delta` vamos a instalar un servidor de base de datos mariadb (`bd.tu_nombre.gonzalonazareno.org`). A este servidor de base de datos se debe permitir el acceso desde todas las máquinas del escenario.
+
+En delta instalamos mariadb:
+
+```bash
+sudo apt install mariadb-server
+```
+
+Configuramos Mariadb para poder acceder de forma remota:
+
+```bash
+sudo mysql_secure_installation
+```
+
+Obteniendo como salida:
+
+```bash
+nazare@delta:~$ sudo mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none): 
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+You already have a root password set, so you can safely answer 'n'.
+
+Change the root password? [Y/n] n
+ ... skipping.
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] 
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] 
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] 
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] 
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+```
+
+Creamos el usuario `nazareth` y le damos permisos para acceder desde cualquier máquina:
+
+```bash
+CREATE USER 'nazareth'@'%' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON *.* TO 'nazareth'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+
+Habilitamos el acceso remoto a la base de datos editando el fichero `/etc/mysql/mariadb.conf.d/50-server.cnf` en la línea `bind-address` añadiendo:
+
+```bash
+bind-address = 0.0.0.0
+```
+
+De esta forma, el servidor de base de datos escuchará en todas las interfaces de red. Después reiniciamos el servicio:
+
+```bash
+sudo systemctl restart mariadb
+```
+
 
 ## Entrega
 
