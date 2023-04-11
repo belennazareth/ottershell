@@ -6,7 +6,7 @@
 export default {
   "title": "OtterShell",
   "tagline": "",
-  "url": "https://ottershell.vercel.app/",
+  "url": "https://ottershell.vercel.app",
   "baseUrl": "/",
   "onBrokenLinks": "throw",
   "onBrokenMarkdownLinks": "warn",
@@ -338,8 +338,12 @@ export default {
   "plugins": [],
   "themes": [],
   "scripts": [],
+  "headTags": [],
   "stylesheets": [],
   "clientModules": [],
   "titleDelimiter": "|",
-  "noIndex": false
+  "noIndex": false,
+  "markdown": {
+    "mermaid": false
+  }
 };
