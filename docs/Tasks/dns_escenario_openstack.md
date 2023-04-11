@@ -316,6 +316,64 @@ Añadimos la siguiente línea al final del archivo `/etc/httpd/conf/httpd.conf`:
 IncludeOptional sites-enabled/*.conf
 ```
 
+Creamos el archivo `/etc/httpd/sites-available/www.nazareth.gonzalonazareno.org.conf` con el siguiente contenido:
+
+```bash
+<VirtualHost *:80>
+       ServerName www.nazareth.gonzalonazareno.org
+       DocumentRoot /var/www/html/nazareth
+       ErrorLog /var/log/httpd/nazareth-error.log
+       CustomLog /var/log/httpd/nazareth-error.log combined
+       <FilesMatch \.php$>
+              SetHandler "proxy:unix:/run/php-fpm/www.sock|fcgi://localhost"
+       </FilesMatch>
+</VirtualHost>
+```
+
+Hacemos el enlace simbólico del archivo creado en `sites-available` a `sites-enabled`:
+
+```bash
+sudo ln -s /etc/httpd/sites-available/www.nazareth.gonzalonazareno.org.conf /etc/httpd/sites-enabled/www.nazareth.gonzalonazareno.org.conf
+```
+
+Creamos el fichero `info.php` en `/var/www/html/nazareth` con el siguiente contenido:
+
+```bash
+<?php
+phpinfo();
+?>
+```
+
+Creamos el `index.html` en `/var/www/html/nazareth` con el siguiente contenido:
+
+```bash
+<html>
+       <head>
+              <title> Welcome :) </title>
+       </head>
+       
+       <body>
+              <h1> · Web en escenario Rocky Linux · </h1>
+              <p>...</p>
+       </body>
+</html>
+```
+
+Modificamos el fichero `/etc/sysconfig/selinux` para que el SELinux funcione correctamente:
+
+```bash
+SELINUX=diabled
+```
+
+Reiniciamos el servicio apache:
+
+```bash
+sudo systemctl restart httpd
+```
+
+
+*Nota: Si aparece un error del servicio y en systemctl status no da info del error, se puede ver en el log del servicio en el fichero `/var/log/httpd/error_log` o `/var/log/httpd/access_log` si es un error de permisos, por ejemplo.
+
 
 
 
