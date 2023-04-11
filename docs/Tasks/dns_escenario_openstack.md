@@ -374,7 +374,6 @@ Reiniciamos la máquina para que se apliquen los cambios.
 
 Entramos en la web desde el navegador y comprobamos que funciona correctamente:
 
-![dns](/img/SRI+HLC/DNSSRI5-8.png)
 
 
 
