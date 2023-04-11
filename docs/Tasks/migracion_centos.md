@@ -146,7 +146,7 @@ Al igual que en RHEL, podemos instalar paquetes de CentOS Stream con el siguient
     yum install {paquete}
 
 - Por ejemplo, instalamos el paquete de apache:
-    
+
     yum install httpd
 
 ![cent](/img/ASO/centosASO-19.png)
