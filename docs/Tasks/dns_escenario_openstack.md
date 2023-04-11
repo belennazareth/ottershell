@@ -362,19 +362,19 @@ Creamos el `index.html` en `/var/www/html/nazareth` con el siguiente contenido:
 Modificamos el fichero `/etc/sysconfig/selinux` para que el SELinux funcione correctamente:
 
 ```bash
-SELINUX=diabled
+SELINUX=disabled
 ```
 
-Reiniciamos el servicio apache:
+*Nota: sestatus para ver el estado del SELinux.
 
-```bash
-sudo systemctl restart httpd
-```
+Reiniciamos la máquina para que se apliquen los cambios.
 
 
 *Nota: Si aparece un error del servicio y en systemctl status no da info del error, se puede ver en el log del servicio en el fichero `/var/log/httpd/error_log` o `/var/log/httpd/access_log` si es un error de permisos, por ejemplo.
 
+Entramos en la web desde el navegador y comprobamos que funciona correctamente:
 
+![dns](/img/SRI+HLC/DNSSRI5-8.png)
 
 
 
