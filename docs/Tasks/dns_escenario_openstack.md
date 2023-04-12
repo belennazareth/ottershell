@@ -382,7 +382,7 @@ Modificamos el fichero `/etc/sysconfig/selinux` para que el SELinux funcione cor
 SELINUX=disabled
 ```
 
-*Nota: sestatus para ver el estado del SELinux.
+*Nota: sestatus para ver el estado del SELinux.Para activarlo de nuevo, se debe cambiar el valor de SELINUX a `enforcing` y reiniciar la máquina.
 
 Reiniciamos la máquina para que se apliquen los cambios.
 
@@ -492,6 +492,9 @@ De esta forma, el servidor de base de datos escuchará en todas las interfaces d
 ```bash
 sudo systemctl restart mariadb
 ```
+
+
+
 
 
 ## Entrega
