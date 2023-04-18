@@ -106,9 +106,11 @@ gpg --sign-key {fingerprint}
 
 ### 4. Muestra las firmas que tiene tu clave pública.
 
+gpg --list-signatures
 
 ### 5. Comprueba que ya puedes verificar sin “problemas” una firma recibida por una persona en la que confías.
 
+gpg --verify firma_nazareth.sig secreto_nazareth.txt
 
 ### 6. Comprueba que puedes verificar con confianza una firma de una persona en las que no confías, pero sin embargo si confía otra persona en la que tu tienes confianza total.
 
