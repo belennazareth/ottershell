@@ -48,19 +48,98 @@ virsh -c qemu:///system net-autostart interna
 ```
 
 Usaremos la red interna para conectar las máquinas clientes y el router.
-La red externa no es necesario crearla ya que usaremos la red por defecto.
+La red externa/mantenimientoparaejecutarelplaybook no es necesario crearla ya que usaremos la red por defecto (`default`).
 
 Ahora creamos la máquina router:
 
 ```bash
-virt-install --connect qemu:///system --virt-type kvm --name router_dhcp --cdrom ~/Escritorio/ISOS/debian-11.5.0-amd64-netinst.iso --os-variant debian10 --disk size=15 --memory 2000 --vcpus 2 --network network=default,model=virtio --network network=interna,model=virtio 
+virt-install --connect qemu:///system --virt-type kvm --name router-dhcp --cdrom ~/Escritorio/ISOS/debian-11.5.0-amd64-netinst.iso --os-variant debian10 --disk size=15 --memory 2000 --vcpus 2 
 ```
 
 Creamos la máquina cliente:
 
 ```bash
-virt-install --connect qemu:///system --virt-type kvm --name cliente_dhcp --cdrom ~/Escritorio/ISOS/debian-11.5.0-amd64-netinst.iso --os-variant debian10 --disk size=15 --memory 2000 --vcpus 2 --network network=default,model=virtio --network network=interna,model=virtio 
+virt-install --connect qemu:///system --virt-type kvm --name cliente-dhcp --cdrom ~/Escritorio/ISOS/debian-11.5.0-amd64-netinst.iso --os-variant debian10 --disk size=15 --memory 2000 --vcpus 2 
 ```
+
+Añadimos la red interna con virsh:
+
+```bash
+virsh -c qemu:///system attach-interface --domain router-dhcp --type network --source interna --model virtio --persistent
+virsh -c qemu:///system attach-interface --domain cliente-dhcp --type network --source interna --model virtio --persistent
+```
+
+Editamos los ficheros de ambas máquinas para que tengan una IP estática en la red de mantenimiento y una IP dinámica en la red interna, la cual se añadirá si no existe en el fichero `/etc/network/interfaces`:
+
+```bash
+--- /etc/network/interfaces ROUTER
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp1s0
+iface enp1s0 inet static
+        address 192.168.132.169
+        netmask 255.255.255.0
+        network 192.168.132.0
+        broadcast 192.168.132.255
+        gateway 192.168.132.1
+
+allow-hotplug enp7s0
+iface enp7s0 inet dhcp
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+--- /etc/network/interfaces CLIENTE
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp1s0
+iface enp1s0 inet static
+        address 192.168.132.246
+        netmask 255.255.255.0
+        network 192.168.132.0
+        broadcast 192.168.132.255
+        gateway 192.168.132.1
+
+allow-hotplug enp1s0
+iface enp7s0 inet dhcp
+```
+
+Después de esto, levantamos las interfaces de las máquinas:
+
+```bash
+ifup enp1s0
+ifup enp7s0
+```
+
+| maquina | ip |
+| --- | --- |
+| router-dhcp | 192.168.132.169 |
+| cliente-dhcp | 192.168.132.246 |
+
+
+
+Con esto ya podemos ejecutar el playbook de la práctica anterior y comprobar que las máquinas tienen el funcionamiento esperado.
+
+
+
+
 
 
 
@@ -68,7 +147,7 @@ virt-install --connect qemu:///system --virt-type kvm --name cliente_dhcp --cdro
 
 Queremos instalar un servidor DHCP en la máquina router para que configure de forma automática las máquinas que se conectan en la red interna. Tenemos que tener en cuenta lo siguiente:
 
-1. La máquina cliente de la práctica anterior, que tiene instalado el servidor web, debe tener la misma IP que la que le asígnate estáticamente, por lo tanto haremos una reserva para que tenga la misma IP.
+1. La máquina cliente de la práctica anterior, que tiene instalado el servidor web, debe tener la misma IP que la que le asígnaste estáticamente, por lo tanto haremos una reserva para que tenga la misma IP.
 
 2. Al añadir una nueva máquina a la red local (recuerda que no se le instalará el servidor web) se configurará de forma dinámica.
 

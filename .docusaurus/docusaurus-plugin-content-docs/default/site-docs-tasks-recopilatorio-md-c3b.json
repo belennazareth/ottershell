@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/recopilatorio",
+  "id": "Tasks/recopilatorio",
+  "title": "Recopilación de Vagrantfiles",
+  "description": "Servidor web y servidor de base de datos (drupal)",
+  "source": "@site/docs/Tasks/recopilatorio.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/recopilatorio",
+  "permalink": "/docs/Tasks/recopilatorio",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/recopilatorio.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "sidebar_position": 30
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Instalación de phpmyadmin",
+    "permalink": "/docs/Tasks/phpmyadmin"
+  },
+  "next": {
+    "title": "apache2 como proxy inverso",
+    "permalink": "/docs/Tasks/proxy_apache2"
+  }
+}
