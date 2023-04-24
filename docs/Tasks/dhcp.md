@@ -133,7 +133,33 @@ ifup enp7s0
 | router-dhcp | 192.168.132.169 |
 | cliente-dhcp | 192.168.132.246 |
 
+Modificamos el ansible con las nuevas ip en el fichero `hosts`:
 
+```bash
+all:
+  children:
+    router_client:
+      hosts:
+        router-dhcp: 
+          ansible_ssh_host: 192.168.132.169
+          ansible_ssh_user: usuario
+          ansible_ssh_pass: usuario
+          ansible_become_pass: usuario
+          
+        cliente-dhcp:
+          ansible_ssh_host: 192.168.132.246
+          ansible_ssh_user: usuario
+          ansible_ssh_pass: usuario
+          ansible_become_pass: usuario
+```
+
+Las variables que usaremos en el playbook son las siguientes:
+
+```bash
+r_privada: 192.168.123.0/24
+ip_router: 192.168.123.204
+ip_cliente: 192.168.123.160
+```
 
 Con esto ya podemos ejecutar el playbook de la práctica anterior y comprobar que las máquinas tienen el funcionamiento esperado.
 
