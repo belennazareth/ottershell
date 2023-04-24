@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Instalación de phpmyadmin",
-    "permalink": "/docs/Tasks/phpmyadmin"
+    "title": "Recopilación de Vagrantfiles",
+    "permalink": "/docs/Tasks/recopilatorio"
   },
   "next": {
     "title": "Markdown Features",

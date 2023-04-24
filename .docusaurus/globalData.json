@@ -251,6 +251,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/recopilatorio",
+              "path": "/docs/Tasks/recopilatorio",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/redes_openstack",
               "path": "/docs/Tasks/redes_openstack",
               "sidebar": "tutorialSidebar"

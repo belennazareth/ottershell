@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '481'),
+    component: ComponentCreator('/docs', '615'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -348,6 +348,12 @@ export default [
       {
         path: '/docs/Tasks/ramas_uniones',
         component: ComponentCreator('/docs/Tasks/ramas_uniones', '260'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/recopilatorio',
+        component: ComponentCreator('/docs/Tasks/recopilatorio', 'fda'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

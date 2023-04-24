@@ -329,6 +329,12 @@
           },
           {
             "type": "link",
+            "label": "Recopilación de Vagrantfiles",
+            "href": "/docs/Tasks/recopilatorio",
+            "docId": "Tasks/recopilatorio"
+          },
+          {
+            "type": "link",
             "label": "apache2 como proxy inverso",
             "href": "/docs/Tasks/proxy_apache2",
             "docId": "Tasks/proxy_apache2"
@@ -652,6 +658,12 @@
       "id": "Tasks/ramas_uniones",
       "title": "Git. Trabajando con ramas y uniones",
       "description": "1. Crea una rama que se llame primera en tu local, y ejecuta la instrucción necesaria para comprobar que se ha creado.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/recopilatorio": {
+      "id": "Tasks/recopilatorio",
+      "title": "Recopilación de Vagrantfiles",
+      "description": "Servidor web y servidor de base de datos (drupal)",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/redes_openstack": {
