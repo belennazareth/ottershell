@@ -20,6 +20,52 @@ Para evitar los problemas que nos puede causar vagrant a la hora de trabajar con
 
 A partir de esta configuración podríamos seguir con esta práctica.
 
+Para esta práctica vamos a utilizar una máquina router que tendrá dos interfaces de red, una por defecto para la conexión al exterior y otra para la red interna que será la que haga DHCP a las máquinas clientes. Los clientes tendran una red interna que se conectará a la red interna del router por DHCP.
+
+**TODAS LAS MÁQUINAS TENDRÁN UNA RED AISLADA DE "MANTENIMIENTO" PARA PODER USAR ESAS IPs PARA EJECUTARLES EL PLAYBOOK DEL ANSIBLE**
+
+
+Primero creamos una red aislada que usarán como red interna las máquinas clientes y el router:
+
+```bash
+<network>
+  <name>interna</name>
+  <bridge name='virbr17'/>
+  <ip address='192.168.123.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.123.2' end='192.168.123.254'/>
+    </dhcp>
+  </ip>
+</network>
+```
+
+La definimos en libvirt:
+
+```bash
+virsh -c qemu:///system net-define interna.xml
+virsh -c qemu:///system net-start interna
+virsh -c qemu:///system net-autostart interna
+```
+
+Usaremos la red interna para conectar las máquinas clientes y el router.
+La red externa no es necesario crearla ya que usaremos la red por defecto.
+
+Ahora creamos la máquina router:
+
+```bash
+virt-install --connect qemu:///system --virt-type kvm --name router_dhcp --cdrom ~/Escritorio/ISOS/debian-11.5.0-amd64-netinst.iso --os-variant debian10 --disk size=15 --memory 2000 --vcpus 2 --network network=default,model=virtio --network network=interna,model=virtio 
+```
+
+Creamos la máquina cliente:
+
+```bash
+virt-install --connect qemu:///system --virt-type kvm --name cliente_dhcp --cdrom ~/Escritorio/ISOS/debian-11.5.0-amd64-netinst.iso --os-variant debian10 --disk size=15 --memory 2000 --vcpus 2 --network network=default,model=virtio --network network=interna,model=virtio 
+```
+
+
+
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ🐚                  🐚                     🐚                      🐚ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+
 Queremos instalar un servidor DHCP en la máquina router para que configure de forma automática las máquinas que se conectan en la red interna. Tenemos que tener en cuenta lo siguiente:
 
 1. La máquina cliente de la práctica anterior, que tiene instalado el servidor web, debe tener la misma IP que la que le asígnate estáticamente, por lo tanto haremos una reserva para que tenga la misma IP.

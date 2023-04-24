@@ -43,7 +43,7 @@ Primero, en `charlie`, instalamos bind9:
 sudo apt-get install bind9
 ```
 
-En alfa añadimos la regla DNAT para que podamos hacer consultas DNS desde el exterior:
+En `alfa` añadimos la regla DNAT para que podamos hacer consultas DNS desde el exterior:
 
 ```bash
 post-up iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 192.168.0.2:53
@@ -87,7 +87,7 @@ view externa {
 };
 
 view dmz {
-    match-clients { 172.16.0.0/16; };
+    match-clients { 172.22.0.0/16; 172.16.0.0/16; 172.29.0.0/16; };
     allow-recursion { any; };
         zone "nazareth.gonzalonazareno.org"
         {
@@ -214,7 +214,7 @@ www     IN      CNAME   bravo
 ![dns](/img/SRI+HLC/DNSSRI5-3.png)
 
 
-Lo siguiente será configurar las zonas inversas dentro del directori `/var/cache/bind/`:
+Lo siguiente será configurar las zonas inversas dentro del directorio `/var/cache/bind/`:
 
 * `db.0.168.192`:
 
@@ -256,7 +256,6 @@ $TTL 86400
 
 $ORIGIN 16.172.in-addr.arpa.
 
-1.0       IN      PTR     alfa.nazareth.gonzalonazareno.org.
 200.0     IN      PTR     bravo.nazareth.gonzalonazareno.org.
 ```
 
@@ -279,7 +278,7 @@ Reiniciamos el servicio DNS:
 systemctl restart bind9
 ```
 
-En alfa editamos el fichero `/etc/resolvconf/resolv.conf.d/head` para que el servidor DNS sea el servidor DNS de la DMZ y reiniciamos el servicio para que se apliquen los cambios en el fichero `/etc/resolv.conf`, de esta manera si se reinicia la máquina, el fichero `/etc/resolv.conf` se volverá a generar con los cambios que hemos hecho:
+En `alfa` editamos el fichero `/etc/resolvconf/resolv.conf.d/head` para que el servidor DNS sea el servidor DNS de la DMZ y reiniciamos el servicio para que se apliquen los cambios en el fichero `/etc/resolv.conf`, de esta manera si se reinicia la máquina, el fichero `/etc/resolv.conf` se volverá a generar con los cambios que hemos hecho:
 
 ```bash
 sudo nano /etc/resolvconf/resolv.conf.d/head
@@ -493,7 +492,23 @@ De esta forma, el servidor de base de datos escuchará en todas las interfaces d
 sudo systemctl restart mariadb
 ```
 
+En `bravo` editamos el fichero `/etc/hosts` para añadir la IP de `charlie`:
 
+```bash
+nameserver 192.168.0.2
+```
+
+Instalamos maraidb:
+
+```bash
+sudo dnf install mariadb-server
+```
+
+Accedemos a la base de datos desde `bravo`:
+
+```bash
+mysql -u nazareth -p nazareth -h bd -p
+```
 
 
 
@@ -526,3 +541,24 @@ sudo systemctl restart mariadb
 
 
 *Nota: Para las views y zones ext.,int. y dmz → https://www.josedomingo.org/pledin/2017/12/vistas-views-en-el-servidor-dns-bind9/ 
+
+*Nota: Para cambiar el DNS en ubuntu ejecutar:
+
+```bash
+vi /etc/netplan/10-lxc.yaml
+```
+
+Añadir:
+
+```bash
+nameservers:
+addresses: [192.168.202.2]
+```
+
+Y ejecutar:
+
+```bash
+netplan -
+netplan apply
+```
+Con netplan se puede configurar la red de forma dinámica, por lo que no es necesario reiniciar la máquina para que se apliquen los cambios. Dentro del fichero se puede configurar la IP estática, el DNS, la puerta de enlace, etc. En este caaso se ha añadido el nameserver con la IP del servidor DNS 192.168.0.2.
