@@ -204,3 +204,52 @@ Queremos instalar un servidor DHCP en la máquina router para que configure de f
 ### 5. Comprueba que la nueva máquina cliente no tiene el servidor apache2 instalado, y una captura de pantalla comprobando que sigue siendo accesible el servidor web de cliente.
 
 
+
+
+*Nota: Tuve problemas con la red default dandome un error al iniciarla donde decía que ya existía o estaba en uso, aunque seguía estando inactiva realmente y no me dejaba la opción de iniciarla. Para solucionarlo seguí estos pasoss:
+
+- Quitar la definición de la red default con virsh:
+
+  virsh -c qemu:///system net-undefine default
+
+- Editar el fichero de la red default:
+
+  sudo nano /etc/libvirt/qemu/networks/default.xml
+
+- En mi caso, decidi cambiar el rango que tenía por defecto:
+
+  <network>
+  <name>default</name>
+  <bridge name='virbr0'/>
+  <forward/>
+  <ip address='192.168.132.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.132.2' end='192.168.132.254'/>
+    </dhcp>
+  </ip>
+  </network>
+
+- Eliminar el bridge que se había creado:
+
+  sudo ip link set virbr0 down
+  sudo brctl delbr virbr0
+
+- Definir la red default con virsh:
+
+  virsh -c qemu:///system net-define /etc/libvirt/qemu/networks/default.xml
+
+- Y la iniciamos:
+
+  virsh -c qemu:///system net-start default
+
+- También ponemos que se autoinicie:
+
+  virsh -c qemu:///system net-autostart default
+
+- Comprobamos que se ha creado correctamente:
+
+  virsh -c qemu:///system net-list --all
+
+- Y que está activa:
+
+  virsh -c qemu:///system net-dhcp-leases default
