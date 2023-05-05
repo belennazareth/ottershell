@@ -161,8 +161,23 @@ CentOS Stream es una distribución de Linux de código abierto que se basa en RH
 La ventaja es que se puede utilizarse tanto en servidores como en estaciones de trabajo, y que es compatible con paquetes de software RHEL.
 A diferencia de RHEL, CentOs Stream ofrece actualizaciones de software continuas, por lo que no es necesario actualizar la distribución cada cierto tiempo. Además, CentOs Stream no ofrece soporte oficial, mientras que RHEL ofrece soporte técnico y de actualizaciones de seguridad.
 
-**4.- Descarga iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.**
+**4.- Descarga la iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.**
 
+En este caso vamos a descargar la iso `Eurolinux`. `Eurolinux` es una distribución de software libre y de código abierto basada en `RHEL` (Red Hat Enterprise Linux) que está diseñada para ofrecer soporte técnico y actualizaciones de seguridad a largo plazo. La decisión de utilizar Eurolinux como alternativa a otras distribuciones que ya no cuentan con soporte, como CentOS, puede resultar muy beneficioso para las organizaciones, ya que garantiza la continuidad operativa y la seguridad de los sistemas.
+
+La migración de `RHEL 6` a `Eurolinux` es un proceso relativamente sencillo que no requiere demasiado esfuerzo ni tiempo, y que puede realizarse mediante un script específico proporcionado por `Eurolinux`. Este script se encarga de la migración de los paquetes y datos de la máquina, y asegura la compatibilidad con los paquetes de software de `RHEL`, se recomienda hacer una copia de seguridad de los datos antes de realizar la migración para evitar la pérdida de información en caso de algún error.
+
+Empezamos descargando la iso de `Eurolinux` desde la página oficial de [Eurolinux](https://en.euro-linux.com/eurolinux/download/), al ejecutar la iso en una máquina virtual, nos aparecerá el siguiente menú donde después de rellenar los campos, comenzaremos la instalación:
+
+![cent](/img/ASO/centosASO-21.png)
+
+Pedirá reiniar la máquina virtual para poder entrar en el sistema:
+
+![cent](/img/ASO/centosASO-22.png)
+
+Iniciamos sesión y ejecutamos el comando `cat /etc/redhat-release` para comprobar la versión de Eurolinux que tenemos instalada:
+
+![cent](/img/ASO/centosASO-23.png)
 
 
 **5.- Instala CentOS 7, y evalúa la herramientas que ofrecen la distribución del punto 3.**
