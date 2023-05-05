@@ -161,7 +161,7 @@ CentOS Stream es una distribución de Linux de código abierto que se basa en RH
 La ventaja es que se puede utilizarse tanto en servidores como en estaciones de trabajo, y que es compatible con paquetes de software RHEL.
 A diferencia de RHEL, CentOs Stream ofrece actualizaciones de software continuas, por lo que no es necesario actualizar la distribución cada cierto tiempo. Además, CentOs Stream no ofrece soporte oficial, mientras que RHEL ofrece soporte técnico y de actualizaciones de seguridad.
 
-**4.- Descarga la iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.**
+### 4.- Descarga la iso de una de las otras distribuciones candidatas, indica criterios para la elección de la nueva distribución y evalúa el producto.
 
 En este caso vamos a descargar la iso `Eurolinux`. `Eurolinux` es una distribución de software libre y de código abierto basada en `RHEL` (Red Hat Enterprise Linux) que está diseñada para ofrecer soporte técnico y actualizaciones de seguridad a largo plazo. La decisión de utilizar Eurolinux como alternativa a otras distribuciones que ya no cuentan con soporte, como CentOS, puede resultar muy beneficioso para las organizaciones, ya que garantiza la continuidad operativa y la seguridad de los sistemas.
 
@@ -178,6 +178,68 @@ Pedirá reiniar la máquina virtual para poder entrar en el sistema:
 Iniciamos sesión y ejecutamos el comando `cat /etc/redhat-release` para comprobar la versión de Eurolinux que tenemos instalada:
 
 ![cent](/img/ASO/centosASO-23.png)
+
+Actualizamos para poder tener todos los paquetes actualizados e instalamos un programa cualquiera para usarlo de ejemplo:
+
+    yum update
+    yum install httpd #instalamos apache
+    sudo yum install bind-utils #herraienta para hacer consultas DNS
+
+Inicializamos el servicio de apache y comprobamos que se ha instalado correctamente:
+
+    systemctl start httpd
+    systemctl status httpd
+
+Vamos a montar un servidor apache sencillo para comprobar que funciona correctamente:
+
+    sudo firewall-cmd --add-service=http --permanent #abrimos el puerto 80
+    sudo firewall-cmd --reload #recargamos el firewall
+
+En el navegador ponemos la ip de la máquina virtual y nos aparecerá la página de apache:
+
+![cent](/img/ASO/centosASO-24.png)
+
+Realmente usar `eurolinux` es muy parecido a usar `RHEL`, ya que es una distribución basada en `RHEL` y ofrece soporte técnico y actualizaciones de seguridad a largo plazo. La ventaja de usar `eurolinux` es que es una distribución de código abierto y gratuita, mientras que `RHEL` es de pago.
+
+
+#### 4.1.- Migración de Centos 6 a Eurolinux
+
+Como se ha explicado anteriormente, ofrece un script para migrar de `RHEL` a `eurolinux` de forma sencilla y rápida, y además es compatible con los paquetes de software de `RHEL`. Así que a continuación se va a exponer un ejemplo de migración de `RHEL 6` a `eurolinux`.
+
+Primero montamos una máquina virtual instalando el sistema operativo `Centos 6` y comprobamos la versión de `Centos` que tenemos instalada:
+
+- Aparecerá el siguiente menú, seleccionamos la opción `Install or upgrade an existing system`:
+
+![cent](/img/ASO/centosASO-25.png)
+
+- Seleccionamos `skip` para omitir la comprobación de los medios de instalación:
+
+![cent](/img/ASO/centosASO-26.png)
+
+- Aparecerá la siguiente pantalla, pulsamos en `Next` y seleccionamos el idioma:
+
+![cent](/img/ASO/centosASO-27.png)
+![cent](/img/ASO/centosASO-28.png)
+
+- Después, nos dará dos opciones de instalación, seleccionamos `Dispositivos de almacenamiento básicos`:
+
+![cent](/img/ASO/centosASO-29.png)
+
+- Le asignamos un nombre a la máquina, asignamos la zona horaria y la contraseña de root (mínimo 6 caracteres, en mi caso he puesto `localhost` ya que es una máquina virtual de pruebas):
+
+![cent](/img/ASO/centosASO-30.png)
+![cent](/img/ASO/centosASO-31.png)
+![cent](/img/ASO/centosASO-32.png)
+
+- Seleccionamos el tipo de instalación, en este caso la que viene por defecto y comenzará la instalación:
+
+![cent](/img/ASO/centosASO-33.png)
+![cent](/img/ASO/centosASO-34.png)
+
+- Una vez finalizada la instalación, reiniciamos la máquina y comprobamos que se ha instalado correctamente:
+
+![cent](/img/ASO/centosASO-35.png)
+
 
 
 **5.- Instala CentOS 7, y evalúa la herramientas que ofrecen la distribución del punto 3.**
