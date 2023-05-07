@@ -237,3 +237,24 @@ Primero vamos a proceder con la instalación de una máquina `Rocky Linux`:
 - Descargamos la iso de `Rocky Linux` desde la página oficial de [Rocky Linux](https://rockylinux.org/download/), al ejecutar la iso en una máquina virtual, nos aparecerá el siguiente menú:
 
 ![cent](/img/ASO/centosASO-32.png)
+
+- Seleccionamos el idioma y el teclado, y después tendremos que rellenar los datos:
+
+![cent](/img/ASO/centosASO-33.png)
+
+- Al terminar de rellenar los datos, comenzará la instalación que pedirá reiniciar la máquina:
+
+![cent](/img/ASO/centosASO-34.png)
+
+- Por último, ejecutamos `cat /etc/redhat-release` para comprobar la versión de `Rocky Linux` que tenemos instalada:
+
+![cent](/img/ASO/centosASO-35.png)
+
+Ahora vamos a proceder con la migración de `Centos Stream` a `Rocky Linux`. Para ello, vamos a seguir estos pasos:
+
+- Actualizamos los paquetes de `Centos Stream` y reiniciamos la máquina:
+
+    sudo dnf update -y
+    sudo reboot
+
+
