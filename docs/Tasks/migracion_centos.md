@@ -165,7 +165,7 @@ A diferencia de RHEL, CentOs Stream ofrece actualizaciones de software continuas
 
 En este caso vamos a descargar la iso `Eurolinux`. `Eurolinux` es una distribución de software libre y de código abierto basada en `RHEL` (Red Hat Enterprise Linux) que está diseñada para ofrecer soporte técnico y actualizaciones de seguridad a largo plazo. La decisión de utilizar Eurolinux como alternativa a otras distribuciones que ya no cuentan con soporte, como CentOS, puede resultar muy beneficioso para las organizaciones, ya que garantiza la continuidad operativa y la seguridad de los sistemas.
 
-La migración de `RHEL 6` a `Eurolinux` es un proceso relativamente sencillo que no requiere demasiado esfuerzo ni tiempo, y que puede realizarse mediante un script específico proporcionado por `Eurolinux`. Este script se encarga de la migración de los paquetes y datos de la máquina, y asegura la compatibilidad con los paquetes de software de `RHEL`, se recomienda hacer una copia de seguridad de los datos antes de realizar la migración para evitar la pérdida de información en caso de algún error.
+La migración de `RHEL` a `Eurolinux` es un proceso relativamente sencillo que no requiere demasiado esfuerzo ni tiempo, y que puede realizarse mediante un script específico proporcionado por `Eurolinux`. Este script se encarga de la migración de los paquetes y datos de la máquina, y asegura la compatibilidad con los paquetes de software de `RHEL`, se recomienda hacer una copia de seguridad de los datos antes de realizar la migración para evitar la pérdida de información en caso de algún error.
 
 Empezamos descargando la iso de `Eurolinux` desde la página oficial de [Eurolinux](https://en.euro-linux.com/eurolinux/download/), al ejecutar la iso en una máquina virtual, nos aparecerá el siguiente menú donde después de rellenar los campos, comenzaremos la instalación:
 
@@ -202,45 +202,38 @@ En el navegador ponemos la ip de la máquina virtual y nos aparecerá la página
 Realmente usar `eurolinux` es muy parecido a usar `RHEL`, ya que es una distribución basada en `RHEL` y ofrece soporte técnico y actualizaciones de seguridad a largo plazo. La ventaja de usar `eurolinux` es que es una distribución de código abierto y gratuita, mientras que `RHEL` es de pago.
 
 
-#### 4.1.- Migración de Centos 6 a Eurolinux
+### 5.- Instala CentOS 7, y evalúa la herramientas que ofrecen la distribución del punto 3.
 
-Como se ha explicado anteriormente, ofrece un script para migrar de `RHEL` a `eurolinux` de forma sencilla y rápida, y además es compatible con los paquetes de software de `RHEL`. Así que a continuación se va a exponer un ejemplo de migración de `RHEL 6` a `eurolinux`.
-
-Primero montamos una máquina virtual instalando el sistema operativo `Centos 6` y comprobamos la versión de `Centos` que tenemos instalada:
-
-- Aparecerá el siguiente menú, seleccionamos la opción `Install or upgrade an existing system`:
+- Aparecerá el siguiente menú, seleccionamos la opción `Install`:
 
 ![cent](/img/ASO/centosASO-25.png)
 
-- Seleccionamos `skip` para omitir la comprobación de los medios de instalación:
+- Aparecerá la siguiente pantalla donde seleccionamos el idioma y el teclado:
 
 ![cent](/img/ASO/centosASO-26.png)
-
-- Aparecerá la siguiente pantalla, pulsamos en `Next` y seleccionamos el idioma:
-
 ![cent](/img/ASO/centosASO-27.png)
+
+- Después rellenamos los datos del usuario y la contraseña:
+
 ![cent](/img/ASO/centosASO-28.png)
 
-- Después, nos dará dos opciones de instalación, seleccionamos `Dispositivos de almacenamiento básicos`:
+- Al terminar de rellenar los datos, comenzará la instalación que pedirá reiniciar la máquina:
 
 ![cent](/img/ASO/centosASO-29.png)
-
-- Le asignamos un nombre a la máquina, asignamos la zona horaria y la contraseña de root (mínimo 6 caracteres, en mi caso he puesto `localhost` ya que es una máquina virtual de pruebas):
-
 ![cent](/img/ASO/centosASO-30.png)
+
+- Por último, ejecutamos `cat /etc/redhat-release` para comprobar la versión de `Centos` que tenemos instalada:
+
 ![cent](/img/ASO/centosASO-31.png)
+
+Comparando esta distribución con la del punto 3 (Centos Stream) vemos que `CentOS 7` sigue un modelo de lanzamiento fijo tradicional, mientras que `CentOS Stream 9` está basado en un modelo de lanzamiento continuo. En segundo lugar, `CentOS 7` está basado en Red Hat Enterprise Linux 7 y utiliza paquetes más antiguos, mientras que `CentOS Stream 9` está basado en Red Hat Enterprise Linux 9 y ofrece paquetes más nuevos. Además, `CentOS 7` ha llegado al final de su vida útil y ya no recibe actualizaciones, mientras que `CentOS Stream 9` es una distribución soportada que recibirá actualizaciones regulares de Red Hat.
+
+#### 5.1.- Migración de CentOS Stream a Rocky Linux
+
+En este punto deberíamos realizar una migración de `Centos 7` a `Centos 8` pero actualmente esto ya no es posible hacerlo ya que no existen repositorios ni isos de `Centos 8`. Por lo tanto, vamos a realizar una migración de `Centos Stream` (instalado en el punto 3) a `Rocky Linux`.
+
+Primero vamos a proceder con la instalación de una máquina `Rocky Linux`:
+
+- Descargamos la iso de `Rocky Linux` desde la página oficial de [Rocky Linux](https://rockylinux.org/download/), al ejecutar la iso en una máquina virtual, nos aparecerá el siguiente menú:
+
 ![cent](/img/ASO/centosASO-32.png)
-
-- Seleccionamos el tipo de instalación, en este caso la que viene por defecto y comenzará la instalación:
-
-![cent](/img/ASO/centosASO-33.png)
-![cent](/img/ASO/centosASO-34.png)
-
-- Una vez finalizada la instalación, reiniciamos la máquina y comprobamos que se ha instalado correctamente:
-
-![cent](/img/ASO/centosASO-35.png)
-
-
-
-**5.- Instala CentOS 7, y evalúa la herramientas que ofrecen la distribución del punto 3.**
-
