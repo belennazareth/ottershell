@@ -319,8 +319,3 @@ El script lanza mensajes de error que son repositorios en conflicto que no se pu
 - Por último, ejecutamos `cat /etc/redhat-release` para comprobar la versión de `Rocky Linux` que tenemos instalada:
 
 ![cent](/img/ASO/centosASO-35.png)
-
-
-
-
-
