@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/forense",
+  "id": "Tasks/forense",
+  "title": "Informática Forense",
+  "description": "La informática forense es el conjunto de técnicas que nos permite obtener la máxima información posible tras un incidente o delito informático.",
+  "source": "@site/docs/Tasks/forense.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/forense",
+  "permalink": "/docs/Tasks/forense",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/forense.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "sidebar_position": 30
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
+    "permalink": "/docs/Tasks/dns_escenario_openstack"
+  },
+  "next": {
+    "title": "Instalación de phpmyadmin",
+    "permalink": "/docs/Tasks/phpmyadmin"
+  }
+}
