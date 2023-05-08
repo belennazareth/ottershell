@@ -121,7 +121,7 @@ Después, ya podemos enviar correos desde internet a usuarios del servidor, un e
 
 ## Entrega
 
-**1. Prueba de funcionamiento del ejercicio1. Se debe mostrar el log para asegurarse que se ha enviado el correo.**
+### 1. Prueba de funcionamiento del ejercicio1. Se debe mostrar el log para asegurarse que se ha enviado el correo.
 
 Prueba de recepción de correo en el servidor root@delta:
 ![Postfix](/img/SRI+HLC/taller1SRI6-2.png)
@@ -130,15 +130,14 @@ Fichero de logs de postfix:
 ![Postfix](/img/SRI+HLC/taller1SRI6-3.png)
 
 
-**2. Muestra las cabeceras del correo recibido en el ejercicio 2 mostrando las cabeceras donde vemos los servidores por los que ha pasado el correo.**
+### 2. Muestra las cabeceras del correo recibido en el ejercicio 2 mostrando las cabeceras donde vemos los servidores por los que ha pasado el correo.
 
 ![Postfix](/img/SRI+HLC/taller1SRI6-4.png)
 
 
-**3. Muestra el log del sistema donde se comprueba que el correo se ha recibido con éxito en el ejercicio 3.**
+### 3. Muestra el log del sistema donde se comprueba que el correo se ha recibido con éxito en el ejercicio 3.
 
 
 
-
-**4. Realiza el ejercicio que os va a plantear el profesor.**
+### 4. Realiza el ejercicio que os va a plantear el profesor.
 
