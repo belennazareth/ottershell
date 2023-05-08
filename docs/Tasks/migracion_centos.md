@@ -249,12 +249,60 @@ Ahora vamos a proceder con la migración de `Centos Stream 8` a `Rocky Linux`. P
 
 - Como administrador, ejecutamos el script de migración:
 
-    sudo ./migrate2rocky.sh
+    sudo ./migrate2rocky.sh -r
+
+![cent](/img/ASO/centosASO-36.png)
+![cent](/img/ASO/centosASO-37.png)
+
+- Una vez terminado el proceso, reiniciamos la máquina:
+
+    sudo reboot
+
+- Y comprobamos que se ha migrado correctamente:
+
+    cat /etc/redhat-release
+
+![cent](/img/ASO/centosASO-38.png)
+
+Si nos paramos a analizar el script de migración, vemos que lo que hace es cambiar los repositorios de `Centos Stream` por los de `Rocky Linux` y después actualiza los paquetes.
+Tenemos varios parámetros que podemos usar con el script de migración:
+
+- `-r` para migrar a `Rocky Linux` aceptando todos los cambios.
+- `-h` para mostrar la ayuda:
+```sh
+Usage: migrate2rocky.sh [OPTIONS]
+
+Options:
+-h Display this help
+-r Convert to rocky
+-V Verify switch
+   !! USE WITH CAUTION !!
+```
+- `-V` para verificar los cambios que se van a realizar.
+
+También vemos que se aplican unos requisitos de espacio para poder migrar a `Rocky Linux`:
+
+```sh
+/usr   250M
+/var   1.5G
+/boot  50M
+```
+
+Hay que tener en cuenta que NO se puede cerrar la terminal mientras se está ejecutando el script de migración, ya que si se cierra la terminal, se cancelará la migración y se quedará el sistema en un estado inestable. 
+
+Si queremos migrar desde máquinas EL que no estan actualizadas hasta la versión 8.0 hay que ejecutar un update antes y cambiar manualmente los repositorios a los de `Rocky Linux`:
+
+```sh
+sed -i -r \
+    -e 's!^mirrorlist=!#mirrorlist=!' \
+    -e 's!^#?baseurl=http://(mirror|vault).centos.org/\$contentdir/\$releasever/!baseurl=https://dl.rockylinux.org/vault/centos/8.5.2111/!i' \
+    /etc/yum.repos.d/CentOS-*.repo
+```
+
+El script lanza mensajes de error que son repositorios en conflicto que no se pueden migrar, por lo que se encarga de eliminarlos e instalar la rocky-release.
 
 
-
-
-#### Instalación de una máquina `Rocky Linux`:
+#### Instalación de una máquina Rocky Linux manualmente
 
 - Descargamos la iso de `Rocky Linux` desde la página oficial de [Rocky Linux](https://rockylinux.org/download/), al ejecutar la iso en una máquina virtual, nos aparecerá el siguiente menú:
 
