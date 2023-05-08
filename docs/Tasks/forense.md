@@ -14,23 +14,66 @@ Sobre cada una de las máquinas debes realizar un volcado de memoria y otro de d
 
 ## Apartado A - Máquina Windows
 
+### Volcado de memoria
+
+Para esto tenemos una máquina Linux con Volatility instalado y una máquina Windows con el fichero de volcado de memoria. Para realizar el volcado de memoria descargamos FTK Imager en la máquina windows y hacemos una captura de la memoria. Una vez hecho esto, copiamos el fichero de volcado de memoria a la máquina Linux y lo analizamos con Volatility.
+Así se vería el proceso de volcado de memoria con FTK Imager:
+
+![forense](/img/SAD/forenseSAD.png)
+
 ### Por comandos
 
 1. Procesos en ejecución.
 
+    python3 vol.py -f "/home/usuario/memdump.mem" windows.pslist
+
+![forense](/img/SAD/forenseSAD-2.png)
+
 2. Servicios en ejecución.
+
+    python3 vol.py -f "/home/usuario/memdump.mem" windows.getservicesids
+
+![forense](/img/SAD/forenseSAD-7.png)
 
 3. Puertos abiertos.
 
+    python3 vol.py -f /home/usuario/memdump.mem windows.netscan
+    o
+    python3 vol.py -f /home/usuario/memdump.mem windows.netstat
+
+![forense](/img/SAD/forenseSAD-8.png)
+![forense](/img/SAD/forenseSAD-10.png)
+
 4. Conexiones establecidas por la máquina.
 
+    python3 vol.py -f /home/usuario/memdump.mem windows.netscan
+
 5. Sesiones de usuario establecidas remotamente.
+
+    python3 vol.py -f /home/usuario/memdump.mem windows.sessions
 
 6. Ficheros transferidos recientemente por NetBios.
 
 7. Contenido de la caché DNS.
 
 8. Variables de entorno.
+
+
+### Volcado de disco
+
+En la maquina windows usando la aplicación FTK Imager, hacemos una captura del disco duro:
+
+![forense](/img/SAD/forenseSAD-3.png)
+![forense](/img/SAD/forenseSAD-4.png)
+![forense](/img/SAD/forenseSAD-5.png)
+![forense](/img/SAD/forenseSAD-6.png)
+![forense](/img/SAD/forenseSAD-9.png)
+
+
+
+### Volcado de registro
+
+
 
 ### Analizando el Registro de Windows
 
@@ -74,11 +117,7 @@ Sobre cada una de las máquinas debes realizar un volcado de memoria y otro de d
 
 26. Búsqueda de archivos por autor.
 
-### Volcado de memoria
 
-### Volcado de disco
-
-### Volcado de registro
 
 
 
