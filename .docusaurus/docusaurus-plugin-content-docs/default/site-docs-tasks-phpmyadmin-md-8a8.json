@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Servidores Web, Base de Datos y DNS en nuestros escenario de OpenStack",
-    "permalink": "/docs/Tasks/dns_escenario_openstack"
+    "title": "Informática Forense",
+    "permalink": "/docs/Tasks/forense"
   },
   "next": {
     "title": "Recopilación de Vagrantfiles",

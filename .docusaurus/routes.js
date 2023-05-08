@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '615'),
+    component: ComponentCreator('/docs', '1ec'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -210,6 +210,12 @@ export default [
       {
         path: '/docs/Tasks/escenario_openstack',
         component: ComponentCreator('/docs/Tasks/escenario_openstack', '6ef'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/forense',
+        component: ComponentCreator('/docs/Tasks/forense', 'af7'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

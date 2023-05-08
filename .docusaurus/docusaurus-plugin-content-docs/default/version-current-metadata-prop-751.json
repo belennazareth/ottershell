@@ -323,6 +323,12 @@
           },
           {
             "type": "link",
+            "label": "Informática Forense",
+            "href": "/docs/Tasks/forense",
+            "docId": "Tasks/forense"
+          },
+          {
+            "type": "link",
             "label": "Instalación de phpmyadmin",
             "href": "/docs/Tasks/phpmyadmin",
             "docId": "Tasks/phpmyadmin"
@@ -520,6 +526,12 @@
       "id": "Tasks/escenario_openstack",
       "title": "Escenario en OpenStack",
       "description": "Procedimientos",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/forense": {
+      "id": "Tasks/forense",
+      "title": "Informática Forense",
+      "description": "La informática forense es el conjunto de técnicas que nos permite obtener la máxima información posible tras un incidente o delito informático.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/funcionamiento_dhcp": {

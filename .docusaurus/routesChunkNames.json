@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-615": {
+  "/docs-1ec": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -212,6 +212,10 @@
   "/docs/Tasks/escenario_openstack-6ef": {
     "__comp": "17896441",
     "content": "9ebb1dcc"
+  },
+  "/docs/Tasks/forense-af7": {
+    "__comp": "17896441",
+    "content": "0bf8df8b"
   },
   "/docs/Tasks/funcionamiento_dhcp-525": {
     "__comp": "17896441",

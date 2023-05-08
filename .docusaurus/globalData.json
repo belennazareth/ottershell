@@ -136,6 +136,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/forense",
+              "path": "/docs/Tasks/forense",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/funcionamiento_dhcp",
               "path": "/docs/Tasks/funcionamiento_dhcp",
               "sidebar": "tutorialSidebar"
