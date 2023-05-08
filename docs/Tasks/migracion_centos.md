@@ -226,13 +226,35 @@ Realmente usar `eurolinux` es muy parecido a usar `RHEL`, ya que es una distribu
 
 ![cent](/img/ASO/centosASO-31.png)
 
-Comparando esta distribución con la del punto 3 (Centos Stream) vemos que `CentOS 7` sigue un modelo de lanzamiento fijo tradicional, mientras que `CentOS Stream 9` está basado en un modelo de lanzamiento continuo. En segundo lugar, `CentOS 7` está basado en Red Hat Enterprise Linux 7 y utiliza paquetes más antiguos, mientras que `CentOS Stream 9` está basado en Red Hat Enterprise Linux 9 y ofrece paquetes más nuevos. Además, `CentOS 7` ha llegado al final de su vida útil y ya no recibe actualizaciones, mientras que `CentOS Stream 9` es una distribución soportada que recibirá actualizaciones regulares de Red Hat.
+Comparando esta distribución con la del punto 3 (Centos Stream) vemos que `CentOS 7` sigue un modelo de lanzamiento fijo tradicional, mientras que `CentOS Stream 9` está basado en un modelo de lanzamiento continuo. En segundo lugar, `CentOS 7` está basado en Red Hat Enterprise Linux 7 y utiliza paquetes más antiguos, `CentOS Stream 9` está basado en Red Hat Enterprise Linux 9 y ofrece paquetes más nuevos. Además, `CentOS 7` ha llegado al final de su vida útil y ya no recibe actualizaciones, en cambio `CentOS Stream 9` es una distribución soportada que recibirá actualizaciones regulares de Red Hat.
 
-#### 5.1.- Migración de CentOS Stream a Rocky Linux
+#### 5.1.- Migración de CentOS Stream 8 a Rocky Linux
 
 En este punto deberíamos realizar una migración de `Centos 7` a `Centos 8` pero actualmente esto ya no es posible hacerlo ya que no existen repositorios ni isos de `Centos 8`. Por lo tanto, vamos a realizar una migración de `Centos Stream` (instalado en el punto 3) a `Rocky Linux`.
 
-Primero vamos a proceder con la instalación de una máquina `Rocky Linux`:
+Ahora vamos a proceder con la migración de `Centos Stream 8` a `Rocky Linux`. Para ello, vamos a seguir estos pasos:
+
+- Actualizamos los paquetes de `Centos Stream` y reiniciamos la máquina:
+
+    sudo dnf update -y
+    sudo reboot
+
+- Clonamos el repositorio de migración preparado de `Rocky Linux`:
+
+    curl https://raw.githubusercontent.com/rocky-linux/rocky-tools/main/migrate2rocky/migrate2rocky.sh -o migrate2rocky.sh
+
+- Y le cambiamos los permisos para poder ejecutarlo:
+
+    chmod +x migrate2rocky.sh
+
+- Como administrador, ejecutamos el script de migración:
+
+    sudo ./migrate2rocky.sh
+
+
+
+
+#### Instalación de una máquina `Rocky Linux`:
 
 - Descargamos la iso de `Rocky Linux` desde la página oficial de [Rocky Linux](https://rockylinux.org/download/), al ejecutar la iso en una máquina virtual, nos aparecerá el siguiente menú:
 
@@ -250,11 +272,7 @@ Primero vamos a proceder con la instalación de una máquina `Rocky Linux`:
 
 ![cent](/img/ASO/centosASO-35.png)
 
-Ahora vamos a proceder con la migración de `Centos Stream` a `Rocky Linux`. Para ello, vamos a seguir estos pasos:
 
-- Actualizamos los paquetes de `Centos Stream` y reiniciamos la máquina:
 
-    sudo dnf update -y
-    sudo reboot
 
 
