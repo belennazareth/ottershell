@@ -60,7 +60,7 @@ Así se vería el proceso de volcado de memoria con FTK Imager:
 
 7. Contenido de la caché DNS.
 
-    python3 vol.py -f /home/usuario/memdump.mem windows.dns_cache
+    python3 vol.py -f /home/usuario/memdump.mem windows.dns_cache >> dns_cache.txt
 
 8. Variables de entorno.
 
