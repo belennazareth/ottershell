@@ -72,7 +72,7 @@ Así se vería el proceso de volcado de memoria con FTK Imager:
 
 Con ftk imager hacemos una captura del registro de windows usando obtain system files:
 
-IMAGEN
+![forense](/img/SAD/forenseSAD-17.png)
 
 Descargamos Registry Viewer y abrimos el registro de windows:
 
@@ -121,6 +121,8 @@ Con autopsy analizamos el disco duro:
 
 data artifacts > usb device attached
 
+![forense](/img/SAD/forenseSAD-19.png)
+
 14. Aplicaciones usadas recientemente.
 
 disco volcado > summary > user activity
@@ -129,11 +131,15 @@ disco volcado > summary > user activity
 
 15. Ficheros abiertos recientemente.
 
+data artifacts > recent documents
 
+![forense](/img/SAD/forenseSAD-20.png)
 
 16. Software Instalado.
 
+data artifacts > installed programs
 
+![forense](/img/SAD/forenseSAD-21.png)
 
 17. Contraseñas guardadas.
 
