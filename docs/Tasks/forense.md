@@ -143,17 +143,29 @@ data artifacts > installed programs
 
 17. Contraseñas guardadas.
 
-
-
 18. Cuentas de Usuario
 
+Tanto 17. como 18. se pueden ver en el apartado de usuarios:
 
+os accounts
+
+![forense](/img/SAD/forenseSAD-22.png)
 
 ### Con Aplicaciones de terceros
 
 19. Historial de navegación y descargas. Cookies.
 
+data artifacts > web history
 
+![forense](/img/SAD/forenseSAD-23.png)
+
+data artifacts > web cookies
+
+![forense](/img/SAD/forenseSAD-24.png)
+
+data artifacts > web downloads
+
+![forense](/img/SAD/forenseSAD-25.png)
 
 20. Volúmenes cifrados
 
