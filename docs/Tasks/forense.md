@@ -10,6 +10,14 @@ La informática forense es el conjunto de técnicas que nos permite obtener la m
 En esta práctica, realizarás la fase de toma de evidencias y análisis de las mismas sobre una máquina Linux y otra Windows. Supondremos que pillamos al delincuente in fraganti y las máquinas se encontraban encendidas. Opcionalmente, podéis realizar el análisis de un dispositivo Android.
 
 Sobre cada una de las máquinas debes realizar un volcado de memoria y otro de disco duro, tomando las medidas necesarias para certificar posteriormente la cadena de custodia.
+Para garantizar la cadena de custodia de las evidencias recolectadas del volcado de memoria o del volcado de disco, se deben seguir los siguientes pasos:
+
+- Asegurar la integridad de las evidencias creando una imagen encriptada
+- Documentación del proceso
+- Identificación y etiquetado de evidencias
+- Almacenamiento de las evidencias con acceso restringido
+- Monitorear y controlar el acceso a las evidencias teniendo un registro con fecha y usuario que lo haya usado
+
 
 
 ## Apartado A - Máquina Windows
