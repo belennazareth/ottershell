@@ -169,34 +169,44 @@ data artifacts > web downloads
 
 20. Volúmenes cifrados
 
+analysis results > encryption suspected
+
+![forense](/img/SAD/forenseSAD-26.png)
 
 
 ### Sobre la imagen del disco
 
 21. Archivos con extensión cambiada.
 
+analysis results > extension mismatch detected
 
+![forense](/img/SAD/forenseSAD-27.png)
 
 22. Archivos eliminados.
 
+file views > deleted files
 
+![forense](/img/SAD/forenseSAD-28.png)
 
 23. Archivos Ocultos.
 
-
+Esto se puede ver en el archivo entrando en file metadata donde veremos la opción de hidden.
 
 24. Archivos que contienen una cadena determinada.
 
+Usando el buscador de ficheros:
 
+![forense](/img/SAD/forenseSAD-29.png)
 
 25. Búsqueda de imágenes por ubicación.
 
-
+Usando la opción geolocation.
 
 26. Búsqueda de archivos por autor.
 
+data artifacts > metadata
 
-
+![forense](/img/SAD/forenseSAD-30.png)
 
 ## Apartado B - Máquina Linux
 
