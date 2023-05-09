@@ -283,11 +283,12 @@ Una vez hecho esto, volvemos a hacer la compilación de Lime y ya no nos dará e
 
 ```bash
 usuario@debian:~$ sudo mkdir /mnt/linux
-usuario@debian:~$ sudo dd if=/dev/vda2 of=/mnt/linux/volcado_linux.001 bs=64K
-0+1 registros leídos
-0+1 registros escritos
-1024 bytes (1,0 kB, 1,0 KiB) copied, 0,00149033 s, 687 kB/s
-usuario@debian:~$ 
+usuario@debian:~$ sudo dd if=/dev/vda1 of=/mnt/linux/volcado_linux2.001 bs=64K
+65111+0 registros leídos
+65110+0 registros escritos
+4267061248 bytes (4,3 GB, 4,0 GiB) copied, 36,8376 s, 116 MB/s
 ```
 
 Con autopsy analizamos el disco duro y dará resultados similares a los de la máquina windows.
+
+Para analizarlo con esta aplicación lo pase por scp a mi máquina windows y ahi lo realice. PAra que lo acepte hay que indicarle que es una imagen `Unallocated Space Image File`
