@@ -52,11 +52,40 @@ Así se vería el proceso de volcado de memoria con FTK Imager:
 
     python3 vol.py -f /home/usuario/memdump.mem windows.sessions
 
+![forense](/img/SAD/forenseSAD-11.png)
+
 6. Ficheros transferidos recientemente por NetBios.
+
+    python3 vol.py -f /home/usuario/memdump.mem windows.netscan
 
 7. Contenido de la caché DNS.
 
+    python3 vol.py -f /home/usuario/memdump.mem windows.dns_cache
+
 8. Variables de entorno.
+
+    python3 vol.py -f /home/usuario/memdump.mem windows.envars
+
+![forense](/img/SAD/forenseSAD-15.png)
+
+### Volcado de registro
+
+Con ftk imager hacemos una captura del registro de windows usando obtain system files:
+
+IMAGEN
+
+Descargamos Registry Viewer y abrimos el registro de windows:
+
+IMAGEN
+
+
+10. Redes wifi utilizadas recientemente.
+
+11. Configuración del firewall de nodo.
+
+12. Programas que se ejecutan en el Inicio.
+
+13. Asociación de extensiones de ficheros y aplicaciones.
 
 
 ### Volcado de disco
@@ -69,57 +98,168 @@ En la maquina windows usando la aplicación FTK Imager, hacemos una captura del 
 ![forense](/img/SAD/forenseSAD-6.png)
 ![forense](/img/SAD/forenseSAD-9.png)
 
+Con autopsy analizamos el disco duro:
 
+- Primero creamos un nuevo caso.
 
-### Volcado de registro
+- Seleccionamos el tipo en este caso disco:
 
+![forense](/img/SAD/forenseSAD-12.png)
+
+- Así se ve cuando termina de analizar el disco:
+
+![forense](/img/SAD/forenseSAD-13.png)
+
+- Por último, podemos ver los archivos que se han encontrado:
+
+![forense](/img/SAD/forenseSAD-14.png)
 
 
 ### Analizando el Registro de Windows
 
 9. Dispositivos USB conectados
 
-10. Redes wifi utilizadas recientemente.
-
-11. Configuración del firewall de nodo.
-
-12. Programas que se ejecutan en el Inicio.
-
-13. Asociación de extensiones de ficheros y aplicaciones.
+data artifacts > usb device attached
 
 14. Aplicaciones usadas recientemente.
 
+disco volcado > summary > user activity
+
+![forense](/img/SAD/forenseSAD-16.png)
+
 15. Ficheros abiertos recientemente.
+
+
 
 16. Software Instalado.
 
+
+
 17. Contraseñas guardadas.
 
+
+
 18. Cuentas de Usuario
+
+
 
 ### Con Aplicaciones de terceros
 
 19. Historial de navegación y descargas. Cookies.
 
+
+
 20. Volúmenes cifrados
+
+
 
 ### Sobre la imagen del disco
 
 21. Archivos con extensión cambiada.
 
+
+
 22. Archivos eliminados.
+
+
 
 23. Archivos Ocultos.
 
+
+
 24. Archivos que contienen una cadena determinada.
 
+
+
 25. Búsqueda de imágenes por ubicación.
+
+
 
 26. Búsqueda de archivos por autor.
 
 
 
 
-
 ## Apartado B - Máquina Linux
 
+### Volcado de memoria
+
+Para esto he descargado Lime desde el repositorio `git clone https://github.com/504ensicsLabs/LiME.git` y he seguido los siguientes pasos:
+
+```bash
+uname -r # Para saber la versión del kernel ya que Lime tiene que ser de la misma versión y nos la pedirá más adelante
+sudo apt-get install make build-essential linux-headers
+cd LiME/src
+make
+sudo insmod lime-5.10.0-22-amd64.ko "path=/home/usuario/memdumplinux format=lime"
+```
+
+Si al hacer la compilación de Lime nos da de error:
+
+```bash
+usuario@debian:~/LiME/src$ make
+make -C /lib/modules/5.10.0-22-amd64/build M="/home/usuario/LiME/src" modules
+make[1]: *** /lib/modules/5.10.0-22-amd64/build: No existe el fichero o el directorio.  Alto.
+make: *** [Makefile:35: default] Error 2
+```
+
+Tenemos que instalar los headers del kernel:
+
+```bash
+sudo apt-get install linux-headers-5.10.0-22-amd64
+```
+
+Una vez hecho esto, volvemos a hacer la compilación de Lime y ya no nos dará error.
+
+1. Procesos en ejecución.
+
+    ps -aux
+
+2. Servicios en ejecución.
+
+    systemctl list-units --type=service --state=running
+
+3. Puertos abiertos.
+
+    apt install net-tools
+    netstat -tulpn
+
+4. Conexiones establecidas por la máquina.
+
+    netstat -tulpn
+
+5. Sesiones de usuario establecidas remotamente.
+
+    who -a
+
+6. Ficheros transferidos recientemente por NetBios.
+
+    apt install samba -y
+    smbstatus
+    o
+    sudo apt-get install smbclient -y
+    smbclient -L localhost 
+    o
+    smbclient //hostname/sharename -U username -c 'recurse; ls'
+
+
+7. Contenido de la caché DNS.
+
+    strings /var/cache/nscd/hosts
+
+8. Variables de entorno.
+
+    env
+
+### Volcado de disco
+
+```bash
+usuario@debian:~$ sudo mkdir /mnt/linux
+usuario@debian:~$ sudo dd if=/dev/vda2 of=/mnt/linux/volcado_linux.001 bs=64K
+0+1 registros leídos
+0+1 registros escritos
+1024 bytes (1,0 kB, 1,0 KiB) copied, 0,00149033 s, 687 kB/s
+usuario@debian:~$ 
+```
+
+Con autopsy analizamos el disco duro y dará resultados similares a los de la máquina windows.
