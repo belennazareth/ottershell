@@ -586,3 +586,142 @@ Para comprobar que las máquinas tienen acceso a internet se ha realizado `ping`
 
 ![Repo](/img/SRI+HLC/openstackSRI4-4.png)
 
+## Nota
+
+### Fallo DNS
+
+Al iniciar el contenedor lxc luego ejecutamos `vi /etc/netplan/10-lxc.yaml` y añadimos:
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: no
+      dhcp6: no
+      addresses:
+        - 192.168.0.2/24
+      gateway4: 192.168.0.1
+      nameservers:
+        addresses:
+          - 192.168.0.1
+          - 8.8.8.8
+```
+
+Luego ejecutamos `netplan --debug apply`.
+De salida devuelve:
+
+```bash
+root@charlie:~# netplan --debug apply
+** (generate:113): DEBUG: 20:39:49.094: starting new processing pass
+** (generate:113): DEBUG: 20:39:49.094: We have some netdefs, pass them through a final round of validation
+** (generate:113): DEBUG: 20:39:49.094: eth0: setting default backend to 1
+** (generate:113): DEBUG: 20:39:49.094: Configuration is valid
+** (generate:113): DEBUG: 20:39:49.095: Generating output files..
+** (generate:113): DEBUG: 20:39:49.095: openvswitch: definition eth0 is not for us (backend 1)
+** (generate:113): DEBUG: 20:39:49.095: NetworkManager: definition eth0 is not for us (backend 1)
+(generate:113): GLib-DEBUG: 20:39:49.095: posix_spawn avoided (fd close requested) 
+(generate:113): GLib-DEBUG: 20:39:49.102: posix_spawn avoided (fd close requested) 
+DEBUG:netplan generated networkd configuration changed, reloading networkd
+DEBUG:eth0 not found in {}
+DEBUG:Merged config:
+network:
+  ethernets:
+    eth0:
+      addresses:
+      - 192.168.0.2/24
+      dhcp4: false
+      dhcp6: false
+      gateway4: 192.168.0.1
+      nameservers:
+        addresses:
+        - 192.168.0.1
+        - 8.8.8.8
+  version: 2
+
+DEBUG:no netplan generated NM configuration exists
+DEBUG:eth0 not found in {}
+DEBUG:Merged config:
+network:
+  ethernets:
+    eth0:
+      addresses:
+      - 192.168.0.2/24
+      dhcp4: false
+      dhcp6: false
+      gateway4: 192.168.0.1
+      nameservers:
+        addresses:
+        - 192.168.0.1
+        - 8.8.8.8
+  version: 2
+
+DEBUG:Link changes: {}
+DEBUG:netplan triggering .link rules for lo
+DEBUG:netplan triggering .link rules for eth0
+** (process:111): DEBUG: 20:39:49.422: starting new processing pass
+** (process:111): DEBUG: 20:39:49.423: We have some netdefs, pass them through a final round of validation
+** (process:111): DEBUG: 20:39:49.423: eth0: setting default backend to 1
+** (process:111): DEBUG: 20:39:49.423: Configuration is valid
+DEBUG:eth0 not found in {}
+DEBUG:Merged config:
+network:
+  ethernets:
+    eth0:
+      addresses:
+      - 192.168.0.2/24
+      dhcp4: false
+      dhcp6: false
+      gateway4: 192.168.0.1
+      nameservers:
+        addresses:
+        - 192.168.0.1
+        - 8.8.8.8
+  version: 2
+```
+
+Si ejecutamos un `ip a` vemos que la ip cambio a la que le hemos puesto:
+
+```bash
+root@charlie:~# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:16:3e:57:4c:de brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 192.168.0.2/24 brd 192.168.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::216:3eff:fe57:4cde/64 scope link 
+       valid_lft forever preferred_lft forever
+```
+
+Si comprobamos el fichero `/etc/resolv.conf` vemos que tiene de nameserver:
+
+```bash
+root@charlie:~# cat /etc/resolv.conf 
+# This file is managed by man:systemd-resolved(8). Do not edit.
+#
+# This is a dynamic resolv.conf file for connecting local clients to the
+# internal DNS stub resolver of systemd-resolved. This file lists all
+# configured search domains.
+#
+# Run "resolvectl status" to see details about the uplink DNS servers
+# currently in use.
+#
+# Third party programs must not access this file directly, but only through the
+# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,
+# replace this symlink by a static file or a different symlink.
+#
+# See man:systemd-resolved.service(8) for details about the supported modes of
+# operation for /etc/resolv.conf.
+
+nameserver 127.0.0.53
+options edns0 trust-ad
+```
+
+Después de esto ya podemos actualizar.
+
+via: https://discuss.linuxcontainers.org/t/lxd-netplan-static-ips-in-same-subnet-how-to/1074/7
