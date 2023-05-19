@@ -369,7 +369,7 @@ Creamos el `index.html` en `/var/www/html/nazareth` con el siguiente contenido:
        </head>
        
        <body>
-              <h1> · Web en escenario Rocky Linux · </h1>
+              <h1> Web en escenario Rocky Linux :D </h1>
               <p>...</p>
        </body>
 </html>
