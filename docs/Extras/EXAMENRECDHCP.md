@@ -70,3 +70,54 @@ ansible: https://github.com/belennazareth/Protocolo_DHCP/tree/main/ansible
 
 ### Modificación de la práctica 2
 
+creo la red aisladaex.xml:
+
+```xml
+<network>
+  <name>aisladaex</name>
+  <bridge name='virbr19'/>
+  <ip address='10.20.30.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='10.20.30.2' end='10.20.30.254'/>
+    </dhcp>
+  </ip>
+</network>
+```
+
+la añado a libvirt:
+
+```bash
+virsh -c qemu:///system net-define aisladaex.xml
+virsh -c qemu:///system net-start aisladaex
+```
+
+la añado a router:
+
+```yaml
+virsh -c qemu:///system attach-interface --domain router-dhcp --type network --source aisladaex --model virtio --persistent
+```
+
+le asigno una ip fija a router:
+
+![dhcp](/img/SRI+HLC/EXAMENREC8.png)
+
+editamos el fichero dhcpd.conf:
+
+![dhcp](/img/SRI+HLC/EXAMENREC9.png)
+
+reiniciamos el servicio:
+
+sudo systemctl restart isc-dhcp-server
+
+en el cliente agregamos una nueva interfaz con configuración en interfaces:
+
+![dhcp](/img/SRI+HLC/EXAMENREC10.png)
+
+y vemos la ip que ha tomado del servidor:
+
+![dhcp](/img/SRI+HLC/EXAMENREC11.png)
+
+vemmos ip r y ping:
+
+![dhcp](/img/SRI+HLC/EXAMENREC12.png)
+
