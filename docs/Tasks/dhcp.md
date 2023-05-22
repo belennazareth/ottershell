@@ -300,24 +300,87 @@ ansible-playbook playbook.yaml -k
 
 ### 1. Entrega la URL del repositorio GitHub donde has alojado todos los ficheros.
 
-
+https://github.com/belennazareth/Protocolo_DHCP/tree/main/ansible
 
 ### 2. Entrega el fichero de configuración del servidor DHCP después de ejecutar el playbook de ansible.
 
+```bash
+cat /etc/dhcp/dhcpd.conf
+```
+
+![dns](/img/SRI+HLC/DHCPSRI2.png)
 
 
 ### 3. Entrega el fichero de configuración de red del cliente (para comprobar que toma direccionamiento dinámico) y que ha tomado la dirección reservada en el servidor DHCP.
 
+```bash
+cat /etc/network/interfaces
+ip a
+```
+
+![dns](/img/SRI+HLC/DHCPSRI2-2.png)
+![dns](/img/SRI+HLC/DHCPSRI2-3.png)
 
 
 ### 4. Entrega el fichero de configuración de red de la otra máquina cliente, la dirección que ha tomado y el fichero de concesiones del servidor donde se demuestra que se ha repartido.
 
+```bash
+cat /etc/network/interfaces
+ip a
+```
+
+![dns](/img/SRI+HLC/DHCPSRI2-4.png)
+![dns](/img/SRI+HLC/DHCPSRI2-5.png)
+
+```bash
+
+usuario@router-dhcp:~$ cat /var/lib/dhcp/dhclient.enp7s0.leases 
+default-duid "\000\001\000\001+\375D\333RT\000\361\356\266";
+lease {
+  interface "enp7s0";
+  fixed-address 192.168.123.100;
+  option subnet-mask 255.255.255.0;
+  option dhcp-lease-time 3600;
+  option dhcp-message-type 5;
+  option domain-name-servers 192.168.123.1;
+  option dhcp-server-identifier 192.168.123.1;
+  option dhcp-renewal-time 1651;
+  option broadcast-address 192.168.123.255;
+  option dhcp-rebinding-time 3001;
+  option host-name "router-dhcp";
+  renew 1 2023/05/22 01:43:59;
+  rebind 1 2023/05/22 01:43:59;
+  expire 1 2023/05/22 01:43:59;
+}
+lease {
+  interface "enp7s0";
+  fixed-address 192.168.123.100;
+  option subnet-mask 255.255.255.0;
+  option dhcp-lease-time 3600;
+  option dhcp-message-type 5;
+  option domain-name-servers 192.168.123.1;
+  option dhcp-server-identifier 192.168.123.1;
+  option dhcp-renewal-time 1800;
+  option broadcast-address 192.168.123.255;
+  option dhcp-rebinding-time 3150;
+  option host-name "router-dhcp";
+  renew 1 2023/05/22 02:08:46;
+  rebind 1 2023/05/22 02:37:06;
+  expire 1 2023/05/22 02:44:36;
+}
+```
 
 
 ### 5. Comprueba que la nueva máquina cliente no tiene el servidor apache2 instalado, y una captura de pantalla comprobando que sigue siendo accesible el servidor web de cliente.
 
+```bash
+apt policy apache2
+curl 192.169.123.2
+```
 
-
+![dns](/img/SRI+HLC/DHCPSRI2-6.png)
+![dns](/img/SRI+HLC/DHCPSRI2-7.png)
+![dns](/img/SRI+HLC/DHCPSRI2-8.png)
 
 *Nota: Tuve problemas con la red default dandome un error al iniciarla donde decía que ya existía o estaba en uso, aunque seguía estando inactiva realmente y no me dejaba la opción de iniciarla. Para solucionarlo seguí estos pasoss:
 
