@@ -86,7 +86,7 @@ iface lo inet loopback
 # The primary network interface
 allow-hotplug enp1s0
 iface enp1s0 inet static
-        address 192.168.132.104
+        address 192.168.132.202
         netmask 255.255.255.0
         network 192.168.132.0
         broadcast 192.168.132.255
@@ -117,7 +117,7 @@ iface enp1s0 inet static
         broadcast 192.168.132.255
         gateway 192.168.132.1
 
-allow-hotplug enp1s0
+allow-hotplug enp7s0
 iface enp7s0 inet dhcp
 ```
 
@@ -130,7 +130,7 @@ ifup enp7s0
 
 | maquina | ip |
 | --- | --- |
-| router-dhcp | 192.168.132.104 |
+| router-dhcp | 192.168.132.202 |
 | cliente-dhcp | 192.168.132.103 |
 
 Modificamos el ansible con las nuevas ip en el fichero `hosts`:
@@ -202,7 +202,7 @@ iface lo inet loopback
 # The primary network interface
 allow-hotplug enp1s0
 iface enp1s0 inet static
-        address 192.168.132.104
+        address 192.168.132.105
         netmask 255.255.255.0
         network 192.168.132.0
         broadcast 192.168.132.255
@@ -222,7 +222,7 @@ En todas las máquina metemos la ip pública de mi máquina para ejecutar el ans
 
 | maquina | ip |
 | --- | --- |
-| router-dhcp | 192.168.132.104 |
+| router-dhcp | 192.168.132.202 |
 | cliente-dhcp | 192.168.132.103 |
 | cliente-dhcp2 | 192.168.132.105 |
 
@@ -287,6 +287,13 @@ Ahora creamos los ficheros de configuración:
           ansible_ssh_private_key_file: ~/.ssh/id_rsa
 ```
 
+Creamos todos los demás ficheros de configuración y los roles necesarios para que funcione todo correctamente y ejecutamos el playbook:
+
+```bash
+ansible-playbook -i hosts playbook.yaml
+o
+ansible-playbook playbook.yaml -k
+```
 
 
 ## Entrega
