@@ -1,0 +1,20 @@
+{
+  "unversionedId": "Extras/EXAMENRECDHCP",
+  "id": "Extras/EXAMENRECDHCP",
+  "title": "EXAMENRECDHCP",
+  "description": "h2. Examen Recuperación",
+  "source": "@site/docs/Extras/EXAMENRECDHCP.md",
+  "sourceDirName": "Extras",
+  "slug": "/Extras/EXAMENRECDHCP",
+  "permalink": "/docs/Extras/EXAMENRECDHCP",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Extras/EXAMENRECDHCP.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ENTRA_AQUI",
+    "permalink": "/docs/Extras/ENTRA_AQUI"
+  }
+}

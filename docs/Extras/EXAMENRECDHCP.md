@@ -1,11 +1,11 @@
-h2. Examen Recuperación
+## Examen Recuperación
 
-h3. Prueba de funcionamiento de la práctica 1
+### Prueba de funcionamiento de la práctica 1
 
 ansible: https://github.com/belennazareth/vagrant_ansible
 He tenido que cambiar los nombres quitandoles la barra baja:
 
-<pre><code class="yaml">
+```yaml
 Vagrant.configure("2") do |config|
 config.vm.define :router do |router|
     router.vm.box = "debian/bullseye64"
@@ -33,7 +33,7 @@ config.vm.define :router do |router|
       :libvirt__forward_mode => "veryisolated"
   end
 end
-</code></pre>
+```
 
 - ssh + ip r:
 
@@ -46,3 +46,27 @@ end
 - web:
 
 ![dhcp](/img/SRI+HLC/EXAMENREC3.png)
+
+
+### Prueba de funcionamiento de la práctica 2
+
+ansible: https://github.com/belennazareth/Protocolo_DHCP/tree/main/ansible
+
+- puerta de enlace:
+
+![dhcp](/img/SRI+HLC/EXAMENREC4.png)
+
+- direccionamiento:
+
+![dhcp](/img/SRI+HLC/EXAMENREC5.png)
+
+- ping:
+
+![dhcp](/img/SRI+HLC/EXAMENREC6.png)
+
+- web:
+
+![dhcp](/img/SRI+HLC/EXAMENREC7.png)
+
+### Modificación de la práctica 2
+
