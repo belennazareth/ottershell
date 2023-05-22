@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '1ec'),
+    component: ComponentCreator('/docs', 'a9c'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -66,6 +66,12 @@ export default [
       {
         path: '/docs/Extras/ENTRA_AQUI',
         component: ComponentCreator('/docs/Extras/ENTRA_AQUI', 'f91'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Extras/EXAMENRECDHCP',
+        component: ComponentCreator('/docs/Extras/EXAMENRECDHCP', '5c5'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
