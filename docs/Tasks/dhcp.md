@@ -86,7 +86,7 @@ iface lo inet loopback
 # The primary network interface
 allow-hotplug enp1s0
 iface enp1s0 inet static
-        address 192.168.132.169
+        address 192.168.132.104
         netmask 255.255.255.0
         network 192.168.132.0
         broadcast 192.168.132.255
@@ -111,7 +111,7 @@ iface lo inet loopback
 # The primary network interface
 allow-hotplug enp1s0
 iface enp1s0 inet static
-        address 192.168.132.246
+        address 192.168.132.103
         netmask 255.255.255.0
         network 192.168.132.0
         broadcast 192.168.132.255
@@ -130,24 +130,24 @@ ifup enp7s0
 
 | maquina | ip |
 | --- | --- |
-| router-dhcp | 192.168.132.169 |
-| cliente-dhcp | 192.168.132.246 |
+| router-dhcp | 192.168.132.104 |
+| cliente-dhcp | 192.168.132.103 |
 
 Modificamos el ansible con las nuevas ip en el fichero `hosts`:
 
-```bash
+```yaml
 all:
   children:
     router_client:
       hosts:
         router-dhcp: 
-          ansible_ssh_host: 192.168.132.169
+          ansible_ssh_host: 192.168.132.104
           ansible_ssh_user: usuario
           ansible_ssh_pass: usuario
           ansible_become_pass: usuario
           
         cliente-dhcp:
-          ansible_ssh_host: 192.168.132.246
+          ansible_ssh_host: 192.168.132.103
           ansible_ssh_user: usuario
           ansible_ssh_pass: usuario
           ansible_become_pass: usuario
@@ -157,16 +157,11 @@ Las variables que usaremos en el playbook son las siguientes:
 
 ```bash
 r_privada: 192.168.123.0/24
-ip_router: 192.168.123.204
-ip_cliente: 192.168.123.160
+ip_router: 192.168.123.130
+ip_cliente: 192.168.123.227
 ```
 
 Con esto ya podemos ejecutar el playbook de la práctica anterior y comprobar que las máquinas tienen el funcionamiento esperado.
-
-
-
-
-
 
 
 ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ🐚                  🐚                     🐚                      🐚ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
@@ -182,6 +177,117 @@ Queremos instalar un servidor DHCP en la máquina router para que configure de f
 4. Todos los parámetros que reparta el servidor DHCP, así como cualquier otro dato, por ejemplo la dirección MAC del cliente se guardarán en variables.
 
 5. Añade una nueva máquina al escenario conectada a la red interna muy aislada. Vuelve a ejecutar el playbook y comprueba que todo funciona de forma correcta.
+
+
+Creamos una nueva máquina que se llamará `cliente-dhcp2` y la añadimos a la red interna:
+
+```bash
+virsh -c qemu:///system attach-interface --domain cliente-dhcp2 --type network --source interna --model virtio --persistent
+```
+
+Editamos el fichero `/etc/network/interfaces` para que tenga una IP dinámica en la red interna:
+
+```bash
+--- /etc/network/interfaces CLIENTE2
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp1s0
+iface enp1s0 inet static
+        address 192.168.132.104
+        netmask 255.255.255.0
+        network 192.168.132.0
+        broadcast 192.168.132.255
+        gateway 192.168.132.1
+
+allow-hotplug enp7s0
+iface enp7s0 inet dhcp
+```
+
+Levantamos la interfaz:
+
+```bash
+ifup enp7s0
+```
+
+En todas las máquina metemos la ip pública de mi máquina para ejecutar el ansible más facilmente.
+
+| maquina | ip |
+| --- | --- |
+| router-dhcp | 192.168.132.104 |
+| cliente-dhcp | 192.168.132.103 |
+| cliente-dhcp2 | 192.168.132.105 |
+
+```bash
+r_privada: 192.168.123.0/24
+ip_router: 192.168.123.130
+ip_cliente: 192.168.123.227
+ip_cliente2: 192.168.123.209
+```
+
+
+Ahora creamos los ficheros de configuración:
+
+
+- playbook.yml
+
+```yaml
+- hosts: all
+  become: true
+  roles:
+    - common
+
+- hosts: router
+  become: true
+  roles:
+    - router
+    - dhcp
+
+- hosts: web
+  become: true
+  roles:
+    - web
+    - clientes
+
+- hosts: cliente
+  become: true
+  roles:
+    - clientes
+
+- hosts: all
+  become: true
+  roles:
+    - reboot
+```
+
+- hosts
+
+```yaml
+  children:
+    routers:
+      hosts:
+        router:
+          ansible_ssh_host: 192.168.132.104
+          ansible_ssh_private_key_file: ~/.ssh/id_rsa
+    clientes:
+      hosts:
+        web:
+          ansible_ssh_host: 192.168.132.103
+          ansible_ssh_private_key_file: ~/.ssh/id_rsa
+        cliente:
+          ansible_ssh_host: 192.168.132.105
+          ansible_ssh_private_key_file: ~/.ssh/id_rsa
+```
+
+
 
 ## Entrega
 
@@ -253,3 +359,6 @@ Queremos instalar un servidor DHCP en la máquina router para que configure de f
 - Y que está activa:
 
   virsh -c qemu:///system net-dhcp-leases default
+
+
+

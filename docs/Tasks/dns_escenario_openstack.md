@@ -111,8 +111,6 @@ view dmz {
 
 🟪👾⏩**IMPORTANTE:** HAY QUE MODIFICAR EL FICHERO `/etc/bind/named.conf` Y COMENTAR LA LINEA `include "/etc/bind/named.conf.default-zones";` PARA QUE NO SE CARGUEN LAS ZONAS POR DEFECTO Y PODAMOS USAR `include` EN EL FICHERO `/etc/bind/named.conf.local`.⏪👾🟪
 
-Donde, meteremos por zonas lo que va a resolver cada vista. En este caso, la vista `interna` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `externa` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas. La vista `dmz` resolverá las zonas `nazareth.gonzalonazareno.org` y las zonas de resolución inversa de las redes privadas.
-
 En el fichero `/etc/bind/named.conf` añadimos las vistas:
 
 ```bash
@@ -175,7 +173,7 @@ $TTL 86400
 
 $ORIGIN nazareth.gonzalonazareno.org.
 
-alfa    IN      A       172.22.200.255
+alfa    IN      A       172.22.201.19
 dns     IN      CNAME   alfa
 www     IN      CNAME   alfa
 ```
@@ -534,7 +532,7 @@ mysql -u nazareth -p nazareth -h bd -p
 
 ### 4. Entrega una captura de pantalla accediendo a www.tunombre.gonzalonazareno.org/info.php donde se vea la salida del fichero info.php.
 
-
+![dns](/img/SRI+HLC/DNSSRI5-9.png)
 
 ### 5. Entrega una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde bravo.
 
@@ -562,3 +560,6 @@ netplan -
 netplan apply
 ```
 Con netplan se puede configurar la red de forma dinámica, por lo que no es necesario reiniciar la máquina para que se apliquen los cambios. Dentro del fichero se puede configurar la IP estática, el DNS, la puerta de enlace, etc. En este caaso se ha añadido el nameserver con la IP del servidor DNS 192.168.0.2.
+
+*Nota: no funciona bien charlie y da un error `May 19 23:56:08 charlie named[275]: network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53` lo que hace que en alfa no se pueda establecer conexion con el servidor (en lafa hemos checado que no haya procesos ni nada usando el puerto 53 porque tambien ha habido problemas con eso y ha habido que eliminar los procesos que estaban ejecutandose en ese puerto y que se pudiera usar para http)
+He editado este fichero `/etc/default/named` y he añadido en OPTIONS un -4, tambien detuve los procesos que habia ocupando el puerto 53 (netstat -tulpnW | grep 53)
