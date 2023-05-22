@@ -393,7 +393,7 @@
     "Extras/EXAMENRECDHCP": {
       "id": "Extras/EXAMENRECDHCP",
       "title": "EXAMENRECDHCP",
-      "description": "h2. Examen Recuperación",
+      "description": "Examen Recuperación",
       "sidebar": "tutorialSidebar"
     },
     "Extras/proximamente": {
