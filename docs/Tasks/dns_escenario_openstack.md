@@ -46,7 +46,7 @@ sudo apt-get install bind9
 En `alfa` añadimos la regla DNAT para que podamos hacer consultas DNS desde el exterior:
 
 ```bash
-post-up iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 192.168.0.2:53
+post-up iptables -t nat -A PREROUTING -i ens3 -p udp --dport 53 -j DNAT --to-destination 192.168.0.2:53
 ```
 
 Después, en el fichero `/etc/bind/named.conf.local` configuramos las vistas y las zonas:
@@ -490,7 +490,7 @@ De esta forma, el servidor de base de datos escuchará en todas las interfaces d
 sudo systemctl restart mariadb
 ```
 
-En `bravo` editamos el fichero `/etc/hosts` para añadir la IP de `charlie`:
+En `bravo` editamos el fichero `/etc/resolv.conf` para añadir la IP de `charlie` si no la tenemos ya:
 
 ```bash
 nameserver 192.168.0.2
@@ -505,7 +505,7 @@ sudo dnf install mariadb-server
 Accedemos a la base de datos desde `bravo`:
 
 ```bash
-mysql -u nazareth -p nazareth -h bd -p
+mysql -u nazareth -h bd -p
 ```
 
 
@@ -514,13 +514,97 @@ mysql -u nazareth -p nazareth -h bd -p
 
 ### 1. Entrega la configuración DNS de cada máquina.
 
+```bash
+cat /etc/resolv.conf
+```
+
+![dns](/img/SRI+HLC/DNSSRI5-9.png)
+![dns](/img/SRI+HLC/DNSSRI5-10.png)
+![dns](/img/SRI+HLC/DNSSRI5-11.png)
+![dns](/img/SRI+HLC/DNSSRI5-12.png)
+
 
 ### 2. Entrega la definición de las vistas y de las zonas.
+
+```bash
+cat /etc/bind/named.conf.local
+```
+
+```bash
+view interna {
+    match-clients { 192.168.0.0/24; 127.0.0.1; };
+    allow-recursion { any; };
+        zone "nazareth.gonzalonazareno.org" 
+        {
+               type master;
+               file "db.interna.nazareth.gonzalonazareno.org";
+        };
+        zone "0.168.192.in-addr.arpa" 
+        {
+               type master;
+               file "db.0.168.192";
+        };
+        zone "16.172.in-addr.arpa" 
+        {
+               type master;
+               file "db.16.172";
+        };
+        include "/etc/bind/zones.rfc1918";
+        include "/etc/bind/named.conf.default-zones";
+};
+
+view externa {
+    match-clients { 172.22.0.0/16; 192.168.202.2; 172.29.0.0/16;};
+    allow-recursion { any; };
+        zone "nazareth.gonzalonazareno.org" 
+        {
+               type master;
+               file "db.externa.nazareth.gonzalonazareno.org";
+        };
+        include "/etc/bind/zones.rfc1918";
+        include "/etc/bind/named.conf.default-zones";
+};
+
+view dmz {
+    match-clients { 172.22.0.0/16; 172.16.0.0/16; 172.29.0.0/16; };
+    allow-recursion { any; };
+        zone "nazareth.gonzalonazareno.org"
+        {
+               type master;
+               file "db.dmz.nazareth.gonzalonazareno.org";
+        };
+        zone "16.172.in-addr.arpa"
+        {
+               type master;
+               file "db.16.172";
+        };
+        zone "0.168.192.in-addr.arpa"
+        {
+               type master;
+               file "db.0.168.192";
+        };
+        include "/etc/bind/zones.rfc1918";
+        include "/etc/bind/named.conf.default-zones";
+};
+```
+
+![dns](/img/SRI+HLC/DNSSRI5-13.png)
 
 
 ### 3. Entrega el resultado de las siguientes consultas desde una máquina interna a nuestra red y otro externo:
 
 * El servidor DNS con autoridad sobre la zona del dominio tu_nombre.gonzalonazareno.org.
+
+```bash
+dig nazareth.gonzalonazareno.org
+```
+- Desde una máquina interna:
+
+![dns](/img/SRI+HLC/DNSSRI5-14.png)
+
+- Desde una máquina externa:
+
+![dns](/img/SRI+HLC/DNSSRI5-15.png)
 
 * La dirección IP de alfa.
 
@@ -532,7 +616,8 @@ mysql -u nazareth -p nazareth -h bd -p
 
 ### 4. Entrega una captura de pantalla accediendo a www.tunombre.gonzalonazareno.org/info.php donde se vea la salida del fichero info.php.
 
-![dns](/img/SRI+HLC/DNSSRI5-9.png)
+       www.nazareth.gonzalonazareno.org/info.php
+
 
 ### 5. Entrega una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde bravo.
 
@@ -561,5 +646,5 @@ netplan apply
 ```
 Con netplan se puede configurar la red de forma dinámica, por lo que no es necesario reiniciar la máquina para que se apliquen los cambios. Dentro del fichero se puede configurar la IP estática, el DNS, la puerta de enlace, etc. En este caaso se ha añadido el nameserver con la IP del servidor DNS 192.168.0.2.
 
-*Nota: no funciona bien charlie y da un error `May 19 23:56:08 charlie named[275]: network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53` lo que hace que en alfa no se pueda establecer conexion con el servidor (en lafa hemos checado que no haya procesos ni nada usando el puerto 53 porque tambien ha habido problemas con eso y ha habido que eliminar los procesos que estaban ejecutandose en ese puerto y que se pudiera usar para http)
-He editado este fichero `/etc/default/named` y he añadido en OPTIONS un -4, tambien detuve los procesos que habia ocupando el puerto 53 (netstat -tulpnW | grep 53)
+*Nota: no funciona bien charlie y da un error `May 19 23:56:08 charlie named[275]: network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53` lo que hace que en alfa no se pueda establecer conexion con el servidor. El problema es una regla de iptables mal establecida que indica que todo el tráfico vaya a charlie, al llegar a charlie vuelve a preguntar a alfa y se crea un bucle. Para solucionarlo eliminamos esa regla.
+

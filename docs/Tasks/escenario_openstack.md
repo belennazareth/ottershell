@@ -237,7 +237,8 @@ Para crear `br-intra` junto con la asignación de la ip, debemos editar el fiche
 ```bash
 auto br-intra
 iface br-intra inet static
-    address      192.168.0.1/24
+    address      192.168.0.1
+    netmask      255.255.255.0
     bridge_ports none
 ```
 
