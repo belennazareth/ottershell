@@ -16,11 +16,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "Extras/EXAMENRECDHCP",
-              "path": "/docs/Extras/EXAMENRECDHCP",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "Extras/proximamente",
               "path": "/docs/Extras/proximamente",
               "sidebar": "tutorialSidebar"

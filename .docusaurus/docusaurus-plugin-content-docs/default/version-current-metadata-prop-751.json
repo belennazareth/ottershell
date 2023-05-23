@@ -371,12 +371,6 @@
             "label": "ENTRA_AQUI",
             "href": "/docs/Extras/ENTRA_AQUI",
             "docId": "Extras/ENTRA_AQUI"
-          },
-          {
-            "type": "link",
-            "label": "EXAMENRECDHCP",
-            "href": "/docs/Extras/EXAMENRECDHCP",
-            "docId": "Extras/EXAMENRECDHCP"
           }
         ],
         "href": "/docs/category/extras"
@@ -388,12 +382,6 @@
       "id": "Extras/ENTRA_AQUI",
       "title": "ENTRA_AQUI",
       "description": "Examen",
-      "sidebar": "tutorialSidebar"
-    },
-    "Extras/EXAMENRECDHCP": {
-      "id": "Extras/EXAMENRECDHCP",
-      "title": "EXAMENRECDHCP",
-      "description": "Examen Recuperación",
       "sidebar": "tutorialSidebar"
     },
     "Extras/proximamente": {
