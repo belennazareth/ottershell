@@ -608,16 +608,27 @@ dig nazareth.gonzalonazareno.org
 
 * La dirección IP de alfa.
 
+![dns](/img/SRI+HLC/DNSSRI5-16.png)
+![dns](/img/SRI+HLC/DNSSRI5-17.png)
+
 * Una resolución de www.
+
+![dns](/img/SRI+HLC/DNSSRI5-18.png)
+![dns](/img/SRI+HLC/DNSSRI5-19.png)
 
 * Una resolución de bd.
 
+![dns](/img/SRI+HLC/DNSSRI5-20.png)
+![dns](/img/SRI+HLC/DNSSRI5-21.png)
+
 * Un resolución inversa de IP fija en cada una de las redes. (Esta consulta sólo funcionará desde una máquina interna).
+
+![dns](/img/SRI+HLC/DNSSRI5-22.png)
+![dns](/img/SRI+HLC/DNSSRI5-23.png)
 
 ### 4. Entrega una captura de pantalla accediendo a www.tunombre.gonzalonazareno.org/info.php donde se vea la salida del fichero info.php.
 
-       www.nazareth.gonzalonazareno.org/info.php
-
+![dns](/img/SRI+HLC/DNSSRI5-24.png)
 
 ### 5. Entrega una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde bravo.
 
