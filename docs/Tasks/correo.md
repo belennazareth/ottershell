@@ -110,13 +110,29 @@ Y, en este caso en `gmail`, podemos ver que se ha recibido el correo correctamen
 
 ### Recibir correos desde internet a usuarios del servidor
 
-Para este apartado es necesario que el dominio esté dentro del `relay_domains` del servidor de correo de la red, en este caso, `babuino-smtp.gonzalonazareno.org`. Y configurar el registro MX del dominio para que apunte al servidor de correo de la red:
+Para este apartado es necesario que el dominio esté dentro del `relay_domains`. También hay que modificar el registro MX del servidor DNS.
+
+- En `alfa` añadimos la siguiente regla iptables para redirigir el puerto 25 al servidor delta:
 
 ```bash
+post-up iptables -t nat -A PREROUTING -p tcp --dport 25 -i ens3 -j DNAT --to 192.168.0.3
+```
 
+- En `charlie` editamos el fichero de la zona externa para añadir el registro MX:
+
+```bash
+nano /var/cache/bind/db.externa.nazareth.gonzalonazareno.org
+
+@       IN      MX  10  alfa.nazareth.gonzalonazareno.org.
 ```
 
 Después, ya podemos enviar correos desde internet a usuarios del servidor, un ejemplo sería responder a un correo que se ha recibido en el servidor.
+
+Para ver si nos llegó algún correo, podemos usar el comando `mail` dentro del usuario root. Después, seleccionamos el correo que queremos leer.
+Para ver el log de postfix, se puede usar el comando `cat /var/log/mail.log`.
+
+![Postfix](/img/SRI+HLC/taller1SRI6-6.png)
+![Postfix](/img/SRI+HLC/taller1SRI6-7.png)
 
 
 ## Entrega
@@ -137,7 +153,7 @@ Fichero de logs de postfix:
 
 ### 3. Muestra el log del sistema donde se comprueba que el correo se ha recibido con éxito en el ejercicio 3.
 
-
+![Postfix](/img/SRI+HLC/taller1SRI6-8.png)
 
 ### 4. Realiza el ejercicio que os va a plantear el profesor.
 
