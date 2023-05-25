@@ -606,33 +606,70 @@ dig nazareth.gonzalonazareno.org
 
 ![dns](/img/SRI+HLC/DNSSRI5-15.png)
 
+
+
 * La dirección IP de alfa.
 
-<!-- ![dns](/img/SRI+HLC/DNSSRI5-16.png)
-![dns](/img/SRI+HLC/DNSSRI5-17.png) -->
+```bash
+dig alfa.nazareth.gonzalonazareno.org
+```
+
+- Desde una máquina interna:
+
+![dns](/img/SRI+HLC/DNSSRI5-16.png)
+
+- Desde una máquina externa:
+
+![dns](/img/SRI+HLC/DNSSRI5-17.png)
+
+
 
 * Una resolución de www.
 
-<!-- ![dns](/img/SRI+HLC/DNSSRI5-18.png)
-![dns](/img/SRI+HLC/DNSSRI5-19.png) -->
+```bash
+dig www.nazareth.gonzalonazareno.org
+```
+
+- Desde una máquina interna:
+
+![dns](/img/SRI+HLC/DNSSRI5-18.png)
+
+- Desde una máquina externa:
+
+![dns](/img/SRI+HLC/DNSSRI5-19.png)
+
+
 
 * Una resolución de bd.
 
-<!-- ![dns](/img/SRI+HLC/DNSSRI5-20.png)
-![dns](/img/SRI+HLC/DNSSRI5-21.png) -->
+```bash
+dig bd.nazareth.gonzalonazareno.org
+```
+
+- Desde una máquina interna:
+
+![dns](/img/SRI+HLC/DNSSRI5-20.png)
+
+- Desde una máquina externa:
+
+![dns](/img/SRI+HLC/DNSSRI5-21.png)
+
+
 
 * Un resolución inversa de IP fija en cada una de las redes. (Esta consulta sólo funcionará desde una máquina interna).
 
-<!-- ![dns](/img/SRI+HLC/DNSSRI5-22.png)
-![dns](/img/SRI+HLC/DNSSRI5-23.png) -->
+![dns](/img/SRI+HLC/DNSSRI5-22.png)
+![dns](/img/SRI+HLC/DNSSRI5-23.png)
+
+
 
 ### 4. Entrega una captura de pantalla accediendo a www.tunombre.gonzalonazareno.org/info.php donde se vea la salida del fichero info.php.
 
-<!-- ![dns](/img/SRI+HLC/DNSSRI5-24.png) -->
+![dns](/img/SRI+HLC/DNSSRI5-24.png)
 
 ### 5. Entrega una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde bravo.
 
-
+![dns](/img/SRI+HLC/DNSSRI5-25.png)
 
 *Nota: Para las views y zones ext.,int. y dmz → https://www.josedomingo.org/pledin/2017/12/vistas-views-en-el-servidor-dns-bind9/ 
 
@@ -655,7 +692,7 @@ Y ejecutar:
 netplan -
 netplan apply
 ```
-Con netplan se puede configurar la red de forma dinámica, por lo que no es necesario reiniciar la máquina para que se apliquen los cambios. Dentro del fichero se puede configurar la IP estática, el DNS, la puerta de enlace, etc. En este caaso se ha añadido el nameserver con la IP del servidor DNS 192.168.0.2.
+Con netplan se puede configurar la red de forma dinámica, por lo que no es necesario reiniciar la máquina para que se apliquen los cambios. Dentro del fichero se puede configurar la IP estática, el DNS, la puerta de enlace, etc. En este caso se ha añadido el nameserver con la IP del servidor DNS 192.168.0.2.
 
 *Nota: no funciona bien charlie y da un error `May 19 23:56:08 charlie named[275]: network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53` lo que hace que en alfa no se pueda establecer conexion con el servidor. El problema es una regla de iptables mal establecida que indica que todo el tráfico vaya a charlie, al llegar a charlie vuelve a preguntar a alfa y se crea un bucle. Para solucionarlo eliminamos esa regla.
 
