@@ -270,26 +270,168 @@ SELECT USERNAME, OBJ_NAME, ACTION_NAME, EXTENDED_TIMESTAMP FROM DBA_AUDIT_OBJECT
 ```
 
 
-## 4. Realiza una auditoría de grano fino para almacenar información sobre la inserción de empleados con sueldo superior a 2000 en la tabla emp de scott.
+## 3. Realiza una auditoría de grano fino para almacenar información sobre la inserción de empleados con sueldo superior a 1400 en la tabla emp de scott.
 
+creacion de la base de datos en postgresql
 
+    create database auditoria;
 
-## 5. Explica la diferencia entre auditar una operación by access o by session ilustrándolo con ejemplos.
+Creamos la tabla para la auditoria de la tabla emp:
 
+```sql
+CREATE TABLE auditoria_emp (
+id SERIAL PRIMARY KEY,
+EMPNO INT NOT NULL,
+ENAME TEXT,
+JOB TEXT,
+MGR INT,
+HIREDATE DATE,
+COMM DECIMAL(7, 2),
+DEPTNO INT,
+ACCION VARCHAR(10) NOT NULL,
+SALARIO DECIMAL(7, 2) NOT NULL,
+FECHA_HORA TIMESTAMP NOT NULL DEFAULT NOW()
+);
+```
 
-## 6. Documenta las diferencias entre los valores db y db, extended del parámetro audit_trail de ORACLE. Demuéstralas poniendo un ejemplo de la información sobre una operación concreta recopilada con cada uno de ellos.
+Creamos una función para insertar en la tabla `auditoria_emp`:
 
+```sql
+CREATE OR REPLACE FUNCTION insert_auditoria_emp()
+RETURNS TRIGGER AS $$
+BEGIN
+INSERT INTO auditoria_emp (EMPNO, SALARIO, ACCION)
+VALUES (NEW.EMPNO, NEW.SAL, 'INSERT');
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
 
-## 7. Averigua si en Postgres se pueden realizar los cuatro primeros apartados. Si es así, documenta el proceso adecuadamente.
+Montamos un trigger para insertar en la tabla `auditoria_emp` cuando se inserta en la tabla `emp` y el salario es mayor a `1400`
 
+```sql
+CREATE TRIGGER tr_insert_emp
+AFTER INSERT ON EMP
+FOR EACH ROW
+WHEN (NEW.SAL > 1400)
+EXECUTE FUNCTION insert_auditoria_emp();
+```
 
-## 8. Averigua si en MySQL se pueden realizar los apartados 1, 3 y 4. Si es así, documenta el proceso adecuadamente.
+Hacemos una funcion para actualizar la tabla `auditoria_emp` despues de actualizar la tabla emp
+```sql
+CREATE OR REPLACE FUNCTION update_auditoria_emp()
+RETURNS TRIGGER AS $$
+BEGIN
+INSERT INTO auditoria_emp (EMPNO, SALARIO, ACCION, ENAME, JOB, MGR, HIREDATE, COMM, DEPTNO)
+VALUES (OLD.EMPNO, OLD.SAL, 'OLD UPDATE', OLD.ENAME, OLD.JOB, OLD.MGR, OLD.HIREDATE, OLD.COMM, OLD.DEPTNO);
+INSERT INTO auditoria_emp (EMPNO, SALARIO, ACCION, ENAME, JOB, MGR, HIREDATE, COMM, DEPTNO)
+VALUES (NEW.EMPNO, NEW.SAL, 'NEW UPDATE', NEW.ENAME, NEW.JOB, NEW.MGR, NEW.HIREDATE, NEW.COMM, NEW.DEPTNO);
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
 
+Trigger que actualiza la tabla:
 
-## 9. Averigua las posibilidades que ofrece MongoDB para auditar los cambios que va sufriendo un documento. Demuestra su funcionamiento.
+```sql
+CREATE TRIGGER tr_update_emp
+AFTER UPDATE ON EMP
+FOR EACH ROW
+WHEN (NEW.SAL > 1400)
+EXECUTE FUNCTION update_auditoria_emp();
+```
 
+Insertamos en la tabla emp
 
-## 10. Averigua si en MongoDB se pueden auditar los accesos a una colección concreta. Demuestra su funcionamiento.
+```sql
+INSERT INTO EMP VALUES(7909, 'JAMES', 'CLERK', 7698, '1981-12-03', 2950, NULL, 30);
+INSERT INTO EMP VALUES(7876, 'ADAMS', 'CLERK', 7788, '1983-01-12', 3000, NULL, 20);
+```
 
+Actualizamos la tabla emp
 
-ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ🐚                  🐚                     🐚                      🐚ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+    UPDATE EMP SET SAL = 3500 WHERE EMPNO = 7369;
+
+Consultamos la tabla auditoria_emp
+
+    SELECT * FROM auditoria_emp;
+
+## 4. Crea una tabla en Postgres con un campo cadena de caracteres, otro númerico sin decimales y otro de tipo fecha. Inserta algunos registros en ella. Exporta dicha tabla como un fichero de texto usando un guión como delimitador. Carga dichos datos en una tabla ORACLE usando SQL*Loader.
+
+    CREATE DATABASE exportacion;
+
+Creamos la tabla en postgresql
+
+```sql
+CREATE TABLE tienda_videojuegos (
+nombre VARCHAR(100),
+precio NUMERIC(8, 0),
+fecha_lanzamiento DATE
+);
+
+INSERT INTO tienda_videojuegos (nombre, precio, fecha_lanzamiento)
+VALUES ('The Legend of Zelda: Breath of the Wild', 59, '2017-03-03');
+
+INSERT INTO tienda_videojuegos (nombre, precio, fecha_lanzamiento)
+VALUES ('The Legend of Zelda: Tears of the Kingdom', 70, '2023-05-12'); 
+
+INSERT INTO tienda_videojuegos (nombre, precio, fecha_lanzamiento)
+VALUES ('Super Mario Odyssey', 49, '2017-10-27');
+
+INSERT INTO tienda_videojuegos (nombre, precio, fecha_lanzamiento)
+VALUES ('God of War', 59, '2018-04-20');
+
+INSERT INTO tienda_videojuegos (nombre, precio, fecha_lanzamiento)
+VALUES ('Red Dead Redemption 2', 49, '2018-10-26');
+
+INSERT INTO tienda_videojuegos (nombre, precio, fecha_lanzamiento)
+VALUES ('Animal Crossing: New Horizons', 50, '2020-03-20');
+```
+
+Primero realizamos la función en postgresql que permita exportar los datos a unfichero csv:
+
+```sql
+CREATE OR REPLACE FUNCTION export_csv(name_tab TEXT, ruta TEXT)
+RETURNS VOID AS $$
+DECLARE
+name_tab TEXT;
+BEGIN
+FOR name_tab IN
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'public'
+AND table_type = 'BASE TABLE'
+LOOP
+EXECUTE format (
+'COPY %I TO %L WITH (FORMAT CSV, DELIMITER ''-'', HEADER TRUE)', name_tab, ruta || name_tab || '.csv'
+);
+END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+Ejecutamos la función para exportar la base de datos:
+
+    SELECT export_csv('exportacion', '/home/postgres/');
+
+Luego de exportarlo scp a oracle, en oracle creamos los ficheros de control para cuando importemos los datos a oracle con sqlloader.
+
+    nano tienda_videojuegos.ctl
+
+```sql
+OPTIONS (SKIP=1)
+LOAD DATA
+INFILE '/home/oracle/tienda_videojuegos.csv'
+APPEND
+INTO TABLE tienda_videojuegos
+FIELDS TERMINATED BY '-' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(nombre,
+precio INTEGER EXTERNAL,
+fecha_lanzamiento DATE "YYYY-MM-DD"
+)
+```
+
+He creado la tabla en oracle con los mismos campos que en postgresql e importo los datos a oracle con sqlloader:
+
+    sqlldr mov/admin control=/home/usuario/tienda_videojuegos.ctl log=/home/usuario/tienda_videojuegos.log
