@@ -2,8 +2,9 @@
 sidebar_position: 45
 ---
 
+# Almacenamiento y redes
 
-# Almacenamiento
+## Almacenamiento
 
 ## Vamos a trabajar con volúmenes docker:
 

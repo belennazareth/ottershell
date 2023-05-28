@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/docker_storage_net",
+  "id": "Tasks/docker_storage_net",
+  "title": "Almacenamiento",
+  "description": "Vamos a trabajar con volúmenes docker:",
+  "source": "@site/docs/Tasks/docker_storage_net.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/docker_storage_net",
+  "permalink": "/docs/Tasks/docker_storage_net",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/docker_storage_net.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 45,
+  "frontMatter": {
+    "sidebar_position": 45
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "apache2 como proxy inverso",
+    "permalink": "/docs/Tasks/proxy_apache2"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
