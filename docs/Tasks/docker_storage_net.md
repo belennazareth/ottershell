@@ -105,19 +105,73 @@ Sí, ya que al montar el volumen, se mantiene la información que se ha guardado
 
 ### 1. Crea un directorio en tu host y dentro crea un fichero index.html (donde aparece tu nombre).
 
+```html
+ <!DOCTYPE html>
+ <html>
+     <body>
+         <h1>Nombre: Belén Nazareth</h1>
+         <h2>Prueba de docker: bind mount</h2>
+         <img src="https://cataas.com/cat" alt="cat">
+     </body>
+ </html>
+```
+
+    mkdir bindmount
+    mv index.html bindmount/
 
 
 ### 2. Crea un contenedor desde la imagen php:7.4-apache donde montes en el directorio /var/www/html el directorio que has creado por medio de bind mount.
 
+    docker run -d --name miweb -p 8080:80 -v /home/debian/bindmount:/var/www/html php:7.4-apache
+
+```bash
+debian@docker:~$ docker run -d --name miweb -p 8080:80 -v /home/debian/bindmount:/var/www/html php:7.4-apache
+8c4a49f3523dc94464b67502ac765b1396a24cc2393f2998abecf0403f684adc
+debian@docker:~$ docker ps
+CONTAINER ID   IMAGE            COMMAND                  CREATED         STATUS         PORTS                  NAMES
+8c4a49f3523d   php:7.4-apache   "docker-php-entrypoi…"   4 seconds ago   Up 3 seconds   0.0.0.0:8080->80/tcp   miweb
+debian@docker:~$ 
+```
+
+
 ### 3. Accede al contenedor desde el navegador para ver la información ofrecida por el fichero index.html.
+
+![docker](/img/IAW/taller1IAW6-3.png)
+
 
 ### 4. Modifica el contenido del fichero index.html en tu host y comprueba que al refrescar la página ofrecida por el contenedor, el contenido ha cambiado.
 
+    nano bindmount/index.html
+
+```html
+ <!DOCTYPE html>
+ <html>
+     <body>
+         <h1>Nombre: Belén Nazareth</h1>
+         <h2>Prueba de docker: bind mount 2</h2>
+         <img src="https://cataas.com/cat" alt="cat">
+     </body>
+ </html>
+```
+
+![docker](/img/IAW/taller1IAW6-4.png)
+
+
 ### 5. Borra el contenedor
+
+    docker rm -f miweb
+
 
 ### 6. Crea un nuevo contenedor y monta el mismo directorio como en el ejercicio anterior.
 
+    docker run -d --name miweb -p 8080:80 -v /home/debian/bindmount:/var/www/html php:7.4-apache
+
 ### 7. Accede al contenedor desde el navegador para ver la información ofrecida por el fichero index.html. ¿Se sigue viendo el mismo contenido?
+
+![docker](/img/IAW/taller1IAW6-5.png)
+
+Sí, porque como hemos montado el mismo volumen se mantiene el mismo contenido.
+
 
 
 # Redes
