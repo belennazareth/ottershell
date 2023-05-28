@@ -1,8 +1,8 @@
 {
   "unversionedId": "Tasks/docker_storage_net",
   "id": "Tasks/docker_storage_net",
-  "title": "Almacenamiento",
-  "description": "Vamos a trabajar con volúmenes docker:",
+  "title": "Almacenamiento y redes",
+  "description": "Almacenamiento",
   "source": "@site/docs/Tasks/docker_storage_net.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/docker_storage_net",

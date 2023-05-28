@@ -347,7 +347,7 @@
           },
           {
             "type": "link",
-            "label": "Almacenamiento",
+            "label": "Almacenamiento y redes",
             "href": "/docs/Tasks/docker_storage_net",
             "docId": "Tasks/docker_storage_net"
           },
@@ -530,8 +530,8 @@
     },
     "Tasks/docker_storage_net": {
       "id": "Tasks/docker_storage_net",
-      "title": "Almacenamiento",
-      "description": "Vamos a trabajar con volúmenes docker:",
+      "title": "Almacenamiento y redes",
+      "description": "Almacenamiento",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/escenario_openstack": {
