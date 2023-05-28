@@ -1,7 +1,7 @@
 {
   "unversionedId": "Tasks/docker_storage_net",
   "id": "Tasks/docker_storage_net",
-  "title": "Almacenamiento y redes",
+  "title": "Docker: Almacenamiento y redes",
   "description": "Almacenamiento",
   "source": "@site/docs/Tasks/docker_storage_net.md",
   "sourceDirName": "Tasks",

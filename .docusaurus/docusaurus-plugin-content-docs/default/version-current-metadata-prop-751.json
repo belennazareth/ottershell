@@ -347,7 +347,7 @@
           },
           {
             "type": "link",
-            "label": "Almacenamiento y redes",
+            "label": "Docker: Almacenamiento y redes",
             "href": "/docs/Tasks/docker_storage_net",
             "docId": "Tasks/docker_storage_net"
           },
@@ -530,7 +530,7 @@
     },
     "Tasks/docker_storage_net": {
       "id": "Tasks/docker_storage_net",
-      "title": "Almacenamiento y redes",
+      "title": "Docker: Almacenamiento y redes",
       "description": "Almacenamiento",
       "sidebar": "tutorialSidebar"
     },

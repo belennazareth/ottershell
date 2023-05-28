@@ -17,7 +17,7 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Almacenamiento y redes",
+    "title": "Docker: Almacenamiento y redes",
     "permalink": "/docs/Tasks/docker_storage_net"
   },
   "next": {
