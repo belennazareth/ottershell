@@ -10,9 +10,64 @@ sidebar_position: 45
 
 ### 1. Crea un volumen docker que se llame miweb.
 
+    docker volume create miweb
+    docker volume ls
+
+```bash
+root@docker:~#  docker volume create miweb
+miweb
+root@docker:~#  docker volume ls
+DRIVER    VOLUME NAME
+local     miweb
+root@docker:~#
+```
+
+
 ### 2. Crea un contenedor desde la imagen php:7.4-apache donde montes en el directorio /var/www/html (que sabemos que es el DocumentRoot del servidor que nos ofrece esa imagen) el volumen docker que has creado.
 
+    docker run -d --name miweb -p 8080:80 -v miweb:/var/www/html php:7.4-apache
+    docker ps
+
+```bash
+root@docker:~# docker run -d --name miweb -p 8080:80 -v miweb:/var/www/html php:7.4-apache
+Unable to find image 'php:7.4-apache' locally
+7.4-apache: Pulling from library/php
+a603fa5e3b41: Pull complete 
+c428f1a49423: Pull complete 
+156740b07ef8: Pull complete 
+fb5a4c8af82f: Pull complete 
+25f85b498fd5: Pull complete 
+9b233e420ac7: Pull complete 
+fe42347c4ecf: Pull complete 
+d14eb2ed1e17: Pull complete 
+66d98f73acb6: Pull complete 
+d2c43c5efbc8: Pull complete 
+ab590b48ea47: Pull complete 
+80692ae2d067: Pull complete 
+05e465aaa99a: Pull complete 
+Digest: sha256:c9d7e608f73832673479770d66aacc8100011ec751d1905ff63fae3fe2e0ca6d
+Status: Downloaded newer image for php:7.4-apache
+fe5f52e0f6b1dd279f01f08da715ba683427df974749857b018d7d2437a83099
+root@docker:~# docker ps
+CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                  NAMES
+fe5f52e0f6b1   php:7.4-apache   "docker-php-entrypoi…"   17 seconds ago   Up 16 seconds   0.0.0.0:8080->80/tcp   miweb
+root@docker:~# 
+```
+
+
 ### 3. Utiliza el comando docker cp para copiar un fichero index.html (donde aparece tu nombre) en el directorio /var/www/html.
+
+    docker cp index.html miweb:/var/www/html
+
+```html
+ <!DOCTYPE html>
+ <html>
+     <body>
+         <h1>Nombre: Belén Nazareth</h1>
+         <h2>Prueba de docker</h2>
+         <img src="https://cataas.com/cat" alt="cat">
+     </body>
+ </html>
 
 ### 4. Accede al contenedor desde el navegador para ver la información ofrecida por el fichero index.html.
 
