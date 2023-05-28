@@ -131,6 +131,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/docker_storage_net",
+              "path": "/docs/Tasks/docker_storage_net",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/escenario_openstack",
               "path": "/docs/Tasks/escenario_openstack",
               "sidebar": "tutorialSidebar"

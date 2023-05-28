@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-1ec": {
+  "/docs-04f": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -208,6 +208,10 @@
   "/docs/Tasks/DNS_esclavo-87b": {
     "__comp": "17896441",
     "content": "93b44164"
+  },
+  "/docs/Tasks/docker_storage_net-5b1": {
+    "__comp": "17896441",
+    "content": "32ca787b"
   },
   "/docs/Tasks/escenario_openstack-6ef": {
     "__comp": "17896441",

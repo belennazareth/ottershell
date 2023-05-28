@@ -347,6 +347,12 @@
           },
           {
             "type": "link",
+            "label": "Almacenamiento",
+            "href": "/docs/Tasks/docker_storage_net",
+            "docId": "Tasks/docker_storage_net"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -520,6 +526,12 @@
       "id": "Tasks/DNS_esclavo",
       "title": "Instalación y configuración de un servidor DNS esclavo",
       "description": "Procedimiento",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/docker_storage_net": {
+      "id": "Tasks/docker_storage_net",
+      "title": "Almacenamiento",
+      "description": "Vamos a trabajar con volúmenes docker:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/escenario_openstack": {

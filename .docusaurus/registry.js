@@ -23,6 +23,7 @@ export default {
   '2daf58d8': [() => import(/* webpackChunkName: '2daf58d8' */ '@site/docs/Tasks/nfs_systemd.md'), '@site/docs/Tasks/nfs_systemd.md', require.resolveWeak('@site/docs/Tasks/nfs_systemd.md')],
   '2e872b27': [() => import(/* webpackChunkName: '2e872b27' */ '~blog/default/blog-tags-contacto-980.json'), '~blog/default/blog-tags-contacto-980.json', require.resolveWeak('~blog/default/blog-tags-contacto-980.json')],
   '31fb806a': [() => import(/* webpackChunkName: '31fb806a' */ '@site/docs/Tasks/criptografia2.md'), '@site/docs/Tasks/criptografia2.md', require.resolveWeak('@site/docs/Tasks/criptografia2.md')],
+  '32ca787b': [() => import(/* webpackChunkName: '32ca787b' */ '@site/docs/Tasks/docker_storage_net.md'), '@site/docs/Tasks/docker_storage_net.md', require.resolveWeak('@site/docs/Tasks/docker_storage_net.md')],
   '334592cc': [() => import(/* webpackChunkName: '334592cc' */ '@site/docs/Tasks/bind9_local.md'), '@site/docs/Tasks/bind9_local.md', require.resolveWeak('@site/docs/Tasks/bind9_local.md')],
   '379ad948': [() => import(/* webpackChunkName: '379ad948' */ '@site/docs/Tasks/peticion_http.md'), '@site/docs/Tasks/peticion_http.md', require.resolveWeak('@site/docs/Tasks/peticion_http.md')],
   '389968de': [() => import(/* webpackChunkName: '389968de' */ '~docs/default/category-docs-tutorialsidebar-category-tasks-603.json'), '~docs/default/category-docs-tutorialsidebar-category-tasks-603.json', require.resolveWeak('~docs/default/category-docs-tutorialsidebar-category-tasks-603.json')],

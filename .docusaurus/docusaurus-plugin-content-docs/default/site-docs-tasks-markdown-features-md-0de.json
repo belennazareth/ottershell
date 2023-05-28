@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "apache2 como proxy inverso",
-    "permalink": "/docs/Tasks/proxy_apache2"
+    "title": "Almacenamiento",
+    "permalink": "/docs/Tasks/docker_storage_net"
   },
   "next": {
     "title": "Extras",
