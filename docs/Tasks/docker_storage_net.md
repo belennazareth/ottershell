@@ -57,8 +57,6 @@ root@docker:~#
 
 ### 3. Utiliza el comando docker cp para copiar un fichero index.html (donde aparece tu nombre) en el directorio /var/www/html.
 
-    docker cp index.html miweb:/var/www/html
-
 ```html
  <!DOCTYPE html>
  <html>
@@ -68,19 +66,46 @@ root@docker:~#
          <img src="https://cataas.com/cat" alt="cat">
      </body>
  </html>
+```
+
+    docker cp index.html miweb:/var/www/html
+
 
 ### 4. Accede al contenedor desde el navegador para ver la información ofrecida por el fichero index.html.
 
+![docker](/img/IAW/taller1IAW6.png)
+
+
 ### 5. Borra el contenedor
+
+    docker rm -f miweb
+
+```bash
+debian@docker:~$ docker rm -f miweb
+miweb
+debian@docker:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+debian@docker:~$ 
+```
+
 
 ### 6. Crea un nuevo contenedor y monta el mismo volumen como en el ejercicio anterior.
 
+    docker run -d --name miweb -p 8080:80 -v miweb:/var/www/html php:7.4-apache
+
+
 ### 7. Accede al contenedor desde el navegador para ver la información ofrecida por el fichero index.html. ¿Seguía existiendo ese fichero?
+
+![docker](/img/IAW/taller1IAW6-2.png)
+
+Sí, ya que al montar el volumen, se mantiene la información que se ha guardado en él, y aunque se borre el contenedor, el volumen sigue existiendo.
 
 
 ## Vamos a trabajar con bind mount:
 
 ### 1. Crea un directorio en tu host y dentro crea un fichero index.html (donde aparece tu nombre).
+
+
 
 ### 2. Crea un contenedor desde la imagen php:7.4-apache donde montes en el directorio /var/www/html el directorio que has creado por medio de bind mount.
 
