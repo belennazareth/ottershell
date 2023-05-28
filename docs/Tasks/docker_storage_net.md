@@ -182,8 +182,65 @@ Vamos a desplegar la aplicación nextcloud con una base de datos (puedes elegir 
 
 ### 1. Crea una red de tipo bridge.
 
+    docker network create nextcloud_network --driver bridge
+    docker network ls
+
+```bash
+debian@docker:~$ docker network create nextcloud_network --driver bridge
+144e6fc41b25433eb3d1ab5985eb07cf7f3d9e47d0ad4d004595ef9550e0914d
+debian@docker:~$ docker network ls
+NETWORK ID     NAME                DRIVER    SCOPE
+d65cf43a13c1   bridge              bridge    local
+c93f21ee2a41   host                host      local
+144e6fc41b25   nextcloud_network   bridge    local
+c3a9f2b27456   none                null      local
+debian@docker:~$ 
+```
+
+
 ### 2. Crea el contenedor de la base de datos conectado a la red que has creado. La base de datos se debe configurar para crear una base de datos y un usuario. Además el contenedor debe utilizar almacenamiento (volúmenes o bind mount) para guardar la información. Puedes seguir la documentación de mariadb o la de PostgreSQL.
+
+    docker run -d --name nextcloud-db --network nextcloud_network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud -v nextcloud-db:/var/lib/mysql mariadb:10.5
+
+```bash
+debian@docker:~$ docker run -d --name nextcloud-db --network nextcloud_network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud -v nextcloud-db:/var/lib/mysql mariadb:10.5
+Unable to find image 'mariadb:10.5' locally
+10.5: Pulling from library/mariadb
+99803d4b97f3: Pull complete 
+b8bc823a83fd: Pull complete 
+16685f710f5d: Pull complete 
+b5660ff63058: Pull complete 
+fb5880d2d359: Pull complete 
+baf131972ef1: Pull complete 
+2969c5907ed8: Pull complete 
+178375b1f8ce: Pull complete 
+Digest: sha256:e2e6d26f6419df86e1edef1897fe0e4e28ed40ee65b9b4538e24b0696cc75fd2
+Status: Downloaded newer image for mariadb:10.5
+372a77b9b0df3ca704a1e9ceae5a4ffa91530c2214dc5938aebd92e112364915
+debian@docker:~$ docker ps
+CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                  NAMES
+372a77b9b0df   mariadb:10.5     "docker-entrypoint.s…"   2 minutes ago    Up 2 minutes    3306/tcp               nextcloud-db
+89ceb01dbc82   php:7.4-apache   "docker-php-entrypoi…"   13 minutes ago   Up 12 minutes   0.0.0.0:8080->80/tcp   miweb
+debian@docker:~$ 
+```
+
 
 ### 3. A continuación, siguiendo la documentación de la imagen nextcloud, crea un contenedor conectado a la misma red, e indica las variables adecuadas para que se configure de forma adecuada y realice la conexión a la base de datos. El contenedor también debe ser persistente usando almacenamiento.
 
+    docker run -d --name nextcloud --network nextcloud_network -p 8080:80 -v nextcloud:/var/www/html -e MYSQL_HOST=nextcloud-db -e MYSQL_DATABASE=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud nextcloud
+
+```bash
+debian@docker:~$ docker run -d --name nextcloud --network nextcloud_network -p 8080:80 -v nextcloud:/var/www/html -e MYSQL_HOST=nextcloud-db -e MYSQL_DATABASE=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud nextcloud
+59b593b2f420ee3350fd43354c661ae4c936e8d1197681324b9b9401ed1cfeb1
+debian@docker:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                  NAMES
+59b593b2f420   nextcloud      "/entrypoint.sh apac…"   14 seconds ago   Up 13 seconds   0.0.0.0:8080->80/tcp   nextcloud
+372a77b9b0df   mariadb:10.5   "docker-entrypoint.s…"   7 minutes ago    Up 7 minutes    3306/tcp               nextcloud-db
+debian@docker:~$ 
+```
+
+
 ### 4. Accede a la aplicación usando un navegador web.
+
+
+![docker](/img/IAW/taller1IAW6-6.png)
