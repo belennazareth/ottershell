@@ -244,3 +244,64 @@ debian@docker:~$
 
 
 ![docker](/img/IAW/taller1IAW6-6.png)
+
+
+## Entrega
+
+### Almacenamiento con volúmenes docker
+
+### 1. Instrucción para crear el volumen docker.
+
+    docker volume create miweb
+
+### 2. Instrucción para crear el contenedor.
+
+    docker run -d --name miweb -p 8080:80 -v miweb:/var/www/html php:7.4-apache
+
+### 3. Pantallazo accediendo a la página web.
+
+![docker](/img/IAW/taller1IAW6.png)
+
+### 4. Instrucción para borrar el contenedor.
+
+    docker rm -f miweb
+
+### 5. Instrucción para crear de nuevo el contenedor con el volumen y pantallazo accediendo de nuevo a la página.
+
+    docker run -d --name miweb -p 8080:80 -v miweb:/var/www/html php:7.4-apache
+
+![docker](/img/IAW/taller1IAW6-2.png)
+
+
+### Almacenamiento con bind mount
+
+### 1. Instrucción para crear el contenedor.
+
+    docker run -d --name miweb -p 8080:80 -v /home/debian/bindmount:/var/www/html php:7.4-apache
+
+### 2. Pantallazo accediendo a la página web.
+
+![docker](/img/IAW/taller1IAW6-3.png)
+
+### 3. Pantallazo accediendo a la página web, después de cambiar el fichero index.html en tu host.
+
+![docker](/img/IAW/taller1IAW6-5.png)
+
+
+### Redes
+
+### 1. Instrucción para crear la red
+
+    docker network create nextcloud_network --driver bridge
+
+### 2. Instrucción para crear el contenedor de base de datos.
+
+    docker run -d --name nextcloud-db --network nextcloud_network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud -v nextcloud-db:/var/lib/mysql mariadb:10.5
+
+### 3. Instrucción para crear el contenedor de nextcloud.
+
+    docker run -d --name nextcloud --network nextcloud_network -p 8080:80 -v nextcloud:/var/www/html -e MYSQL_HOST=nextcloud-db -e MYSQL_DATABASE=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=nextcloud nextcloud
+
+### 4. Pantallazos accediendo a nextcloud para comprobar que funciona de manera correcta.
+
+![docker](/img/IAW/taller1IAW6-6.png)
