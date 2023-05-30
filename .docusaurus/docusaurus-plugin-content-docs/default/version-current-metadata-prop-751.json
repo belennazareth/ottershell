@@ -353,6 +353,12 @@
           },
           {
             "type": "link",
+            "label": "Docker: Escenarios multicontenedor en Docker",
+            "href": "/docs/Tasks/docker_multicontenedor",
+            "docId": "Tasks/docker_multicontenedor"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -528,6 +534,12 @@
       "description": "Procedimiento",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/docker_multicontenedor": {
+      "id": "Tasks/docker_multicontenedor",
+      "title": "Docker: Escenarios multicontenedor en Docker",
+      "description": "Despliegue de Nextcloud",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/docker_storage_net": {
       "id": "Tasks/docker_storage_net",
       "title": "Docker: Almacenamiento y redes",
@@ -585,7 +597,7 @@
     "Tasks/journald": {
       "id": "Tasks/journald",
       "title": "Recolección centralizada de logs del sistema",
-      "description": "En esta ocasión, se va a realizar un sistema de recogida de logs de sistema, para ello se va a utilizar el servicio de journald, que se encarga de recoger los logs de los servicios del sistema, y de los servicios que se ejecutan en el mismo. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta.",
+      "description": "En esta ocasión, se va a realizar un sistema de recogida de logs de sistema, para ello se va a utilizar el servicio de journald, que se encarga de recoger los logs de los servicios del sistema, y de los servicios que se ejecutan en el mismo. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta. Para esto, se van a seguir los siguientes pasos:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/lemp": {
