@@ -26,19 +26,29 @@ sudo systemctl enable --now systemd-journal-remote.socket
 sudo systemctl enable --now systemd-journal-remote.service
 ```
 
-- En los clientes, charlie, delta y bravo, se crea un usuario para el envío de logs:
+- Configuramos journal para que en la funcionalidad de registro remoto no se apliquen medidas de seguridad adicionales a los registros y que se dividan en función del servidor:
 
 ```bash
-sudo adduser --system --home /run/systemd --no-create-home --disabled-login --group systemd-journal-upload
+nano /etc/systemd/journald-remote.conf
 
-sudo adduser --system --home-dir /run/systemd --no-create-home --user-group systemd-journal-upload #para bravo
+[Remote]
+SplitMode=host
+Seal=false
 ```
 
-- Modificamos el fichero `/etc/systemd/journal-upload.conf` para que quede de la siguiente forma:
+- Reiniciamos el servicio:
+
+```bash
+sudo systemctl restart systemd-journal-remote.service
+```
+
+- En los clientes, charlie, delta y bravo, modificamos el fichero `/etc/systemd/journal-upload.conf` para que quede de la siguiente forma:
 
 ```bash
 URL=http://alfa.nazareth.gonzalonazareno.org:19532
 ```
+
+*Nota: Se puede usar la IP en vez del nombre del servidor.
 
 - Reiniciamos el servicio:
 
@@ -49,5 +59,26 @@ sudo systemctl restart systemd-journal-upload.service
 - Para ver los logs en el servidor de los clientes, se ejecuta el siguiente comando:
 
 ```bash
-sudo journalctl --file /var/log/journal/remote/remote-192.168.0.3.journal
+sudo journalctl --file /var/log/journal/remote/remote-[IP].journal
 ```
+
+* Bravo:
+
+![](/img/SRI+HLC/javaSRI-3.png)
+
+
+* Charlie:
+
+![](/img/SRI+HLC/javaSRI-2.png)
+
+* Delta:
+
+![](/img/SRI+HLC/javaSRI.png)
+
+- Para ver todos los ficheros de log:
+
+```bash
+sudo ls -la /var/log/journal/remote/
+```
+
+![](/img/SRI+HLC/javaSRI-4.png)

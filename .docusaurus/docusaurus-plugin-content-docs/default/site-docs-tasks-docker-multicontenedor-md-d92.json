@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/docker_multicontenedor",
+  "id": "Tasks/docker_multicontenedor",
+  "title": "Docker: Escenarios multicontenedor en Docker",
+  "description": "Despliegue de Nextcloud",
+  "source": "@site/docs/Tasks/docker_multicontenedor.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/docker_multicontenedor",
+  "permalink": "/docs/Tasks/docker_multicontenedor",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/docker_multicontenedor.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 46,
+  "frontMatter": {
+    "sidebar_position": 46
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker: Almacenamiento y redes",
+    "permalink": "/docs/Tasks/docker_storage_net"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
