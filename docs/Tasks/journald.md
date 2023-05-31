@@ -64,16 +64,16 @@ sudo journalctl --file /var/log/journal/remote/remote-[IP].journal
 
 * Bravo:
 
-![](/img/SRI+HLC/journalASO-3.png)
+![](/img/ASO/journalASO-3.png)
 
 
 * Charlie:
 
-![](/img/SRI+HLC/journalASO-2.png)
+![](/img/ASO/journalASO-2.png)
 
 * Delta:
 
-![](/img/SRI+HLC/journalASO.png)
+![](/img/ASO/journalASO.png)
 
 - Para ver todos los ficheros de log:
 
@@ -81,4 +81,4 @@ sudo journalctl --file /var/log/journal/remote/remote-[IP].journal
 sudo ls -la /var/log/journal/remote/
 ```
 
-![](/img/SRI+HLC/journalASO-4.png)
+![](/img/ASO/journalASO-4.png)
