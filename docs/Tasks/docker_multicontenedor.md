@@ -31,7 +31,7 @@ Vamos a desplegar la aplicación nextcloud con una base de datos (puedes elegir 
      volumes:
        - nextcloud:/var/www/html
      environment:
-       - MYSQL_HOST=mariadb
+       - MYSQL_HOST=nextcloud-db
        - MYSQL_DATABASE=nextcloud
        - MYSQL_USER=nextcloud
        - MYSQL_PASSWORD=admin
@@ -60,9 +60,35 @@ Vamos a desplegar la aplicación nextcloud con una base de datos (puedes elegir 
 
     docker-compose ps
 
+*Nota: Tenemos que estar en el directorio y hay que darle permisos al usuario para que pueda ejecutar docker-compose sin sudo:
+
+    sudo usermod -aG docker $USER
+    newgrp docker
+
+![DOCKER](/img/IAW/taller2IAW6.png)
+
+
 5. Accede a la aplicación y comprueba que funciona.
+
+![DOCKER](/img/IAW/taller2IAW6-2.png)
+
 6. Comprueba el almacenamiento que has definido y que se ha creado una nueva red de tipo bridge.
+
+  docker network ls
+  docker volume ls
+
+![DOCKER](/img/IAW/taller2IAW6-3.png)
+
 7. Borra el escenario con docker-compose.
+
+    docker-compose down -v
+
+![DOCKER](/img/IAW/taller2IAW6-4.png)
+
+*Nota: Habría que borrar también los volúmenes y la red creada si queremos borrar todo:
+
+    docker volume rm nextcloud_docker_nextcloud nextcloud_docker_nextcloud-db
+    docker network rm nextcloud_docker_default
 
 
 ## Entrega
@@ -81,7 +107,7 @@ Vamos a desplegar la aplicación nextcloud con una base de datos (puedes elegir 
      volumes:
        - nextcloud:/var/www/html
      environment:
-       - MYSQL_HOST=mariadb
+       - MYSQL_HOST=nextcloud-db
        - MYSQL_DATABASE=nextcloud
        - MYSQL_USER=nextcloud
        - MYSQL_PASSWORD=admin
@@ -113,11 +139,17 @@ Vamos a desplegar la aplicación nextcloud con una base de datos (puedes elegir 
 
 ### 4. Pantallazos accediendo a nextcloud para comprobar que funciona de manera correcta.
 
-
+![DOCKER](/img/IAW/taller2IAW6-2.png)
 
 ### 5. Comprobación del almacenamiento que has definido y que se ha creado una nueva red de tipo bridge.
 
+  docker network ls
+  docker volume ls
+
+![DOCKER](/img/IAW/taller2IAW6-3.png)
 
 ### 6. Instrucción para borrar el escenario con docker-compose.
 
-    docker-compose down
+    docker-compose down -v
+
+![DOCKER](/img/IAW/taller2IAW6-4.png)
