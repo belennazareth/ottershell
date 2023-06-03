@@ -353,6 +353,12 @@
           },
           {
             "type": "link",
+            "label": "Docker: Creación de imágenes Docker",
+            "href": "/docs/Tasks/docker_imagenes",
+            "docId": "Tasks/docker_imagenes"
+          },
+          {
+            "type": "link",
             "label": "Docker: Escenarios multicontenedor en Docker",
             "href": "/docs/Tasks/docker_multicontenedor",
             "docId": "Tasks/docker_multicontenedor"
@@ -532,6 +538,12 @@
       "id": "Tasks/DNS_esclavo",
       "title": "Instalación y configuración de un servidor DNS esclavo",
       "description": "Procedimiento",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/docker_imagenes": {
+      "id": "Tasks/docker_imagenes",
+      "title": "Docker: Creación de imágenes Docker",
+      "description": "Para la realización de este taller es necesario tener una cuenta en Docker Hub.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/docker_multicontenedor": {

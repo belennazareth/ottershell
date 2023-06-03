@@ -131,6 +131,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/docker_imagenes",
+              "path": "/docs/Tasks/docker_imagenes",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/docker_multicontenedor",
               "path": "/docs/Tasks/docker_multicontenedor",
               "sidebar": "tutorialSidebar"

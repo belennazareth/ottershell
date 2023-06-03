@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Docker: Almacenamiento y redes",
-    "permalink": "/docs/Tasks/docker_storage_net"
+    "title": "Docker: Creación de imágenes Docker",
+    "permalink": "/docs/Tasks/docker_imagenes"
   },
   "next": {
     "title": "Markdown Features",

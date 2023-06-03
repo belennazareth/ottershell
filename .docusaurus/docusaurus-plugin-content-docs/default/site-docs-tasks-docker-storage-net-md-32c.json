@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/proxy_apache2"
   },
   "next": {
-    "title": "Docker: Escenarios multicontenedor en Docker",
-    "permalink": "/docs/Tasks/docker_multicontenedor"
+    "title": "Docker: Creación de imágenes Docker",
+    "permalink": "/docs/Tasks/docker_imagenes"
   }
 }

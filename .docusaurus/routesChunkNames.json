@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-c77": {
+  "/docs-122": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -208,6 +208,10 @@
   "/docs/Tasks/DNS_esclavo-87b": {
     "__comp": "17896441",
     "content": "93b44164"
+  },
+  "/docs/Tasks/docker_imagenes-19f": {
+    "__comp": "17896441",
+    "content": "520ee44b"
   },
   "/docs/Tasks/docker_multicontenedor-271": {
     "__comp": "17896441",

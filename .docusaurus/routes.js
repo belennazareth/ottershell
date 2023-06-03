@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'c77'),
+    component: ComponentCreator('/docs', '122'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -204,6 +204,12 @@ export default [
       {
         path: '/docs/Tasks/DNS_esclavo',
         component: ComponentCreator('/docs/Tasks/DNS_esclavo', '87b'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/docker_imagenes',
+        component: ComponentCreator('/docs/Tasks/docker_imagenes', '19f'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
