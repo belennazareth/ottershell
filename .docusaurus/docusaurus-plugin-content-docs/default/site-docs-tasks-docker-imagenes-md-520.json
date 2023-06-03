@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/docker_imagenes",
+  "id": "Tasks/docker_imagenes",
+  "title": "Docker: Creación de imágenes Docker",
+  "description": "Para la realización de este taller es necesario tener una cuenta en Docker Hub.",
+  "source": "@site/docs/Tasks/docker_imagenes.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/docker_imagenes",
+  "permalink": "/docs/Tasks/docker_imagenes",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/docker_imagenes.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 46,
+  "frontMatter": {
+    "sidebar_position": 46
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker: Almacenamiento y redes",
+    "permalink": "/docs/Tasks/docker_storage_net"
+  },
+  "next": {
+    "title": "Docker: Escenarios multicontenedor en Docker",
+    "permalink": "/docs/Tasks/docker_multicontenedor"
+  }
+}

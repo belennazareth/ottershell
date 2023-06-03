@@ -18,19 +18,66 @@ Para la realización de este taller es necesario tener una cuenta en Docker Hub.
     </head>
     <body>
         <h1>CREACION DE IMAGENES DOCKER</h1>
-        <p>Docker es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.​</p>
-        <src img="https://cataas.com/cat">
+        <p>Docker es un proyecto de codigo abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstraccion y automatizacion de virtualizacion de aplicaciones en multiples sistemas operativos.​</p>
+        <img src="https://cataas.com/cat">
     </body>
 </html>
 ```
 
-2.- Crea un fichero Dockerfile que permita crear una imagen con un servidor web sirviendo la página. Puedes usar una imagen base debian o ubuntu, o una imagen que tenga ya un servicio web, como hemos visto en el apartado Ejemplo 1: Construcción de imágenes con una página estática.
+2.- Crea un fichero Dockerfile que permita crear una imagen con un servidor web sirviendo la página. Puedes usar una imagen base debian o ubuntu, o una imagen que tenga ya un servicio web, como hemos visto en el apartado [Ejemplo 1: Construcción de imágenes con una página estática](https://github.com/josedom24/curso_docker_ies/blob/main/modulo5/ejemplo1.md).
 
+Creamos un directorio para guardar los ficheros de la práctica y creamos el fichero `index.html`:
+
+```bash
+mkdir mi_servidor_web
+cd mi_servidor_web
+touch index.html
+```
+
+Creamos el fichero `Dockerfile`:
+
+```bash
+touch Dockerfile
+```
+
+```dockerfile
+FROM debian
+MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
+RUN apt-get update && apt-get -y install apache2
+COPY index.html /var/www/html/index.html
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+```
 
 
 3.- Ejecuta el comando docker que crea la nueva imagen. La imagen se debe llamar /mi_servidor_web:v1.
 
+    docker build -t mi_servidor_web:v1 .
+
+![DOCKER](/img/IAW/taller3IAW6.png)
+
+Comprobamos que se ha creado la imagen:
+
+    docker images
+
+![DOCKER](/img/IAW/taller3IAW6-2.png)
+
+Para borrar la imagen:
+
+    docker rmi <id_imagen>
+
+Creamos un contenedor a partir de la imagen:
+
+    docker run -d -p 8080:80 --name mi_servidor_web mi_servidor_web:v1
+
+Para borrar el contenedor:
+
+    docker rm -f mi_servidor_web
+    docker v
+
+
 4.- Conéctate a Docker Hub y sube la imagen que acabas de crear.
+
+
 
 5.- Descarga la imagen en otro ordenador donde tengas docker instalado, y crea un contenedor a partir de ella. (Si no tienes otro ordenador con docker instalado, borra la imagen en tu ordenador y bájala de Docker Hub).
 
