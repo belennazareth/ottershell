@@ -64,7 +64,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install apache2 libapache2-m
 COPY bookmedik /var/www/html/
 ADD script.sh /opt/
 RUN chmod +x /opt/script.sh && rm /var/www/html/index.html
-ENTRYPOINT ["/opt/script.sh"]
+CMD ["/opt/script.sh"]
 ```
 
 Creamos el fichero `script.sh` con las instrucciones para ejecutar el contenedor:
@@ -187,6 +187,70 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea2
 * Vamos a crear una imagen que se llame `usuario/bookmedik:v2`.
 * Realiza la imagen docker de la aplicación a partir de la imagen oficial [PHP](https://hub.docker.com/_/php/) que encuentras en docker hub. Lee la documentación de la imagen para configurar una imagen con apache2 y php, además seguramente tengas que instalar alguna extensión de php.
 * Modifica el fichero `docker-compose.yml` para probar esta imagen.
+
+Creamos el dockerfile:
+
+```dockerfile
+FROM php:8.2-rc-apache-bullseye
+MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
+RUN docker-php-ext-install mysqli && apt-get update && apt-get upgrade -y && apt-get install mariadb-client -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY bookmedik /var/www/html/
+ADD script.sh /opt/
+RUN chmod +x /opt/script.sh 
+CMD ["/opt/script.sh"]
+```
+
+Modificamos el script `script.sh`:
+
+```s
+#! /bin/sh
+while ! mysql -u $bookmedik_user -p$bookmedik_passwd -h $host_database --silent -e ";" ; do
+    echo "Esperando a que el servicio de mysql este disponible..."
+    sleep 1
+done
+
+mysql -u $bookmedik_user --password=$bookmedik_passwd -h $host_database $db_name < /var/www/html/schema.sql
+```
+
+Creamos la imagen:
+
+```bash
+docker build -t belennazareth/bookmedik:v2 .
+```
+
+Modificamos el fichero `docker-compose.yml`:
+
+```yml
+version: '3.7'
+services:
+  bn-mariadb:
+    container_name: bn-mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: bookmedik
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: admin
+    volumes:
+      - mariadb_data:/var/lib/mysql
+  bookmedik:
+    container_name: bn-bookmedik
+    image: belennazareth/bookmedik:v2
+    restart: always
+    environment:
+      bookmedik_user: admin
+      bookmedik_passwd: admin
+      host_database: bn-mariadb
+      db_name: bookmedik
+    ports:
+      - 8081:80
+    depends_on:
+      - bn-mariadb
+volumes:
+    mariadb_data:
+```
+
 
 ### Entrega
 
