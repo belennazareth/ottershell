@@ -164,7 +164,7 @@ docker ps
 Si accedemos a la aplicación en el puerto 8081, `localhost:8081`, podemos ver que se ha creado correctamente:
 
 ![DOCKER](/img/IAW/dockerPHPIAW6-3.png)
-
+![DOCKER](/img/IAW/dockerPHPIAW6-4.png)
 
 ### Entrega
 
@@ -174,7 +174,13 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea2
 
 2. Entrega la instrucción para ver los dos contenedores del escenario funcionando.
 
+![DOCKER](/img/IAW/dockerPHPIAW6-2.png)
+
 3. Entrega una captura de pantalla donde se vea funcionando la aplicación, una vez que te has logueado.
+
+![DOCKER](/img/IAW/dockerPHPIAW6-3.png)
+![DOCKER](/img/IAW/dockerPHPIAW6-4.png)
+
 
 ## Tarea 3: Creación de una imagen docker con una aplicación web desde una imagen PHP
 
