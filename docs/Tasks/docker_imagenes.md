@@ -159,7 +159,21 @@ Creamos el contenedor desde la nueva versión de la imagen:
 ## Entrega
 
 ### 1. Pantallazo donde se vea el contenido del fichero Dockerfile.
+
+![DOCKER](/img/IAW/taller3IAW6-8.png)
+
 ### 2. Pantallazo donde se vea el comando que crea la nueva imagen.
+
+![DOCKER](/img/IAW/taller3IAW6-5.png)
+
 ### 3. Pantallazo donde se vea el acceso a la página web primera versión.
+
+![DOCKER](/img/IAW/taller3IAW6-3.png)
+
 ### 4. Pantallazo donde se vean las dos imágenes subidas a tu cuenta de Docker Hub.
+
+![DOCKER](/img/IAW/taller3IAW6-6.png)
+
 ### 5. Pantallazo donde se vea el acceso a la página web segunda versión.
+
+![DOCKER](/img/IAW/taller3IAW6-7.png)
