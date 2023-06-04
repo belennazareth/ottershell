@@ -92,7 +92,6 @@ docker images
 ![DOCKER](/img/IAW/dockerPHPIAW6.png)
 
 
-
 ### Entrega
 
 1. Entrega la url del repositorio GitHub donde tengas los ficheros necesarios para hacer la construcción de la imagen.
@@ -101,10 +100,66 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea1
 
 2. Entrega una captura de pantalla donde se vea la imagen en el registro de tu entorno de desarrollo.
 
+![DOCKER](/img/IAW/dockerPHPIAW6.png)
+
+
+
 ## Tarea 2: Despliegue en el entorno de desarrollo
 
 * Crea un script con `docker-compose` que levante el escenario con los dos contenedores.
 * Recuerda que para acceder a la aplicación: Usuario: **admin**, contraseña: **admin**.
+
+Creamos el fichero `docker-compose.yml` con las instrucciones para levantar el escenario:
+
+```yml
+version: '3.7'
+services:
+  bookmedik:
+    container_name: bn-bookmedik
+    image: belennazareth/bookmedik:v1
+    restart: always
+    environment:
+      bookmedik_user: admin
+      bookmedik_passwd: admin
+      host_database: bn-mariadb
+      db_name: bookmedik
+    ports:
+      - 8081:80
+    depends_on:
+      - db
+  db:
+    container_name: bn-mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: bookmedik
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: admin
+    volumes:
+      - mariadb_data:/var/lib/mysql
+volumes:
+    mariadb_data:
+```
+
+Levantamos el escenario:
+
+```bash
+docker-compose up -d 
+```
+
+Comprobamos que se ha levantado correctamente:
+
+```bash
+docker ps
+```
+
+![DOCKER](/img/IAW/dockerPHPIAW6-2.png)
+
+Si accedemos a la aplicación en el puerto 8081, `localhost:8081`, podemos ver que se ha creado correctamente:
+
+![DOCKER](/img/IAW/dockerPHPIAW6-3.png)
+![DOCKER](/img/IAW/dockerPHPIAW6-4.png)
 
 ### Entrega
 
