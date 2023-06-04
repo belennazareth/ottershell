@@ -72,20 +72,88 @@ Creamos un contenedor a partir de la imagen:
 Para borrar el contenedor:
 
     docker rm -f mi_servidor_web
-    docker v
+
+![DOCKER](/img/IAW/taller3IAW6-3.png)
 
 
 4.- Conéctate a Docker Hub y sube la imagen que acabas de crear.
 
+Nos conectamos:
+
+    docker login
+
+Preparamos la imagen para subirla:
+
+    docker tag mi_servidor_web:v1 belennazareth/mi_servidor_web:v1
+
+Subimos la imagen:
+
+    docker push belennazareth/mi_servidor_web
+
+![DOCKER](/img/IAW/taller3IAW6-4.png)
 
 
 5.- Descarga la imagen en otro ordenador donde tengas docker instalado, y crea un contenedor a partir de ella. (Si no tienes otro ordenador con docker instalado, borra la imagen en tu ordenador y bájala de Docker Hub).
 
+Para descargar la imagen:
+
+    docker pull belennazareth/mi_servidor_web
+
+Para crear el contenedor:
+
+    docker run -d -p 8080:80 --name mi_servidor_web belennazareth/mi_servidor_web:v1
+
+
 6.- Vamos a hacer una modificación de la página web: haz una modificación al fichero index.html.
 
-7.- Vuelve a crear una nueva imagen, en esta caso pon ta etiqueta v2. Súbela a Docker Hub.
+Modificamos el fichero `index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOCKER</title>
+    </head>
+    <body>
+        <h1>CREACION DE IMAGENES DOCKER</h1>
+        <p>Docker es un proyecto de codigo abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstraccion y automatizacion de virtualizacion de aplicaciones en multiples sistemas operativos.​</p>
+        <img src="https://cataas.com/cat">
+        
+        <p>Modificación de la página web</p>
+        <img src="https://cataas.com/cat/says/MODIFICACION">
+    </body>
+</html>
+```
+
+7.- Vuelve a crear una nueva imagen, en esta caso pon la etiqueta v2. Súbela a Docker Hub.
+
+Volvemos a crear la imagen:
+
+    docker build -t mi_servidor_web:v2 .
+
+![DOCKER](/img/IAW/taller3IAW6-5.png)
+
+De nuevo, preparamos la imagen para subirla:
+
+    docker tag mi_servidor_web:v2 belennazareth/mi_servidor_web:v2
+
+Subimos la imagen:
+
+    docker push belennazareth/mi_servidor_web:v2
+
+![DOCKER](/img/IAW/taller3IAW6-6.png)
 
 8.- Por último, baja la nueva imagen en el ordenador donde está corriendo el contenedor. Para hacer la implantación de la nueva versión debes borrar el contenedor y crear uno nuevo desde la nueva versión de la imagen.
+
+Borramos el contenedor:
+
+    docker rm -f mi_servidor_web
+
+Creamos el contenedor desde la nueva versión de la imagen:
+
+    docker run -d -p 8080:80 --name mi_servidor_web belennazareth/mi_servidor_web:v2
+
+![DOCKER](/img/IAW/taller3IAW6-7.png)
 
 
 ## Entrega
