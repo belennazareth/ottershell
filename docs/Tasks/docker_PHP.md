@@ -17,6 +17,7 @@ Tenemos que tener en cuenta los siguientes aspectos:
 * Ejecuta el contenedor mariadb y carga los datos del script `schema.sql`. Para más [información](https://gist.github.com/spalladino/6d981f7b33f6e0afe6bb).
 * El contenedor mariadb debe tener un volumen para guardar la base de datos.
 
+
 **Contenedor bookmedik**
 
 * Vamos a crear tres versiones de la imagen que nos permite implantar la aplicación PHP.
@@ -33,9 +34,70 @@ Tenemos que tener en cuenta los siguientes aspectos:
 * Vamos a crear una imagen que se llame `usuario/bookmedik:v1`.
 * Crea una imagen docker con la aplicación desde una imagen base de debian o ubuntu.
 
+Primero clonamos el repositorio de la aplicación bookmedik:
+
+```bash
+git clone https://github.com/evilnapsis/bookmedik.git
+```
+
+Modificamos el fichero `schema.sql` y quitamos las primeras líneas que son las que crean y usan la base de datos `bookmedik` para que no nos de error al crear la base de datos en el contenedor:
+
+```sql
+CREATE DATABASE bookmedik;
+USE bookmedik;
+```
+
+Modificamos las variables de entorno en el fichero `core\controller\Database.php` para que lea las que vamos a darle en el script de mysql:
+
+```php
+        function Database(){
+                $this->user=getenv('bookmedik_user');$this->pass=getenv('bookmedik_passwd');$this->host=getenv('host_database');$this->ddbb=getenv('db_name');
+        }
+```
+
+Creamos el fichero `Dockerfile` con las instrucciones para crear la imagen:
+
+```dockerfile
+FROM debian:bullseye
+MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
+RUN apt-get update && apt-get upgrade -y && apt-get install apache2 libapache2-mod-php php php-mysql mariadb-client -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY bookmedik /var/www/html/
+ADD script.sh /opt/
+RUN chmod +x /opt/script.sh && rm /var/www/html/index.html
+ENTRYPOINT ["/opt/script.sh"]
+```
+
+Creamos el fichero `script.sh` con las instrucciones para ejecutar el contenedor:
+
+```s
+#! /bin/sh
+
+mysql -u $bookmedik_user --password=$bookmedik_passwd -h $host_database $db_name < /var/www/html/schema.sql
+
+/usr/sbin/apache2ctl -D FOREGROUND
+```
+
+Creamos la imagen:
+
+```bash
+docker build -t belennazareth/bookmedik:v1 .
+```
+
+Comprobamos que se ha creado correctamente:
+
+```bash
+docker images
+```
+
+![DOCKER](/img/IAW/dockerPHPIAW6.png)
+
+
+
 ### Entrega
 
 1. Entrega la url del repositorio GitHub donde tengas los ficheros necesarios para hacer la construcción de la imagen.
+
+https://github.com/belennazareth/Docker_PHP/tree/main/tarea1
 
 2. Entrega una captura de pantalla donde se vea la imagen en el registro de tu entorno de desarrollo.
 
@@ -47,6 +109,8 @@ Tenemos que tener en cuenta los siguientes aspectos:
 ### Entrega
 
 1. Entrega la url del repositorio GitHub donde hayas añadido el fichero docker-compose.yml.
+
+https://github.com/belennazareth/Docker_PHP/tree/main/tarea2
 
 2. Entrega la instrucción para ver los dos contenedores del escenario funcionando.
 
@@ -61,6 +125,8 @@ Tenemos que tener en cuenta los siguientes aspectos:
 ### Entrega
 
 1. Entrega la url del repositorio GitHub donde tengas los ficheros necesarios para hacer la construcción de la imagen.
+
+https://github.com/belennazareth/Docker_PHP/tree/main/tarea3
 
 2. Entrega una captura de pantalla donde se vea la imagen en el registro de tu entorno de desarrollo.
 
@@ -83,6 +149,8 @@ A lo mejor te puede ayudar el siguiente enlace: [Dockerise your PHP application 
 
 1. Entrega la url del repositorio GitHub donde tengas los ficheros necesarios para hacer la construcción de la imagen.
 
+https://github.com/belennazareth/Docker_PHP/tree/main/tarea4
+
 2. Entrega una captura de pantalla donde se vea la imagen en el registro de tu entorno de desarrollo.
 
 3. Entrega la instrucción para ver los tres contenedores del escenario funcionando.
@@ -99,6 +167,9 @@ A lo mejor te puede ayudar el siguiente enlace: [Dockerise your PHP application 
 
 1. Entrega una captura de pantalla de Docker Hub donde se vea tu imagen subida.
 2. Entrega la configuración de nginx.
+
+https://github.com/belennazareth/Docker_PHP/tree/main/tarea5
+
 3. Entrega una captura de pantalla donde se vea funcionando la aplicación, una vez que te has logueado.
 
 ## Tarea 6: Modificación de la aplicación

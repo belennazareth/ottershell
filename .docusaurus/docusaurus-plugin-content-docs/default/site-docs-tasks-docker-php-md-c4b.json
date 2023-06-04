@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/docker_PHP",
+  "id": "Tasks/docker_PHP",
+  "title": "Docker: Implantación de aplicaciones web PHP en docker",
+  "description": "Imaginemos que el equipo de desarrollo de nuestra empresa ha desarrollado una aplicación PHP que se llama BookMedik (https://github.com/evilnapsis/bookmedik).",
+  "source": "@site/docs/Tasks/docker_PHP.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/docker_PHP",
+  "permalink": "/docs/Tasks/docker_PHP",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/docker_PHP.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 50,
+  "frontMatter": {
+    "sidebar_position": 50
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker: Escenarios multicontenedor en Docker",
+    "permalink": "/docs/Tasks/docker_multicontenedor"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
