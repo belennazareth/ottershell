@@ -141,6 +141,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/docker_PHP",
+              "path": "/docs/Tasks/docker_PHP",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/docker_storage_net",
               "path": "/docs/Tasks/docker_storage_net",
               "sidebar": "tutorialSidebar"

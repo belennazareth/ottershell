@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Docker: Escenarios multicontenedor en Docker",
-    "permalink": "/docs/Tasks/docker_multicontenedor"
+    "title": "Docker: Implantación de aplicaciones web PHP en docker",
+    "permalink": "/docs/Tasks/docker_PHP"
   },
   "next": {
     "title": "Extras",

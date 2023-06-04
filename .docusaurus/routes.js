@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '122'),
+    component: ComponentCreator('/docs', '845'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -216,6 +216,12 @@ export default [
       {
         path: '/docs/Tasks/docker_multicontenedor',
         component: ComponentCreator('/docs/Tasks/docker_multicontenedor', '271'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/docker_PHP',
+        component: ComponentCreator('/docs/Tasks/docker_PHP', 'f5a'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

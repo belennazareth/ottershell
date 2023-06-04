@@ -73,6 +73,7 @@ export default {
   'b527b7e7': [() => import(/* webpackChunkName: 'b527b7e7' */ '@site/docs/Tasks/virtualhosting_apache.md'), '@site/docs/Tasks/virtualhosting_apache.md', require.resolveWeak('@site/docs/Tasks/virtualhosting_apache.md')],
   'bf46dd46': [() => import(/* webpackChunkName: 'bf46dd46' */ '@site/docs/Tasks/apache_wsgi.md'), '@site/docs/Tasks/apache_wsgi.md', require.resolveWeak('@site/docs/Tasks/apache_wsgi.md')],
   'c3b8dc1d': [() => import(/* webpackChunkName: 'c3b8dc1d' */ '@site/docs/Tasks/recopilatorio.md'), '@site/docs/Tasks/recopilatorio.md', require.resolveWeak('@site/docs/Tasks/recopilatorio.md')],
+  'c4b75d3a': [() => import(/* webpackChunkName: 'c4b75d3a' */ '@site/docs/Tasks/docker_PHP.md'), '@site/docs/Tasks/docker_PHP.md', require.resolveWeak('@site/docs/Tasks/docker_PHP.md')],
   'c4f5d8e4': [() => import(/* webpackChunkName: 'c4f5d8e4' */ '@site/src/pages/index.js'), '@site/src/pages/index.js', require.resolveWeak('@site/src/pages/index.js')],
   'c907e9ed': [() => import(/* webpackChunkName: 'c907e9ed' */ '@site/docs/Tasks/proxy_apache2.md'), '@site/docs/Tasks/proxy_apache2.md', require.resolveWeak('@site/docs/Tasks/proxy_apache2.md')],
   'c9e876c3': [() => import(/* webpackChunkName: 'c9e876c3' */ '@site/docs/Tasks/ramas_uniones.md'), '@site/docs/Tasks/ramas_uniones.md', require.resolveWeak('@site/docs/Tasks/ramas_uniones.md')],
