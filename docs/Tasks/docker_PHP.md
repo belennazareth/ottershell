@@ -159,7 +159,7 @@ docker ps
 Si accedemos a la aplicación en el puerto 8081, `localhost:8081`, podemos ver que se ha creado correctamente:
 
 ![DOCKER](/img/IAW/dockerPHPIAW6-3.png)
-![DOCKER](/img/IAW/dockerPHPIAW6-4.png)
+
 
 ### Entrega
 
