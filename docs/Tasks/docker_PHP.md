@@ -72,6 +72,11 @@ Creamos el fichero `script.sh` con las instrucciones para ejecutar el contenedor
 ```s
 #! /bin/sh
 
+while ! mysqladmin ping -h"$host_database" --silent; do
+    echo "Esperando a que el servicio de mysql este disponible..."
+    sleep 1
+done
+
 mysql -u $bookmedik_user --password=$bookmedik_passwd -h $host_database $db_name < /var/www/html/schema.sql
 
 /usr/sbin/apache2ctl -D FOREGROUND
@@ -114,6 +119,17 @@ Creamos el fichero `docker-compose.yml` con las instrucciones para levantar el e
 ```yml
 version: '3.7'
 services:
+  bn-mariadb:
+    container_name: bn-mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: bookmedik
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: admin
+    volumes:
+      - mariadb_data:/var/lib/mysql
   bookmedik:
     container_name: bn-bookmedik
     image: belennazareth/bookmedik:v1
@@ -126,18 +142,7 @@ services:
     ports:
       - 8081:80
     depends_on:
-      - db
-  db:
-    container_name: bn-mariadb
-    image: mariadb
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: root
-      MARIADB_DATABASE: bookmedik
-      MARIADB_USER: admin
-      MARIADB_PASSWORD: admin
-    volumes:
-      - mariadb_data:/var/lib/mysql
+      - bn-mariadb
 volumes:
     mariadb_data:
 ```
