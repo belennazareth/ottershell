@@ -295,6 +295,125 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea3
 A lo mejor te puede ayudar el siguiente enlace: [Dockerise your PHP application with Nginx and PHP7-FPM](http://geekyplatypus.com/dockerise-your-php-application-with-nginx-and-php7-fpm/)
 
 
+Hay que hacer dos imagenes, una con nginx y otra con php-fpm.
+
+Primero creamos el `dockerfile` de php-fpm:
+
+```dockerfile
+FROM php:7.4-fpm
+MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
+RUN docker-php-ext-install mysqli
+```
+
+Construimos la imagen:
+
+```bash
+docker build -t belennazareth/php-fpm-mysql:v1 .
+```
+
+Creamos el fichero `default.conf` como configuración de nginx:
+
+```conf
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  localhost;
+    error_log  /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+    root   /usr/share/nginx/html;
+    index  index.php index.html;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass book_php:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+    }
+}
+```
+
+Modificamos el `script.sh`:
+
+```s
+#! /bin/sh
+
+sleep 10
+
+mysql -u $bookmedik_user --password=$bookmedik_passwd -h $host_database $db_name  < /usr/share/nginx/html/schema.sql
+
+nginx -g "daemon off;"
+```
+
+Para la imagen de nginx, creamos el `dockerfile`:
+
+```dockerfile
+FROM nginx
+MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
+RUN apt-get update && apt-get upgrade -y && apt-get install mariadb-client -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+ADD default.conf /etc/nginx/conf.d/
+ADD bookmedik /usr/share/nginx/html
+ADD script.sh /opt/
+RUN chmod +x /opt/script.sh && rm /usr/share/nginx/html/index.html
+ENTRYPOINT ["/opt/script.sh"]
+```
+
+Construimos la imagen:
+
+```bash
+docker build -t belennazareth/bookmedik:v3 .
+```
+
+Creamos el `docker-compose.yml`:
+
+```yml
+version: '3.8'
+services:
+  bookmedik:
+    container_name: bookmedik-app
+    image: legnakra/bookmedik:v3
+    restart: always
+    environment:
+      USUARIO_BOOKMEDIK: bookmedik
+      CONTRA_BOOKMEDIK: bookmedik
+      DATABASE_HOST: bd_mariadb
+      NOMBRE_DB: bookmedik
+    ports:
+      - 8082:80
+    depends_on:
+      - db
+      - php
+    volumes:
+      - phpdocs:/usr/share/nginx/html/
+  db:
+    container_name: bd_mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: bookmedik
+      MARIADB_USER: bookmedik
+      MARIADB_PASSWORD: bookmedik
+    volumes:
+      - mariadb_data:/var/lib/mysql
+  php:
+    container_name: book_php
+    image: legnakra/php-fpm-mysql:v1
+    restart: always
+    environment:
+      USUARIO_BOOKMEDIK: bookmedik
+      CONTRA_BOOKMEDIK: bookmedik
+      DATABASE_HOST: bd_mariadb
+      NOMBRE_DB: bookmedik
+    volumes:
+      - phpdocs:/usr/share/nginx/html/ 
+
+volumes:
+    mariadb_data:
+    phpdocs:
+```
 
 ### Entrega
 
@@ -314,14 +433,157 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea4
 * En tu VPS instala Docker y utilizando el `docker-compose.yml` correspondiente, crea un contenedor en ella de la aplicación.
 * Configura el nginx de tu VPS para que haga de proxy inverso y nos permita acceder a la aplicación con `https://bookmedik.tudominio.xxx`.
 
+Uso la imagen de la tarea 3 y la subo a Docker Hub:
+
+```bash
+docker push belennazareth/bookmedik:v2
+```
+
+En la VPS instalamos Docker y creamos el `docker-compose.yml`:
+
+```bash
+sudo apt install docker.io
+sudo apt install docker-compose
+```
+
+Hacemos un docker pull de la imagen:
+
+```bash
+docker pull belennazareth/bookmedik:v2
+```
+
+A continuación creamos el `docker-compose.yml`:
+
+```yml
+version: '3.3'
+services:
+  bn-mariadb:
+    container_name: bn-mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: bookmedik
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: admin
+    volumes:
+      - mariadb_data:/var/lib/mysql
+  bookmedik:
+    container_name: bn-bookmedik
+    image: belennazareth/bookmedik:v2
+    restart: always
+    environment:
+      bookmedik_user: admin
+      bookmedik_passwd: admin
+      host_database: bn-mariadb
+      db_name: bookmedik
+    ports:
+      - 8081:80
+    depends_on:
+      - bn-mariadb
+volumes:
+    mariadb_data:
+```
+
+*Nota: en mi caso he tenido que poner la version 10.8.2 de mariadb, ya que con la última versión me daba error.
+
+Levantamos los contenedores:
+
+```bash
+docker-compose up -d
+```
+
+Por último, configuramos el nginx para que haga de proxy inverso y nos permita acceder a la aplicación con `https://bookmedik.tudominio.xxx`.
+
+```bash
+sudo apt install nginx
+```
+
+Creamos el fichero de configuración:
+
+```bash
+sudo nano /etc/nginx/sites-available/bookmedik.conf
+```
+
+Y hacemos el proxy inverso:
+
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+    server_name bookmedik.ottershell.es;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name bookmedik.ottershell.es;
+
+    ssl on;
+    ssl_certificate    /etc/letsencrypt/live/ottershell.es/fullchain.pem;
+    ssl_certificate_key    /etc/letsencrypt/live/ottershell.es/privkey.pem;
+
+    location / {
+        proxy_pass http://localhost:8081;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+Activamos el sitio:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/bookmedik.conf /etc/nginx/sites-enabled/
+```
+
+Y reiniciamos nginx:
+
+```bash
+sudo systemctl restart nginx
+```
+
+Por último, añadimos el dominio a nuestro VPS creando una entrada A en el panel de control de nuestro proveedor de dominio.
+
+
 ### Entrega
 
 1. Entrega una captura de pantalla de Docker Hub donde se vea tu imagen subida.
+
+![DOCKER](/img/IAW/dockerPHPIAW6-9.png)
+
 2. Entrega la configuración de nginx.
 
-https://github.com/belennazareth/Docker_PHP/tree/main/tarea5
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+    server_name bookmedik.ottershell.es;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name bookmedik.ottershell.es;
+
+    ssl on;
+    ssl_certificate    /etc/letsencrypt/live/ottershell.es/fullchain.pem;
+    ssl_certificate_key    /etc/letsencrypt/live/ottershell.es/privkey.pem;
+
+    location / {
+        proxy_pass http://localhost:8081;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
 
 3. Entrega una captura de pantalla donde se vea funcionando la aplicación, una vez que te has logueado.
+
+![DOCKER](/img/IAW/dockerPHPIAW6-10.png)
+
 
 ## Tarea 6: Modificación de la aplicación
 
@@ -330,8 +592,73 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea5
 * Cambia el `docker-compose` para probar el cambio.
 * Modifica la aplicación en producción.
 
+Modificamos el fichero `core/app/view/login-view.php` y ponemos nuestro nombre en la línea `<h4 class="title">Acceder a BookMedik</h4>`.
+
+```bash
+nano core/app/view/login-view.php
+
+<h4 class="title">BELEN NAZARETH :)</h4>
+```
+
+Creamos la imagen con la etiqueta `v1_2`:
+
+```bash
+docker build -t belennazareth/bookmedik:v1_2 .
+```
+
+Subimos la imagen a Docker Hub:
+
+```bash
+docker push belennazareth/bookmedik:v1_2
+```
+
+Modificamos el `docker-compose.yml`:
+
+```yml
+version: '3.3'
+services:
+  bn-mariadb:
+    container_name: bn-mariadb
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: bookmedik
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: admin
+    volumes:
+      - mariadb_data:/var/lib/mysql
+  bookmedik:
+    container_name: bn-bookmedik
+    image: belennazareth/bookmedik:v1_2
+    restart: always
+    environment:
+      bookmedik_user: admin
+      bookmedik_passwd: admin
+      host_database: bn-mariadb
+      db_name: bookmedik
+    ports:
+      - 8081:80
+    depends_on:
+      - bn-mariadb
+volumes:
+    mariadb_data:
+```
+
+Levantamos los contenedores:
+
+```bash
+docker-compose up -d
+```
+
+
 ### Entrega
 
 1. Entrega una captura de pantalla de Docker Hub donde se vea tu imagen subida.
 
+![DOCKER](/img/IAW/dockerPHPIAW6-13.png)
+
 2. Entrega una captura de pantalla donde se vea funcionando la aplicación, una vez que te has logueado.
+
+![DOCKER](/img/IAW/dockerPHPIAW6-11.png)
+![DOCKER](/img/IAW/dockerPHPIAW6-12.png)
