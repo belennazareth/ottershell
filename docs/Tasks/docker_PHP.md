@@ -188,12 +188,12 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea2
 * Realiza la imagen docker de la aplicación a partir de la imagen oficial [PHP](https://hub.docker.com/_/php/) que encuentras en docker hub. Lee la documentación de la imagen para configurar una imagen con apache2 y php, además seguramente tengas que instalar alguna extensión de php.
 * Modifica el fichero `docker-compose.yml` para probar esta imagen.
 
-Creamos el dockerfile:
+Creamos el `dockerfile`:
 
 ```dockerfile
-FROM php:8.2-rc-apache-bullseye
+FROM php:7.4-apache-bullseye
 MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
-RUN docker-php-ext-install mysqli && apt-get update && apt-get upgrade -y && apt-get install mariadb-client -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt upgrade -y && docker-php-ext-install mysqli pdo pdo_mysql && apt install mariadb-client -y && apt clean && rm -rf /var/lib/apt/lists/*
 COPY bookmedik /var/www/html/
 ADD script.sh /opt/
 RUN chmod +x /opt/script.sh 
@@ -204,12 +204,13 @@ Modificamos el script `script.sh`:
 
 ```s
 #! /bin/sh
-while ! mysql -u $bookmedik_user -p$bookmedik_passwd -h $host_database --silent -e ";" ; do
+while ! mysql -u ${bookmedik_user} -p${bookmedik_passwd} -h ${host_database} -e ";" ; do
     echo "Esperando a que el servicio de mysql este disponible..."
     sleep 1
 done
 
 mysql -u $bookmedik_user --password=$bookmedik_passwd -h $host_database $db_name < /var/www/html/schema.sql
+/usr/sbin/apache2ctl -D FOREGROUND
 ```
 
 Creamos la imagen:
@@ -251,6 +252,12 @@ volumes:
     mariadb_data:
 ```
 
+Levantamos el escenario:
+
+```bash
+docker-compose up -d 
+```
+
 
 ### Entrega
 
@@ -260,9 +267,21 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea3
 
 2. Entrega una captura de pantalla donde se vea la imagen en el registro de tu entorno de desarrollo.
 
+  docker images
+
+![DOCKER](/img/IAW/dockerPHPIAW6-5.png)
+
 3. Entrega la instrucción para ver los dos contenedores del escenario funcionando.
 
+  docker ps
+
+![DOCKER](/img/IAW/dockerPHPIAW6-6.png)
+
 4. Entrega una captura de pantalla donde se vea funcionando la aplicación, una vez que te has logueado.
+
+![DOCKER](/img/IAW/dockerPHPIAW6-7.png)
+![DOCKER](/img/IAW/dockerPHPIAW6-8.png)
+
 
 ## Tarea 4: Ejecución de una aplicación PHP en docker con nginx (OPTATIVA)
 
@@ -274,6 +293,8 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea3
 * Crea un script con docker compose que levante el escenario con los tres contenedores.
 
 A lo mejor te puede ayudar el siguiente enlace: [Dockerise your PHP application with Nginx and PHP7-FPM](http://geekyplatypus.com/dockerise-your-php-application-with-nginx-and-php7-fpm/)
+
+
 
 ### Entrega
 
