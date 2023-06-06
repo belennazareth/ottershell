@@ -326,7 +326,7 @@ server {
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass book_php:9000;
+        fastcgi_pass book-php:9000;
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -369,44 +369,44 @@ docker build -t belennazareth/bookmedik:v3 .
 Creamos el `docker-compose.yml`:
 
 ```yml
-version: '3.8'
+version: '3.3'
 services:
   bookmedik:
-    container_name: bookmedik-app
-    image: legnakra/bookmedik:v3
+    container_name: bn-bookmedik
+    image: belennazareth/bookmedik:v3
     restart: always
     environment:
-      USUARIO_BOOKMEDIK: bookmedik
-      CONTRA_BOOKMEDIK: bookmedik
-      DATABASE_HOST: bd_mariadb
-      NOMBRE_DB: bookmedik
+      bookmedik_user: admin
+      bookmedik_passwd: admin
+      host_database: bn-mariadb
+      db_name: bookmedik
     ports:
       - 8082:80
     depends_on:
-      - db
+      - bn-mariadb
       - php
     volumes:
       - phpdocs:/usr/share/nginx/html/
-  db:
-    container_name: bd_mariadb
+  bn-mariadb:
+    container_name: bn-mariadb
     image: mariadb
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: root
       MARIADB_DATABASE: bookmedik
-      MARIADB_USER: bookmedik
-      MARIADB_PASSWORD: bookmedik
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: admin
     volumes:
       - mariadb_data:/var/lib/mysql
   php:
-    container_name: book_php
-    image: legnakra/php-fpm-mysql:v1
+    container_name: book-php
+    image: belennazareth/php-fpm-mysql:v1
     restart: always
     environment:
-      USUARIO_BOOKMEDIK: bookmedik
-      CONTRA_BOOKMEDIK: bookmedik
-      DATABASE_HOST: bd_mariadb
-      NOMBRE_DB: bookmedik
+      bookmedik_user: admin
+      bookmedik_passwd: admin
+      host_database: bn-mariadb
+      db_name: bookmedik
     volumes:
       - phpdocs:/usr/share/nginx/html/ 
 
@@ -414,6 +414,19 @@ volumes:
     mariadb_data:
     phpdocs:
 ```
+
+Ejecutamos el `docker-compose.yml`:
+
+```bash
+docker-compose up -d
+```
+
+Comprobamos que se ha creado correctamente:
+
+```bash
+docker ps
+```
+
 
 ### Entrega
 
@@ -423,9 +436,24 @@ https://github.com/belennazareth/Docker_PHP/tree/main/tarea4
 
 2. Entrega una captura de pantalla donde se vea la imagen en el registro de tu entorno de desarrollo.
 
+```bash
+docker images
+```
+
+![DOCKER](/img/IAW/dockerPHPIAW6-17.png)
+
 3. Entrega la instrucción para ver los tres contenedores del escenario funcionando.
 
+```bash
+docker ps
+```
+
+![DOCKER](/img/IAW/dockerPHPIAW6-16.png)
+
 4. Entrega una captura de pantalla donde se vea funcionando la aplicación, una vez que te has logueado.
+
+![DOCKER](/img/IAW/dockerPHPIAW6-14.png)
+![DOCKER](/img/IAW/dockerPHPIAW6-15.png)
 
 ## Tarea 5: Puesta en producción de nuestra aplicación
 
