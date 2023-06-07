@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/docker_PHP"
   },
   "next": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+    "permalink": "/docs/Tasks/jenkins_corrector"
   }
 }

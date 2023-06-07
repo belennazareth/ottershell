@@ -196,6 +196,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/jenkins_corrector",
+              "path": "/docs/Tasks/jenkins_corrector",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/journald",
               "path": "/docs/Tasks/journald",
               "sidebar": "tutorialSidebar"

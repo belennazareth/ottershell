@@ -377,6 +377,12 @@
           },
           {
             "type": "link",
+            "label": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+            "href": "/docs/Tasks/jenkins_corrector",
+            "docId": "Tasks/jenkins_corrector"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -628,6 +634,12 @@
       "id": "Tasks/iSCSI",
       "title": "Introducción a iSCSI",
       "description": "Procedimiento",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/jenkins_corrector": {
+      "id": "Tasks/jenkins_corrector",
+      "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+      "description": "Imaginemos que estamos escribiendo documentos markdown y lo guardamos en un repositorio de github. Queremos que cada vez que hagamos una modificación (commit - push) se pruebe (test) de forma automática si tienes alguna falta de ortografía. Ese proceso lo vamos a hacer de forma automática y continua con Jenkins. Recuerda que el repositorio es https://github.com/josedom24/ic-diccionario",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/journald": {

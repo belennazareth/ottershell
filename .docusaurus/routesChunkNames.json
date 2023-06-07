@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-91e": {
+  "/docs-fb4": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -260,6 +260,10 @@
   "/docs/Tasks/iSCSI-997": {
     "__comp": "17896441",
     "content": "2b17633b"
+  },
+  "/docs/Tasks/jenkins_corrector-267": {
+    "__comp": "17896441",
+    "content": "e93be185"
   },
   "/docs/Tasks/journald-da9": {
     "__comp": "17896441",

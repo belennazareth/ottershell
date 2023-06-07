@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Docker: Implantación de aplicaciones web Python en docker",
-    "permalink": "/docs/Tasks/docker_PYTHON"
+    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+    "permalink": "/docs/Tasks/jenkins_corrector"
   },
   "next": {
     "title": "Extras",

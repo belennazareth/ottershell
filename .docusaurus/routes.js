@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '91e'),
+    component: ComponentCreator('/docs', 'fb4'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -282,6 +282,12 @@ export default [
       {
         path: '/docs/Tasks/iSCSI',
         component: ComponentCreator('/docs/Tasks/iSCSI', '997'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/jenkins_corrector',
+        component: ComponentCreator('/docs/Tasks/jenkins_corrector', '267'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
