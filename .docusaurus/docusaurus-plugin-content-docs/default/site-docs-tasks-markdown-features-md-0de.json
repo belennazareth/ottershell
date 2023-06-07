@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Docker: Implantación de aplicaciones web PHP en docker",
-    "permalink": "/docs/Tasks/docker_PHP"
+    "title": "Docker: Implantación de aplicaciones web Python en docker",
+    "permalink": "/docs/Tasks/docker_PYTHON"
   },
   "next": {
     "title": "Extras",

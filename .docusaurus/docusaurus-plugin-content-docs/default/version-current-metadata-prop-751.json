@@ -371,6 +371,12 @@
           },
           {
             "type": "link",
+            "label": "Docker: Implantación de aplicaciones web Python en docker",
+            "href": "/docs/Tasks/docker_PYTHON",
+            "docId": "Tasks/docker_PYTHON"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -562,6 +568,12 @@
       "id": "Tasks/docker_PHP",
       "title": "Docker: Implantación de aplicaciones web PHP en docker",
       "description": "Imaginemos que el equipo de desarrollo de nuestra empresa ha desarrollado una aplicación PHP que se llama BookMedik (https://github.com/evilnapsis/bookmedik).",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/docker_PYTHON": {
+      "id": "Tasks/docker_PYTHON",
+      "title": "Docker: Implantación de aplicaciones web Python en docker",
+      "description": "Despliegue en docker Django",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/docker_storage_net": {

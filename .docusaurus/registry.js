@@ -32,6 +32,7 @@ export default {
   '46843c04': [() => import(/* webpackChunkName: '46843c04' */ '@site/docs/Tasks/openLDAP.md'), '@site/docs/Tasks/openLDAP.md', require.resolveWeak('@site/docs/Tasks/openLDAP.md')],
   '4b4f0e05': [() => import(/* webpackChunkName: '4b4f0e05' */ '@site/docs/Tasks/criptografia1.md'), '@site/docs/Tasks/criptografia1.md', require.resolveWeak('@site/docs/Tasks/criptografia1.md')],
   '4cadcc7b': [() => import(/* webpackChunkName: '4cadcc7b' */ '@site/docs/Tasks/configuracion_apache2.md'), '@site/docs/Tasks/configuracion_apache2.md', require.resolveWeak('@site/docs/Tasks/configuracion_apache2.md')],
+  '4fd64f46': [() => import(/* webpackChunkName: '4fd64f46' */ '@site/docs/Tasks/docker_PYTHON.md'), '@site/docs/Tasks/docker_PYTHON.md', require.resolveWeak('@site/docs/Tasks/docker_PYTHON.md')],
   '520ee44b': [() => import(/* webpackChunkName: '520ee44b' */ '@site/docs/Tasks/docker_imagenes.md'), '@site/docs/Tasks/docker_imagenes.md', require.resolveWeak('@site/docs/Tasks/docker_imagenes.md')],
   '52be7948': [() => import(/* webpackChunkName: '52be7948' */ '@site/docs/Tasks/auditorias.md'), '@site/docs/Tasks/auditorias.md', require.resolveWeak('@site/docs/Tasks/auditorias.md')],
   '54e361b8': [() => import(/* webpackChunkName: '54e361b8' */ '@site/docs/Tasks/dns_escenario_openstack.md'), '@site/docs/Tasks/dns_escenario_openstack.md', require.resolveWeak('@site/docs/Tasks/dns_escenario_openstack.md')],

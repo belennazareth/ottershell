@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '845'),
+    component: ComponentCreator('/docs', '91e'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -222,6 +222,12 @@ export default [
       {
         path: '/docs/Tasks/docker_PHP',
         component: ComponentCreator('/docs/Tasks/docker_PHP', 'f5a'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/docker_PYTHON',
+        component: ComponentCreator('/docs/Tasks/docker_PYTHON', '8ed'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
