@@ -49,6 +49,21 @@ pipeline {
 3. En el stage Install actualizamos e instalamos la herramienta que vamos a utilizar. Podríamos partir de una imagen construida por nosotros donde tuviéramos ya esta herramienta instalada, y no haría falta este paso.
 4. En el stage Test hacemos la comprobación, hemos configurado el contenedor para que use UTF8.
 
+Primero instalamos Jenkins siguiendo los pasos de la página oficial: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+
+Pedira que reiniciemos el servicio de Jenkins: 
+
+![DOCKER](/img/IAW/taller1IAW7.png)
+
+A continuación, accedemos a la interfaz web de Jenkins:
+
+![DOCKER](/img/IAW/taller1IAW7-2.png)
+![DOCKER](/img/IAW/taller1IAW7-3.png)
+
+Una vez completado todo el registro, nos aparecerá la siguiente pantalla:
+
+![DOCKER](/img/IAW/taller1IAW7-4.png)
+
 ## Disparador del pipeline
 
 Tenemos varias formas de activar de forma automática la ejecución del pipeline:
@@ -65,7 +80,7 @@ Vamos a aprender como podemos hacer que el pipeline mande un correo al finalizar
 
 ![jenkins](https://fp.josedomingo.org/iaw2223/7_ic/img/pipe9.png)
 
-Y al pileline le añadimos las siguientes líneas:
+Y al pipeline le añadimos las siguientes líneas:
 
 ```groovy
 ...
@@ -81,6 +96,7 @@ Y al pileline le añadimos las siguientes líneas:
       }
 }
 ```
+
 
 ## Entrega
 

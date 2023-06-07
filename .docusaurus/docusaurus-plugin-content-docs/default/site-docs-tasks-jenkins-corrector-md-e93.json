@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/jenkins_corrector",
+  "id": "Tasks/jenkins_corrector",
+  "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+  "description": "Imaginemos que estamos escribiendo documentos markdown y lo guardamos en un repositorio de github. Queremos que cada vez que hagamos una modificación (commit - push) se pruebe (test) de forma automática si tienes alguna falta de ortografía. Ese proceso lo vamos a hacer de forma automática y continua con Jenkins. Recuerda que el repositorio es https://github.com/josedom24/ic-diccionario",
+  "source": "@site/docs/Tasks/jenkins_corrector.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/jenkins_corrector",
+  "permalink": "/docs/Tasks/jenkins_corrector",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/jenkins_corrector.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 50,
+  "frontMatter": {
+    "sidebar_position": 50
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker: Implantación de aplicaciones web Python en docker",
+    "permalink": "/docs/Tasks/docker_PYTHON"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
