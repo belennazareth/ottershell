@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/docker_PYTHON",
+  "id": "Tasks/docker_PYTHON",
+  "title": "Docker: Implantación de aplicaciones web Python en docker",
+  "description": "Despliegue en docker Django",
+  "source": "@site/docs/Tasks/docker_PYTHON.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/docker_PYTHON",
+  "permalink": "/docs/Tasks/docker_PYTHON",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/docker_PYTHON.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 50,
+  "frontMatter": {
+    "sidebar_position": 50
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker: Implantación de aplicaciones web PHP en docker",
+    "permalink": "/docs/Tasks/docker_PHP"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
