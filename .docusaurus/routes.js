@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'fb4'),
+    component: ComponentCreator('/docs', 'f27'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -288,6 +288,12 @@ export default [
       {
         path: '/docs/Tasks/jenkins_corrector',
         component: ComponentCreator('/docs/Tasks/jenkins_corrector', '267'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/jenkins_surge',
+        component: ComponentCreator('/docs/Tasks/jenkins_surge', '400'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

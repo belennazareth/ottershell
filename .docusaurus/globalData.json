@@ -201,6 +201,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/jenkins_surge",
+              "path": "/docs/Tasks/jenkins_surge",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/journald",
               "path": "/docs/Tasks/journald",
               "sidebar": "tutorialSidebar"

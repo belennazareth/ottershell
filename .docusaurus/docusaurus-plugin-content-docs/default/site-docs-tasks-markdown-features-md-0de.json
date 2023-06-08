@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
-    "permalink": "/docs/Tasks/jenkins_corrector"
+    "title": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
+    "permalink": "/docs/Tasks/jenkins_surge"
   },
   "next": {
     "title": "Extras",
