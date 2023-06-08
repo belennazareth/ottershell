@@ -78,6 +78,8 @@ Para más información: [Triggering a Jenkins build on push using GitHub webhook
 
 Tenemos un problema: al crear el webhook debemos indicar la dirección de nuestro jenkins, que tiene que ser accesible desde internet, pero nuestra instalación es local. Para hacer una prueba en nuestro servidor de jenkins local podríamos hacer uso de [ngrok](https://ngrok.com/).
 
+
+
 ## Entrega
 
 ### 1. La URL del tu repositorio GitHub.
@@ -87,3 +89,46 @@ Tenemos un problema: al crear el webhook debemos indicar la dirección de nuestr
 ### 3. Captura de pantalla donde se vea donde has creado las credenciales necesarias.
 
 ### 4. Explica la configuración necesaria y una prueba de funcionamiento para que se dispare el pipeline cuando hagamos un push al repositorio.
+
+Para esto primero debemos entrar en nuestro repositorio de GitHub y en la pestaña de Settings, en la parte izquierda, seleccionamos Webhooks. Una vez dentro, pulsamos en el botón de Add webhook.
+
+![surge](/img/IAW/taller2IAW7.png)
+
+Para conseguir la url de nuestro webhook, debemos ejecutar el siguiente comando en la terminal de la máquina donde tengamos instalado jenkins para instalarnos ngrok:
+
+```bash
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
+```
+
+Como ngrok no esta actualizado para realizar esta tarea tendremos que actualizarlo manualmente. Para ello descargamos la ultima versión de ngrok y la descomprimimos:
+
+```bash
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+tar xvzf ngrok-v3-stable-linux-amd64.tgz
+```
+
+Una vez descomprimido, copiamos el archivo ngrok a la carpeta `/bin/` para que sea accesible desde cualquier lugar:
+
+```bash
+sudo cp ngrok /bin/
+```
+
+Para poder usar ngrok, debemos registrarnos en su página web y obtener un token. Una vez obtenido el token, lo introducimos en la terminal con el siguiente comando:
+
+```bash
+ngrok config add-authtoken {token que te da la página de ngrok al registrarte} 
+```
+
+Una vez hecho esto, ejecutamos el siguiente comando para iniciar ngrok en segundo plano y que nos de la url de nuestro webhook:
+
+```bash
+nohup ./ngrok http 8080 & curl http://127.0.0.1:4040/api/tunnels
+```
+
+*Recursos: https://gist.github.com/mudssrali/acfb8b57e5847c7308e1064a739971da, https://ngrok.com/docs/getting-started/, https://stackoverflow.com/questions/27162552/how-to-run-ngrok-in-background
+
+![surge](/img/IAW/taller2IAW7-2.png)
+
+Con esta configuración, cada vez que hagamos un push en nuestro repositorio de GitHub, se ejecutará el pipeline de Jenkins:
+
+
