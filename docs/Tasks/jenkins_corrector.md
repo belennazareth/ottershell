@@ -138,6 +138,7 @@ pipeline {
 ### 3. Una captura de pantalla donde se vea la configuración del disparador del pipeline.
 
 ![DOCKER](/img/IAW/taller1IAW7-2.png)
+![DOCKER](/img/IAW/taller1IAW7-5.png)
 
 ### 4. Una captura de un correo electrónico recibido sin ningún error, y otro con algún error en la ejecución del pipeline.
 
