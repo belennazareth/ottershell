@@ -51,18 +51,6 @@ pipeline {
 
 Primero instalamos Jenkins siguiendo los pasos de la página oficial: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
 
-Pedira que reiniciemos el servicio de Jenkins: 
-
-![DOCKER](/img/IAW/taller1IAW7.png)
-
-A continuación, accedemos a la interfaz web de Jenkins:
-
-![DOCKER](/img/IAW/taller1IAW7-2.png)
-![DOCKER](/img/IAW/taller1IAW7-3.png)
-
-Una vez completado todo el registro, nos aparecerá la siguiente pantalla:
-
-![DOCKER](/img/IAW/taller1IAW7-4.png)
 
 ## Disparador del pipeline
 
@@ -97,10 +85,62 @@ Y al pipeline le añadimos las siguientes líneas:
 }
 ```
 
+Cuando se completa y sale todo bien aparece lo siguiente:
+
+![DOCKER](/img/IAW/taller1IAW7.png)
+
 
 ## Entrega
 
 ### 1.La URL del tu repositorio GitHub.
-### 2. El contenido de la tu fichero Jenkinfile.
+
+https://github.com/belennazareth/ic-diccionario
+
+### 2. El contenido de tu fichero Jenkinfile.
+
+```groovy
+pipeline {
+    agent {
+        docker { image 'debian'
+        args '-u root:root'
+        }
+    }
+    stages {
+        stage('Clone') {
+            steps {
+                git branch:'master',url:'https://github.com/belennazareth/ic-diccionario.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                sh 'apt-get update && apt-get install -y aspell-es ' 
+            }
+        }
+        stage('Test')
+        {
+            steps {
+                sh '''
+                export LC_ALL=C.UTF-8
+                OUTPUT=`cat doc/*.md | aspell list -d es -p ./.aspell.es.pws`; if [ -n "$OUTPUT" ]; then echo $OUTPUT; exit 1; fi'''
+            }
+        }
+    }
+    post {
+         always {
+          mail to: 'debian@nazareth.jenkins.org',
+          subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+          body: "${env.BUILD_URL} has result ${currentBuild.result}"
+        }
+      }
+}
+```
+
 ### 3. Una captura de pantalla donde se vea la configuración del disparador del pipeline.
-### 4. Una captura de un correo electrónico recibido sin ningún error, y otro con algún error en al ejecución del pipeline.
+
+![DOCKER](/img/IAW/taller1IAW7-2.png)
+
+### 4. Una captura de un correo electrónico recibido sin ningún error, y otro con algún error en la ejecución del pipeline.
+
+![DOCKER](/img/IAW/taller1IAW7-3.png)
+![DOCKER](/img/IAW/taller1IAW7-4.png)
+
