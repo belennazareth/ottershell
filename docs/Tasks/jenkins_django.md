@@ -2,7 +2,7 @@
 sidebar_position: 52
 ---
 
-# Integración continua de aplicación django (Test)
+# Jenkins: Integración continua de aplicación django (Test)
 
 Vamos a trabajar con el repositorio de la aplicación [django_tutorial](https://github.com/josedom24/django_tutorial). Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero `tests.py` del directorio `polls`.
 
