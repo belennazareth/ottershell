@@ -383,6 +383,12 @@
           },
           {
             "type": "link",
+            "label": "Integración continua de aplicación django (Test)",
+            "href": "/docs/Tasks/jenkins_django",
+            "docId": "Tasks/jenkins_django"
+          },
+          {
+            "type": "link",
             "label": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
             "href": "/docs/Tasks/jenkins_surge",
             "docId": "Tasks/jenkins_surge"
@@ -646,6 +652,12 @@
       "id": "Tasks/jenkins_corrector",
       "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
       "description": "Imaginemos que estamos escribiendo documentos markdown y lo guardamos en un repositorio de github. Queremos que cada vez que hagamos una modificación (commit - push) se pruebe (test) de forma automática si tienes alguna falta de ortografía. Ese proceso lo vamos a hacer de forma automática y continua con Jenkins. Recuerda que el repositorio es https://github.com/josedom24/ic-diccionario",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/jenkins_django": {
+      "id": "Tasks/jenkins_django",
+      "title": "Integración continua de aplicación django (Test)",
+      "description": "Vamos a trabajar con el repositorio de la aplicación djangotutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/jenkins_surge": {

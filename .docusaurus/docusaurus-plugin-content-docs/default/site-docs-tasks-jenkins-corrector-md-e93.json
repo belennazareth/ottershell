@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/docker_PYTHON"
   },
   "next": {
-    "title": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
-    "permalink": "/docs/Tasks/jenkins_surge"
+    "title": "Integración continua de aplicación django (Test)",
+    "permalink": "/docs/Tasks/jenkins_django"
   }
 }

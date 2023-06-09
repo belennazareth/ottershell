@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
-    "permalink": "/docs/Tasks/jenkins_corrector"
+    "title": "Integración continua de aplicación django (Test)",
+    "permalink": "/docs/Tasks/jenkins_django"
   },
   "next": {
     "title": "Markdown Features",

@@ -201,6 +201,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/jenkins_django",
+              "path": "/docs/Tasks/jenkins_django",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/jenkins_surge",
               "path": "/docs/Tasks/jenkins_surge",
               "sidebar": "tutorialSidebar"
