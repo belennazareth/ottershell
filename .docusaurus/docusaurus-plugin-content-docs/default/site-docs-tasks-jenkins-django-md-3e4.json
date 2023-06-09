@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/jenkins_django",
+  "id": "Tasks/jenkins_django",
+  "title": "Integración continua de aplicación django (Test)",
+  "description": "Vamos a trabajar con el repositorio de la aplicación djangotutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.",
+  "source": "@site/docs/Tasks/jenkins_django.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/jenkins_django",
+  "permalink": "/docs/Tasks/jenkins_django",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/jenkins_django.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 52,
+  "frontMatter": {
+    "sidebar_position": 52
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+    "permalink": "/docs/Tasks/jenkins_corrector"
+  },
+  "next": {
+    "title": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
+    "permalink": "/docs/Tasks/jenkins_surge"
+  }
+}

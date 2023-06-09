@@ -113,13 +113,50 @@ pipeline {
 
 Prueba a cambiar el código para que un test falle y comprueba como el `pipeline` falla.
 
+**URL Repositorio:** https://github.com/belennazareth/django_tutorial.git
+
 ## Entrega
 
 ### 1. Una captura de pantalla donde se vea la salida de un build que se ha ejecutado de manera correcta.
 
+![surge](/img/IAW/taller3IAW7.png)
 
 ### 2. Modifica el código de la aplicación para que se produzca un fallo en el código. *Recuerda que para hacer fallar un test, no hay que tocar el fichero test.py. Los test no se pasan porque al modificar el código de la aplicación se dejan de cumplir las condiciones indicadas en los test. Recuerda no elegir en el que hemos visto en este taller:mensaje *“No polls are available” **.
 
+En mi caso seleccioné:
+
+```txt
+1. En las preguntas publicadas en una fecha futura, la función was_published_recently() debe devolver False
+```
+
+Esto tenía antes el fichero:
+
+```py
+...
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
+...
+```
+
+Lo modifiqué cambiando el valor `<=` por `<`:
+
+```py
+...
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) < self.pub_date <= now
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
+...
+```
+
+Con esto la preguntas publicadas en una fecha futura no cumplen la condición de `was_published_recently` y por tanto el test `test_future_question` falla.
 
 ### 3. Una captura de pantalla donde se vea la salida de un build que se ha ejecutado con errores de testeo.
 
+![surge](/img/IAW/taller3IAW7-2.png)
