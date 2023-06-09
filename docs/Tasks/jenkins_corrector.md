@@ -87,7 +87,7 @@ Y al pipeline le añadimos las siguientes líneas:
 
 Cuando se completa y sale todo bien aparece lo siguiente:
 
-![DOCKER](/img/IAW/taller1IAW7.png)
+![jenkins](/img/IAW/taller1IAW7.png)
 
 
 ## Entrega
@@ -137,11 +137,13 @@ pipeline {
 
 ### 3. Una captura de pantalla donde se vea la configuración del disparador del pipeline.
 
-![DOCKER](/img/IAW/taller1IAW7-2.png)
-![DOCKER](/img/IAW/taller1IAW7-5.png)
+![jenkins](/img/IAW/taller1IAW7-2.png)
+![jenkins](/img/IAW/taller1IAW7-5.png)
 
 ### 4. Una captura de un correo electrónico recibido sin ningún error, y otro con algún error en la ejecución del pipeline.
 
-![DOCKER](/img/IAW/taller1IAW7-3.png)
-![DOCKER](/img/IAW/taller1IAW7-4.png)
+![jenkins](/img/IAW/taller1IAW7-3.png)
+![jenkins](/img/IAW/taller1IAW7-4.png)
+
+![jenkins](/img/IAW/taller1IAW7-6.png)
 

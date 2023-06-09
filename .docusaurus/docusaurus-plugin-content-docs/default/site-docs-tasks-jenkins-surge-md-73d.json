@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/jenkins_surge",
+  "id": "Tasks/jenkins_surge",
+  "title": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
+  "description": "En este ejercicio queremos desplegar una página HTML5 en el servicio surge.sh, además queremos comprobar si el código HTML5 es válido. Estas dos operaciones//github.com/josedom24/ic-html5.",
+  "source": "@site/docs/Tasks/jenkins_surge.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/jenkins_surge",
+  "permalink": "/docs/Tasks/jenkins_surge",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/jenkins_surge.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 52,
+  "frontMatter": {
+    "sidebar_position": 52
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+    "permalink": "/docs/Tasks/jenkins_corrector"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
