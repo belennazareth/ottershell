@@ -84,9 +84,47 @@ Tenemos un problema: al crear el webhook debemos indicar la dirección de nuestr
 
 ### 1. La URL del tu repositorio GitHub.
 
+https://github.com/belennazareth/ic-html5
+
 ### 2. El contenido de la tu fichero Jenkinfile.
 
+```groovy
+pipeline {
+    environment {
+        TOKEN = credentials('SURGE_TOKEN')
+      }
+    agent {
+        docker { image 'josedom24/debian-npm'
+        args '-u root:root'
+        }
+    }
+    stages {
+        stage('Clone') {
+            steps {
+                git branch:'master',url:'https://github.com/belennazareth/ic-html5.git'
+            }
+        }
+        
+        stage('Install surge')
+        {
+            steps {
+                sh 'npm install -g surge'
+            }
+        }
+        stage('Deploy')
+        {
+            steps{
+                sh 'surge ./_build/ nazareth24.surge.sh --token $TOKEN'
+            }
+        }
+        
+    }
+}
+```
+
 ### 3. Captura de pantalla donde se vea donde has creado las credenciales necesarias.
+
+![surge](/img/IAW/taller2IAW7-4.png)
 
 ### 4. Explica la configuración necesaria y una prueba de funcionamiento para que se dispare el pipeline cuando hagamos un push al repositorio.
 
@@ -123,6 +161,10 @@ Una vez hecho esto, ejecutamos el siguiente comando para iniciar ngrok en segund
 
 ```bash
 nohup ./ngrok http 8080 & curl http://127.0.0.1:4040/api/tunnels
+
+o
+
+ngrok http 8080
 ```
 
 *Recursos: https://gist.github.com/mudssrali/acfb8b57e5847c7308e1064a739971da, https://ngrok.com/docs/getting-started/, https://stackoverflow.com/questions/27162552/how-to-run-ngrok-in-background
@@ -132,3 +174,4 @@ nohup ./ngrok http 8080 & curl http://127.0.0.1:4040/api/tunnels
 Con esta configuración, cada vez que hagamos un push en nuestro repositorio de GitHub, se ejecutará el pipeline de Jenkins:
 
 
+![surge](/img/IAW/taller2IAW7-3.png)
