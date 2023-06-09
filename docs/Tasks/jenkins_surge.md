@@ -175,4 +175,4 @@ Con esta configuración, cada vez que hagamos un push en nuestro repositorio de 
 
 
 ![surge](/img/IAW/taller2IAW7-3.png)
-![Watch the video](/img/IAW/taller2IAW7-6.mp4)
+[![surge](/img/IAW/taller2IAW7-3.png)](https://www.dropbox.com/s/tv563oahr9pj8w9/taller2IAW7-6.mp4?dl=0)
