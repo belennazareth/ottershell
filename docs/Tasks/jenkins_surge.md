@@ -173,6 +173,6 @@ ngrok http 8080
 
 Con esta configuración, cada vez que hagamos un push en nuestro repositorio de GitHub, se ejecutará el pipeline de Jenkins:
 
+**(click en la imagen para ver el video)**
 
-![surge](/img/IAW/taller2IAW7-3.png)
 [![surge](/img/IAW/taller2IAW7-3.png)](https://www.dropbox.com/s/tv563oahr9pj8w9/taller2IAW7-6.mp4?dl=0)
