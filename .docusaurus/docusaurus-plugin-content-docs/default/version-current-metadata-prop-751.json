@@ -383,7 +383,7 @@
           },
           {
             "type": "link",
-            "label": "Integración continua de aplicación django (Test)",
+            "label": "Jenkins: Integración continua de aplicación django (Test)",
             "href": "/docs/Tasks/jenkins_django",
             "docId": "Tasks/jenkins_django"
           },
@@ -656,7 +656,7 @@
     },
     "Tasks/jenkins_django": {
       "id": "Tasks/jenkins_django",
-      "title": "Integración continua de aplicación django (Test)",
+      "title": "Jenkins: Integración continua de aplicación django (Test)",
       "description": "Vamos a trabajar con el repositorio de la aplicación djangotutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.",
       "sidebar": "tutorialSidebar"
     },

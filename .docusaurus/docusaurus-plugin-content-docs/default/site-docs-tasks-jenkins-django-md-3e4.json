@@ -1,7 +1,7 @@
 {
   "unversionedId": "Tasks/jenkins_django",
   "id": "Tasks/jenkins_django",
-  "title": "Integración continua de aplicación django (Test)",
+  "title": "Jenkins: Integración continua de aplicación django (Test)",
   "description": "Vamos a trabajar con el repositorio de la aplicación djangotutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.",
   "source": "@site/docs/Tasks/jenkins_django.md",
   "sourceDirName": "Tasks",

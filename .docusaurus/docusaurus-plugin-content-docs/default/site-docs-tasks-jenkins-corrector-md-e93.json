@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/docker_PYTHON"
   },
   "next": {
-    "title": "Integración continua de aplicación django (Test)",
+    "title": "Jenkins: Integración continua de aplicación django (Test)",
     "permalink": "/docs/Tasks/jenkins_django"
   }
 }
