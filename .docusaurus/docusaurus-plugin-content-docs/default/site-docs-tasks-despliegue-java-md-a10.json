@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Recolección centralizada de logs del sistema",
-    "permalink": "/docs/Tasks/journald"
+    "title": "Servidor de correos",
+    "permalink": "/docs/Tasks/correo_vps"
   },
   "next": {
     "title": "Despliegue de aplicaciones python",

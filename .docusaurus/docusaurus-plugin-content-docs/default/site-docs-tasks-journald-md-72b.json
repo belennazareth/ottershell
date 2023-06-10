@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/correo"
   },
   "next": {
-    "title": "Despliegue de aplicaciones Java",
-    "permalink": "/docs/Tasks/despliegue_java"
+    "title": "Servidor de correos",
+    "permalink": "/docs/Tasks/correo_vps"
   }
 }

@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '6c9'),
+    component: ComponentCreator('/docs', '3f7'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -162,6 +162,12 @@ export default [
       {
         path: '/docs/Tasks/correo',
         component: ComponentCreator('/docs/Tasks/correo', 'eee'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/correo_vps',
+        component: ComponentCreator('/docs/Tasks/correo_vps', '358'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

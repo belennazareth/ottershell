@@ -245,6 +245,12 @@
           },
           {
             "type": "link",
+            "label": "Servidor de correos",
+            "href": "/docs/Tasks/correo_vps",
+            "docId": "Tasks/correo_vps"
+          },
+          {
+            "type": "link",
             "label": "Despliegue de aplicaciones Java",
             "href": "/docs/Tasks/despliegue_java",
             "docId": "Tasks/despliegue_java"
@@ -526,6 +532,12 @@
       "id": "Tasks/correo",
       "title": "Servidor de correo en los servidores de clase",
       "description": "En esta ocasión, se va a realizar un servidor de correo en los servidores de clase, para ello se va a utilizar el servicio de postfix, que se encarga de enviar y recibir correos electrónicos. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/correo_vps": {
+      "id": "Tasks/correo_vps",
+      "title": "Servidor de correos",
+      "description": "Instala y configura de manera adecuada el servidor de correos en tu VPS. El nombre del servidor de correo será mail.tudominio.es (este es el nombre que deberá aparecer en el registro MX).",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/criptografia1": {

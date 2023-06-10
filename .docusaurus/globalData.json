@@ -96,6 +96,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/correo_vps",
+              "path": "/docs/Tasks/correo_vps",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/criptografia1",
               "path": "/docs/Tasks/criptografia1",
               "sidebar": "tutorialSidebar"
