@@ -241,9 +241,9 @@ Si vemos el directorio Maildir vemos que se han creado los directorios necesario
 ![Postfix](/img/SRI+HLC/correoSRI6-19.png)
 
 
-* **Tarea 9:** Instala configura dovecot para ofrecer el protocolo IMAP. Configura dovecot de manera adecuada para ofrecer autentificación y cifrado.
+* **Tarea 9:** Instala configura `dovecot` para ofrecer el protocolo IMAP. Configura dovecot de manera adecuada para ofrecer autentificación y cifrado.
 
-Para realizar el cifrado de la comunicación crea un certificado en LetsEncrypt para tu dominio mail.tudominio.es. Recuerda que para el ofrecer el cifrado tiene varias soluciones:
+Para realizar el cifrado de la comunicación crea un certificado en LetsEncrypt para tu dominio mail.tudominio.es. Recuerda que para ofrecer el cifrado tiene varias soluciones:
 
 - IMAP con STARTTLS: STARTTLS transforma una conexión insegura en una segura mediante el uso de SSL/TLS. Por lo tanto usando el mismo puerto 143/tcp tenemos cifrada la comunicación.
 
@@ -253,6 +253,40 @@ Para realizar el cifrado de la comunicación crea un certificado en LetsEncrypt 
 
 Elige una de las opciones anterior para realizar el cifrado. Y muestra la configuración de un cliente de correo (evolution, thunderbird, …) y muestra como puedes leer los correos enviado a tu usuario.
 
+----------------------------------------------------------------------------
+
+Instalamos dovecot:
+
+    $ sudo apt install dovecot-imapd -y
+
+Creamos el certificado:
+
+    $ sudo certbot certonly --standalone -d mail.ottershell.es
+
+Editamos el fichero de configuración:
+
+    $ sudo nano /etc/dovecot/conf.d/10-ssl.conf
+
+```c
+ssl_cert = </etc/letsencrypt/live/mail.ottershell.es/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.ottershell.es/privkey.pem
+```
+
+Editamos el fichero de configuración de correo:
+
+    $ sudo nano /etc/dovecot/conf.d/10-mail.conf
+
+```c
+mail_location = maildir:~/Maildir
+```
+
+Reiniciamos el servicio:
+
+    $ sudo systemctl restart dovecot
+
+Abrimos el puerto 993 en el firewall de la VPS.
+
+
 * **Tarea 10 (No obligatoria):** Instala un webmail (roundcube, horde, rainloop) para gestionar el correo del equipo mediante una interfaz web. Muestra la configuración necesaria y cómo eres capaz de leer los correos que recibe tu usuario.
 
 * **Tarea 11:** Configura de manera adecuada postfix para que podamos mandar un correo desde un cliente remoto. La conexión entre cliente y servidor debe estar autentificada con SASL usando dovecor y además debe estar cifrada. Para cifrar esta comunicación puedes usar dos opciones:
@@ -261,6 +295,89 @@ Elige una de las opciones anterior para realizar el cifrado. Y muestra la config
 - SMTPS: Utiliza un puerto no estándar (465) para SMTPS (Simple Mail Transfer Protocol Secure). No es una extensión de smtp. Es muy parecido a HTTPS.
 
 Elige una de las opciones anterior para realizar el cifrado. Y muestra la configuración de un cliente de correo (evolution, thunderbird, …) y muestra como puedes enviar los correos.
+
+----------------------------------------------------------------------------
+
+Modificamos el fichero de configuración:
+
+    $ sudo nano /etc/postfix/main.cf
+
+```c
+smtpd_tls_cert_file = /etc/letsencrypt/live/ottershell.es/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/ottershell.es/privkey.pem
+
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_authenticated_header = yes
+broken_sasl_auth_clients = yes
+```
+
+Editamos el fichero master.cf:
+
+    $ sudo nano /etc/postfix/master.cf
+
+```c
+submission inet n       -       y       -       -       smtpd
+  -o content_filter=spamassassin
+  -o syslog_name=postfix/submission
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_tls_auth_only=yes
+  -o smtpd_reject_unlisted_recipient=no
+  -o smtpd_client_restrictions=$mua_client_restrictions
+  -o smtpd_helo_restrictions=$mua_helo_restrictions
+  -o smtpd_sender_restrictions=$mua_sender_restrictions
+  -o smtpd_recipient_restrictions=
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+  -o milter_macro_daemon_name=ORIGINATING
+
+smtps     inet  n       -       y       -       -       smtpd
+  -o syslog_name=postfix/smtps
+  -o smtpd_tls_wrappermode=yes
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_reject_unlisted_recipient=no
+  -o smtpd_client_restrictions=$mua_client_restrictions
+  -o smtpd_helo_restrictions=$mua_helo_restrictions
+  -o smtpd_sender_restrictions=$mua_sender_restrictions
+  -o smtpd_recipient_restrictions=
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+  -o milter_macro_daemon_name=ORIGINATING
+```
+
+Editamos el fichero de configuración de dovecot:
+
+    $ sudo nano /etc/dovecot/conf.d/10-master.conf
+
+```c
+service auth {
+  ...
+  # Postfix smtp-auth
+  unix_listener /var/spool/postfix/private/auth {
+    mode = 0666
+  }
+  ...
+}
+```
+
+En la VPS abrimos los puertos 465 y el 993 que es el que abrimos en la actividad anterior.
+Reinicamos el servicio:
+
+    $ sudo systemctl restart postfix
+    $ sudo systemctl restart dovecot
+
+Entramos en evolution y configuramos la cuenta de correo (editar>preferencias>cuentas>añadir):
+
+![Postfix](/img/SRI+HLC/correoSRI6-20.png)
+![Postfix](/img/SRI+HLC/correoSRI6-21.png)
+![Postfix](/img/SRI+HLC/correoSRI6-22.png)
+![Postfix](/img/SRI+HLC/correoSRI6-23.png)
+
+Envío un correo del exterior a mi cuenta de correo en la VPS:
+
+![Postfix](/img/SRI+HLC/correoSRI6-24.png)
+
+
 
 * **Tarea 12 (No obligatoria):** Configura el cliente webmail para el envío de correo. Realiza una prueba de envío con el webmail.
 
