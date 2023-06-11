@@ -158,6 +158,96 @@ Si intentamos montar el recurso en el nodo secundario, vemos que no se puede, si
 
 ```bash
 sudo umount /mnt
+sudo drbdadm secondary wwwdata #node1
+sudo drbdadm primary wwwdata #node2
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-7.png)
+
+Montamos el recurso en el nodo secundario y comprobamos que existe el fichero creado anteriormente:
+
+```bash
+sudo mount /dev/drbd1 /mnt
+cat /mnt/fichero.txt
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-8.png)
+
+-------------------------------------------------------------------------------
+
+Configuramos el recurso dbdata en modo Dual-primary:
+
+```bash
+sudo drbdadm up dbdata
+sudo drbdadm status dbdata 
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-9.png)
+
+Ahora, a diferencia del apartado anterior, vamos a configurar el recurso como primario en ambos nodos:
+
+```bash
+sudo drbdadm primary --force dbdata
+sudo drbdadm status dbdata
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-10.png)
+
+Para poder tener el recurso como primario en ambos nodos, debemos configurar el sistema de ficheros OCFS2, para ello instalamos el paquete `ocfs2-tools` en ambos nodos:
+
+```bash
+sudo apt install ocfs2-tools -y
+```
+
+Creamos el cluster y añadimos los nodos:
+
+```bash
+o2cb add-cluster ocfs2
+o2cb add-node ocfs2 node1 --ip 10.1.0.10
+o2cb add-node ocfs2 node2 --ip 10.1.0.11
+```
+
+Vemos que los nodos están añadidos:
+
+```bash
+cat /etc/ocfs2/cluster.conf
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-11.png)
+
+Modificamos el fichero `/etc/default/o2cb` para que se inicie el cluster al arrancar el sistema:
+
+```bash
+O2CB_ENABLED=true #modificamos esta línea
+O2CB_BOOTCLUSTER=ocfs2
+O2CB_HEARTBEAT_THRESHOLD=31
+O2CB_IDLE_TIMEOUT_MS=30000
+O2CB_KEEPALIVE_DELAY_MS=2000
+O2CB_RECONNECT_DELAY_MS=2000
+```
+
+Modificamos el fichero `/etc/sysctl.conf`:
+
+```bash
+kernel.panic = 30
+kernel.panic_on_oops = 1
+```
+
+Aplicamos los cambios:
+
+```bash
+sudo sysctl -p
+```
+
+Ponemos en marcha el cluster:
+
+```bash
+o2cb register-cluster ocfs2
+o2cb cluster-status ocfs2
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-12.png)
+
 
 
 ## Entrega
