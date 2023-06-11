@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/DRBD_OCFS2",
+  "id": "Tasks/DRBD_OCFS2",
+  "title": "Creación de un clúster DRBD + OCFS2",
+  "description": "Configura un escenario con dos máquinas. Cada una tiene que tener dos discos adicionales (tamaño 2Gb para que la sincronización sea rápida).",
+  "source": "@site/docs/Tasks/DRBD_OCFS2.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/DRBD_OCFS2",
+  "permalink": "/docs/Tasks/DRBD_OCFS2",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/DRBD_OCFS2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 23,
+  "frontMatter": {
+    "sidebar_position": 23
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Despliegue de aplicaciones Java",
+    "permalink": "/docs/Tasks/despliegue_java"
+  },
+  "next": {
+    "title": "Despliegue de aplicaciones python",
+    "permalink": "/docs/Tasks/despliegue_python"
+  }
+}

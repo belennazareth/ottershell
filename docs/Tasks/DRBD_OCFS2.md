@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "node1" do |node1|
     node1.vm.box = "debian/bullseye64"
     node1.vm.hostname = "node1"
+    node1.vm.synced_folder ".", "/vagrant", disabled: true
     node1.vm.network "private_network", ip: "10.1.0.10"
     node1.vm.provider :libvirt do |libvirt|
         libvirt.storage :file, :size => '2G'
@@ -36,6 +37,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "node2" do |node2|
     node2.vm.box = "debian/bullseye64"
     node2.vm.hostname = "node2"
+    node2.vm.synced_folder ".", "/vagrant", disabled: true
     node2.vm.network "private_network", ip: "10.1.0.11"
     node2.vm.provider :libvirt do |libvirt|
         libvirt.storage :file, :size => '2G'
@@ -51,7 +53,111 @@ Después de crear las máquinas, instalamos los paquetes necesarios para DRBD y 
 apt install drbd-utils ocfs2-tools -y
 ```
 
+Creamos los recursos DRBD en cada máquina, en el fichero `/etc/drbd.d/wwwdata.res`:
 
+```bash
+resource wwwdata {
+  protocol C;
+  meta-disk internal;
+  device /dev/drbd1;
+  syncer {
+    verify-alg sha1;
+  }
+  net {
+    allow-two-primaries;
+  }
+  on node1 {
+    disk /dev/vdb;
+    address 10.1.0.10:7789;
+  }
+  on node2 {
+    disk /dev/vdb;
+    address 10.1.0.11:7789;
+  }
+}
+```
+
+Creamos el recurso en cada máquina:
+
+```bash
+sudo drbdadm create-md wwwdata
+sudo drbdadm up wwwdata
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7.png)
+
+Creamos el recurso dbdata en cada máquina, en el fichero `/etc/drbd.d/dbdata.res`:
+
+```bash
+resource dbdata {
+  protocol C;
+  meta-disk internal;
+  device /dev/drbd2;
+  syncer {
+    verify-alg sha1;
+  }
+  net {
+    allow-two-primaries;
+  }
+  on node1 {
+    disk /dev/vdc;
+    address 10.1.0.10:7790;
+  }
+  on node2 {
+    disk /dev/vdc;
+    address 10.1.0.11:7790;
+  }
+}
+```
+
+Creamos el recurso en cada máquina:
+
+```bash
+sudo drbdadm create-md dbdata
+sudo drbdadm up dbdata
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-2.png)
+
+Configuramos el recurso wwwdata en modo Single-primary:
+
+```bash
+sudo drbdadm primary --force wwwdata 
+```
+
+Y comprobamos el estado del recurso:
+
+```bash
+sudo drbdadm status wwwdata
+``` 
+
+Esperamos a que se sincronice el recurso y vemos que el estado es `UpToDate/UpToDate`:
+
+![drbd](/img/SRI+HLC/taller3SRI7-4.png)
+
+En el nodo primario formateamos el recurso con XFS:
+
+```bash
+sudo apt install xfsprogs -y
+sudo mkfs.xfs /dev/drbd1
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-5.png)
+
+Montamos y creamos un fichero en el nodo primario:
+
+```bash
+mount /dev/drbd1 /mnt
+echo "Hola :)" > /mnt/fichero.txt
+```
+
+Si intentamos montar el recurso en el nodo secundario, vemos que no se puede, si queremos hacer esto debemos desmontar el recurso en el nodo primario y cambiar los roles:
+
+
+![drbd](/img/SRI+HLC/taller3SRI7-6.png)
+
+```bash
+sudo umount /mnt
 
 
 ## Entrega

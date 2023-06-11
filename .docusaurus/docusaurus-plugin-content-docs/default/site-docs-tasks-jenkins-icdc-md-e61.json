@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/jenkins_ICDC",
+  "id": "Tasks/jenkins_ICDC",
+  "title": "IC/DC con Jenkins",
+  "description": "El objetivo de esta práctica es el desarrollo gradual de un Pipeline que vaya realizando tareas sobre el repositorio de una aplicación.",
+  "source": "@site/docs/Tasks/jenkins_ICDC.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/jenkins_ICDC",
+  "permalink": "/docs/Tasks/jenkins_ICDC",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/jenkins_ICDC.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 52,
+  "frontMatter": {
+    "sidebar_position": 52
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
+    "permalink": "/docs/Tasks/jenkins_corrector"
+  },
+  "next": {
+    "title": "Jenkins: Integración continua de aplicación django (Test)",
+    "permalink": "/docs/Tasks/jenkins_django"
+  }
+}
