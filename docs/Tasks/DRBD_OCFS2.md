@@ -248,16 +248,124 @@ o2cb cluster-status ocfs2
 
 ![drbd](/img/SRI+HLC/taller3SRI7-12.png)
 
+Creamos el sistema de ficheros OCFS2 en el recurso:
 
+```bash
+sudo mkfs.ocfs2 --cluster-stack=o2cb --cluster-name=ocfs2 /dev/drbd2
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-13.png)
+
+Desde la segunda maquina vemos que el fichero creado en el nodo primario existe:
+
+```bash
+sudo o2info --volinfo /dev/drbd2
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-14.png)
+
+Montamos el recurso en ambos nodos:
+
+```bash
+sudo mount /dev/drbd2 /mnt
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-15.png)
+
+Para comprobar que funciona, creamos un fichero en el nodo primario y vemos que se crea en el nodo secundario:
+
+```bash
+echo "Hola DUAL_PRIMARY desde node1 :)" > /mnt/fichero.txt
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-16.png)
+
+```bash
+echo "Hola DUAL_PRIMARY desde node2 :)" > /mnt/fichero2.txt
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-17.png)
 
 ## Entrega
 
 ### 1. La salida del comando drbdadm status wwwdata.
 
+![drbd](/img/SRI+HLC/taller3SRI7-4.png)
+
 ### 2. Prueba de funcionamiento del modo Single-primary.
+
+Configuramos el recurso wwwdata en modo Single-primary:
+
+```bash
+sudo drbdadm primary --force wwwdata 
+```
+
+Y comprobamos el estado del recurso:
+
+```bash
+sudo drbdadm status wwwdata
+``` 
+
+Esperamos a que se sincronice el recurso y vemos que el estado es `UpToDate/UpToDate`:
+
+![drbd](/img/SRI+HLC/taller3SRI7-4.png)
+
+En el nodo primario formateamos el recurso con XFS:
+
+```bash
+sudo apt install xfsprogs -y
+sudo mkfs.xfs /dev/drbd1
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-5.png)
+
+Montamos y creamos un fichero en el nodo primario:
+
+```bash
+mount /dev/drbd1 /mnt
+echo "Hola :)" > /mnt/fichero.txt
+```
+
+Si intentamos montar el recurso en el nodo secundario, vemos que no se puede, si queremos hacer esto debemos desmontar el recurso en el nodo primario y cambiar los roles:
+
+
+![drbd](/img/SRI+HLC/taller3SRI7-6.png)
+
+```bash
+sudo umount /mnt
+sudo drbdadm secondary wwwdata #node1
+sudo drbdadm primary wwwdata #node2
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-7.png)
+
+Montamos el recurso en el nodo secundario y comprobamos que existe el fichero creado anteriormente:
+
+```bash
+sudo mount /dev/drbd1 /mnt
+cat /mnt/fichero.txt
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-8.png)
 
 ### 3. La salida del comando drbdadm status dbdata.
 
+![drbd](/img/SRI+HLC/taller3SRI7-10.png)
+
 ### 4. Prueba de funcionamiento del modo Dual-primary.
+
+Para comprobar que funciona, creamos un fichero en el nodo primario y vemos que se crea en el nodo secundario:
+
+```bash
+echo "Hola DUAL_PRIMARY desde node1 :)" > /mnt/fichero.txt
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-16.png)
+
+```bash
+echo "Hola DUAL_PRIMARY desde node2 :)" > /mnt/fichero2.txt
+```
+
+![drbd](/img/SRI+HLC/taller3SRI7-17.png)
 
 ### 5. Muestra al profesor el funcionamiento del modo Dual-primary.
