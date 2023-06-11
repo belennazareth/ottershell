@@ -187,10 +187,53 @@ Otras consideraciones:
 
 * Cambia el disparador del pipeline. Configúralo con un webhook de github, para que cada vez que se produce un push se ejecute el pipeline. Para que el webhook pueda acceder a tu Jenkins puedes usar ngrok.
 
+Para el despliegue remoto he usado el plugin de Jenkins "SSH Agent".
+
+Entramos en administración de credenciales y añadimos una credencial:
+
+![jk](/img/IAW/jenkinsICDCIAW7-6.png)
+
 Para poner en marcha ngrok:
 
 ```bash
 ngrok http 8080
+```
+
+Usamos este docker-compose.yaml (de la práctica 2 de la unidad 6: Implantación de aplicaciones web Python en docker):
+
+```yaml
+version: '3.3'
+services:
+  django-jenkins:
+    container_name: django-jenkins
+    image: belennazareth/django_tutorial:${DJANGO_VERSION}
+    restart: always
+    environment:
+      ALLOWED_HOSTS: "*"
+      HOST: bd_mariadb_django_jenkins
+      USUARIO: django
+      CONTRA: django
+      BASE_DATOS: django
+      DJANGO_SUPERUSER_PASSWORD: admin
+      DJANGO_SUPERUSER_USERNAME: admin
+      DJANGO_SUPERUSER_EMAIL: admin@admin.org
+    ports:
+      - 8085:8005
+    depends_on:
+      - db_django_jenkins
+  db_django_jenkins:
+    container_name: bd_mariadb_django_jenkins
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: django
+    volumes:
+      - mariadb_data_django_jenkins:/var/lib/mysql
+volumes:
+    mariadb_data_django_jenkins:
 ```
 
 Copiamos el enlace que nos da y lo pegamos en la configuración de github en la sección de webhooks.
@@ -254,6 +297,21 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') {
+            agent any
+            steps {
+                script {
+                    String tagRemove = env.BUILD_ID.toInteger() - 1
+                    sshagent(credentials: ['SSH_VPS']) {
+                        sh 'ssh -o StrictHostKeyChecking=no poke@buizel.ottershell.es docker-compose down'
+                        sh "ssh -o StrictHostKeyChecking=no poke@buizel.ottershell.es docker rmi belennazareth/django_tutorial:${tagRemove}"
+                        sh "ssh -o StrictHostKeyChecking=no poke@buizel.ottershell.es docker pull belennazareth/django_tutorial:${env.BUILD_ID}"
+                        sh "ssh -o StrictHostKeyChecking=no poke@buizel.ottershell.es wget https://raw.githubusercontent.com/belennazareth/django_tutorial/master/docker-compose.yaml -O docker-compose.yaml"
+                        sh "ssh -o StrictHostKeyChecking=no poke@buizel.ottershell.es DJANGO_VERSION=${env.BUILD_ID} docker-compose up -d --force-recreate"
+                    }
+                }
+            }
+        }
     }
     post {
         always {
@@ -267,4 +325,14 @@ pipeline {
 
 ### 2. Las credenciales que has guardado en Jenkins.
 
+![jk](/img/IAW/jenkinsICDCIAW7-7.png)
+![jk](/img/IAW/jenkinsICDCIAW7-6.png)
+
 ### 3. Demuestra al profesor como se realiza la IC/DC completo.
+
+Si entramos a la VPS:
+
+![jk](/img/IAW/jenkinsICDCIAW7-8.png)
+![jk](/img/IAW/jenkinsICDCIAW7-9.png)
+![jk](/img/IAW/jenkinsICDCIAW7-10.png)
+![jk](/img/IAW/jenkinsICDCIAW7-11.png)
