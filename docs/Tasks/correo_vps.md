@@ -377,6 +377,10 @@ Envío un correo del exterior a mi cuenta de correo en la VPS:
 
 ![Postfix](/img/SRI+HLC/correoSRI6-24.png)
 
+Envío un correo desde mi cuenta de correo en la VPS a mi cuenta de correo en el exterior:
+
+![Postfix](/img/SRI+HLC/correoSRI6-25.png)
+![Postfix](/img/SRI+HLC/correoSRI6-26.png)
 
 
 * **Tarea 12 (No obligatoria):** Configura el cliente webmail para el envío de correo. Realiza una prueba de envío con el webmail.
@@ -385,4 +389,10 @@ Envío un correo del exterior a mi cuenta de correo en la VPS:
 
 * **Tarea 13:** Prueba de envío de correo. En esta [página](https://www.mail-tester.com/) tenemos una herramienta completa y fácil de usar a la que podemos enviar un correo para que verifique y puntúe el correo que enviamos. Captura la pantalla y muestra la puntuación que has sacado.
 
+Envío un correo desde mi cuenta de correo en la VPS al que me ha dado la página:
 
+![Postfix](/img/SRI+HLC/correoSRI6-27.png)
+
+Y vemos el resultado en la página:
+
+![Postfix](/img/SRI+HLC/correoSRI6-28.png)
