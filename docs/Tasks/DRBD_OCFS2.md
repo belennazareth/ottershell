@@ -45,6 +45,12 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+Después de crear las máquinas, instalamos los paquetes necesarios para DRBD y OCFS2.
+
+```bash
+apt install drbd-utils ocfs2-tools -y
+```
+
 
 
 
