@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/correo_vps",
+  "id": "Tasks/correo_vps",
+  "title": "Servidor de correos",
+  "description": "Instala y configura de manera adecuada el servidor de correos en tu VPS. El nombre del servidor de correo será mail.tudominio.es (este es el nombre que deberá aparecer en el registro MX).",
+  "source": "@site/docs/Tasks/correo_vps.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/correo_vps",
+  "permalink": "/docs/Tasks/correo_vps",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/correo_vps.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 21,
+  "frontMatter": {
+    "sidebar_position": 21
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Recolección centralizada de logs del sistema",
+    "permalink": "/docs/Tasks/journald"
+  },
+  "next": {
+    "title": "Despliegue de aplicaciones Java",
+    "permalink": "/docs/Tasks/despliegue_java"
+  }
+}

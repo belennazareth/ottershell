@@ -80,13 +80,115 @@ Puedes poner alguna tarea en el cron para ver como se mandan correo.
 
 Posteriormente usando alias y redirecciones podemos hacer llegar esos correos a nuestro correo personal.
 
-Configura el cron para enviar correo al usuario `root`. Comprueba que están llegando esos correos al root. Crea un nuevo alias para que se manden a un usuario sin privilegios. Comprueban que llegan a ese usuario. Por último crea una redirección para enviar esos correo a tu correo personal (gmail,hotmail,…).
+Configura el cron para enviar correo al usuario `root`. Comprueba que están llegando esos correos al root. Crea un nuevo alias para que se manden a un usuario sin privilegios. Comprueba que llegan a ese usuario. Por último crea una redirección para enviar esos correos a tu correo personal (gmail,hotmail,…).
+----------------------------------------------------------------------------
 
+Para configurar el cron para enviar correos al usuario root:
+
+    $ crontab -e
+    MAILTO = root
+
+Vamos a poner una tarea para ver como se mandan correos:
+
+    MAILTO = root
+    * * * * * echo "Hola caracolas :)"
+
+Comprobamos que llegan los correos al root:
+
+    mail
+
+![Postfix](/img/SRI+HLC/correoSRI6-10.png)
+![Postfix](/img/SRI+HLC/correoSRI6-11.png)
+
+
+Creamos un nuevo alias para que se manden a un usuario sin privilegios:
+
+    $ sudo nano /etc/aliases
+        root: poke
+
+Actualizamos los cambios:
+
+    $ sudo newaliases
+
+Comprobamos que llegan los correos al usuario poke:
+
+    $ mail
+
+![Postfix](/img/SRI+HLC/correoSRI6-12.png)
+![Postfix](/img/SRI+HLC/correoSRI6-13.png)
+
+Por último creamos un fichero que hara de redirección para enviar esos correos a mi correo personal:
+
+    $ nano /home/poke/.forward
+
+Dentro del fichero escribimos el correo personal.
+
+Comprobamos que llegan los correos a mi correo personal:
+
+![Postfix](/img/SRI+HLC/correoSRI6-14.png)
+![Postfix](/img/SRI+HLC/correoSRI6-15.png)
 
 
 ## Para asegurar el envío
 
 * **Tarea 4 (No obligatoria):** Configura de manera adecuada DKIM es tu sistema de correos. Comprueba el registro DKIM en la página https://mxtoolbox.com/dkim.aspx. Configura postfix para que firme los correos que envía. Manda un correo y comprueba la verificación de las firmas en ellos.
+
+Instalamos opendkim:
+
+    $ sudo apt install opendkim opendkim-tools -y
+
+Editamos el fichero de configuración:
+
+    $ sudo nano /etc/opendkim.conf
+
+Modificamos la siguiente línea:
+
+```c
+Domain                  ottershell.es
+Selector                default
+KeyFile                 /etc/opendkim/keys/ottershell.es/default.private
+Socket                  local:/var/spool/postfix/opendkim/opendkim.sock
+PidFile                 /run/opendkim/opendkim.pid
+TrustAnchorFile         /usr/share/dns/root.key
+```
+
+Añadimos el socket:
+
+    $ sudo nano /etc/default/opendkim
+
+```c
+SOCKET=local:/var/spool/postfix/opendkim/opendkim.sock
+```
+
+Editamos el fichero de configuración de postfix:
+
+    $ sudo nano /etc/postfix/main.cf
+
+```c
+milter_default_action = accept
+milter_protocol = 6
+smtpd_milters = local:/opendkim/opendkim.sock
+non_smtpd_milters = $smtpd_milters
+```
+
+Creamos el directorio de las claves:
+
+    sudo mkdir /etc/opendkim/keys/ottershell.es
+    cd /etc/opendkim/keys/ottershell.es
+    opendkim-genkey -d ottershell.es -D /etc/opendkim/keys/ottershell.es -s mail-dkim -v
+
+Hacemos un cat del fichero default.txt y copiamos el contenido:
+
+    $ cat default.txt
+
+Con esto creamos el registro TXT en el DNS de nuestro dominio:
+
+Entrada: `mail-dkim._domainkey.ottershell.es`
+Tipo: `TXT`
+Valor:  `v=DKIM1;h=sha256;k=rsa;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAppoCIzH/ycc4rS6L4VRU4FAgMyO+HitduBsRWDU1k1C25xRoCj631XdbiODKdf6NfSzcwbHBTRlfc2GY85rD+rtuRG4jvGd6OmnVjs690bVzT+nlhix5fxO4FuxgFxU9Q7DB9Nwan8Cjol+94cfkc1aCqN+zcrtLcDxmp400x783mia/todUZT+5dKCDqeuP3UheQTKWVTyqXuEcYurKMiRPGBG0ePodKiOn/I6WUJXz6/r8k6Rr/KKvfOoccM3q6/tn9Zryp3YDgINK6MXd1LTz/dSbaGj51ZhPLQAzziUhJepQL0GwjgQCi9Z/UHc3jfVfsYxp3L+QoGzCaCuo6wIDAQAB`
+
+![Postfix](/img/SRI+HLC/correoSRI6-16.png)
+
 
 ## Para luchar contra el SPAM
 
@@ -99,6 +201,45 @@ Configura el cron para enviar correo al usuario `root`. Comprueba que están lle
 ## Gestión de correos desde un cliente
 
 * **Tarea 8:** Configura el buzón de los usuarios de tipo Maildir. Envía un correo a tu usuario y comprueba que el correo se ha guardado en el buzón Maildir del usuario del sistema correspondiente. Recuerda que ese tipo de buzón no se puede leer con la utilidad mail.
+
+Cambiamos a cambiar el tipo de buzón:
+
+    $ sudo nano /etc/postfix/main.cf
+
+```c
+home_mailbox = Maildir/
+```
+
+Instalamos el cliente de correo:
+
+    $ sudo apt install mutt -y
+    $ sudo systemctl restart postfix
+
+Configuramos el cliente de correo:
+
+    $ nano ~/.muttrc
+
+```c
+set mbox_type=Maildir
+set mbox="~/Maildir"
+set folder="~/Maildir"
+set spoolfile="~/Maildir"
+set record="+.Sent"
+set postponed="+.Drafts"
+set mask="!^\\.[^.]"
+```
+
+Comprobamos que funciona enviando un correo y verificando que se guarda en el buzón:
+
+    mutt
+
+![Postfix](/img/SRI+HLC/correoSRI6-17.png)
+![Postfix](/img/SRI+HLC/correoSRI6-18.png)
+
+Si vemos el directorio Maildir vemos que se han creado los directorios necesarios:
+
+![Postfix](/img/SRI+HLC/correoSRI6-19.png)
+
 
 * **Tarea 9:** Instala configura dovecot para ofrecer el protocolo IMAP. Configura dovecot de manera adecuada para ofrecer autentificación y cifrado.
 
