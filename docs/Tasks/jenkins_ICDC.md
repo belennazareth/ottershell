@@ -187,9 +187,83 @@ Otras consideraciones:
 
 * Cambia el disparador del pipeline. Configúralo con un webhook de github, para que cada vez que se produce un push se ejecute el pipeline. Para que el webhook pueda acceder a tu Jenkins puedes usar ngrok.
 
+Para poner en marcha ngrok:
+
+```bash
+ngrok http 8080
+```
+
+Copiamos el enlace que nos da y lo pegamos en la configuración de github en la sección de webhooks.
+
+![jk](/img/IAW/jenkinsICDCIAW7-5.png)
+
+Para que funcione el webhook, en la configuración del pipeline, en la sección de "Build Triggers" hay que seleccionar "GitHub hook trigger for GITScm polling".
+
+
 ## Entrega
 
 ### 1. El contenido del fichero Jenkinsfile.
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage ('Testing django') { 
+            agent { 
+                docker { image 'python:3'
+                args '-u root:root'
+                }
+            }
+            stages {
+                stage('Clone') {
+                    steps {
+                        git branch:'master',url:'https://github.com/belennazareth/django_tutorial.git'
+                    }
+                }
+                stage('Install') {
+                    steps {
+                        sh 'pip install -r requirements.txt'
+                    }
+                }
+                stage('Test') {
+                    steps {
+                        sh 'python3 manage.py test'
+                    }
+                } 
+            }
+        }
+        stage('Upload img') {
+            agent any
+            stages {
+                stage('Build and push') {
+                    steps {
+                        script {
+                            withDockerRegistry([credentialsId: 'DOCKER_HUB', url: '']) {
+                            def dockerImage = docker.build("belennazareth/django_tutorial:${env.BUILD_ID}")
+                            dockerImage.push()
+                            }
+                        }
+                    }
+                }
+                stage('Remove image') {
+                    steps {
+                        script {
+                            sh "docker rmi belennazareth/django_tutorial:${env.BUILD_ID}"
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            mail to: 'nazare@nazareth.jenkins.org',
+            subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+            body: "${env.BUILD_URL} has result ${currentBuild.result}"
+        }
+    }
+}
+```
 
 ### 2. Las credenciales que has guardado en Jenkins.
 
