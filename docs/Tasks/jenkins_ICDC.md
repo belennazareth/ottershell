@@ -60,29 +60,24 @@ pipeline {
                 } 
             }
         }
-        stage('Build') {
+        stage('Upload img') {
             agent any
-            steps {
-                script {
-                    def dockerImage = docker.build("belennazareth/django_tutorial:${env.BUILD_ID}")
-                }
-            }
-        }
-        stage('Push image') {
-            agent any
-            steps {
-                script {
-                    withDockerRegistry([ credentialsId: "DOCKER_HUB", url: "" ]) {
-                        dockerImage.push()
+            stages {
+                stage('Build and push') {
+                    steps {
+                        script {
+                            withDockerRegistry([credentialsId: 'DOCKER_HUB', url: '']) {
+                            def dockerImage = docker.build("belennazareth/django_tutorial:${env.BUILD_ID}")
+                            dockerImage.push()
+                        }
                     }
                 }
-            }
-        }
-        stage('Remove image') {
-            agent any
-            steps {
-                script {
-                    sh 'docker rmi belennazareth/django_tutorial:${env.BUILD_ID}'
+                stage('Remove image') {
+                    steps {
+                        script {
+                            sh 'docker rmi belennazareth/django_tutorial:${env.BUILD_ID}'
+                        }
+                    }
                 }
             }
         }
