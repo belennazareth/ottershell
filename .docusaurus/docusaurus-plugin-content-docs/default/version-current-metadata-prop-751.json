@@ -395,12 +395,6 @@
           },
           {
             "type": "link",
-            "label": "IC/DC con Jenkins",
-            "href": "/docs/Tasks/jenkins_ICDC",
-            "docId": "Tasks/jenkins_ICDC"
-          },
-          {
-            "type": "link",
             "label": "Jenkins: Integración continua de aplicación django (Test)",
             "href": "/docs/Tasks/jenkins_django",
             "docId": "Tasks/jenkins_django"
@@ -410,6 +404,12 @@
             "label": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
             "href": "/docs/Tasks/jenkins_surge",
             "docId": "Tasks/jenkins_surge"
+          },
+          {
+            "type": "link",
+            "label": "IC/DC con Jenkins",
+            "href": "/docs/Tasks/jenkins_ICDC",
+            "docId": "Tasks/jenkins_ICDC"
           },
           {
             "type": "link",

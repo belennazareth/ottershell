@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
-    "permalink": "/docs/Tasks/jenkins_surge"
+    "title": "IC/DC con Jenkins",
+    "permalink": "/docs/Tasks/jenkins_ICDC"
   },
   "next": {
     "title": "Extras",

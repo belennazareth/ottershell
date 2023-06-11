@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/docker_PYTHON"
   },
   "next": {
-    "title": "IC/DC con Jenkins",
-    "permalink": "/docs/Tasks/jenkins_ICDC"
+    "title": "Jenkins: Integración continua de aplicación django (Test)",
+    "permalink": "/docs/Tasks/jenkins_django"
   }
 }

@@ -11,17 +11,17 @@
   "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/jenkins_ICDC.md",
   "tags": [],
   "version": "current",
-  "sidebarPosition": 52,
+  "sidebarPosition": 56,
   "frontMatter": {
-    "sidebar_position": 52
+    "sidebar_position": 56
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Jenkins: Corrector ortográfico de documentos markdown (test)",
-    "permalink": "/docs/Tasks/jenkins_corrector"
+    "title": "Jenkins: Comprobación de HTML5 válido y despliegue en surge.sh (test y deploy)",
+    "permalink": "/docs/Tasks/jenkins_surge"
   },
   "next": {
-    "title": "Jenkins: Integración continua de aplicación django (Test)",
-    "permalink": "/docs/Tasks/jenkins_django"
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
   }
 }
