@@ -1,5 +1,5 @@
 ---
-sidebar_position: 52
+sidebar_position: 56
 ---
 
 # IC/DC con Jenkins
@@ -14,13 +14,15 @@ Vamos a construir el Pipeline en varias fases:
 
 Partimos del pipeline que hemos desarrollado en el [Taller 3: Integración continua de aplicación django (Test)](https://fp.josedomingo.org/iaw2223/7_ic/t3.html), donde hemos automatizado el test de la aplicación.
 
-Modifica el pipeline para que después de hacer el test sobre la aplicación, genere una imagen docker. tienes que tener en cuenta que los pasos para generar la imagen lo tienes que realizar en la máquina donde está instalado Jenkins. Tendrás que añadir las siguientes acciones:
+(URL de mi repositorio: https://github.com/belennazareth/django_tutorial)
+
+Modifica el pipeline para que después de hacer el test sobre la aplicación, genere una imagen docker. Tienes que tener en cuenta que los pasos para generar la imagen lo tienes que realizar en la máquina donde está instalado Jenkins. Tendrás que añadir las siguientes acciones:
 
 1. Construir la imagen con el `Dockerfile` que tengas en el repositorio.
 2. Subir la imagen a tu cuenta de Docker Hub.
 3. Borrar la imagen que se ha creado.
 
-Por lo tanto tienes que estudiar el apartado Ejecución de un pipeline en varios runner para ejecutar el pipeline en dos runner:
+Por lo tanto tienes que estudiar el apartado [Ejecución de un pipeline en varios runner](https://fp.josedomingo.org/iaw2223/7_ic/jenkins/runner.html) para ejecutar el pipeline en dos runner:
 
 * En el contenedor docker a partir de la imagen python:3 los pasos del taller 3.
 * En la máquina de Jenkins los pasos de este ejercicio.
@@ -29,6 +31,64 @@ Otras consideraciones:
 
 * Cuando termine de ejecutar el pipeline te mandará un correo de notificación.
 * El pipeline se guardará en un fichero Jenkinsfile en tu repositorio, y la configuración del pipeline hará referencia a él.
+
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage ('Testing django') { 
+            agent { 
+                docker { image 'python:3'
+                args '-u root:root'
+                }
+            }
+            stages {
+                stage('Clone') {
+                    steps {
+                        git branch:'master',url:'https://github.com/belennazareth/django_tutorial.git'
+                    }
+                }
+                stage('Install') {
+                    steps {
+                        sh 'pip install -r requirements.txt'
+                    }
+                }
+                stage('Test') {
+                    steps {
+                        sh 'python3 manage.py test'
+                    }
+                } 
+            }
+        }
+        stage('Build') {
+            agent any
+            steps {
+                script {
+                    def dockerImage = docker.build("belennazareth/django_tutorial:${env.BUILD_ID}")
+                }
+            }
+        }
+        stage('Push image') {
+            agent any
+            steps {
+                script {
+                    withDockerRegistry([ credentialsId: "DOCKER_HUB", url: "" ]) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('Remove image') {
+            agent any
+            steps {
+                script {
+                    sh 'docker rmi belennazareth/django_tutorial:${env.BUILD_ID}'
+                }
+            }
+        }
+    }
+}
+```
 
 ## Entrega
 
