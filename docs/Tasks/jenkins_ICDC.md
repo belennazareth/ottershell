@@ -122,21 +122,57 @@ python3 manage.py runserver 0.0.0.0:8005
 
 En administración de credenciales hay que añadir una credencial de tipo "Username with password" con el nombre "DOCKER_HUB" y las credenciales de Docker Hub.
 
+Para que funcione el envío de correos hay que instalar postfix en la máquina de Jenkins:
 
+```bash
+sudo apt install postfix
+```
 
+En la configuración de postfix hay que  seleccionar `sitio de internet`, poner como `dominio` el nombre de la máquina de Jenkins (en mi caso nazareth.jenkins.org) y como `nombre de sistema` en el Jenkinsfile, el nombre de la máquina de Jenkins (en mi caso nazare).
+
+Instalamos mail:
+
+```bash
+sudo apt install bsd-mailx
+```
 
 ## Entrega
 
 ### 1. Una captura de pantalla donde se vea la salida de un build que se ha ejecutado de manera correcta.
 
+![jk](/img/IAW/jenkinsICDCIAW7.png)
+
 ### 2. Una captura de pantalla de tu cuenta de Docker Hub donde se vea la imagen subida de último build.
+
+![jk](/img/IAW/jenkinsICDCIAW7-2.png)
 
 ### 3. Introduce un fallo en el Dockerfile y muestra la salida del build donde se produce el error.
 
+Edito el Dockerfile para que no se pueda construir la imagen:
+
+```dockerfile
+FROM python:3
+WORKDIR /usr/src/app
+MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
+RUN pip install --root-user-action=ignore --upgrade pip && pip install --root-user-action=ignore django mysqlclient 
+COPY * /usr/src/app # 🐱 modifico esta línea . por * 🐱
+RUN mkdir static
+ADD polls.sh /usr/src/app/
+RUN chmod +x /usr/src/app/polls.sh
+ENTRYPOINT ["/usr/src/app/polls.sh"]
+```
+
+![jk](/img/IAW/jenkinsICDCIAW7-3.png)
+
 ### 4. Entrega la URL del repositorio para ver el Jenkinsfile.
+
+https://github.com/belennazareth/django_tutorial
 
 ### 5. Pantallazo con el correo que has recibido de la ejecución del pipeline.
 
+![jk](/img/IAW/jenkinsICDCIAW7-4.png)
+
+---------------------------------------------------------------------------------------------------------------------------------------
 
 ## Ejercicio 2: Despliegue de la aplicación
 
