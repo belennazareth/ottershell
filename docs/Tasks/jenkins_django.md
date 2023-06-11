@@ -129,7 +129,7 @@ En mi caso seleccioné:
 1. En las preguntas publicadas en una fecha futura, la función was_published_recently() debe devolver False
 ```
 
-Esto tenía antes el fichero:
+Esto tenía antes el fichero `polls/models.py`:
 
 ```py
 ...
@@ -142,13 +142,13 @@ Esto tenía antes el fichero:
 ...
 ```
 
-Lo modifiqué cambiando el valor `<=` por `<`:
+Lo modifiqué cambiando el valor `<=` por `>=`:
 
 ```py
 ...
     def was_published_recently(self):
         now = timezone.now()
-        return now - datetime.timedelta(days=1) < self.pub_date <= now
+        return now - datetime.timedelta(days=1) >= self.pub_date <= now
     was_published_recently.admin_order_field = 'pub_date'
     was_published_recently.boolean = True
     was_published_recently.short_description = 'Published recently?'
