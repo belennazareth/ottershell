@@ -90,6 +90,33 @@ pipeline {
 }
 ```
 
+Hay que hacer un Dockerfile para que se pueda construir la imagen:
+
+```dockerfile
+FROM python:3
+WORKDIR /usr/src/app
+MAINTAINER Belen Nazareth Duran "belennazareth29@gmail.com"
+RUN pip install --root-user-action=ignore --upgrade pip && pip install --root-user-action=ignore django mysqlclient 
+COPY . /usr/src/app 
+RUN mkdir static
+ADD polls.sh /usr/src/app/
+RUN chmod +x /usr/src/app/polls.sh
+ENTRYPOINT ["/usr/src/app/polls.sh"]
+```
+
+También hay que hacer un fichero polls.sh para que se pueda ejecutar la aplicación:
+
+```bash
+#! /bin/sh
+
+sleep 2
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py createsuperuser --noinput
+python3 manage.py collectstatic --noinput
+python3 manage.py runserver 0.0.0.0:8005
+```
+
 ## Entrega
 
 ### 1. Una captura de pantalla donde se vea la salida de un build que se ha ejecutado de manera correcta.
