@@ -76,11 +76,18 @@ pipeline {
                 stage('Remove image') {
                     steps {
                         script {
-                            sh 'docker rmi belennazareth/django_tutorial:${env.BUILD_ID}'
+                            sh "docker rmi belennazareth/django_tutorial:${env.BUILD_ID}"
                         }
                     }
                 }
             }
+        }
+    }
+    post {
+        always {
+            mail to: 'nazare@nazareth.jenkins.org',
+            subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+            body: "${env.BUILD_URL} has result ${currentBuild.result}"
         }
     }
 }
@@ -112,6 +119,11 @@ python3 manage.py createsuperuser --noinput
 python3 manage.py collectstatic --noinput
 python3 manage.py runserver 0.0.0.0:8005
 ```
+
+En administración de credenciales hay que añadir una credencial de tipo "Username with password" con el nombre "DOCKER_HUB" y las credenciales de Docker Hub.
+
+
+
 
 ## Entrega
 
