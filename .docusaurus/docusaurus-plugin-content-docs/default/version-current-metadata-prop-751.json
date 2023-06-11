@@ -257,6 +257,12 @@
           },
           {
             "type": "link",
+            "label": "Creación de un clúster DRBD + OCFS2",
+            "href": "/docs/Tasks/DRBD_OCFS2",
+            "docId": "Tasks/DRBD_OCFS2"
+          },
+          {
+            "type": "link",
             "label": "Despliegue de aplicaciones python",
             "href": "/docs/Tasks/despliegue_python",
             "docId": "Tasks/despliegue_python"
@@ -386,6 +392,12 @@
             "label": "Jenkins: Corrector ortográfico de documentos markdown (test)",
             "href": "/docs/Tasks/jenkins_corrector",
             "docId": "Tasks/jenkins_corrector"
+          },
+          {
+            "type": "link",
+            "label": "IC/DC con Jenkins",
+            "href": "/docs/Tasks/jenkins_ICDC",
+            "docId": "Tasks/jenkins_ICDC"
           },
           {
             "type": "link",
@@ -612,6 +624,12 @@
       "description": "Almacenamiento",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/DRBD_OCFS2": {
+      "id": "Tasks/DRBD_OCFS2",
+      "title": "Creación de un clúster DRBD + OCFS2",
+      "description": "Configura un escenario con dos máquinas. Cada una tiene que tener dos discos adicionales (tamaño 2Gb para que la sincronización sea rápida).",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/escenario_openstack": {
       "id": "Tasks/escenario_openstack",
       "title": "Escenario en OpenStack",
@@ -670,6 +688,12 @@
       "id": "Tasks/jenkins_django",
       "title": "Jenkins: Integración continua de aplicación django (Test)",
       "description": "Vamos a trabajar con el repositorio de la aplicación djangotutorial. Esta aplicación tiene definidas una serie de test, que podemos estudiar en el fichero tests.py del directorio polls.",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/jenkins_ICDC": {
+      "id": "Tasks/jenkins_ICDC",
+      "title": "IC/DC con Jenkins",
+      "description": "El objetivo de esta práctica es el desarrollo gradual de un Pipeline que vaya realizando tareas sobre el repositorio de una aplicación.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/jenkins_surge": {

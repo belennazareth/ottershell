@@ -161,6 +161,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/DRBD_OCFS2",
+              "path": "/docs/Tasks/DRBD_OCFS2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/escenario_openstack",
               "path": "/docs/Tasks/escenario_openstack",
               "sidebar": "tutorialSidebar"
@@ -208,6 +213,11 @@
             {
               "id": "Tasks/jenkins_django",
               "path": "/docs/Tasks/jenkins_django",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/jenkins_ICDC",
+              "path": "/docs/Tasks/jenkins_ICDC",
               "sidebar": "tutorialSidebar"
             },
             {

@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/correo_vps"
   },
   "next": {
-    "title": "Despliegue de aplicaciones python",
-    "permalink": "/docs/Tasks/despliegue_python"
+    "title": "Creación de un clúster DRBD + OCFS2",
+    "permalink": "/docs/Tasks/DRBD_OCFS2"
   }
 }

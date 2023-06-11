@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '3f7'),
+    component: ComponentCreator('/docs', 'ccf'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -244,6 +244,12 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/DRBD_OCFS2',
+        component: ComponentCreator('/docs/Tasks/DRBD_OCFS2', '559'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/escenario_openstack',
         component: ComponentCreator('/docs/Tasks/escenario_openstack', '6ef'),
         exact: true,
@@ -300,6 +306,12 @@ export default [
       {
         path: '/docs/Tasks/jenkins_django',
         component: ComponentCreator('/docs/Tasks/jenkins_django', 'cf9'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/jenkins_ICDC',
+        component: ComponentCreator('/docs/Tasks/jenkins_ICDC', '25f'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

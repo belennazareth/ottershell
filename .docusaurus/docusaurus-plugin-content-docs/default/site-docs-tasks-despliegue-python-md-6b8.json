@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Despliegue de aplicaciones Java",
-    "permalink": "/docs/Tasks/despliegue_java"
+    "title": "Creación de un clúster DRBD + OCFS2",
+    "permalink": "/docs/Tasks/DRBD_OCFS2"
   },
   "next": {
     "title": "Redes Privadas Virtuales",
