@@ -69,6 +69,7 @@ pipeline {
                             withDockerRegistry([credentialsId: 'DOCKER_HUB', url: '']) {
                             def dockerImage = docker.build("belennazareth/django_tutorial:${env.BUILD_ID}")
                             dockerImage.push()
+                            }
                         }
                     }
                 }
