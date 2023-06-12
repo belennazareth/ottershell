@@ -84,8 +84,8 @@ Por lo tanto si tenemos dos servicios distintos, tendremos dos ficheros yaml par
 
 Por lo tanto para desplegar la aplicaciones tendremos dos ficheros.yaml:
 
-* [guestbook-deployment.yaml]()
-* [redis-deployment.yaml]()
+* [guestbook-deployment.yaml](https://raw.githubusercontent.com/josedom24/curso_kubernetes_ies/main/modulo6/files/guestbook/guestbook-deployment.yaml)
+* [redis-deployment.yaml](https://raw.githubusercontent.com/josedom24/curso_kubernetes_ies/main/modulo6/files/guestbook/redis-deployment.yaml)
 
 Para realizar el despliegue realiza los siguientes pasos:
 

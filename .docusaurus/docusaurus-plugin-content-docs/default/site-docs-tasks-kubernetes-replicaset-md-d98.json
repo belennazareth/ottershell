@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/kubernetes_replicaset",
+  "id": "Tasks/kubernetes_replicaset",
+  "title": "Kubernetes: Trabajando con ReplicaSet",
+  "description": "Como indicamos en el contenido de este módulo, no se va a trabajar directamente con los Pods (realmente tampoco vamos a trabajar directamente con los ReplicaSet, en el siguiente módulo explicaremos los Deployments que serán el recurso con el que trabajaremos). En este ejercicio vamos a crear un ReplicaSet que va a controlar un conjunto de Pods. Para ello, realiza los siguientes pasos:",
+  "source": "@site/docs/Tasks/kubernetes_replicaset.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/kubernetes_replicaset",
+  "permalink": "/docs/Tasks/kubernetes_replicaset",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/kubernetes_replicaset.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 58,
+  "frontMatter": {
+    "sidebar_position": 58
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes: Trabajando con Pods",
+    "permalink": "/docs/Tasks/kubernetes_pods"
+  },
+  "next": {
+    "title": "Kubernetes: Trabajando con Deployments",
+    "permalink": "/docs/Tasks/kubernetes_deployments"
+  }
+}

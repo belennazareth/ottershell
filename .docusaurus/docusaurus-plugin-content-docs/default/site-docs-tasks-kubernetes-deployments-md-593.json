@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/kubernetes_deployments",
+  "id": "Tasks/kubernetes_deployments",
+  "title": "Kubernetes: Trabajando con Deployments",
+  "description": "EJERCICIIO 1: Trabajando con Deployments",
+  "source": "@site/docs/Tasks/kubernetes_deployments.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/kubernetes_deployments",
+  "permalink": "/docs/Tasks/kubernetes_deployments",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/kubernetes_deployments.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 59,
+  "frontMatter": {
+    "sidebar_position": 59
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes: Trabajando con ReplicaSet",
+    "permalink": "/docs/Tasks/kubernetes_replicaset"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
