@@ -4,52 +4,57 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', '94e'),
+    component: ComponentCreator('/blog', 'ecc'),
     exact: true
   },
   {
     path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', 'fd1'),
+    component: ComponentCreator('/blog/archive', 'f6e'),
     exact: true
   },
   {
     path: '/blog/Contacto',
-    component: ComponentCreator('/blog/Contacto', '802'),
+    component: ComponentCreator('/blog/Contacto', '3f3'),
     exact: true
   },
   {
     path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '098'),
+    component: ComponentCreator('/blog/tags', '484'),
     exact: true
   },
   {
     path: '/blog/tags/contacto',
-    component: ComponentCreator('/blog/tags/contacto', 'ecb'),
+    component: ComponentCreator('/blog/tags/contacto', 'fa6'),
     exact: true
   },
   {
     path: '/blog/tags/git-hub',
-    component: ComponentCreator('/blog/tags/git-hub', '864'),
+    component: ComponentCreator('/blog/tags/git-hub', '58a'),
     exact: true
   },
   {
     path: '/blog/tags/gmail',
-    component: ComponentCreator('/blog/tags/gmail', 'd5b'),
+    component: ComponentCreator('/blog/tags/gmail', '268'),
     exact: true
   },
   {
     path: '/blog/tags/linkedin',
-    component: ComponentCreator('/blog/tags/linkedin', '5c1'),
+    component: ComponentCreator('/blog/tags/linkedin', '2d7'),
     exact: true
   },
   {
     path: '/markdown-page',
-    component: ComponentCreator('/markdown-page', '02c'),
+    component: ComponentCreator('/markdown-page', '9f7'),
+    exact: true
+  },
+  {
+    path: '/search',
+    component: ComponentCreator('/search', '5a6'),
     exact: true
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'e7b'),
+    component: ComponentCreator('/docs', 'ceb'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -499,7 +504,7 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', '19f'),
+    component: ComponentCreator('/', '510'),
     exact: true
   },
   {

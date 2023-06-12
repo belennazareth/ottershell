@@ -26,7 +26,7 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "/home/nazare/github/ottershell/sidebars.js",
+          "sidebarPath": "/home/nazare/github/ottershell2/ottershell/sidebars.js",
           "editUrl": "https://github.com/belennazareth/ottershell/blob/main/"
         },
         "blog": {
@@ -34,7 +34,7 @@ export default {
           "editUrl": "https://github.com/belennazareth/ottershell/blob/main/"
         },
         "theme": {
-          "customCss": "/home/nazare/github/ottershell/src/css/custom.css"
+          "customCss": "/home/nazare/github/ottershell2/ottershell/src/css/custom.css"
         }
       }
     ]
@@ -310,6 +310,19 @@ export default {
           }
         }
       ]
+    },
+    "algolia": {
+      "appId": "4BVBJ1OIJJ",
+      "apiKey": "e36c80f22aef6a4f20d94e2806383a0e",
+      "indexName": "ottershell",
+      "contextualSearch": true,
+      "externalUrlRegex": "external\\.com|domain\\.com",
+      "replaceSearchResultPathname": {
+        "from": "/docs/",
+        "to": "/"
+      },
+      "searchParameters": {},
+      "searchPagePath": "search"
     },
     "colorMode": {
       "defaultMode": "light",
