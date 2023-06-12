@@ -1,0 +1,27 @@
+{
+  "unversionedId": "Tasks/kubernetes_pods",
+  "id": "Tasks/kubernetes_pods",
+  "title": "Kubernetes: Trabajando con Pods",
+  "description": "Vamos a crear nuestro primer Pod, y para ellos vamos a desplegar una imagen que nos ofrece un servidor web con una página estática. Para ello realiza los siguientes pasos:",
+  "source": "@site/docs/Tasks/kubernetes_pods.md",
+  "sourceDirName": "Tasks",
+  "slug": "/Tasks/kubernetes_pods",
+  "permalink": "/docs/Tasks/kubernetes_pods",
+  "draft": false,
+  "editUrl": "https://github.com/belennazareth/ottershell/blob/main/docs/Tasks/kubernetes_pods.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 57,
+  "frontMatter": {
+    "sidebar_position": 57
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "IC/DC con Jenkins",
+    "permalink": "/docs/Tasks/jenkins_ICDC"
+  },
+  "next": {
+    "title": "Markdown Features",
+    "permalink": "/docs/Tasks/markdown-features"
+  }
+}
