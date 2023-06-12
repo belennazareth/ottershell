@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/jenkins_surge"
   },
   "next": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Kubernetes: Trabajando con Pods",
+    "permalink": "/docs/Tasks/kubernetes_pods"
   }
 }

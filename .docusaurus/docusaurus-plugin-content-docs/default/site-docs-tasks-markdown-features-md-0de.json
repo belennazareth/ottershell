@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "IC/DC con Jenkins",
-    "permalink": "/docs/Tasks/jenkins_ICDC"
+    "title": "Kubernetes: Trabajando con Pods",
+    "permalink": "/docs/Tasks/kubernetes_pods"
   },
   "next": {
     "title": "Extras",

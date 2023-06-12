@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'ccf'),
+    component: ComponentCreator('/docs', '554'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -324,6 +324,12 @@ export default [
       {
         path: '/docs/Tasks/journald',
         component: ComponentCreator('/docs/Tasks/journald', 'da9'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/kubernetes_pods',
+        component: ComponentCreator('/docs/Tasks/kubernetes_pods', 'dd4'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

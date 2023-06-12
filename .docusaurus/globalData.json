@@ -231,6 +231,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/kubernetes_pods",
+              "path": "/docs/Tasks/kubernetes_pods",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/lemp",
               "path": "/docs/Tasks/lemp",
               "sidebar": "tutorialSidebar"

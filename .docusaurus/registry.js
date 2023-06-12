@@ -45,6 +45,7 @@ export default {
   '6183c210': [() => import(/* webpackChunkName: '6183c210' */ '@site/docs/Tasks/interconexion_bbdd.md'), '@site/docs/Tasks/interconexion_bbdd.md', require.resolveWeak('@site/docs/Tasks/interconexion_bbdd.md')],
   '6875c492': [() => import(/* webpackChunkName: '6875c492' */ '@theme/BlogTagsPostsPage'), '@theme/BlogTagsPostsPage', require.resolveWeak('@theme/BlogTagsPostsPage')],
   '6934420b': [() => import(/* webpackChunkName: '6934420b' */ '@site/docs/Extras/ENTRA_AQUI.md'), '@site/docs/Extras/ENTRA_AQUI.md', require.resolveWeak('@site/docs/Extras/ENTRA_AQUI.md')],
+  '697feabf': [() => import(/* webpackChunkName: '697feabf' */ '@site/docs/Tasks/kubernetes_pods.md'), '@site/docs/Tasks/kubernetes_pods.md', require.resolveWeak('@site/docs/Tasks/kubernetes_pods.md')],
   '6b8d4f82': [() => import(/* webpackChunkName: '6b8d4f82' */ '@site/docs/Tasks/despliegue_python.md'), '@site/docs/Tasks/despliegue_python.md', require.resolveWeak('@site/docs/Tasks/despliegue_python.md')],
   '72bdcc9d': [() => import(/* webpackChunkName: '72bdcc9d' */ '@site/docs/Tasks/journald.md'), '@site/docs/Tasks/journald.md', require.resolveWeak('@site/docs/Tasks/journald.md')],
   '73ddac89': [() => import(/* webpackChunkName: '73ddac89' */ '@site/docs/Tasks/jenkins_surge.md'), '@site/docs/Tasks/jenkins_surge.md', require.resolveWeak('@site/docs/Tasks/jenkins_surge.md')],
