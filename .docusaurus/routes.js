@@ -49,7 +49,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '554'),
+    component: ComponentCreator('/docs', 'e7b'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -328,8 +328,20 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/kubernetes_deployments',
+        component: ComponentCreator('/docs/Tasks/kubernetes_deployments', 'e80'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/kubernetes_pods',
         component: ComponentCreator('/docs/Tasks/kubernetes_pods', 'dd4'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/kubernetes_replicaset',
+        component: ComponentCreator('/docs/Tasks/kubernetes_replicaset', '18d'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

@@ -98,7 +98,7 @@
     },
     "content": "393be207"
   },
-  "/docs-554": {
+  "/docs-e7b": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "b21be71e"
@@ -289,9 +289,17 @@
     "__comp": "17896441",
     "content": "72bdcc9d"
   },
+  "/docs/Tasks/kubernetes_deployments-e80": {
+    "__comp": "17896441",
+    "content": "59301bd1"
+  },
   "/docs/Tasks/kubernetes_pods-dd4": {
     "__comp": "17896441",
     "content": "697feabf"
+  },
+  "/docs/Tasks/kubernetes_replicaset-18d": {
+    "__comp": "17896441",
+    "content": "d98153a4"
   },
   "/docs/Tasks/lemp-8ab": {
     "__comp": "17896441",

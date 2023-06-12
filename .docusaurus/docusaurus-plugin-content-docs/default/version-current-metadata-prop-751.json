@@ -419,6 +419,18 @@
           },
           {
             "type": "link",
+            "label": "Kubernetes: Trabajando con ReplicaSet",
+            "href": "/docs/Tasks/kubernetes_replicaset",
+            "docId": "Tasks/kubernetes_replicaset"
+          },
+          {
+            "type": "link",
+            "label": "Kubernetes: Trabajando con Deployments",
+            "href": "/docs/Tasks/kubernetes_deployments",
+            "docId": "Tasks/kubernetes_deployments"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -714,10 +726,22 @@
       "description": "En esta ocasión, se va a realizar un sistema de recogida de logs de sistema, para ello se va a utilizar el servicio de journald, que se encarga de recoger los logs de los servicios del sistema, y de los servicios que se ejecutan en el mismo. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta. Para esto, se van a seguir los siguientes pasos:",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/kubernetes_deployments": {
+      "id": "Tasks/kubernetes_deployments",
+      "title": "Kubernetes: Trabajando con Deployments",
+      "description": "EJERCICIIO 1: Trabajando con Deployments",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/kubernetes_pods": {
       "id": "Tasks/kubernetes_pods",
       "title": "Kubernetes: Trabajando con Pods",
       "description": "Vamos a crear nuestro primer Pod, y para ellos vamos a desplegar una imagen que nos ofrece un servidor web con una página estática. Para ello realiza los siguientes pasos:",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/kubernetes_replicaset": {
+      "id": "Tasks/kubernetes_replicaset",
+      "title": "Kubernetes: Trabajando con ReplicaSet",
+      "description": "Como indicamos en el contenido de este módulo, no se va a trabajar directamente con los Pods (realmente tampoco vamos a trabajar directamente con los ReplicaSet, en el siguiente módulo explicaremos los Deployments que serán el recurso con el que trabajaremos). En este ejercicio vamos a crear un ReplicaSet que va a controlar un conjunto de Pods. Para ello, realiza los siguientes pasos:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/lemp": {

@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/jenkins_ICDC"
   },
   "next": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Kubernetes: Trabajando con ReplicaSet",
+    "permalink": "/docs/Tasks/kubernetes_replicaset"
   }
 }

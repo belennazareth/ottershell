@@ -231,8 +231,18 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/kubernetes_deployments",
+              "path": "/docs/Tasks/kubernetes_deployments",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/kubernetes_pods",
               "path": "/docs/Tasks/kubernetes_pods",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/kubernetes_replicaset",
+              "path": "/docs/Tasks/kubernetes_replicaset",
               "sidebar": "tutorialSidebar"
             },
             {
