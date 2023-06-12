@@ -128,7 +128,7 @@ const config = {
         appId: '4BVBJ1OIJJ',
   
         // Public API key: it is safe to commit it
-        apiKey: '7c44f3bbf1c1fb04984d4dbe19c56559',
+        apiKey: 'e36c80f22aef6a4f20d94e2806383a0e',
   
         indexName: 'ottershell',
   
