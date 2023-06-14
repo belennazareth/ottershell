@@ -4,7 +4,7 @@ sidebar_position: 59
 
 # Kubernetes: Trabajando con Deployments
 
-## EJERCICIIO 1: Trabajando con Deployments
+## EJERCICIO 1: Trabajando con Deployments
 
 En este taller vamos a crear un Deployment de una aplicación web. Sigamos los siguientes pasos:
 
