@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '205'),
+    component: ComponentCreator('/docs', '791'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -333,8 +333,26 @@ export default [
         sidebar: "tutorialSidebar"
       },
       {
+        path: '/docs/Tasks/kubernetes_almacenamiento',
+        component: ComponentCreator('/docs/Tasks/kubernetes_almacenamiento', '6b7'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/kubernetes_CMS_helm',
+        component: ComponentCreator('/docs/Tasks/kubernetes_CMS_helm', 'fb1'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
         path: '/docs/Tasks/kubernetes_deployments',
         component: ComponentCreator('/docs/Tasks/kubernetes_deployments', 'e80'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/kubernetes_param_deploy',
+        component: ComponentCreator('/docs/Tasks/kubernetes_param_deploy', '6f1'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

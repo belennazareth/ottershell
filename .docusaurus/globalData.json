@@ -231,8 +231,23 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/kubernetes_almacenamiento",
+              "path": "/docs/Tasks/kubernetes_almacenamiento",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/kubernetes_CMS_helm",
+              "path": "/docs/Tasks/kubernetes_CMS_helm",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/kubernetes_deployments",
               "path": "/docs/Tasks/kubernetes_deployments",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Tasks/kubernetes_param_deploy",
+              "path": "/docs/Tasks/kubernetes_param_deploy",
               "sidebar": "tutorialSidebar"
             },
             {

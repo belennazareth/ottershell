@@ -104,7 +104,7 @@
       "plugin": "d2af8df9"
     }
   },
-  "/docs-205": {
+  "/docs-791": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "79734a8c"
@@ -295,9 +295,21 @@
     "__comp": "17896441",
     "content": "72bdcc9d"
   },
+  "/docs/Tasks/kubernetes_almacenamiento-6b7": {
+    "__comp": "17896441",
+    "content": "0f65029b"
+  },
+  "/docs/Tasks/kubernetes_CMS_helm-fb1": {
+    "__comp": "17896441",
+    "content": "7d7cdc91"
+  },
   "/docs/Tasks/kubernetes_deployments-e80": {
     "__comp": "17896441",
     "content": "59301bd1"
+  },
+  "/docs/Tasks/kubernetes_param_deploy-6f1": {
+    "__comp": "17896441",
+    "content": "dea62343"
   },
   "/docs/Tasks/kubernetes_pods-dd4": {
     "__comp": "17896441",

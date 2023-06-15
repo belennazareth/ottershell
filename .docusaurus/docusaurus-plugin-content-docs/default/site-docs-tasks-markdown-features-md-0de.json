@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Kubernetes: Trabajando con Services",
-    "permalink": "/docs/Tasks/kubernetes_services"
+    "title": "Kubernetes: Instalación de un CMS con Helm",
+    "permalink": "/docs/Tasks/kubernetes_CMS_helm"
   },
   "next": {
     "title": "Extras",

@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/kubernetes_replicaset"
   },
   "next": {
-    "title": "Kubernetes: Trabajando con Services",
-    "permalink": "/docs/Tasks/kubernetes_services"
+    "title": "Kubernetes: Despliegues parametrizados",
+    "permalink": "/docs/Tasks/kubernetes_param_deploy"
   }
 }

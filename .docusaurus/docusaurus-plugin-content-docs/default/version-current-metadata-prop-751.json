@@ -437,9 +437,27 @@
           },
           {
             "type": "link",
+            "label": "Kubernetes: Despliegues parametrizados",
+            "href": "/docs/Tasks/kubernetes_param_deploy",
+            "docId": "Tasks/kubernetes_param_deploy"
+          },
+          {
+            "type": "link",
             "label": "Kubernetes: Trabajando con Services",
             "href": "/docs/Tasks/kubernetes_services",
             "docId": "Tasks/kubernetes_services"
+          },
+          {
+            "type": "link",
+            "label": "Kubernetes: Almacenamiento en Kubernetes",
+            "href": "/docs/Tasks/kubernetes_almacenamiento",
+            "docId": "Tasks/kubernetes_almacenamiento"
+          },
+          {
+            "type": "link",
+            "label": "Kubernetes: Instalación de un CMS con Helm",
+            "href": "/docs/Tasks/kubernetes_CMS_helm",
+            "docId": "Tasks/kubernetes_CMS_helm"
           },
           {
             "type": "link",
@@ -738,10 +756,28 @@
       "description": "En esta ocasión, se va a realizar un sistema de recogida de logs de sistema, para ello se va a utilizar el servicio de journald, que se encarga de recoger los logs de los servicios del sistema, y de los servicios que se ejecutan en el mismo. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta. Para esto, se van a seguir los siguientes pasos:",
       "sidebar": "tutorialSidebar"
     },
+    "Tasks/kubernetes_almacenamiento": {
+      "id": "Tasks/kubernetes_almacenamiento",
+      "title": "Kubernetes: Almacenamiento en Kubernetes",
+      "description": "Ejercicio 1: Desplegando un servidor web persistente",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/kubernetes_CMS_helm": {
+      "id": "Tasks/kubernetes_CMS_helm",
+      "title": "Kubernetes: Instalación de un CMS con Helm",
+      "description": "Vamos a instalar el CMS Wordpress usando Helm. Para ello, realiza los siguientes pasos:",
+      "sidebar": "tutorialSidebar"
+    },
     "Tasks/kubernetes_deployments": {
       "id": "Tasks/kubernetes_deployments",
       "title": "Kubernetes: Trabajando con Deployments",
       "description": "EJERCICIO 1: Trabajando con Deployments",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/kubernetes_param_deploy": {
+      "id": "Tasks/kubernetes_param_deploy",
+      "title": "Kubernetes: Despliegues parametrizados",
+      "description": "Ejercicio 1: Configurando nuestra aplicación Temperaturas",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/kubernetes_pods": {
