@@ -8,25 +8,84 @@ sidebar_position: 59
 
 En este taller vamos a crear un Deployment de una aplicación web. Sigamos los siguientes pasos:
 
-1. Crea un fichero yaml con la descripción del recurso Deployment, teniendo en cuenta los siguientes aspectos:
-    * Indica nombres distintos para el Deployment y para el contenedor de los Pods que va a controlar.
-    * El Deployment va a crear 2 réplicas.
-    * La imagen que debes desplegar es iesgn/test_web:latest.
-    * Indica de manera adecuada una etiqueta en la especificación del Pod que vas a definir que coincida con el selector del Deployment.
-2. Crea el Deployment.
-3. Comprueba los recursos que se han creado: Deployment, ReplicaSet y Pods.
-4. Obtén información detallada del Deployment creado.
-5. Crea un una redirección utilizando el port-forward para acceder a la aplicación, sabiendo que la aplicación ofrece el servicio en el puerto 80, y accede a la aplicación con un navegador web.
-6. Accede a los logs del despliegue para comprobar el acceso que has hecho en el punto anterior.
-7. Elimina el Deployment y comprueba que se han borrado todos los recursos creados.
+**1. Crea un fichero yaml con la descripción del recurso Deployment, teniendo en cuenta los siguientes aspectos:**
+    **- Indica nombres distintos para el Deployment y para el contenedor de los Pods que va a controlar.**
+    **- El Deployment va a crear 2 réplicas.**
+    **- La imagen que debes desplegar es iesgn/test_web:latest.**
+    **- Indica de manera adecuada una etiqueta en la especificación del Pod que vas a definir que coincida con el selector del Deployment.**
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-web-deploy
+  labels:
+    app: test-web-deploy
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: test-web-deploy
+    template:
+        metadata:
+            labels:
+                app: test-web-deploy
+        spec:
+            containers:
+            - name: contenedor-test-web-deploy
+              image: iesgn/test_web:latest
+              ports:
+              - containerPort: 80
+```
+
+**2. Crea el Deployment.**
+
+    kubectl apply -f deployment.yaml
+
+**3. Comprueba los recursos que se han creado: Deployment, ReplicaSet y Pods.**
+
+    kubectl get deployment
+    kubectl get replicaset
+    kubectl get pods
+
+**4. Obtén información detallada del Deployment creado.**
+
+    kubectl describe deployment test-web-deploy
+
+**5. Crea un una redirección utilizando el port-forward para acceder a la aplicación, sabiendo que la aplicación ofrece el servicio en el puerto 80, y accede a la aplicación con un navegador web.**
+
+    kubectl port-forward deployment/test-web-deploy 8888:80
+
+**6. Accede a los logs del despliegue para comprobar el acceso que has hecho en el punto anterior.**
+
+    kubectl logs deployment/test-web-deploy
+
+**7. Elimina el Deployment y comprueba que se han borrado todos los recursos creados.**
+
+    kubectl delete deployment test-web-deploy
+    kubectl get deployment
 
 ## Entrega
 
 ### 1. Pantallazo del fichero yaml que has creado con la definición del Deployment.
+
+![K8S](/img/SRI+HLC/taller3SRI8.png)
+
 ### 2. Pantallazo donde se comprueba los recursos que se han creado.
+
+![K8S](/img/SRI+HLC/taller3SRI8-2.png)
+
 ### 3. Pantallazo donde se ve la información detallada del Deployment.
+
+![K8S](/img/SRI+HLC/taller3SRI8-3.png)
+
 ### 4. Pantallazo donde se vea el acceso desde un navegador web a la aplicación usando el port-forward.
+
+![K8S](/img/SRI+HLC/taller3SRI8-4.png)
+
 ### 5. Pantallazo donde se vea los logs del despliegue después del acceso.
+
+![K8S](/img/SRI+HLC/taller3SRI8-5.png)
 
 ## EJERCICIO 2: Actualización y desactualización de nuestra aplicación
 
