@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Kubernetes: Trabajando con Deployments",
-    "permalink": "/docs/Tasks/kubernetes_deployments"
+    "title": "Kubernetes: Trabajando con Services",
+    "permalink": "/docs/Tasks/kubernetes_services"
   },
   "next": {
     "title": "Extras",

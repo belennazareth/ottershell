@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/openLDAP",
   "id": "Tasks/openLDAP",
   "title": "Instalación y configuración inicial de OpenLDAP",
-  "description": "Realiza la instalación y configuración básica de OpenLDAP en alfa,utilizando como base el nombre DNS asignado. Deberás crear un usuario llamado prueba y configurar una máquina cliente basada en Debian y Rocky para que pueda validarse en servidor ldap configurado anteriormente con el usuario prueba.",
+  "description": "Realiza la instalación y configuración básica de OpenLDAP en alfa,utilizando como base el nombre DNS asignado. Deberás crear un usuario llamado prueba y configurar una máquina cliente basada en Debian y Rocky para que pueda validarse en el servidor ldap configurado anteriormente con el usuario prueba.",
   "source": "@site/docs/Tasks/openLDAP.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/openLDAP",

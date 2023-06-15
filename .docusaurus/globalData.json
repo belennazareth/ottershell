@@ -246,6 +246,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/kubernetes_services",
+              "path": "/docs/Tasks/kubernetes_services",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/lemp",
               "path": "/docs/Tasks/lemp",
               "sidebar": "tutorialSidebar"

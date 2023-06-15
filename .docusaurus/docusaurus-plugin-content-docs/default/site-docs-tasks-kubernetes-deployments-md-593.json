@@ -2,7 +2,7 @@
   "unversionedId": "Tasks/kubernetes_deployments",
   "id": "Tasks/kubernetes_deployments",
   "title": "Kubernetes: Trabajando con Deployments",
-  "description": "EJERCICIIO 1: Trabajando con Deployments",
+  "description": "EJERCICIO 1: Trabajando con Deployments",
   "source": "@site/docs/Tasks/kubernetes_deployments.md",
   "sourceDirName": "Tasks",
   "slug": "/Tasks/kubernetes_deployments",
@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/kubernetes_replicaset"
   },
   "next": {
-    "title": "Markdown Features",
-    "permalink": "/docs/Tasks/markdown-features"
+    "title": "Kubernetes: Trabajando con Services",
+    "permalink": "/docs/Tasks/kubernetes_services"
   }
 }

@@ -104,7 +104,7 @@
       "plugin": "d2af8df9"
     }
   },
-  "/docs-ceb": {
+  "/docs-6c9": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "79734a8c"
@@ -306,6 +306,10 @@
   "/docs/Tasks/kubernetes_replicaset-18d": {
     "__comp": "17896441",
     "content": "d98153a4"
+  },
+  "/docs/Tasks/kubernetes_services-300": {
+    "__comp": "17896441",
+    "content": "8a5ad9fd"
   },
   "/docs/Tasks/lemp-8ab": {
     "__comp": "17896441",

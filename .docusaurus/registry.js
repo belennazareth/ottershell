@@ -57,6 +57,7 @@ export default {
   '814f3328': [() => import(/* webpackChunkName: '814f3328' */ '~blog/default/blog-post-list-prop-default.json'), '~blog/default/blog-post-list-prop-default.json', require.resolveWeak('~blog/default/blog-post-list-prop-default.json')],
   '82f28520': [() => import(/* webpackChunkName: '82f28520' */ '@site/docs/Tasks/gestion_paqueteria_aso.md'), '@site/docs/Tasks/gestion_paqueteria_aso.md', require.resolveWeak('@site/docs/Tasks/gestion_paqueteria_aso.md')],
   '88b21f1a': [() => import(/* webpackChunkName: '88b21f1a' */ '@site/docs/Tasks/vpn.md'), '@site/docs/Tasks/vpn.md', require.resolveWeak('@site/docs/Tasks/vpn.md')],
+  '8a5ad9fd': [() => import(/* webpackChunkName: '8a5ad9fd' */ '@site/docs/Tasks/kubernetes_services.md'), '@site/docs/Tasks/kubernetes_services.md', require.resolveWeak('@site/docs/Tasks/kubernetes_services.md')],
   '8a8f2def': [() => import(/* webpackChunkName: '8a8f2def' */ '@site/docs/Tasks/phpmyadmin.md'), '@site/docs/Tasks/phpmyadmin.md', require.resolveWeak('@site/docs/Tasks/phpmyadmin.md')],
   '8efe011e': [() => import(/* webpackChunkName: '8efe011e' */ '@site/docs/Tasks/cliente_vpn.md'), '@site/docs/Tasks/cliente_vpn.md', require.resolveWeak('@site/docs/Tasks/cliente_vpn.md')],
   '91719550': [() => import(/* webpackChunkName: '91719550' */ '~docs/default/category-docs-tutorialsidebar-category-extras-904.json'), '~docs/default/category-docs-tutorialsidebar-category-extras-904.json', require.resolveWeak('~docs/default/category-docs-tutorialsidebar-category-extras-904.json')],

@@ -431,6 +431,12 @@
           },
           {
             "type": "link",
+            "label": "Kubernetes: Trabajando con Services",
+            "href": "/docs/Tasks/kubernetes_services",
+            "docId": "Tasks/kubernetes_services"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -729,7 +735,7 @@
     "Tasks/kubernetes_deployments": {
       "id": "Tasks/kubernetes_deployments",
       "title": "Kubernetes: Trabajando con Deployments",
-      "description": "EJERCICIIO 1: Trabajando con Deployments",
+      "description": "EJERCICIO 1: Trabajando con Deployments",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/kubernetes_pods": {
@@ -742,6 +748,12 @@
       "id": "Tasks/kubernetes_replicaset",
       "title": "Kubernetes: Trabajando con ReplicaSet",
       "description": "Como indicamos en el contenido de este módulo, no se va a trabajar directamente con los Pods (realmente tampoco vamos a trabajar directamente con los ReplicaSet, en el siguiente módulo explicaremos los Deployments que serán el recurso con el que trabajaremos). En este ejercicio vamos a crear un ReplicaSet que va a controlar un conjunto de Pods. Para ello, realiza los siguientes pasos:",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/kubernetes_services": {
+      "id": "Tasks/kubernetes_services",
+      "title": "Kubernetes: Trabajando con Services",
+      "description": "Ejercicio 1: Despliegue y acceso de la aplicación GuestBook",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/lemp": {
@@ -801,7 +813,7 @@
     "Tasks/openLDAP": {
       "id": "Tasks/openLDAP",
       "title": "Instalación y configuración inicial de OpenLDAP",
-      "description": "Realiza la instalación y configuración básica de OpenLDAP en alfa,utilizando como base el nombre DNS asignado. Deberás crear un usuario llamado prueba y configurar una máquina cliente basada en Debian y Rocky para que pueda validarse en servidor ldap configurado anteriormente con el usuario prueba.",
+      "description": "Realiza la instalación y configuración básica de OpenLDAP en alfa,utilizando como base el nombre DNS asignado. Deberás crear un usuario llamado prueba y configurar una máquina cliente basada en Debian y Rocky para que pueda validarse en el servidor ldap configurado anteriormente con el usuario prueba.",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/parametros_kernel": {

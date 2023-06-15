@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'ceb'),
+    component: ComponentCreator('/docs', '6c9'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -347,6 +347,12 @@ export default [
       {
         path: '/docs/Tasks/kubernetes_replicaset',
         component: ComponentCreator('/docs/Tasks/kubernetes_replicaset', '18d'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/kubernetes_services',
+        component: ComponentCreator('/docs/Tasks/kubernetes_services', '300'),
         exact: true,
         sidebar: "tutorialSidebar"
       },
