@@ -7,9 +7,9 @@ sidebar_position: 57
 Vamos a crear nuestro primer Pod, y para ellos vamos a desplegar una imagen que nos ofrece un servidor web con una página estática. Para ello realiza los siguientes pasos:
 
 **1. Crea un fichero yaml con la descripción del recurso Pod, teniendo en cuenta los siguientes aspectos:**
-    - Indica nombres distintos para el Pod y para el contenedor.
-    - La imagen que debes desplegar es `iesgn/test_web:latest`.
-    - Indica una etiqueta en la descripción del Pod.
+    **- Indica nombres distintos para el Pod y para el contenedor.**
+    **- La imagen que debes desplegar es `iesgn/test_web:latest`.**
+    **- Indica una etiqueta en la descripción del Pod.**
 
   kubectl run test-web --image=iesgn/test_web:latest --dry-run=client -o yaml > test-web.yaml
 
