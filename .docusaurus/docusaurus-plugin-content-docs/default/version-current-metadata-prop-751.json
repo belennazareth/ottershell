@@ -53,6 +53,12 @@
           },
           {
             "type": "link",
+            "label": "Poblar un directorio LDAP desde un fichero CSV",
+            "href": "/docs/Tasks/LDAP_CSV",
+            "docId": "Tasks/LDAP_CSV"
+          },
+          {
+            "type": "link",
             "label": "Instalación y configuración inicial de OpenLDAP",
             "href": "/docs/Tasks/openLDAP",
             "docId": "Tasks/openLDAP"
@@ -754,6 +760,12 @@
       "id": "Tasks/kubernetes_services",
       "title": "Kubernetes: Trabajando con Services",
       "description": "Ejercicio 1: Despliegue y acceso de la aplicación GuestBook",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/LDAP_CSV": {
+      "id": "Tasks/LDAP_CSV",
+      "title": "Poblar un directorio LDAP desde un fichero CSV",
+      "description": "Crear entre todos los alumnos de la clase que vayan a hacer esta tarea un fichero CSV que incluya información personal de cada uno incluyendo los siguientes datos:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/lemp": {

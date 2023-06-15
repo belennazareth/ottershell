@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '6c9'),
+    component: ComponentCreator('/docs', '205'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -353,6 +353,12 @@ export default [
       {
         path: '/docs/Tasks/kubernetes_services',
         component: ComponentCreator('/docs/Tasks/kubernetes_services', '300'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/LDAP_CSV',
+        component: ComponentCreator('/docs/Tasks/LDAP_CSV', '5dc'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

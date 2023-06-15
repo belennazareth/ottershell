@@ -21,7 +21,7 @@
     "permalink": "/docs/Tasks/makefile_aso"
   },
   "next": {
-    "title": "Instalación y configuración inicial de OpenLDAP",
-    "permalink": "/docs/Tasks/openLDAP"
+    "title": "Poblar un directorio LDAP desde un fichero CSV",
+    "permalink": "/docs/Tasks/LDAP_CSV"
   }
 }

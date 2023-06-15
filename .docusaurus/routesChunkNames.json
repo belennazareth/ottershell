@@ -104,7 +104,7 @@
       "plugin": "d2af8df9"
     }
   },
-  "/docs-6c9": {
+  "/docs-205": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "79734a8c"
@@ -310,6 +310,10 @@
   "/docs/Tasks/kubernetes_services-300": {
     "__comp": "17896441",
     "content": "8a5ad9fd"
+  },
+  "/docs/Tasks/LDAP_CSV-5dc": {
+    "__comp": "17896441",
+    "content": "a0ea278e"
   },
   "/docs/Tasks/lemp-8ab": {
     "__comp": "17896441",

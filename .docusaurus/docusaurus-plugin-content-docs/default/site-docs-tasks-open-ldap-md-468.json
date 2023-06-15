@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Ejercicios gestión de paquetería",
-    "permalink": "/docs/Tasks/gestion_paqueteria_aso"
+    "title": "Poblar un directorio LDAP desde un fichero CSV",
+    "permalink": "/docs/Tasks/LDAP_CSV"
   },
   "next": {
     "title": "Creación y configuración de un escenario router-nat",
