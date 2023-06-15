@@ -325,9 +325,20 @@ Por lo tanto para desplegar la aplicaciones tendremos dos ficheros.yaml:
 
 Para realizar el despliegue realiza los siguientes pasos:
 
-1. Usando los ficheros anteriores crea los dos Deployments.
+**1. Usando los ficheros anteriores crea los dos Deployments.**
+
+    kubectl apply -f guestbook.yaml
+    kubectl apply -f redis.yaml
+
 2. Comprueba que los recursos que se han creado: Deployment, ReplicaSet y Pods.
+
+    kubectl get deployment
+    kubectl get replicaset
+    kubectl get pods
+
 3. Crea una redirección utilizando el port-forward para acceder a la aplicación, sabiendo que la aplicación ofrece el servicio en el puerto 5000, y accede a la aplicación con un navegador web.
+
+    kubectl port-forward deployment/guestbook 8888:5000
 
 ¿Qué aparece en la página principal de la aplicación?. Aparece el siguiente mensaje: Waiting for database connection…. Por lo tanto podemos indicar varias conclusiones:
 
@@ -339,5 +350,9 @@ En el siguiente módulo estudiaremos los recursos que nos ofrece la API de Kuber
 ## Entrega
 
 ### 1. Pantallazo donde se comprueba los recursos que se han creado.
+
+![K8S](/img/SRI+HLC/taller3SRI8-12.png)
+
 ### 2. Pantallazo donde se vea el acceso desde un navegador web a la aplicación usando el port-forward, y se vea el mensaje de error al no poder acceder a la base de datos.
 
+![K8S](/img/SRI+HLC/taller3SRI8-13.png)
