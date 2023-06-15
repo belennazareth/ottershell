@@ -1,5 +1,5 @@
 #! /usr/bin/bash
 
-#npm run build 
-#git commit -am "build"
-#vercel --prod
+npm run build 
+git commit -am "build"
+vercel --prod
