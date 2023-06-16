@@ -350,24 +350,341 @@ Esta actividad es la continuación de la actividad realizada en el taller 5.
 
 Siguiendo la guía que hemos desarrollado en [Ejemplo 3: Wordpress con almacenamiento persistente](https://github.com/josedom24/curso_kubernetes_ies/blob/main/modulo8/wordpress.md) vamos a configurar el despliegue de Nextcloud para que use volúmenes (vamos a usar dos volúmenes, uno para la aplicación y otro para la base de datos) para que la información no se pierda.
 
+```
+kubectl create configmap bd-datos --from-literal=bd_user=nazareth \
+                            --from-literal=bd_dbname=nextcloud \
+                            --from-literal=bd_host=mariadb-service \
+                            -o yaml --dry-run=client > configmap-bd.yaml
+```
+
+```
+kubectl create secret generic bd-secret --from-literal=bd_password=nazareth \
+                                        --from-literal=bd_root_password=nazareth \
+                                        -o yaml --dry-run=client > configmap-bd-secret.yaml
+```
+
+- nextcloud-deployment.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-deployment
+  labels:
+    app: nextcloud
+    type: frontend
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: nextcloud
+            type: frontend
+    template:
+        metadata:
+            labels:
+                app: nextcloud
+                type: frontend
+        spec:
+          containers:
+              - name: nextcloud
+                image: nextcloud:latest
+                ports:
+                  - containerPort: 80
+                    name: nextcloud-http
+                  - containerPort: 443
+                    name: nextcloud-https
+                env:
+                  - name: MYSQL_DATABASE
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_dbname
+                  - name: MYSQL_USER
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_user
+                  - name: MYSQL_PASSWORD
+                    valueFrom:
+                       secretKeyRef:
+                           name: bd-secret
+                           key: bd_password
+                  - name: MYSQL_HOST
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_host
+``` 
+
+- nextcloud-srv.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud-service
+  labels:
+    app: nextcloud
+    type: frontend
+spec:
+    type: NodePort
+    ports:
+    - name: http-nextcloud-srv
+      port: 80
+      targetPort: nextcloud-http
+    selector:
+        app: nextcloud
+        type: frontend
+```
+
+- mariadb-deployment.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  labels:
+    app: nextcloud
+    type: database
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: nextcloud
+            type: database
+    template:
+        metadata:
+            labels:
+                app: nextcloud
+                type: database
+        spec:
+            containers:
+                - name: mariadb
+                  image: mariadb:10.5
+                  ports:
+                    - containerPort: 3306
+                      name: mariadb-port
+                  env:
+                    - name: MYSQL_ROOT_PASSWORD
+                      valueFrom:
+                         secretKeyRef:
+                             name: bd-secret
+                             key: bd_root_password
+                    - name: MYSQL_DATABASE
+                      valueFrom:
+                         configMapKeyRef:
+                             name: bd-datos
+                             key: bd_dbname
+                    - name: MYSQL_USER
+                      valueFrom:
+                         configMapKeyRef:
+                             name: bd-datos
+                             key: bd_user
+                    - name: MYSQL_PASSWORD
+                      valueFrom:
+                         secretKeyRef:
+                             name: bd-secret
+                             key: bd_password
+```
+
+- mariadb-srv.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-service
+  labels:
+    app: nextcloud
+    type: database
+spec:
+    selector:
+        app: nextcloud
+        type: database
+    ports:
+    - port: 3306
+      targetPort: mariadb-port
+    type: ClusterIP
+```
+
 Realiza los siguientes pasos:
 
 1. Crea los ficheros yaml para definir los recursos PersistentVolumenClaim para solicitar dos volúmenes de 4Gb.
+
+- pvc-nextcloud.yaml
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nextcloud
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+```
+
+- pvc-mysql.yaml
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-mysql
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+```
+
 2. Crea esos recursos y comprueba que se ha asociado un volumen de forma dinámica a cada solicitud.
-3. Modifica los ficheros de despliegue de la aplicación y la base de datos para asociar los volúmenes a cada uno. Según la documentación de la imagen Nextcloud en Docker Hub, la forma más sencilla de hacer persistente la aplicación es montar el volumen en el directorio/var/www/html/.
+
+  kubectl apply -f pvc-nextcloud.yaml
+  kubectl apply -f pvc-mysql.yaml
+  kubectl get pv,pvc
+
+3. Modifica los ficheros de despliegue de la aplicación y la base de datos para asociar los volúmenes a cada uno. Según la documentación de la imagen Nextcloud en Docker Hub, la forma más sencilla de hacer persistente la aplicación es montar el volumen en el directorio /var/www/html/.
+
+- nextcloud-deployment.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-deployment
+  labels:
+    app: nextcloud
+    type: frontend
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: nextcloud
+            type: frontend
+    template:
+        metadata:
+            labels:
+                app: nextcloud
+                type: frontend
+        spec:
+          volumes:
+              - name: nextcloud-vol
+                persistentVolumeClaim:
+                  claimName: pvc-nextcloud
+          containers:
+              - name: nextcloud
+                image: nextcloud:latest
+                ports:
+                  - containerPort: 80
+                    name: nextcloud-http
+                  - containerPort: 443
+                    name: nextcloud-https
+                env:
+                  - name: MYSQL_DATABASE
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_dbname
+                  - name: MYSQL_USER
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_user
+                  - name: MYSQL_PASSWORD
+                    valueFrom:
+                       secretKeyRef:
+                           name: bd-secret
+                           key: bd_password
+                  - name: MYSQL_HOST
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_host
+                volumeMounts:
+                  - name: nextcloud-vol
+                    mountPath: /var/www/html
+```
+
+- mariadb-deployment.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  labels:
+    app: nextcloud
+    type: database
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: nextcloud
+            type: database
+    template:
+        metadata:
+            labels:
+                app: nextcloud
+                type: database
+        spec:
+            volumes:
+                - name: mariadb-vol
+                  persistentVolumeClaim:
+                    claimName: pvc-mysql
+            containers:
+                - name: mariadb
+                  image: mariadb:10.5
+                  ports:
+                    - containerPort: 3306
+                      name: mariadb-port
+                  env:
+                    - name: MYSQL_ROOT_PASSWORD
+                      valueFrom:
+                         secretKeyRef:
+                             name: bd-secret
+                             key: bd_root_password
+                    - name: MYSQL_DATABASE
+                      valueFrom:
+                         configMapKeyRef:
+                             name: bd-datos
+                             key: bd_dbname
+                    - name: MYSQL_USER
+                      valueFrom:
+                         configMapKeyRef:
+                             name: bd-datos
+                             key: bd_user
+                    - name: MYSQL_PASSWORD
+                      valueFrom:
+                         secretKeyRef:
+                             name: bd-secret
+                             key: bd_password
+                  volumeMounts:
+                    - name: mariadb-vol
+                      mountPath: /var/lib/mysql
+```
+
 4. Accede a la aplicación, configúrala y sube un fichero.
+
 5. Comprobemos la persistencia: elimina los despliegues, vuelve a crearlos y vuelve a acceder desde el navegador y comprueba que la aplicación está configurada y mantiene el fichero que habías subido.
+
+  kubectl delete -f nextcloud-deployment.yaml
+  kubectl delete -f mariadb-deployment.yaml
 
 ## Entrega
 
 ### 1. Pantallazo donde se vean los ficheros yaml modificados para los despliegues.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-12.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-12.png)
 
 ### 2. Pantallazo donde se vea el acceso a la aplicación con el fichero que has subido.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-13.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-13.png)
 
 ### 3. Pantallazo donde se vea que se han eliminado y se han vuelto a crear los despliegues y que la aplicación sigue sirviendo el fichero que habíamos subido.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-14.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-14.gif)
