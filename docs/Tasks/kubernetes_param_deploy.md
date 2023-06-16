@@ -229,8 +229,172 @@ Basándonos en el [Ejemplo completo: Despliegue y acceso a Wordpress + MariaDB](
 
 * El despliegue de la base de datos se haría de la misma forma que encontramos en el ejemplo de Wordpress, pero para esta actividad vamos a usar la imagen mariadb:10.5.
 * Según la documentación de [NextCloud en DockerHub](https://hub.docker.com/_/nextcloud) las variables de entorno que tienes que modificar serían: `MYSQL_DATABASE`, `MYSQL_USER`, `MYSQL_PASSWORD` y `MYSQL_HOST`.
-* Al igual que en el ejemplo utiliza un recurso ``ConfigMap`` para guardar los valores de configuración no sensibles, y un recurso `Secret` para los datos sensibles.
+* Al igual que en el ejemplo utiliza un recurso `ConfigMap` para guardar los valores de configuración no sensibles, y un recurso `Secret` para los datos sensibles.
 * Utiliza los ficheros `yaml` del ejemplo haciendo las modificaciones oportunas.
+
+```
+kubectl create configmap bd-datos --from-literal=bd_user=nazareth \
+                            --from-literal=bd_dbname=nextcloud \
+                            --from-literal=bd_host=mariadb-service \
+                            -o yaml --dry-run=client > configmap-bd.yaml
+```
+
+```
+kubectl create secret generic bd-secret --from-literal=bd_password=nazareth \
+                                        --from-literal=bd_root_password=nazareth \
+                                        -o yaml --dry-run=client > configmap-bd-secret.yaml
+```
+
+- nextcloud-deployment.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud-deployment
+  labels:
+    app: nextcloud
+    type: frontend
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: nextcloud
+            type: frontend
+    template:
+        metadata:
+            labels:
+                app: nextcloud
+                type: frontend
+        spec:
+          containers:
+              - name: nextcloud
+                image: nextcloud:latest
+                ports:
+                  - containerPort: 80
+                    name: nextcloud-http
+                  - containerPort: 443
+                    name: nextcloud-https
+                env:
+                  - name: MYSQL_DATABASE
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_dbname
+                  - name: MYSQL_USER
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_user
+                  - name: MYSQL_PASSWORD
+                    valueFrom:
+                       secretKeyRef:
+                           name: bd-secret
+                           key: bd_password
+                  - name: MYSQL_HOST
+                    valueFrom:
+                       configMapKeyRef:
+                           name: bd-datos
+                           key: bd_host
+``` 
+
+- nextcloud-srv.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud-service
+  labels:
+    app: nextcloud
+    type: frontend
+spec:
+    type: NodePort
+    ports:
+    - name: http-nextcloud-srv
+      port: 80
+      targetPort: nextcloud-http
+    selector:
+        app: nextcloud
+        type: frontend
+```
+
+- mariadb-deployment.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  labels:
+    app: nextcloud
+    type: database
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: nextcloud
+            type: database
+    template:
+        metadata:
+            labels:
+                app: nextcloud
+                type: database
+        spec:
+            containers:
+                - name: mariadb
+                  image: mariadb:10.5
+                  ports:
+                    - containerPort: 3306
+                      name: mariadb-port
+                  env:
+                    - name: MYSQL_ROOT_PASSWORD
+                      valueFrom:
+                         secretKeyRef:
+                             name: bd-secret
+                             key: bd_root_password
+                    - name: MYSQL_DATABASE
+                      valueFrom:
+                         configMapKeyRef:
+                             name: bd-datos
+                             key: bd_dbname
+                    - name: MYSQL_USER
+                      valueFrom:
+                         configMapKeyRef:
+                             name: bd-datos
+                             key: bd_user
+                    - name: MYSQL_PASSWORD
+                      valueFrom:
+                         secretKeyRef:
+                             name: bd-secret
+                             key: bd_password
+```
+
+- mariadb-srv.yaml
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-service
+  labels:
+    app: nextcloud
+    type: database
+spec:
+    selector:
+        app: nextcloud
+        type: database
+    ports:
+    - port: 3306
+      targetPort: mariadb-port
+    type: ClusterIP
+```
+
+Para borrar un servicio:
+
+```
+kubectl delete service mariadb-service
+```
 
 ## Entrega 
 
