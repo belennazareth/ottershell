@@ -270,32 +270,78 @@ spec:
   kubectl apply -f pvc-redis.yaml
   kubectl get pv,pvc
 
-3. Modifica el fichero del despliegue de redis, modificando las xxxxxxxxxxxx por los valores correctos: el nombre del PersistentVolumenClaim y el directorio de montaje en el contenedor (como hemos visto anteriormente es /data).
+3. Modifica el fichero del despliegue de redis, modificando las xxxxxxxxxxxx por los valores correctos: el nombre del `PersistentVolumenClaim` y el directorio de montaje en el contenedor (como hemos visto anteriormente es `/data`).
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: redis
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: redis
+        tier: backend
+    spec:
+      volumes:
+        - name: volumen-redis
+          persistentVolumeClaim:
+            claimName: pvc-redis
+      containers:
+        - name: contenedor-redis
+          image: redis
+          command: ["redis-server"]
+          args: ["--appendonly", "yes"]
+          ports:
+            - name: redis-server
+              containerPort: 6379
+          volumeMounts:
+            - mountPath: /data
+              name: volumen-redis
+```
+
 4. Crea el despliegue de redis. El despliegue de la aplicación guestbook y la creación de los Services de acceso se hace con los ficheros que ya utilizamos anteriormente: guestbook-deployment.yaml, guestbook-srv.yaml y redis-srv.yaml.
+
+  kubectl apply -f redis-deployment.yaml
+  kubectl apply -f .
+
 5. Accede a la aplicación y escribe algunos mensajes.
+
 6. Comprobemos la persistencia: elimina el despliegue de redis, vuelve a crearlo, vuelve a acceder desde el navegador y comprueba que los mensajes no se han perdido.
+
+  kubectl delete -f redis-deployment.yaml
+  kubectl apply -f redis-deployment.yaml
 
 ## Entrega
 
 ### 1. Pantallazo con la definición del recurso PersistentVolumenClaim.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-7.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-7.png)
 
 ### 2. Pantallazo donde se visualicen los recursos pv y pvc que se han creado.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-8.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-8.png)
 
 ### 3. Pantallazo donde se vea el fichero yaml modificado para el despliegue de redis.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-9.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-9.png)
 
 ### 4. Pantallazo donde se vea el acceso a la aplicación con los mensajes escritos.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-10.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-10.png)
 
 ### 5. Pantallazo donde se vea que se ha eliminado y se ha vuelto a crear el despliegue de redis y que se sigue sirviendo la aplicación con los mensajes.
 
-<!-- ![K8S](/img/SRI+HLC/taller6SRI8-11.png) -->
+![K8S](/img/SRI+HLC/taller6SRI8-11.gif)
 
 
 ## Ejercicio 3: Haciendo persistente la aplicación Nextcloud
