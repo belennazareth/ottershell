@@ -279,23 +279,23 @@ spec:
 
 ### 1. Pantallazo con la definición del recurso PersistentVolumenClaim.
 
-![K8S](/img/SRI+HLC/taller6SRI8-7.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-7.png) -->
 
 ### 2. Pantallazo donde se visualicen los recursos pv y pvc que se han creado.
 
-![K8S](/img/SRI+HLC/taller6SRI8-8.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-8.png) -->
 
 ### 3. Pantallazo donde se vea el fichero yaml modificado para el despliegue de redis.
 
-![K8S](/img/SRI+HLC/taller6SRI8-9.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-9.png) -->
 
 ### 4. Pantallazo donde se vea el acceso a la aplicación con los mensajes escritos.
 
-![K8S](/img/SRI+HLC/taller6SRI8-10.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-10.png) -->
 
 ### 5. Pantallazo donde se vea que se ha eliminado y se ha vuelto a crear el despliegue de redis y que se sigue sirviendo la aplicación con los mensajes.
 
-![K8S](/img/SRI+HLC/taller6SRI8-11.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-11.png) -->
 
 
 ## Ejercicio 3: Haciendo persistente la aplicación Nextcloud
@@ -316,12 +316,12 @@ Realiza los siguientes pasos:
 
 ### 1. Pantallazo donde se vean los ficheros yaml modificados para los despliegues.
 
-![K8S](/img/SRI+HLC/taller6SRI8-12.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-12.png) -->
 
 ### 2. Pantallazo donde se vea el acceso a la aplicación con el fichero que has subido.
 
-![K8S](/img/SRI+HLC/taller6SRI8-13.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-13.png) -->
 
 ### 3. Pantallazo donde se vea que se han eliminado y se han vuelto a crear los despliegues y que la aplicación sigue sirviendo el fichero que habíamos subido.
 
-![K8S](/img/SRI+HLC/taller6SRI8-14.png)
+<!-- ![K8S](/img/SRI+HLC/taller6SRI8-14.png) -->
