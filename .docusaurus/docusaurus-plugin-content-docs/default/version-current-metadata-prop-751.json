@@ -461,6 +461,12 @@
           },
           {
             "type": "link",
+            "label": "Kubernetes",
+            "href": "/docs/Tasks/K8s",
+            "docId": "Tasks/K8s"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -754,6 +760,12 @@
       "id": "Tasks/journald",
       "title": "Recolección centralizada de logs del sistema",
       "description": "En esta ocasión, se va a realizar un sistema de recogida de logs de sistema, para ello se va a utilizar el servicio de journald, que se encarga de recoger los logs de los servicios del sistema, y de los servicios que se ejecutan en el mismo. En mi caso, voy a usar el escenario montado en OpenStack compuesto por alfa, bravo, charlie y delta. Para esto, se van a seguir los siguientes pasos:",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/K8s": {
+      "id": "Tasks/K8s",
+      "title": "Kubernetes",
+      "description": "En IAW has creado dos imágenes de dos aplicaciones",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/kubernetes_almacenamiento": {

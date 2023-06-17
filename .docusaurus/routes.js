@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '791'),
+    component: ComponentCreator('/docs', 'f8a'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -329,6 +329,12 @@ export default [
       {
         path: '/docs/Tasks/journald',
         component: ComponentCreator('/docs/Tasks/journald', 'da9'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/K8s',
+        component: ComponentCreator('/docs/Tasks/K8s', '0b4'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

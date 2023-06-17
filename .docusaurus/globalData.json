@@ -231,6 +231,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/K8s",
+              "path": "/docs/Tasks/K8s",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/kubernetes_almacenamiento",
               "path": "/docs/Tasks/kubernetes_almacenamiento",
               "sidebar": "tutorialSidebar"

@@ -20,6 +20,7 @@ export default {
   '1d4b65d0': [() => import(/* webpackChunkName: '1d4b65d0' */ '@site/docs/Tasks/dhcp.md'), '@site/docs/Tasks/dhcp.md', require.resolveWeak('@site/docs/Tasks/dhcp.md')],
   '1f391b9e': [() => import(/* webpackChunkName: '1f391b9e' */ '@theme/MDXPage'), '@theme/MDXPage', require.resolveWeak('@theme/MDXPage')],
   '1f5bd34a': [() => import(/* webpackChunkName: '1f5bd34a' */ '@site/docs/Tasks/manejo_modulos.md'), '@site/docs/Tasks/manejo_modulos.md', require.resolveWeak('@site/docs/Tasks/manejo_modulos.md')],
+  '20f71d60': [() => import(/* webpackChunkName: '20f71d60' */ '@site/docs/Tasks/K8s.md'), '@site/docs/Tasks/K8s.md', require.resolveWeak('@site/docs/Tasks/K8s.md')],
   '2455c74e': [() => import(/* webpackChunkName: '2455c74e' */ '~blog/default/blog-tags-git-hub-bf3-list.json'), '~blog/default/blog-tags-git-hub-bf3-list.json', require.resolveWeak('~blog/default/blog-tags-git-hub-bf3-list.json')],
   '2b17633b': [() => import(/* webpackChunkName: '2b17633b' */ '@site/docs/Tasks/iSCSI.md'), '@site/docs/Tasks/iSCSI.md', require.resolveWeak('@site/docs/Tasks/iSCSI.md')],
   '2ba75ccb': [() => import(/* webpackChunkName: '2ba75ccb' */ '@site/docs/Tasks/apache_uwsgi.md'), '@site/docs/Tasks/apache_uwsgi.md', require.resolveWeak('@site/docs/Tasks/apache_uwsgi.md')],

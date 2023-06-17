@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Kubernetes: Instalación de un CMS con Helm",
-    "permalink": "/docs/Tasks/kubernetes_CMS_helm"
+    "title": "Kubernetes",
+    "permalink": "/docs/Tasks/K8s"
   },
   "next": {
     "title": "Extras",
