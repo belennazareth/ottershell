@@ -284,6 +284,153 @@ Instala un clúster de kubernetes (más de un nodo). Tienes distintas opciones p
 Realiza el despliegue de la aplicación en el nuevo clúster. Es posible que no tenga instalado un ingress controller, por lo que no va a funcionar el ingress (puedes buscar como hacer la instalación: por ejemplo el nginx controller).
 
 Escala la aplicación y ejecuta kubectl get pods -o wide para ver cómo se ejecutan en los distintos nodos del clúster.
+--------------------------------------------------------------------------------------------------------------
+
+
+Voy a usar kubeadm para instalar un clúster de kubernetes en Debian.
+Primero creo el vagrantfile donde se van a definir 3 máquinas, una hará de master y las otras dos de worker:
+
+```ruby
+Vagrant.configure("2") do |config|
+
+    config.vm.define "master" do |master|
+        master.vm.box = "debian/bullseye64"
+        master.vm.hostname = "master"
+        master.vm.network "private_network", ip: "10.1.0.17"
+        master.vm.synced_folder ".", "/vagrant", disabled: true
+        master.vm.provider :libvirt do |libvirt|
+            libvirt.memory = 6144
+            libvirt.cpus = 4
+        end
+    end
+
+    config.vm.define "worker1" do |worker1|
+        worker1.vm.box = "debian/bullseye64"
+        worker1.vm.hostname = "worker1"
+        worker1.vm.network "private_network", ip: "10.1.0.18"
+        worker1.vm.synced_folder ".", "/vagrant", disabled: true
+        worker1.vm.provider :libvirt do |libvirt|
+            libvirt.memory = 2048
+            libvirt.cpus = 2
+        end
+    end
+
+    config.vm.define "worker2" do |worker2|
+        worker2.vm.box = "debian/bullseye64"
+        worker2.vm.hostname = "worker2"
+        worker2.vm.network "private_network", ip: "10.1.0.19"
+        worker2.vm.synced_folder ".", "/vagrant", disabled: true
+        worker2.vm.provider :libvirt do |libvirt|
+            libvirt.memory = 2048
+            libvirt.cpus = 2
+        end
+    end
+end
+```
+
+*Nota: Para que funcione correctamente la instalación debe de tener como mínimo 2GB de RAM y 2 CPUs. En master ponle al menos 6GB de RAM y 4 CPUs.
+
+### Instalación de Docker
+
+Usando terminator difundimos los comandos de este apartado a todas las máquinas.
+
+Actualizamos:
+
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl gnupg
+
+Agregamos la clave GPG oficial de Docker:
+
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+Añadimos el repo:
+
+```bash
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+Actualizamos de nuevo:
+
+    sudo apt-get update
+
+Instalamos la última versión de Docker Engine y containerd:
+
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+
+
+### Instalación de kubeadm, kubelet y kubectl
+
+Igualmente en las tres máquinas:
+
+```bash
+apt-get update && apt-get install -y apt-transport-https curl
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+apt-get update
+
+apt-get install -y kubelet kubeadm kubectl
+```
+
+### Inicialización de 🔷 master 🔷
+
+**SOLO** en la máquina **master**:
+
+    kubeadm init --pod-network-cidr=192.168.100.0/16 --apiserver-cert-extra-sans=192.168.121.157 --apiserver-advertise-address=10.1.0.17
+
+- `--pod-network-cidr=` es la red que vamos a crear para los pods.
+- `--apiserver-cert-extra-sans=` es la IP secundaria (eth0) de la máquina master.
+- `--apiserver-advertise-address=` es la IP primaria (eth1) de la máquina master.
+
+*Nota: Es necesario apagar la swap para que funcione correctamente (sudo swapoff -a).
+
+```bash
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/kubelet.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf # poner export KUBECONFIG=/etc/kubernetes/kubelet.conf 
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.121.40:6443 --token 6a01lf.ygf0v05wey1wxphe \
+	--discovery-token-ca-cert-hash sha256:2c3852180c76f0cf0b488968f932158cb6d82ffa9cd9decb8bef007d4c11f0d3 
+```
+
+*Nota: en caso de necesitar borrar el init ejecutamos systemctl stop kubelet && kubeadm reset, ejecutamos systemctl start kubelet y volvemos a ejecutar el init. IMPORTANTE BORRAR LOS FICHEROS rm -rf /etc/kubernetes/ , sudo rm -rf $HOME/.kube/ , rm -r /etc/cni/net.d
+
+Podemos comprobar ejecutando:
+
+    kubectl get nodes
+    kubeclt get pods --all-namespaces
+
+Lo siguiente será instalar `calico` para que las máquinas puedan comunicarse entre ellas:
+
+    kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/tigera-operator.yaml
+
+    kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/custom-resources.yaml
+
+
 
 ## Entrega
 
