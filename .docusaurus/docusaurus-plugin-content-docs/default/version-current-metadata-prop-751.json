@@ -59,6 +59,12 @@
           },
           {
             "type": "link",
+            "label": "LDAPs",
+            "href": "/docs/Tasks/LDAPs",
+            "docId": "Tasks/LDAPs"
+          },
+          {
+            "type": "link",
             "label": "Instalación y configuración inicial de OpenLDAP",
             "href": "/docs/Tasks/openLDAP",
             "docId": "Tasks/openLDAP"
@@ -814,6 +820,12 @@
       "id": "Tasks/LDAP_CSV",
       "title": "Poblar un directorio LDAP desde un fichero CSV",
       "description": "Crear entre todos los alumnos de la clase que vayan a hacer esta tarea un fichero CSV que incluya información personal de cada uno incluyendo los siguientes datos:",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/LDAPs": {
+      "id": "Tasks/LDAPs",
+      "title": "LDAPs",
+      "description": "Configura el servidor LDAP de alfa para que utilice el protocolo ldaps// utilizando el certificado x509 de la práctica de https o solicitando el correspondiente a través de gestiona. Realiza las modificaciones adecuadas en los clientes ldap de alfa para que todas las consultas se realicen por defecto utilizando ldaps://",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/lemp": {

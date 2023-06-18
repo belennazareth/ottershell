@@ -29,6 +29,7 @@ export default {
   '31fb806a': [() => import(/* webpackChunkName: '31fb806a' */ '@site/docs/Tasks/criptografia2.md'), '@site/docs/Tasks/criptografia2.md', require.resolveWeak('@site/docs/Tasks/criptografia2.md')],
   '32ca787b': [() => import(/* webpackChunkName: '32ca787b' */ '@site/docs/Tasks/docker_storage_net.md'), '@site/docs/Tasks/docker_storage_net.md', require.resolveWeak('@site/docs/Tasks/docker_storage_net.md')],
   '334592cc': [() => import(/* webpackChunkName: '334592cc' */ '@site/docs/Tasks/bind9_local.md'), '@site/docs/Tasks/bind9_local.md', require.resolveWeak('@site/docs/Tasks/bind9_local.md')],
+  '335b8b23': [() => import(/* webpackChunkName: '335b8b23' */ '@site/docs/Tasks/LDAPs.md'), '@site/docs/Tasks/LDAPs.md', require.resolveWeak('@site/docs/Tasks/LDAPs.md')],
   '379ad948': [() => import(/* webpackChunkName: '379ad948' */ '@site/docs/Tasks/peticion_http.md'), '@site/docs/Tasks/peticion_http.md', require.resolveWeak('@site/docs/Tasks/peticion_http.md')],
   '389968de': [() => import(/* webpackChunkName: '389968de' */ '~docs/default/category-docs-tutorialsidebar-category-tasks-603.json'), '~docs/default/category-docs-tutorialsidebar-category-tasks-603.json', require.resolveWeak('~docs/default/category-docs-tutorialsidebar-category-tasks-603.json')],
   '393be207': [() => import(/* webpackChunkName: '393be207' */ '@site/src/pages/markdown-page.md'), '@site/src/pages/markdown-page.md', require.resolveWeak('@site/src/pages/markdown-page.md')],

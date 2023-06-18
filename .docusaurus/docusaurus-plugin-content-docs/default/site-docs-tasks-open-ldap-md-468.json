@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Poblar un directorio LDAP desde un fichero CSV",
-    "permalink": "/docs/Tasks/LDAP_CSV"
+    "title": "LDAPs",
+    "permalink": "/docs/Tasks/LDAPs"
   },
   "next": {
     "title": "Creación y configuración de un escenario router-nat",

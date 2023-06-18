@@ -276,6 +276,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/LDAPs",
+              "path": "/docs/Tasks/LDAPs",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/lemp",
               "path": "/docs/Tasks/lemp",
               "sidebar": "tutorialSidebar"
