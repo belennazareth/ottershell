@@ -353,4 +353,6 @@ Desde el servidor:
 
 ![Term](/img/ASO/ldapCSVASO-3.png)
 
+![Term](/img/ASO/ldapCSVASO-4.gif)
+
 *Nota: cada usuario tiene que tener en el /etc/host el nombre del servidor y su IP.
