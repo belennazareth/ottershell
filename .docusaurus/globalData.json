@@ -186,6 +186,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "Tasks/HA_cluster",
+              "path": "/docs/Tasks/HA_cluster",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "Tasks/https",
               "path": "/docs/Tasks/https",
               "sidebar": "tutorialSidebar"

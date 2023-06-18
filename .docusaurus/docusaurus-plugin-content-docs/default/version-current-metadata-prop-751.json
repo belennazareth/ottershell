@@ -473,6 +473,12 @@
           },
           {
             "type": "link",
+            "label": "Cluster de Alta Disponibilidad",
+            "href": "/docs/Tasks/HA_cluster",
+            "docId": "Tasks/HA_cluster"
+          },
+          {
+            "type": "link",
             "label": "Markdown Features",
             "href": "/docs/Tasks/markdown-features",
             "docId": "Tasks/markdown-features"
@@ -712,6 +718,12 @@
       "id": "Tasks/gestion_paqueteria_aso",
       "title": "Ejercicios gestión de paquetería",
       "description": "Trabajo con apt, aptitude, dpkg",
+      "sidebar": "tutorialSidebar"
+    },
+    "Tasks/HA_cluster": {
+      "id": "Tasks/HA_cluster",
+      "title": "Cluster de Alta Disponibilidad",
+      "description": "El objetivo de este práctica es la instalación de una aplicación php (WordPress) sobe dos clúster de alta disponibilidad:",
       "sidebar": "tutorialSidebar"
     },
     "Tasks/https": {

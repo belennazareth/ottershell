@@ -17,8 +17,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Kubernetes",
-    "permalink": "/docs/Tasks/K8s"
+    "title": "Cluster de Alta Disponibilidad",
+    "permalink": "/docs/Tasks/HA_cluster"
   },
   "next": {
     "title": "Extras",

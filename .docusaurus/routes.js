@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '00a'),
+    component: ComponentCreator('/docs', '381'),
     routes: [
       {
         path: '/docs/category/extras',
@@ -275,6 +275,12 @@ export default [
       {
         path: '/docs/Tasks/gestion_paqueteria_aso',
         component: ComponentCreator('/docs/Tasks/gestion_paqueteria_aso', 'b86'),
+        exact: true,
+        sidebar: "tutorialSidebar"
+      },
+      {
+        path: '/docs/Tasks/HA_cluster',
+        component: ComponentCreator('/docs/Tasks/HA_cluster', '066'),
         exact: true,
         sidebar: "tutorialSidebar"
       },

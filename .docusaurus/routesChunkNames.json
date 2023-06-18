@@ -104,7 +104,7 @@
       "plugin": "d2af8df9"
     }
   },
-  "/docs-00a": {
+  "/docs-381": {
     "__comp": "1be78505",
     "__context": {
       "plugin": "79734a8c"
@@ -258,6 +258,10 @@
   "/docs/Tasks/gestion_paqueteria_aso-b86": {
     "__comp": "17896441",
     "content": "82f28520"
+  },
+  "/docs/Tasks/HA_cluster-066": {
+    "__comp": "17896441",
+    "content": "3b7fb729"
   },
   "/docs/Tasks/https-fb6": {
     "__comp": "17896441",

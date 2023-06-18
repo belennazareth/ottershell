@@ -33,6 +33,7 @@ export default {
   '379ad948': [() => import(/* webpackChunkName: '379ad948' */ '@site/docs/Tasks/peticion_http.md'), '@site/docs/Tasks/peticion_http.md', require.resolveWeak('@site/docs/Tasks/peticion_http.md')],
   '389968de': [() => import(/* webpackChunkName: '389968de' */ '~docs/default/category-docs-tutorialsidebar-category-tasks-603.json'), '~docs/default/category-docs-tutorialsidebar-category-tasks-603.json', require.resolveWeak('~docs/default/category-docs-tutorialsidebar-category-tasks-603.json')],
   '393be207': [() => import(/* webpackChunkName: '393be207' */ '@site/src/pages/markdown-page.md'), '@site/src/pages/markdown-page.md', require.resolveWeak('@site/src/pages/markdown-page.md')],
+  '3b7fb729': [() => import(/* webpackChunkName: '3b7fb729' */ '@site/docs/Tasks/HA_cluster.md'), '@site/docs/Tasks/HA_cluster.md', require.resolveWeak('@site/docs/Tasks/HA_cluster.md')],
   '3b927334': [() => import(/* webpackChunkName: '3b927334' */ '@site/docs/Tasks/migracion_centos.md'), '@site/docs/Tasks/migracion_centos.md', require.resolveWeak('@site/docs/Tasks/migracion_centos.md')],
   '3e4a5978': [() => import(/* webpackChunkName: '3e4a5978' */ '@site/docs/Tasks/jenkins_django.md'), '@site/docs/Tasks/jenkins_django.md', require.resolveWeak('@site/docs/Tasks/jenkins_django.md')],
   '46843c04': [() => import(/* webpackChunkName: '46843c04' */ '@site/docs/Tasks/openLDAP.md'), '@site/docs/Tasks/openLDAP.md', require.resolveWeak('@site/docs/Tasks/openLDAP.md')],
