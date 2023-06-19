@@ -264,7 +264,7 @@ mkfs.gfs2 -p lock_dlm -j 2 -t mycluster:web /dev/drbd1
 
 ![HA](/img/SRI+HLC/HASRI9-8.png)
 
-### 2. Una prueba de funcionamiento donde se compruebe que el stonith_se ha configurado de forma correcta.
+### 2. Una prueba de funcionamiento donde se compruebe que el stonith_ se ha configurado de forma correcta.
 
 <!-- ![HA](/img/SRI+HLC/HASRI9-9.png) -->
 
