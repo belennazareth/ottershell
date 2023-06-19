@@ -44,4 +44,182 @@ A challenge password []:
 An optional company name []:
 ```
 
-Después, debemos mandar el fichero `alfa.csr` a Gonzalo Nazareno (unidad certificadora) para que nos devuelvan el certificado firmado. Una vez lo tengamos, lo guardamos en `/etc/ssl/certs/alfa.crt`.
+Después, debemos mandar el fichero `alfa.csr` a Gonzalo Nazareno (unidad certificadora) para que nos devuelvan nuestro certificado firmado y el suyo propio. Una vez lo tengamos, lo guardamos en `/etc/ssl/certs/alfa.crt`. 
+
+
+Movemos el fichero ya firmado a `/etc/ssl/certs/`:
+
+```bash
+mv alfa.crt /etc/ssl/certs/
+mv gonzalonazareno.crt /etc/ssl/certs/
+```
+
+Le cambiamos el propietario y el grupo:
+
+```bash
+chown root: /etc/ssl/certs/alfa.crt
+chown root: /etc/ssl/certs/gonzalonazareno.crt
+```
+
+Instalamos `acl` para poder acceder a los certificados:
+
+```bash
+sudo apt install acl
+```
+
+Le damos permisos a los certificados:
+
+```bash
+setfacl -m u:openldap:r-x /etc/ssl/private
+setfacl -m u:openldap:r-x /etc/ssl/private/alfa.key
+getfacl /etc/ssl/private
+getfacl /etc/ssl/private/alfa.key
+```
+
+De resultado, debería salir algo como esto:
+
+```bash
+root@alfa:~# getfacl /etc/ssl/private         
+getfacl: Removing leading '/' from absolute path names
+# file: etc/ssl/private
+# owner: root
+# group: root
+user::rwx
+user:openldap:r-x
+group::---
+mask::r-x
+other::---
+
+root@alfa:~# getfacl /etc/ssl/private/alfa.key 
+getfacl: Removing leading '/' from absolute path names
+# file: etc/ssl/private/alfa.key
+# owner: root
+# group: root
+user::rw-
+user:openldap:r-x
+group::r--
+mask::r-x
+other::r--
+
+root@alfa:~# 
+```
+
+Creamos un fichero `ldif` para configurar el servidor LDAP:
+
+    nano ldap-tls.ldif
+
+```bash
+dn: cn=config
+changetype: modify
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/ssl/certs/gonzalonazareno.crt
+-
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/ssl/private/alfa.key
+-
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/ssl/certs/alfa.crt
+```
+
+Lo aplicamos:
+
+```bash
+ldapmodify -Y EXTERNAL -H ldapi:/// -f ldap-tls.ldif
+```
+
+Saldrá algo como esto:
+
+```bash
+root@alfa:~# ldapmodify -Y EXTERNAL -H ldapi:/// -f ldap-tls.ldif
+SASL/EXTERNAL authentication started
+SASL username: gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth
+SASL SSF: 0
+modifying entry "cn=config"
+
+root@alfa:~# 
+```
+
+Modificamos el fichero de slapd para que utilice el protocolo ldaps://:
+
+    nano /etc/default/slapd
+
+```bash
+SLAPD_SERVICES="ldap:/// ldapi:/// ldaps:///"
+```
+
+Copiamos el certificado de Gonzalo Nazareno a `/usr/local/share/ca-certificates/`:
+
+```bash
+cp /etc/ssl/certs/gonzalonazareno.crt /usr/local/share/ca-certificates/
+```
+
+Actualizamos los certificados:
+
+```bash
+update-ca-certificates
+```
+
+```bash
+root@alfa:~# update-ca-certificates
+Updating certificates in /etc/ssl/certs...
+rehash: warning: skipping duplicate certificate in gonzalonazareno.crt
+1 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+Adding debian:gonzalonazareno.pem
+done.
+done.
+root@alfa:~# 
+```
+
+Reiniciamos el servicio:
+
+```bash
+systemctl restart slapd
+```
+
+Para comprobar el funcionamiento, podemos utilizar el comando `ldapsearch`:
+
+```bash
+ldapsearch -x -b "dc=nazareth,dc=gonzalonazareno,dc=org" -H ldaps://localhost:636
+```
+
+**EN LOS CLIENTES**
+
+Copiamos el certificado de la unidad certificadora a los clientes:
+
+```bash
+scp /etc/ssl/certs/gonzalonazareno.crt pepe@{ip charlie}:
+
+scp /etc/ssl/certs/gonzalonazareno.crt benito@{ip delta}:
+```
+
+Movemos el certificado a `/usr/local/share/ca-certificates/`:
+
+```bash
+mv gonzalonazareno.crt /usr/local/share/ca-certificates/
+```
+
+Cambiamos los permisos:
+
+```bash
+chown root: /usr/local/share/ca-certificates/gonzalonazareno.crt
+```
+
+Actualizamos los certificados:
+
+```bash
+update-ca-certificates
+```
+
+En los clientes instalamos `ldap-utils` para poder utilizar el comando `ldapsearch`:
+
+```bash
+sudo apt install ldap-utils
+```
+
+Para comprobar el funcionamiento, podemos utilizar el comando `ldapsearch`:
+
+```bash
+ldapsearch -x -b "dc=nazareth,dc=gonzalonazareno,dc=org" -H ldaps://alfa.nazareth.gonzalonazareno.org:636
+```
