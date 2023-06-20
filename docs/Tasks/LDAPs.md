@@ -71,6 +71,7 @@ Le damos permisos a los certificados:
 
 ```bash
 setfacl -m u:openldap:r-x /etc/ssl/private
+setfacl -m u:openldap:r-x /etc/ssl/certs
 setfacl -m u:openldap:r-x /etc/ssl/private/alfa.key
 getfacl /etc/ssl/private
 getfacl /etc/ssl/private/alfa.key
@@ -184,14 +185,12 @@ Para comprobar el funcionamiento, podemos utilizar el comando `ldapsearch`:
 ldapsearch -x -b "dc=nazareth,dc=gonzalonazareno,dc=org" -H ldaps://localhost:636
 ```
 
-**EN LOS CLIENTES**
+**DELTA UBUNTU**
 
-Copiamos el certificado de la unidad certificadora a los clientes:
+Copiamos el certificado de la unidad certificadora:
 
 ```bash
-scp /etc/ssl/certs/gonzalonazareno.crt pepe@{ip charlie}:
-
-scp /etc/ssl/certs/gonzalonazareno.crt benito@{ip delta}:
+scp /etc/ssl/certs/gonzalonazareno.crt nazare@{ip delta}:
 ```
 
 Movemos el certificado a `/usr/local/share/ca-certificates/`:
@@ -212,10 +211,18 @@ Actualizamos los certificados:
 update-ca-certificates
 ```
 
-En los clientes instalamos `ldap-utils` para poder utilizar el comando `ldapsearch`:
+Instalamos `ldap-utils` para poder utilizar el comando `ldapsearch`:
 
 ```bash
 sudo apt install ldap-utils
+```
+
+Modificamos la siguiente línea en el fichero `/etc/ldap/ldap.conf`:
+
+    nano /etc/ldap/ldap.conf
+
+```bash
+URI ldaps://alfa.nazareth.gonzalonazareno.org
 ```
 
 Para comprobar el funcionamiento, podemos utilizar el comando `ldapsearch`:
@@ -223,3 +230,119 @@ Para comprobar el funcionamiento, podemos utilizar el comando `ldapsearch`:
 ```bash
 ldapsearch -x -b "dc=nazareth,dc=gonzalonazareno,dc=org" -H ldaps://alfa.nazareth.gonzalonazareno.org:636
 ```
+
+**BRAVO (ROCKY L)**
+
+Pasamos por scp el certificado de la unidad certificadora:
+
+```bash
+scp /etc/ssl/certs/gonzalonazareno.crt nazare@{ip bravo}:
+```
+
+Movemos el certificado a `/usr/local/share/ca-certificates/`:
+
+```bash
+mv gonzalonazareno.crt /usr/share/pki/ca-trust-source/anchors/
+```
+
+Cambiamos los permisos:
+
+```bash
+chown root: /usr/share/pki/ca-trust-source/anchors/gonzalonazareno.crt
+```
+
+Instalamos el cliente de LDAP:
+
+```bash
+dnf install openldap-clients
+```
+
+Editamos el fichero pam.d/common-auth para añaadir la siguiente línea y poder autenticarnos con LDAP:
+
+    nano /etc/pam.d/common-auth
+
+```bash
+auth    sufficient      pam_ldap.so
+```
+
+Editamos el fichero de configuración de LDAP:
+
+    nano /etc/openldap/ldap.conf
+
+```bash
+BASE    dc=nazareth,dc=gonzalonazareno,dc=org
+URI     ldaps://alfa.nazareth.gonzalonazareno.org
+```
+
+Editamos pam.d/common-session para que los usuarios LDAP puedan iniciar sesión:
+
+    nano /etc/pam.d/common-session
+
+```bash
+session sufficient pam_mkhomedir.so skel=/etc/skel umask=077
+```
+
+Hacemos una consulta a LDAP:
+
+```bash
+ldapsearch -x -b "dc=nazareth,dc=gonzalonazareno,dc=org" -H ldaps://alfa.nazareth.gonzalonazareno.org:636
+```
+
+Instalamos los paquetes para loguearnos con LDAP:
+
+```bash
+dnf -y install openldap-clients sssd sssd-ldap oddjob-mkhomedir 
+```
+
+Ejecutamos el siguiente comando para que mkhomedir cree los directorios de los usuarios:
+
+```bash
+authselect select sssd with-mkhomedir --force
+```
+
+Editamos el fichero de configuración de SSSD:
+
+    nano /etc/sssd/sssd.conf
+
+```bash
+[domain/default]
+id_provider = ldap
+autofs_provider = ldap
+auth_provider = ldap
+chpass_provider = ldap
+ldap_uri = ldaps://alfa.nazareth.gonzalonazareno.org
+ldap_search_base = dc=nazareth,dc=gonzalonazareno,dc=org
+ldap_id_use_start_tls = True
+ldap_tls_cacertdir = /etc/openldap/cacerts
+cache_credentials = True
+ldap_tls_reqcert = allow
+
+[sssd]
+services = nss, pam, autofs
+domains = default
+
+[nss]
+homedir_substring = /nfs/
+```
+
+En homedir_substring ponemos el directorio donde se encuentran los homes de los usuarios en el servidor NFS, la máquina alfa.
+
+Copiamos el certificado de la unidad certificadora al directorio `/etc/openldap/certs` para que SSSD pueda validar el certificado:
+
+```bash
+cp /usr/share/pki/ca-trust-source/anchors/gonzalonazareno.crt /etc/openldap/certs/
+```
+
+Damos permisos al fichero ssd:
+
+```bash
+chmod 600 /etc/sssd/sssd.conf
+```
+
+Reiniciamos el servicio:
+
+```bash
+systemctl restart sssd
+systemctl enable sssd
+```
+
